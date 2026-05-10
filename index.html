@@ -3,115 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Blur Background with Floating Colors</title>
+    <title>Waterfox Download Center</title>
     <style>
-        /* ตั้งค่าพื้นฐานให้เต็มหน้าจอ */
+        /* 1. พื้นหลังขาวเบลอสีลอยไปมา (จากอันเดิม) */
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* ซ่อน scrollbar */
-            background-color: white; /* พื้นหลังหลักสีขาว */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            overflow: hidden; background-color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* Container สำหรับเก็บลูกบอลสี */
         .gradient-bg {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%; position: absolute;
+            filter: blur(100px); -webkit-filter: blur(100px); z-index: 1;
+        }
+        .g1, .g2, .g3 {
+            position: absolute; border-radius: 50%; opacity: 0.6;
+        }
+        .g1 { width: 80%; height: 80%; top: -10%; background: radial-gradient(circle, #64dcff 0, rgba(100,220,255,0) 50%); animation: move 20s infinite; }
+        .g2 { width: 70%; height: 70%; bottom: -10%; right: -10%; background: radial-gradient(circle, #ff64dc 0, rgba(255,100,220,0) 50%); animation: move 15s reverse infinite; }
+        @keyframes move { 0% { transform: translate(0,0); } 50% { transform: translate(20%, 10%); } 100% { transform: translate(0,0); } }
+
+        /* 2. หน้าต่าง GUI ด้านขวาบน */
+        .window {
             position: absolute;
-            top: 0;
-            left: 0;
-            /* **หัวใจสำคัญคือตรงนี้: ทำให้ทุกอย่างที่อยู่ข้างในเบลอ** */
-            filter: blur(100px); 
-            -webkit-filter: blur(100px);
-            z-index: 1;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.5);
+            z-index: 100;
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
         }
 
-        /* สไตล์พื้นฐานของลูกบอลสี (Gradients) */
-        .g1, .g2, .g3, .g4, .g5 {
-            position: absolute;
-            mix-blend-mode: multiply; /* ทำให้สีผสมกันดูนุ่มนวลขึ้น */
-            border-radius: 50%; /* ทำให้เป็นวงกลม */
-            opacity: 0.8;
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        /* ส่วนหัวหน้าต่าง */
+        .window-header {
+            background: rgba(240, 240, 240, 0.9);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
         }
 
-        /* ตั้งค่าสี ขนาด และแอนิเมชั่นของแต่ละลูก */
-        
-        /* ลูกที่ 1: สีฟ้า */
-        .g1 {
-            width: 80%;
-            height: 80%;
-            top: -10%;
-            left: -10%;
-            background: radial-gradient(circle at center, rgba(100, 220, 255, 0.8) 0, rgba(100, 220, 255, 0) 50%) no-repeat;
-            animation: moveVertical 30s ease infinite;
+        .window-title { font-size: 14px; font-weight: bold; color: #333; }
+
+        /* ไอคอนย่อ (Minimize) 50x50 */
+        .btn-min {
+            width: 30px; height: 30px; /* ขนาดปุ่มกด */
+            background: #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+        .btn-min:hover { background: #d0d0d0; }
+        .btn-min::after { content: ""; width: 12px; height: 2px; background: #555; }
+
+        /* ส่วนเนื้อหา */
+        .window-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
-        /* ลูกที่ 2: สีชมพู/ม่วง */
-        .g2 {
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            right: -10%;
-            background: radial-gradient(circle at center, rgba(255, 100, 220, 0.8) 0, rgba(255, 100, 220, 0) 50%) no-repeat;
-            animation: moveInCircle 20s reverse infinite;
+        /* ไอคอน Waterfox แนวนอน (หาเองอัตโนมัติจากโลโก้ SVG) */
+        .wf-logo {
+            width: 180px;
+            height: auto;
         }
 
-        /* ลูกที่ 3: สีเหลือง */
-        .g3 {
-            width: 60%;
-            height: 60%;
-            bottom: -10%;
-            left: 10%;
-            background: radial-gradient(circle at center, rgba(255, 225, 100, 0.8) 0, rgba(255, 225, 100, 0) 50%) no-repeat;
-            animation: moveInCircle 40s linear infinite;
+        .browser-label { font-size: 18px; color: #222; font-weight: 500; }
+
+        /* ปุ่มดาวน์โหลด */
+        .download-btn {
+            background: #2d5af5;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            transition: 0.3s;
+            text-decoration: none;
         }
+        .download-btn:hover { background: #1a42cc; transform: translateY(-2px); }
 
-        /* ลูกที่ 4: สีเขียวมินต์ */
-        .g4 {
-            width: 70%;
-            height: 70%;
-            bottom: 10%;
-            right: 10%;
-            background: radial-gradient(circle at center, rgba(100, 255, 200, 0.8) 0, rgba(100, 255, 200, 0) 50%) no-repeat;
-            animation: moveHorizontal 25s ease infinite;
+        /* ไอคอนดาวน์โหลด (สร้างด้วย CSS เพื่อความคมชัดและไม่มีพื้นหลัง) */
+        .dl-icon {
+            width: 18px; height: 18px;
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            border-right: 2px solid white;
+            position: relative;
         }
-
-        /* ลูกที่ 5: สีส้มอ่อน */
-        .g5 {
-            width: 100%;
-            height: 100%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle at center, rgba(255, 180, 100, 0.5) 0, rgba(255, 180, 100, 0) 50%) no-repeat;
-            opacity: 1;
+        .dl-icon::before {
+            content: "↓"; position: absolute; top: -10px; left: 3px; font-weight: bold;
         }
-
-        /* **ส่วนกำหนดการเคลื่อนที่ (Animations)** */
-
-        @keyframes moveInCircle {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes moveVertical {
-            0% { transform: translateY(-50%); }
-            50% { transform: translateY(50%); }
-            100% { transform: translateY(-50%); }
-        }
-
-        @keyframes moveHorizontal {
-            0% { transform: translateX(-50%) translateY(-10%); }
-            50% { transform: translateX(50%) translateY(10%); }
-            100% { transform: translateX(-50%) translateY(-10%); }
-        }
-
     </style>
 </head>
 <body>
@@ -119,10 +115,33 @@
     <div class="gradient-bg">
         <div class="g1"></div>
         <div class="g2"></div>
-        <div class="g3"></div>
-        <div class="g4"></div>
-        <div class="g5"></div>
     </div>
+
+    <div class="window" id="wfWindow">
+        <div class="window-header">
+            <div class="window-title">System Explorer</div>
+            <div class="btn-min" onclick="alert('ฟังก์ชันย่อหน้าต่างกำลังเตรียมใช้งาน')"></div>
+        </div>
+        <div class="window-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Waterfox_Logo_2019.svg" alt="Waterfox" class="wf-logo">
+            
+            <div class="browser-label">Waterfox Browser</div>
+            
+            <button class="download-btn" onclick="confirmDownload()">
+                <div class="dl-icon"></div>
+                Download Now
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function confirmDownload() {
+            const check = confirm("คุณต้องการออกจากหน้านี้เพื่อไปดาวน์โหลดที่ GitHub ใช่หรือไม่?");
+            if (check) {
+                window.location.href = "https://github.com/BrowserWorks/waterfox";
+            }
+        }
+    </script>
 
 </body>
 </html>
