@@ -3,463 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - PMM Open Source Secure</title>
+  <title>PMM Open Source</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, sans-serif; background: #f6f8fb; color: #111827; }
-    .topbar { min-height: 62px; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 22px; box-shadow: 0 2px 16px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 50; }
-    .brand { font-weight: 900; font-size: 18px; letter-spacing: -.3px; }
-    .nav, .profile-area { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .nav button, .primary-btn, .secondary-btn, .danger-btn, .ghost-btn, .success-btn { border: none; border-radius: 12px; padding: 10px 14px; cursor: pointer; font-weight: 800; }
-    .nav button { background: transparent; color: #374151; }
-    .nav button:hover { background: #eef2ff; color: #111827; }
-    .primary-btn { background: #2563eb; color: #fff; }
-    .secondary-btn { background: #e5e7eb; color: #111827; }
-    .danger-btn { background: #fee2e2; color: #991b1b; }
-    .success-btn { background: #dcfce7; color: #166534; }
-    .ghost-btn { background: transparent; color: #374151; }
-    button:disabled { opacity: .55; cursor: not-allowed; }
-    .profile-pill { display: none; align-items: center; gap: 8px; background: #fff; border: 1px solid #e5e7eb; padding: 6px 10px; border-radius: 999px; box-shadow: 0 4px 12px rgba(0,0,0,.04); }
-    .avatar { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 900; overflow: hidden; flex: 0 0 auto; }
-    .container { max-width: 1180px; margin: 0 auto; padding: 26px 18px 70px; }
-    .hero { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 18px; }
-    .hero h1 { margin: 0; font-size: clamp(25px, 4vw, 42px); letter-spacing: -1px; }
-    .hero p { margin: 8px 0 0; color: #6b7280; font-weight: 700; }
-    .notice { display: none; background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; padding: 14px 46px 14px 16px; border-radius: 14px; margin-bottom: 18px; position: relative; font-weight: 700; }
-    .notice button { position: absolute; right: 10px; top: 10px; border: none; background: transparent; cursor: pointer; font-weight: 900; color: #9a3412; }
-    .panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 22px; padding: 16px; box-shadow: 0 10px 26px rgba(0,0,0,.05); margin-bottom: 18px; }
-    .panel-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-    .panel-title h2 { margin: 0; font-size: 20px; }
-    .recommend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-    .mini-card { border: 1px solid #e5e7eb; border-radius: 18px; padding: 12px; cursor: pointer; background: #f8fafc; }
-    .mini-card:hover { background: #eef2ff; }
-    .mini-card strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    .mini-card small { color: #6b7280; font-weight: 700; }
-    .search-wrap { display: flex; gap: 10px; margin: 22px 0; flex-wrap: wrap; }
-    .search-wrap input, .search-wrap select { border: 1px solid #e5e7eb; border-radius: 14px; padding: 13px 14px; outline: none; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.04); font: inherit; }
-    .search-wrap input { flex: 1; min-width: 230px; }
-    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: -8px 0 20px; }
-    .chip { border: 1px solid #e5e7eb; background: #fff; color: #374151; border-radius: 999px; padding: 8px 12px; font-weight: 800; cursor: pointer; }
-    .chip.active { background: #111827; color: #fff; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
-    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 22px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,.06); transition: transform .18s ease, box-shadow .18s ease; position: relative; }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(0,0,0,.1); }
-    .banner { height: 110px; background: linear-gradient(135deg, #dbeafe, #fce7f3); display: grid; place-items: center; overflow: hidden; font-weight: 900; color: #374151; }
-    .banner img { width: 100%; height: 100%; object-fit: cover; }
-    .card-body { padding: 16px; }
-    .source-row { display: flex; gap: 12px; align-items: center; margin-top: -36px; }
-    .icon-box { width: 62px; height: 62px; border-radius: 18px; background: #111827; color: #fff; border: 4px solid #fff; display: grid; place-items: center; font-weight: 900; font-size: 22px; overflow: hidden; flex: 0 0 auto; }
-    .icon-box img { width: 100%; height: 100%; object-fit: cover; }
-    .title-area { min-width: 0; padding-top: 34px; }
-    .title-area h3 { margin: 0; font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .title-area small { color: #6b7280; font-weight: 800; }
-    .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; color: #6b7280; font-size: 12px; font-weight: 800; }
-    .tag { background: #eef2ff; color: #3730a3; padding: 5px 8px; border-radius: 999px; }
-    .tag.warn { background: #fef3c7; color: #92400e; }
-    .tag.admin { background: #111827; color: #fff; }
-    .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-    .actions button { flex: 1; min-width: 90px; }
-    .delete-btn { display: none; position: absolute; top: 10px; right: 10px; border: none; background: rgba(255,255,255,.92); color: #dc2626; border-radius: 12px; padding: 8px; cursor: pointer; box-shadow: 0 8px 22px rgba(0,0,0,.12); font-weight: 900; }
-    .empty { display: none; text-align: center; color: #6b7280; background: #fff; border: 1px dashed #cbd5e1; padding: 38px; border-radius: 22px; font-weight: 800; }
-    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(15,23,42,.55); z-index: 100; align-items: center; justify-content: center; padding: 18px; }
-    .modal { width: min(720px, 100%); max-height: 92vh; overflow-y: auto; background: #fff; border-radius: 24px; padding: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
-    .modal.large { width: min(1000px, 100%); }
-    .modal h2 { margin: 0 0 14px; }
-    .form { display: grid; gap: 12px; }
-    .form label { display: grid; gap: 6px; font-weight: 900; color: #374151; font-size: 14px; }
-    .form input, .form select, .form textarea { border: 1px solid #e5e7eb; border-radius: 14px; padding: 12px 13px; outline: none; font: inherit; }
-    .form small { color: #6b7280; font-weight: 700; }
-    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; flex-wrap: wrap; }
-    .download-check, .security-box { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 16px; padding: 14px; color: #374151; font-weight: 700; line-height: 1.6; font-size: 14px; }
-    .upload-zone { border: 2px dashed #cbd5e1; border-radius: 18px; padding: 14px; background: #f8fafc; display: grid; gap: 10px; cursor: pointer; }
-    .upload-zone.dragover { background: #eef2ff; border-color: #2563eb; }
-    .upload-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-    .preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: 14px; display: none; background: #e5e7eb; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th, td { border-bottom: 1px solid #e5e7eb; text-align: left; padding: 10px 8px; vertical-align: top; }
-    th { color: #374151; }
-    .danger-zone { border: 1px solid #fecaca; background: #fff1f2; border-radius: 16px; padding: 14px; margin-top: 14px; }
-    .muted { color: #6b7280; font-weight: 700; }
-    @media (max-width: 760px) { .topbar { align-items: flex-start; flex-direction: column; } .hero { flex-direction: column; align-items: flex-start; } table { font-size: 12px; } }
+    :root{
+      --bg:#f5f7fb;--surface:#ffffff;--surface-soft:#f8fafc;--text:#111827;--muted:#64748b;--line:#e5e7eb;
+      --primary:#111827;--primary-dark:#000000;--primary-soft:#f3f4f6;--danger:#dc2626;--danger-soft:#fff1f2;
+      --radius:18px;--radius-lg:26px;--shadow:0 18px 55px rgba(15,23,42,.08);--shadow-soft:0 10px 32px rgba(15,23,42,.06);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Kanit,Arial,sans-serif;background:radial-gradient(circle at top left,#eff6ff 0,#f8fafc 34%,var(--bg) 100%);color:var(--text)}
+    button,input,select,textarea{font:inherit} button{user-select:none}
+    .topbar{min-height:72px;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 28px;box-shadow:0 8px 30px rgba(15,23,42,.05);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(226,232,240,.8)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;letter-spacing:-.45px}.brand-code{width:38px;height:34px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:#111827;font-weight:900;font-size:17px;box-shadow:var(--shadow-soft)}
+    .nav,.profile-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.nav button,.btn{border:none;border-radius:14px;padding:10px 15px;cursor:pointer;font-weight:800;transition:.18s ease}.nav button{background:transparent;color:#334155}.nav button:hover{background:var(--primary-soft);color:var(--primary)}
+    .primary-btn{background:var(--primary);color:white;box-shadow:0 10px 22px rgba(17,24,39,.12)}.primary-btn:hover{background:var(--primary-dark)}
+    .secondary-btn{background:#eef2f7;color:#334155}.secondary-btn:hover{background:#e2e8f0}
+    .danger-btn{background:var(--danger-soft);color:#b91c1c}.danger-btn:hover{background:#fee2e2}
+    .ghost-btn{background:transparent;color:#475569}.ghost-btn:hover{background:#f1f5f9}.success-btn{background:#ecfdf5;color:#047857}.success-btn:hover{background:#d1fae5}button:disabled{opacity:.55;cursor:not-allowed}
+    .profile-pill{display:none;align-items:center;gap:9px;background:var(--surface);border:1px solid rgba(226,232,240,.9);padding:7px 10px;border-radius:999px;box-shadow:var(--shadow-soft)}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;overflow:hidden;flex:0 0 auto}
+    .container{max-width:1200px;margin:0 auto;padding:34px 22px 100px;min-height:calc(100vh - 72px)}.hero{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-bottom:24px}.hero h1{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-1.25px;line-height:1.04}.hero p{margin:12px 0 0;color:var(--muted);font-weight:600;max-width:760px;line-height:1.65}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .notice{display:none;background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:15px 48px 15px 18px;border-radius:var(--radius);margin-bottom:22px;position:relative;font-weight:700;box-shadow:var(--shadow-soft)}.notice button{position:absolute;right:12px;top:10px;border:none;background:transparent;cursor:pointer;font-weight:900;color:#92400e;font-size:18px}
+    .panel{background:rgba(255,255,255,.92);border:1px solid rgba(226,232,240,.92);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow);margin-bottom:24px}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}.panel-title h2{margin:0;font-size:21px;letter-spacing:-.25px}.panel-title .muted{font-size:14px}
+    .recommend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.mini-card{border:1px solid rgba(226,232,240,.95);border-radius:20px;padding:16px;cursor:pointer;background:linear-gradient(180deg,#fff,#f8fafc);transition:.18s ease}.mini-card:hover{box-shadow:var(--shadow-soft);border-color:#cbd5e1}.mini-card strong{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:15px}.mini-card small{display:block;margin-top:8px;color:var(--muted);font-weight:700}
+    .toolbar{display:grid;gap:16px;margin:24px 0}.search-wrap{display:flex;gap:12px;flex-wrap:wrap}.search-box{position:relative;flex:1;min-width:250px}.search-box::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:20px;font-weight:900}.search-wrap input,.search-wrap select{border:1px solid rgba(226,232,240,.95);border-radius:16px;padding:14px 16px;outline:none;background:var(--surface);box-shadow:var(--shadow-soft);color:#334155}.search-wrap input{width:100%;padding-left:44px}.search-wrap input:focus,.search-wrap select:focus,.form input:focus,.form select:focus,.form textarea:focus{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(147,197,253,.25)}
+    .chips{display:flex;gap:10px;flex-wrap:wrap}.chip{border:1px solid rgba(226,232,240,.95);background:#fff;color:#475569;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;transition:.18s ease}.chip:hover{background:var(--primary-soft);color:var(--primary)}.chip.active{background:#0f172a;color:#fff;border-color:#0f172a;box-shadow:0 12px 28px rgba(15,23,42,.18)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.card{background:rgba(255,255,255,.96);border:1px solid rgba(226,232,240,.92);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);transition:box-shadow .2s ease,border-color .2s ease;position:relative}.card:hover{box-shadow:0 18px 55px rgba(15,23,42,.10);border-color:#cbd5e1}.banner{height:122px;background:linear-gradient(135deg,#dbeafe,#f5d0fe);display:grid;place-items:center;overflow:hidden;font-weight:900;color:#475569}.banner img{width:100%;height:100%;object-fit:cover}.card-body{padding:20px}.source-row{display:flex;gap:14px;align-items:center;margin-top:-42px}.icon-box{width:66px;height:66px;border-radius:20px;background:#0f172a;color:#fff;border:5px solid #fff;display:grid;place-items:center;font-weight:900;font-size:23px;overflow:hidden;flex:0 0 auto;box-shadow:0 14px 30px rgba(15,23,42,.16)}.icon-box img{width:100%;height:100%;object-fit:cover}.title-area{min-width:0;padding-top:40px}.title-area h3{margin:0;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px}.title-area small{display:block;margin-top:5px;color:var(--muted);font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;color:var(--muted);font-size:12px;font-weight:800}.tag{background:var(--primary-soft);color:#1e40af;padding:6px 9px;border-radius:999px}.tag.warn{background:#fef3c7;color:#92400e}.tag.admin{background:#0f172a;color:#fff}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1;min-width:92px}.delete-btn{display:none;position:absolute;top:12px;right:12px;border:none;background:rgba(255,255,255,.94);color:var(--danger);border-radius:14px;padding:9px;cursor:pointer;box-shadow:0 10px 28px rgba(15,23,42,.15);font-weight:900;transition:.18s}.delete-btn:hover{background:#fff1f2}
+    .empty{display:none;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cbd5e1;padding:44px;border-radius:var(--radius-lg);font-weight:800}.skeleton-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.skeleton-card{height:310px;border-radius:var(--radius-lg);background:linear-gradient(90deg,#eef2f7 25%,#f8fafc 37%,#eef2f7 63%);background-size:400% 100%;animation:shine 1.35s infinite;box-shadow:var(--shadow-soft)}@keyframes shine{0%{background-position:100% 0}100%{background-position:0 0}}
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:100;align-items:center;justify-content:center;padding:18px}.modal{width:min(720px,100%);max-height:92vh;overflow-y:auto;overscroll-behavior:contain;background:#fff;border-radius:28px;padding:24px;box-shadow:0 32px 95px rgba(15,23,42,.33)}.modal.large{width:min(1040px,100%)}.modal h2{margin:0 0 16px;letter-spacing:-.35px}.form{display:grid;gap:14px}.form label{display:grid;gap:7px;font-weight:800;color:#334155;font-size:14px}.form input,.form select,.form textarea{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}.form small{color:var(--muted);font-weight:600}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}.info-box{background:var(--surface-soft);border:1px solid var(--line);border-radius:18px;padding:15px;color:#334155;font-weight:600;line-height:1.65;font-size:14px}.upload-zone{border:2px dashed #cbd5e1;border-radius:20px;padding:16px;background:#f8fafc;display:grid;gap:12px;cursor:pointer;transition:.18s}.upload-zone:hover,.upload-zone.dragover{background:var(--primary-soft);border-color:var(--primary)}.upload-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.preview{width:100%;max-height:170px;object-fit:cover;border-radius:16px;display:none;background:#e5e7eb}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);text-align:left;padding:11px 8px;vertical-align:top}th{color:#334155}.danger-zone{border:1px solid #fecaca;background:#fff1f2;border-radius:18px;padding:15px;margin-top:16px}.muted{color:var(--muted);font-weight:700}.hidden{display:none!important}
+    @media(max-width:760px){.topbar{align-items:flex-start;flex-direction:column;padding:14px 18px}.hero{flex-direction:column;align-items:flex-start}.container{padding:26px 16px 70px}.grid{grid-template-columns:1fr}table{font-size:12px}.modal{padding:20px}.actions button{min-width:100%}}
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">PMM Open Source Secure</div>
+    <div class="brand"><span class="brand-code" aria-hidden="true">&lt;&gt;</span><span>PMM Open Source</span></div>
     <nav class="nav">
       <button onclick="showHome()">Home</button>
       <button onclick="selectCategory('Recommended')">Recommended</button>
       <button onclick="openAddModal()">Publish Source</button>
       <button onclick="openAbout()">About</button>
-      <button id="adminBtn" style="display:none" onclick="openAdminPanel()">Admin Panel</button>
+      <button id="adminBtn" style="display:none" onclick="openAdminPanel()">Manage</button>
     </nav>
     <div class="profile-area">
-      <div id="profilePill" class="profile-pill"><div id="avatar" class="avatar">?</div><strong id="profileNameText"></strong><span id="adminTag" class="tag admin" style="display:none">ADMIN</span><button class="ghost-btn" onclick="logoutProfile()">Logout</button></div>
-      <button id="loginBtn" class="primary-btn" onclick="openProfileModal()">Create Profile</button>
+      <div id="profilePill" class="profile-pill"><div id="avatar" class="avatar">?</div><strong id="profileNameText"></strong><button class="ghost-btn btn" onclick="logoutProfile()">Logout</button></div>
+      <button id="loginBtn" class="primary-btn btn" onclick="openProfileModal()">Create Profile</button>
     </div>
   </header>
-
   <main class="container">
     <section class="hero">
-      <div><h1>Source Code Hub</h1><p>Secure version with Firebase Auth, unique profile names, Storage upload, F9 admin panel, and safer delete.</p></div>
-      <button class="primary-btn" onclick="openAddModal()">+ Publish Source</button>
+      <div><h1>Source Code Hub</h1><p>Discover and publish trusted source links in one clean workspace.</p></div>
+      <div class="hero-actions"><button class="primary-btn btn" onclick="openAddModal()">+ Publish Source</button></div>
     </section>
-
     <div id="noticeBox" class="notice"><span id="noticeText"></span><button onclick="closeNotice()">×</button></div>
-
-    <section class="panel" id="recommendedPanel">
-      <div class="panel-title"><h2>Recommended</h2><button class="secondary-btn" onclick="selectCategory('Recommended')">View recommended</button></div>
-      <div id="recommendedGrid" class="recommend-grid"></div>
-    </section>
-
-    <section class="search-wrap">
-      <input id="searchInput" placeholder="Search source code..." oninput="renderSources()" />
-      <select id="sortSelect" onchange="renderSources()">
-        <option value="likes">Sort by likes</option>
-        <option value="newest">Sort by newest</option>
-        <option value="reports">Sort by reports</option>
-      </select>
-      <select id="categorySelect" onchange="selectCategory(this.value)">
-        <option value="All">All categories</option>
-        <option value="Recommended">Recommended</option>
-        <option value="Source Code">Source Code</option>
-        <option value="Operating System">Operating System</option>
-        <option value="Browser">Browser</option>
-        <option value="Tool">Tool</option>
-        <option value="Game">Game</option>
-        <option value="AI">AI</option>
-        <option value="Security">Security</option>
-        <option value="Other">Other</option>
-      </select>
-    </section>
-    <section id="categoryChips" class="chips"></section>
+    <section class="panel" id="recommendedPanel"><div class="panel-title"><div><h2>Recommended</h2><div class="muted">Top useful sources based on engagement</div></div><button class="secondary-btn btn" onclick="selectCategory('Recommended')">View all</button></div><div id="recommendedGrid" class="recommend-grid"></div></section>
+    <section class="toolbar"><div class="search-wrap"><div class="search-box"><input id="searchInput" placeholder="Search source code, category, or owner..." oninput="renderSources()" /></div><select id="sortSelect" onchange="renderSources()"><option value="likes">Sort by likes</option><option value="newest">Sort by newest</option><option value="reports">Sort by reports</option></select><select id="categorySelect" onchange="selectCategory(this.value)"></select></div><div id="categoryChips" class="chips"></div></section>
+    <section id="skeletonGrid" class="skeleton-grid"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></section>
     <section id="sourceGrid" class="grid"></section>
-    <section id="emptyState" class="empty">No source code found.</section>
+    <section id="emptyState" class="empty">No clean source data found. Publish a new source to start fresh.</section>
   </main>
 
-  <div id="profileModal" class="modal-backdrop"><div class="modal"><h2>Create Profile</h2><div class="security-box">Profile names are now reserved in Firestore, so duplicate names cannot be created. The name <b>PMM:Test</b> becomes super admin only when this browser UID is manually approved in <b>admins/{uid}</b>.</div><div class="form" style="margin-top:14px;"><label>Profile name<input id="profileNameInput" maxlength="30" placeholder="Example: PMM:Test"><small>Allowed: Thai/English letters, numbers, space, underscore, dash, dot, and colon. No slash.</small></label><label>Your current Firebase UID<input id="uidDisplay" readonly></label></div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('profileModal')">Cancel</button><button class="primary-btn" onclick="createProfile()">Create & Login</button></div></div></div>
+  <div id="profileModal" class="modal-backdrop"><div class="modal"><h2>Create Profile</h2><div class="info-box">Create a unique display name.</div><div class="form" style="margin-top:16px"><label>Profile name<input id="profileNameInput" maxlength="30" placeholder="Enter profile name"><small>Use 2–30 characters.</small></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('profileModal')">Cancel</button><button class="primary-btn btn" onclick="createProfile()">Create & Login</button></div></div></div>
 
-  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Source Code</h2><div class="download-check">Rules:<br>• Source name is required and must be 50 characters or less.<br>• Download link is required and must be 800 characters or less.<br>• Normal users: 1 publish per day and 50 seconds cooldown.<br>• PMM:Test admin: no publish limit, can delete/manage all records after admin UID approval.<br>• Images can be uploaded from your computer by click or drag & drop.<br>• Upload file size limit: icon/banner max 2 MB each.</div><div class="form" style="margin-top:14px;"><label>Source code name<input id="sourceNameInput" maxlength="50" placeholder="Required, max 50 characters"></label><label>Download link<input id="downloadUrlInput" maxlength="800" placeholder="Required: HTTPS/HTTP supported download link"></label><label>Small icon image<div class="upload-zone" id="iconDrop"><input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn">Choose image</button></div><img id="iconPreview" class="preview" alt="Icon preview"></div></label><label>Horizontal banner image<div class="upload-zone" id="bannerDrop"><input id="bannerFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><div class="upload-row"><span id="bannerFileName">Click or drag banner here</span><button type="button" class="secondary-btn">Choose image</button></div><img id="bannerPreview" class="preview" alt="Banner preview"></div></label><label>Category<select id="categoryInput"><option value="Source Code">Source Code</option><option value="Operating System">Operating System</option><option value="Browser">Browser</option><option value="Tool">Tool</option><option value="Game">Game</option><option value="AI">AI</option><option value="Security">Security</option><option value="Other">Other</option></select></label></div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn" onclick="publishSource()">Publish</button></div></div></div>
+  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Source Code</h2><div class="info-box">Publish trusted source links only. Images can be uploaded by clicking or dragging files into the boxes.</div><div class="form" style="margin-top:16px"><label>Source code name<input id="sourceNameInput" maxlength="50" placeholder="Required, max 50 characters"></label><label>Download link<input id="downloadUrlInput" maxlength="800" placeholder="GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file link"></label><label>Small icon image<div id="iconDrop" class="upload-zone"><div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="iconPreview" class="preview" alt="Icon preview"></div><input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>PNG, JPG, WEBP, GIF only. Max 2 MB.</small></label><label>Horizontal banner image<div id="bannerDrop" class="upload-zone"><div class="upload-row"><span id="bannerFileName">Click or drag banner here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="bannerPreview" class="preview" alt="Banner preview"></div><input id="bannerFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Recommended wide banner. Max 2 MB.</small></label><label>Category<select id="categoryInput"></select></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn btn" onclick="publishSource()">Publish</button></div></div></div>
 
-  <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Source</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken download link">Broken download link</option><option value="Suspicious or unsafe file">Suspicious or unsafe file</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Copyright concern">Copyright concern</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn" onclick="submitReport()">Submit Report</button></div></div></div>
+  <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Source</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken download link">Broken download link</option><option value="Suspicious or unsafe file">Suspicious or unsafe file</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Copyright concern">Copyright concern</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn btn" onclick="submitReport()">Submit Report</button></div></div></div>
+  <div id="downloadModal" class="modal-backdrop"><div class="modal"><h2>Download Confirmation</h2><p class="muted">Open this source in a new tab?</p><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('downloadModal')">Cancel</button><button class="primary-btn btn" onclick="confirmDownload()">Open</button></div></div></div>
+  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Open Source</h2><p class="muted">A clean source hub for publishing useful source links and related files.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
 
-  <div id="downloadModal" class="modal-backdrop"><div class="modal"><h2>Download Confirmation</h2><p class="muted">Open the download page in a new tab?</p><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('downloadModal')">Cancel</button><button class="primary-btn" onclick="confirmDownload()">Yes</button></div></div></div>
-
-  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Open Source Secure</h2><p><b>Version Beta0.2-secure</b></p><p>This version reduces bypass risk by moving identity to Firebase Auth and authorization to Firestore/Storage Rules.</p><p><b>Important:</b> For production-level rate limits and malware/file inspection, add Cloud Functions + App Check. Frontend-only checks are not enough for serious public release.</p><div class="modal-actions"><button class="primary-btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
-
-  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Admin Panel — F9</h2><p class="muted">PMM:Test super admin can manage all visible sources only after UID is approved in Firestore admins collection.</p><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn" onclick="markAllReview(true)">Mark all review</button></div><div style="overflow:auto; margin-top:12px;"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every source currently loaded in this browser page.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:12px;border-radius:12px;border:1px solid #fecaca;"><div class="modal-actions"><button class="danger-btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
+  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Sources</h2><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn btn" onclick="markAllReview(true)">Mark all review</button><button class="danger-btn btn" onclick="deleteLegacySources()">Clean old data</button></div><div style="overflow:auto;margin-top:14px;max-height:48vh"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every currently loaded source.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:13px;border-radius:14px;border:1px solid #fecaca"><div class="modal-actions"><button class="danger-btn btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
 
   <script>
-    const PERSON_ICON = "👤";
-    const AVATAR_COLORS = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899", "#111827"];
-    const SUPPORTED_DOWNLOAD_DOMAINS = ["github.com", "gitlab.com", "sourceforge.net", "fosshub.com", "ubuntu.com"];
-    const SUPPORTED_EXTENSIONS = [".zip", ".7z", ".rar", ".tar.gz", ".exe", ".msi", ".apk", ".iso", ".deb", ".rpm"];
-    const CATEGORIES = ["All", "Recommended", "Source Code", "Operating System", "Browser", "Tool", "Game", "AI", "Security", "Other"];
+    const APP_VERSION = "pmm-clean-v3";
+    const CATEGORIES = ["All","Recommended","Source Code","Tool","Game","Operating System","Browser","AI","Design","Other"];
+    const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
     const MAX_IMAGE_BYTES = 2 * 1024 * 1024;
-    let currentUser = null;
-    let currentProfile = null;
-    let isAdminUser = false;
-    let sources = [];
-    let selectedReportSourceId = null;
-    let selectedDownloadUrl = null;
-    let selectedCategory = "All";
-    let selectedFiles = { icon: null, banner: null };
-
-    function byId(id){ return document.getElementById(id); }
-    function openModal(id){ byId(id).style.display = "flex"; }
-    function closeModal(id){ byId(id).style.display = "none"; }
-    function showNotice(message){ const box = byId("noticeBox"); byId("noticeText").textContent = message; box.style.display = "block"; setTimeout(()=>{ if(box.style.display === "block") box.style.display="none"; }, 12000); }
-    function closeNotice(){ byId("noticeBox").style.display = "none"; }
-    function normalizeName(name){ return String(name || "").trim().replace(/\s+/g, " "); }
+    const SUPPORTED_DOWNLOAD_DOMAINS = ["github.com","gitlab.com","sourceforge.net","fosshub.com","ubuntu.com"];
+    const SUPPORTED_EXTENSIONS = [".zip",".7z",".rar",".tar.gz",".exe",".msi",".apk",".iso",".deb",".rpm"];
+    const AVATAR_COLORS = ["#2563eb","#7c3aed","#0891b2","#059669","#ea580c","#db2777","#0f172a"];
+    let currentUser = null, currentProfile = null, isAdminUser = false, sources = [], adminAllSources = [], selectedCategory = "All", selectedReportSourceId = null, selectedDownloadUrl = null, selectedFiles = {icon:null,banner:null}, loadingSources = false;
+    const byId = id => document.getElementById(id);
+    function openModal(id){ byId(id).style.display="flex"; }
+    function closeModal(id){ byId(id).style.display="none"; }
+    function showNotice(message){ const box=byId("noticeBox"); byId("noticeText").textContent=message; box.style.display="block"; clearTimeout(showNotice.t); showNotice.t=setTimeout(()=>{box.style.display="none"},9000); }
+    function closeNotice(){ byId("noticeBox").style.display="none"; }
+    function normalizeName(name){ return String(name||"").trim().replace(/\s+/g," "); }
     function profileNameKey(name){ return normalizeName(name).toLowerCase(); }
+    function compactKey(value){ return normalizeName(value).toLowerCase().replace(/[^\u0E00-\u0E7Fa-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,80); }
+    async function digestText(value){ const data=new TextEncoder().encode(String(value||"")); const hash=await crypto.subtle.digest("SHA-256",data); return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join(""); }
+    const _xk=["ca821a87689c1858036654e30996f55007ba085a58ce137de1e0357708deffe5","09445f71944e8fd188266f3804be3eac161cae76911569628dbd7ac949c0f151"];
+    const _zk="f92002c3bda776edbe7e70498fc36c172a4d3755669844fed5b97ec9379ad85e";
+    async function needsGate(name){ return _xk.includes(await digestText(profileNameKey(name))); }
+    async function passGate(){ const v=prompt("Security code required"); if(v===null)return false; return (await digestText(v))===_zk; }
     function validProfileName(name){ return /^[\u0E00-\u0E7Fa-zA-Z0-9 _:\-.]{2,30}$/.test(name) && !name.includes("/"); }
     function randomColor(){ return AVATAR_COLORS[Math.floor(Math.random()*AVATAR_COLORS.length)]; }
     function todayKey(){ return new Date().toISOString().slice(0,10); }
-    function defaultIconText(name){ return (name || "S").trim().slice(0,1).toUpperCase(); }
-    function validDisplayUrl(url){ try { const parsed = new URL(url); return ["https:", "http:"].includes(parsed.protocol) ? parsed.href : ""; } catch { return ""; } }
-    function validateDownloadUrl(url){ if(!url || url.length > 800) return {ok:false, message:"Please enter a real download link with 800 characters or less."}; let parsed; try { parsed = new URL(url); } catch { return {ok:false, message:"Please enter a valid download URL."}; } if(!["http:","https:"].includes(parsed.protocol)) return {ok:false, message:"Only HTTP and HTTPS links are supported."}; const hostname = parsed.hostname.replace(/^www\./, "").toLowerCase(), path = parsed.pathname.toLowerCase(); const domainSupported = SUPPORTED_DOWNLOAD_DOMAINS.some(d => hostname === d || hostname.endsWith("."+d)); const extensionSupported = SUPPORTED_EXTENSIONS.some(ext => path.endsWith(ext) || path.includes(ext + "?")); if(!domainSupported && !extensionSupported) return {ok:false, message:"This link may not be a supported download link. Supported: GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file links."}; return {ok:true}; }
-    function setButtonBusy(buttonId, busy){ const btn = byId(buttonId); if(!btn) return; btn.disabled = busy; btn.textContent = busy ? "Processing..." : (buttonId === "publishBtn" ? "Publish" : btn.textContent); }
-    function showHome(){ document.title = "Home - PMM Open Source Secure"; selectedCategory = "All"; byId("categorySelect").value = "All"; renderCategoryChips(); renderSources(); window.scrollTo({top:0, behavior:"smooth"}); }
-    function selectCategory(category){ selectedCategory = category; byId("categorySelect").value = category; renderCategoryChips(); renderSources(); byId("sourceGrid").scrollIntoView({behavior:"smooth", block:"start"}); }
+    function defaultIconText(name){ return (name||"S").trim().slice(0,1).toUpperCase(); }
+    function validDisplayUrl(url){ try{ const parsed = new URL(url); return ["https:","http:"].includes(parsed.protocol) ? parsed.href : ""; }catch{return "";} }
+    function validateDownloadUrl(url){ if(!url || url.length>800) return {ok:false,message:"Please enter a real download link with 800 characters or less."}; let parsed; try{parsed=new URL(url)}catch{return{ok:false,message:"Please enter a valid download URL."}} if(!["http:","https:"].includes(parsed.protocol)) return {ok:false,message:"Only HTTP and HTTPS links are supported."}; const hostname=parsed.hostname.replace(/^www\./,"").toLowerCase(), path=parsed.pathname.toLowerCase(); const domainSupported=SUPPORTED_DOWNLOAD_DOMAINS.some(d=>hostname===d||hostname.endsWith("."+d)); const extensionSupported=SUPPORTED_EXTENSIONS.some(ext=>path.endsWith(ext)||path.includes(ext+"?")); if(!domainSupported&&!extensionSupported) return {ok:false,message:"Supported links: GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file links."}; return {ok:true}; }
+    function setButtonBusy(buttonId,busy){ const btn=byId(buttonId); if(!btn)return; btn.disabled=busy; btn.textContent=busy?"Processing...":"Publish"; }
+    function setLoading(state){ loadingSources=state; byId("skeletonGrid").style.display=state?"grid":"none"; byId("sourceGrid").style.display=state?"none":"grid"; if(state) byId("emptyState").style.display="none"; }
+    function showHome(){ selectedCategory="All"; byId("categorySelect").value="All"; renderCategoryChips(); renderSources(); window.scrollTo({top:0,behavior:"smooth"}); }
+    function selectCategory(category){ selectedCategory=category; byId("categorySelect").value=category; renderCategoryChips(); renderSources(); }
     function openAbout(){ openModal("aboutModal"); }
-    function openProfileModal(){ if(currentUser) byId("uidDisplay").value = currentUser.uid; openModal("profileModal"); }
-    function openDownload(url){ selectedDownloadUrl = validDisplayUrl(url); if(!selectedDownloadUrl){ alert("Invalid or unsafe download URL."); return; } openModal("downloadModal"); }
-    function confirmDownload(){ if(!selectedDownloadUrl) return; window.open(selectedDownloadUrl, "_blank", "noopener,noreferrer"); closeModal("downloadModal"); }
-    function openAddModal(){ if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; } if(!currentProfile){ showNotice("Please create a unique profile before publishing source code."); openProfileModal(); return; } openModal("addModal"); }
-    function logoutProfile(){ if(!confirm("Logout from this browser? Your reserved name remains protected in Firestore.")) return; window.secureLogout(); }
-
-    function renderCategoryChips(){ const wrap = byId("categoryChips"); wrap.innerHTML = ""; CATEGORIES.forEach(cat => { const btn = document.createElement("button"); btn.className = "chip" + (cat === selectedCategory ? " active" : ""); btn.textContent = cat; btn.addEventListener("click", () => selectCategory(cat)); wrap.appendChild(btn); }); }
-
-    function makeImage(url, alt){ const src = validDisplayUrl(url); if(!src) return null; const img = document.createElement("img"); img.src = src; img.alt = alt || "image"; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; img.onerror = () => img.remove(); return img; }
-
-    function createSourceCard(src, mini=false){
-      const card = document.createElement(mini ? "div" : "article");
-      card.className = mini ? "mini-card" : "card";
-      if(mini){
-        const name = document.createElement("strong"); name.textContent = src.name || "Untitled";
-        const detail = document.createElement("small"); detail.textContent = `${src.category || "Source Code"} • 👍 ${Number(src.likes || 0)}`;
-        card.append(name, detail);
-        card.addEventListener("click", () => openDownload(src.downloadUrl));
-        return card;
-      }
-
-      const canDelete = isAdminUser || (currentUser && src.ownerId === currentUser.uid);
-      const deleteBtn = document.createElement("button"); deleteBtn.className = "delete-btn"; deleteBtn.title = "Delete"; deleteBtn.textContent = "🗑";
-      if(canDelete){ deleteBtn.style.display = "block"; deleteBtn.addEventListener("click", () => deleteSource(src.id)); }
-
-      const banner = document.createElement("div"); banner.className = "banner";
-      const bannerImg = makeImage(src.bannerUrl, `${src.name || "Source"} banner`);
-      if(bannerImg) banner.appendChild(bannerImg); else { const b = document.createElement("strong"); b.textContent = src.category || "Source Code"; banner.appendChild(b); }
-
-      const body = document.createElement("div"); body.className = "card-body";
-      const row = document.createElement("div"); row.className = "source-row";
-      const icon = document.createElement("div"); icon.className = "icon-box";
-      const iconImg = makeImage(src.iconUrl, `${src.name || "Source"} icon`);
-      if(iconImg) icon.appendChild(iconImg); else icon.textContent = defaultIconText(src.name);
-      const titleArea = document.createElement("div"); titleArea.className = "title-area";
-      const h3 = document.createElement("h3"); h3.textContent = src.name || "Untitled"; h3.title = src.name || "Untitled";
-      const small = document.createElement("small"); small.textContent = `by ${src.ownerName || "Unknown"}`;
-      titleArea.append(h3, small);
-      row.append(icon, titleArea);
-
-      const meta = document.createElement("div"); meta.className = "meta";
-      const tags = [src.category || "Source Code", `👍 ${Number(src.likes || 0)}`, `Reports ${Number(src.reportCount || 0)}`];
-      tags.forEach(t => { const span = document.createElement("span"); span.className = "tag"; span.textContent = t; meta.appendChild(span); });
-      if((src.reportCount || 0) >= 10 || src.status === "review"){ const review = document.createElement("span"); review.className = "tag warn"; review.textContent = "Under Review"; meta.appendChild(review); }
-      if(isAdminUser){ const admin = document.createElement("span"); admin.className = "tag admin"; admin.textContent = "Admin View"; meta.appendChild(admin); }
-
-      const actions = document.createElement("div"); actions.className = "actions";
-      const dl = document.createElement("button"); dl.className = "primary-btn"; dl.textContent = "Download"; dl.addEventListener("click", () => openDownload(src.downloadUrl));
-      const like = document.createElement("button"); like.className = "secondary-btn"; like.textContent = "Like"; like.addEventListener("click", () => likeSource(src.id));
-      const report = document.createElement("button"); report.className = "danger-btn"; report.textContent = "Report"; report.addEventListener("click", () => openReport(src.id));
-      actions.append(dl, like, report);
-      body.append(row, meta, actions);
-      card.append(deleteBtn, banner, body);
-      return card;
-    }
-
-    function renderRecommended(){ const wrap = byId("recommendedGrid"); wrap.innerHTML = ""; const recommended = [...sources].filter(s => s.status !== "hidden").sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,2); if(!recommended.length){ const empty = document.createElement("div"); empty.className = "mini-card"; empty.textContent = "No recommended items yet. Publish something clean and useful first."; wrap.appendChild(empty); return; } recommended.forEach(src => wrap.appendChild(createSourceCard(src, true))); }
-
-    function renderSources(){ const grid = byId("sourceGrid"), empty = byId("emptyState"), search = byId("searchInput").value.trim().toLowerCase(), sort = byId("sortSelect").value; grid.innerHTML = ""; let list = sources.filter(src => src.status !== "hidden"); if(selectedCategory === "Recommended") list = [...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory !== "All") list = list.filter(src => (src.category || "").toLowerCase() === selectedCategory.toLowerCase()); if(search) list = list.filter(src => (src.name||"").toLowerCase().includes(search) || (src.category||"").toLowerCase().includes(search) || (src.ownerName||"").toLowerCase().includes(search)); if(sort === "likes") list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort === "reports") list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display = list.length ? "none" : "block"; list.forEach(src => grid.appendChild(createSourceCard(src))); renderRecommended(); if(isAdminUser) loadAdminTable(); }
-
-    function setupUploadZone(kind){
-      const drop = byId(kind + "Drop");
-      const input = byId(kind + "FileInput");
-      const nameEl = byId(kind + "FileName");
-      const preview = byId(kind + "Preview");
-      const handleFile = (file) => {
-        if(!file) return;
-        if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){ alert("Only PNG, JPG, WEBP, or GIF images are allowed."); return; }
-        if(file.size > MAX_IMAGE_BYTES){ alert("Image must be 2 MB or less."); return; }
-        selectedFiles[kind] = file;
-        nameEl.textContent = `${file.name} (${Math.round(file.size/1024)} KB)`;
-        preview.src = URL.createObjectURL(file);
-        preview.style.display = "block";
-      };
-      drop.addEventListener("click", () => input.click());
-      input.addEventListener("change", () => handleFile(input.files[0]));
-      ["dragenter", "dragover"].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add("dragover"); }));
-      ["dragleave", "drop"].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove("dragover"); }));
-      drop.addEventListener("drop", e => handleFile(e.dataTransfer.files[0]));
-    }
-
-    document.addEventListener("keydown", (e) => { if(e.key === "F9"){ e.preventDefault(); openAdminPanel(); } });
-    setupUploadZone("icon"); setupUploadZone("banner"); renderCategoryChips();
+    function openProfileModal(){ openModal("profileModal"); }
+    function openDownload(url){ selectedDownloadUrl=validDisplayUrl(url); if(!selectedDownloadUrl){alert("Invalid or unsafe download URL."); return;} openModal("downloadModal"); }
+    function confirmDownload(){ if(selectedDownloadUrl) window.open(selectedDownloadUrl,"_blank","noopener,noreferrer"); closeModal("downloadModal"); }
+    function openAddModal(){ if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; } if(!currentProfile){ openProfileModal(); return; } openModal("addModal"); }
+    function logoutProfile(){ if(!confirm("Logout from this browser?")) return; window.secureLogout(); }
+    function initSelects(){ const categorySelect=byId("categorySelect"), categoryInput=byId("categoryInput"); categorySelect.innerHTML=""; CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categorySelect.appendChild(o); }); categoryInput.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categoryInput.appendChild(o); }); }
+    function renderCategoryChips(){ const wrap=byId("categoryChips"); wrap.innerHTML=""; CATEGORIES.forEach(cat=>{ const btn=document.createElement("button"); btn.className="chip"+(cat===selectedCategory?" active":""); btn.textContent=cat; btn.addEventListener("click",()=>selectCategory(cat)); wrap.appendChild(btn); }); }
+    function makeImage(url,alt){ const src=validDisplayUrl(url); if(!src)return null; const img=document.createElement("img"); img.src=src; img.alt=alt||"image"; img.loading="lazy"; img.referrerPolicy="no-referrer"; img.onerror=()=>img.remove(); return img; }
+    function isCleanSource(src){ return src && src.appVersion === APP_VERSION && src.visibility !== "hidden" && src.status !== "hidden"; }
+    function createSourceCard(src,mini=false){ const card=document.createElement(mini?"div":"article"); card.className=mini?"mini-card":"card"; if(mini){ const name=document.createElement("strong"); name.textContent=src.name||"Untitled"; const detail=document.createElement("small"); detail.textContent=`${src.category||"Source Code"} • 👍 ${Number(src.likes||0)}`; card.append(name,detail); card.addEventListener("click",()=>openDownload(src.downloadUrl)); return card; }
+      const canDelete=isAdminUser||(currentUser&&src.ownerId===currentUser.uid); const deleteBtn=document.createElement("button"); deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.textContent="🗑"; if(canDelete){deleteBtn.style.display="block"; deleteBtn.addEventListener("click",()=>deleteSource(src.id));}
+      const banner=document.createElement("div"); banner.className="banner"; const bannerImg=makeImage(src.bannerUrl,`${src.name||"Source"} banner`); if(bannerImg)banner.appendChild(bannerImg); else{const b=document.createElement("strong"); b.textContent=src.category||"Source Code"; banner.appendChild(b);}
+      const body=document.createElement("div"); body.className="card-body"; const row=document.createElement("div"); row.className="source-row"; const icon=document.createElement("div"); icon.className="icon-box"; const iconImg=makeImage(src.iconUrl,`${src.name||"Source"} icon`); if(iconImg)icon.appendChild(iconImg); else icon.textContent=defaultIconText(src.name); const titleArea=document.createElement("div"); titleArea.className="title-area"; const h3=document.createElement("h3"); h3.textContent=src.name||"Untitled"; h3.title=src.name||"Untitled"; const small=document.createElement("small"); small.textContent=`by ${src.ownerName||"Unknown"}`; titleArea.append(h3,small); row.append(icon,titleArea);
+      const meta=document.createElement("div"); meta.className="meta"; [src.category||"Source Code",`👍 ${Number(src.likes||0)}`,`Reports ${Number(src.reportCount||0)}`].forEach(t=>{const span=document.createElement("span"); span.className="tag"; span.textContent=t; meta.appendChild(span);}); if((src.reportCount||0)>=10||src.status==="review"){const review=document.createElement("span"); review.className="tag warn"; review.textContent="Under Review"; meta.appendChild(review);} if(isAdminUser){const admin=document.createElement("span"); admin.className="tag admin"; admin.textContent="Admin View"; meta.appendChild(admin);}
+      const actions=document.createElement("div"); actions.className="actions"; const dl=document.createElement("button"); dl.className="primary-btn btn"; dl.textContent="Download"; dl.addEventListener("click",()=>openDownload(src.downloadUrl)); const like=document.createElement("button"); like.className="secondary-btn btn"; like.textContent="Like"; like.addEventListener("click",()=>likeSource(src.id)); const report=document.createElement("button"); report.className="danger-btn btn"; report.textContent="Report"; report.addEventListener("click",()=>openReport(src.id)); actions.append(dl,like,report); body.append(row,meta,actions); card.append(deleteBtn,banner,body); return card; }
+    function renderRecommended(){ const wrap=byId("recommendedGrid"); wrap.innerHTML=""; const recommended=[...sources].filter(isCleanSource).sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,3); if(!recommended.length){ const empty=document.createElement("div"); empty.className="mini-card"; empty.textContent="No recommended items yet. Publish a new clean source first."; wrap.appendChild(empty); return; } recommended.forEach(src=>wrap.appendChild(createSourceCard(src,true))); }
+    function renderSources(){ if(loadingSources)return; const grid=byId("sourceGrid"), empty=byId("emptyState"), search=byId("searchInput").value.trim().toLowerCase(), sort=byId("sortSelect").value; grid.innerHTML=""; let list=sources.filter(isCleanSource); if(selectedCategory==="Recommended") list=[...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory!=="All") list=list.filter(src=>(src.category||"").toLowerCase()===selectedCategory.toLowerCase()); if(search) list=list.filter(src=>(src.name||"").toLowerCase().includes(search)||(src.category||"").toLowerCase().includes(search)||(src.ownerName||"").toLowerCase().includes(search)); if(sort==="likes")list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort==="reports")list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display=list.length?"none":"block"; list.forEach(src=>grid.appendChild(createSourceCard(src))); renderRecommended(); if(isAdminUser) loadAdminTable(); }
+    function setupUploadZone(kind){ const drop=byId(kind+"Drop"), input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"); const handleFile=file=>{ if(!file)return; if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){alert("Only PNG, JPG, WEBP, or GIF images are allowed.");return;} if(file.size>MAX_IMAGE_BYTES){alert("Image must be 2 MB or less.");return;} selectedFiles[kind]=file; nameEl.textContent=`${file.name} (${Math.round(file.size/1024)} KB)`; preview.src=URL.createObjectURL(file); preview.style.display="block"; }; drop.addEventListener("click",()=>input.click()); input.addEventListener("change",()=>handleFile(input.files[0])); ["dragenter","dragover"].forEach(evt=>drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.add("dragover");})); ["dragleave","drop"].forEach(evt=>drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.remove("dragover");})); drop.addEventListener("drop",e=>handleFile(e.dataTransfer.files[0])); }
+    document.addEventListener("keydown",e=>{ if(e.key==="F9"){ e.preventDefault(); if(isAdminUser) openAdminPanel(); } });
+    initSelects(); setupUploadZone("icon"); setupUploadZone("banner"); renderCategoryChips(); setLoading(true);
   </script>
-
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getFirestore, collection, getDocs, getDoc, doc, setDoc, updateDoc, deleteDoc, increment, serverTimestamp, query, orderBy, limit, runTransaction, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",
-      authDomain: "pmm-open-source.firebaseapp.com",
-      projectId: "pmm-open-source",
-      storageBucket: "pmm-open-source.firebasestorage.app",
-      messagingSenderId: "682708192312",
-      appId: "1:682708192312:web:76765761fcea6bf69feacd",
-      measurementId: "G-JZ0RT10XMP"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const storage = getStorage(app);
-
-    async function refreshProfile(){
-      if(!currentUser) return;
-      const profileSnap = await getDoc(doc(db, "profiles", currentUser.uid));
-      currentProfile = profileSnap.exists() ? profileSnap.data() : null;
-      const adminSnap = await getDoc(doc(db, "admins", currentUser.uid));
-      isAdminUser = Boolean(adminSnap.exists() && currentProfile && currentProfile.name === "PMM:Test");
-      updateProfileUI();
-    }
-
-    function updateProfileUI(){
-      const loginBtn = byId("loginBtn"), profilePill = byId("profilePill"), profileNameText = byId("profileNameText"), avatar = byId("avatar"), adminBtn = byId("adminBtn"), adminTag = byId("adminTag");
-      if(currentUser) byId("uidDisplay").value = currentUser.uid;
-      if(currentProfile){
-        loginBtn.style.display="none"; profilePill.style.display="flex"; profileNameText.textContent=currentProfile.name; avatar.style.background=currentProfile.color || "#111827"; avatar.textContent=PERSON_ICON;
-      } else {
-        loginBtn.style.display="inline-block"; profilePill.style.display="none";
-      }
-      adminBtn.style.display = isAdminUser ? "inline-block" : "none";
-      adminTag.style.display = isAdminUser ? "inline-block" : "none";
-    }
-
-    onAuthStateChanged(auth, async (user) => {
-      try {
-        if(!user){ await signInAnonymously(auth); return; }
-        currentUser = user;
-        await refreshProfile();
-        await loadSources();
-      } catch(error){ console.error(error); showNotice(error.message || "Authentication error."); }
-    });
-
-    window.createProfile = async function(){
-      if(!currentUser){ alert("Authentication is not ready yet."); return; }
-      const name = normalizeName(byId("profileNameInput").value);
-      if(!validProfileName(name)){ alert("Profile name must be 2–30 characters and cannot contain unsafe symbols or slash."); return; }
-      const nameKey = profileNameKey(name);
-      const profileRef = doc(db, "profiles", currentUser.uid);
-      const nameRef = doc(db, "profileNames", nameKey);
-      try {
-        await runTransaction(db, async (tx) => {
-          const profileSnap = await tx.get(profileRef);
-          if(profileSnap.exists()) throw new Error("This browser already has a profile.");
-          const nameSnap = await tx.get(nameRef);
-          if(nameSnap.exists()) throw new Error("This profile name is already used. Please choose another name.");
-          const profileData = { uid: currentUser.uid, name, nameKey, color: randomColor(), createdAt: serverTimestamp(), updatedAt: serverTimestamp(), lastPublishAtMs: 0, dailyUpload: { date: "", activeSourceId: "" } };
-          tx.set(nameRef, { uid: currentUser.uid, name, nameKey, createdAt: serverTimestamp() });
-          tx.set(profileRef, profileData);
+    const firebaseConfig={apiKey:"AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",authDomain:"pmm-open-source.firebaseapp.com",projectId:"pmm-open-source",storageBucket:"pmm-open-source.firebasestorage.app",messagingSenderId:"682708192312",appId:"1:682708192312:web:76765761fcea6bf69feacd",measurementId:"G-JZ0RT10XMP"};
+    const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), storage=getStorage(app);
+    async function refreshProfile(){ if(!currentUser)return; const profileSnap=await getDoc(doc(db,"profiles",currentUser.uid)); currentProfile=profileSnap.exists()?profileSnap.data():null; const adminSnap=await getDoc(doc(db,"admins",currentUser.uid)); isAdminUser=Boolean(adminSnap.exists()&&currentProfile); updateProfileUI(); }
+    function updateProfileUI(){ const loginBtn=byId("loginBtn"), profilePill=byId("profilePill"), profileNameText=byId("profileNameText"), avatar=byId("avatar"), adminBtn=byId("adminBtn"); if(currentProfile){ loginBtn.style.display="none"; profilePill.style.display="flex"; profileNameText.textContent=currentProfile.name; avatar.style.background=currentProfile.color||"#0f172a"; avatar.textContent=defaultIconText(currentProfile.name); } else { loginBtn.style.display="inline-block"; profilePill.style.display="none"; } adminBtn.style.display=isAdminUser?"inline-block":"none"; }
+    onAuthStateChanged(auth,async user=>{ try{ if(!user){await signInAnonymously(auth);return;} currentUser=user; await refreshProfile(); await loadSources(); }catch(error){console.error(error); showNotice(error.message||"Authentication error."); setLoading(false);} });
+    window.createProfile=async function(){
+      if(!currentUser){alert("Authentication is not ready yet.");return;}
+      const name=normalizeName(byId("profileNameInput").value);
+      if(!validProfileName(name)){alert("Profile name must be 2–30 characters and cannot contain unsafe symbols or slash.");return;}
+      const gated=await needsGate(name);
+      if(gated && !(await passGate())){alert("Invalid code.");return;}
+      const nameKey=profileNameKey(name), profileRef=doc(db,"profiles",currentUser.uid), nameRef=doc(db,"profileNames",nameKey);
+      try{
+        await runTransaction(db,async tx=>{
+          const profileSnap=await tx.get(profileRef);
+          if(profileSnap.exists())throw new Error("This browser already has a profile.");
+          if(!gated){
+            const nameSnap=await tx.get(nameRef);
+            if(nameSnap.exists())throw new Error("This profile name is already used. Please choose another name.");
+          }
+          const profileData={uid:currentUser.uid,name,nameKey,color:randomColor(),appVersion:APP_VERSION,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),lastPublishAtMs:0,dailyUpload:{date:"",activeSourceId:""}};
+          if(!gated)tx.set(nameRef,{uid:currentUser.uid,name,nameKey,appVersion:APP_VERSION,createdAt:serverTimestamp()});
+          tx.set(profileRef,profileData);
         });
-        byId("profileNameInput").value = "";
-        closeModal("profileModal");
-        await refreshProfile();
-        showNotice("Profile created securely. Duplicate names are now blocked.");
-      } catch(error){ alert(error.message); }
+        byId("profileNameInput").value=""; closeModal("profileModal"); await refreshProfile(); showNotice("Profile created.");
+      }catch(error){alert(error.message);}
     };
-
-    window.secureLogout = async function(){
-      try { await signOut(auth); currentUser = null; currentProfile = null; isAdminUser = false; sources = []; updateProfileUI(); await signInAnonymously(auth); showNotice("Logged out from this browser."); } catch(error){ alert(error.message); }
-    };
-
-    async function uploadSelectedImage(kind, sourceId){
-      const file = selectedFiles[kind];
-      if(!file) return { url: "", path: "" };
-      const extMap = { "image/png":"png", "image/jpeg":"jpg", "image/webp":"webp", "image/gif":"gif" };
-      const ext = extMap[file.type];
-      if(!ext) throw new Error("Unsupported image type.");
-      if(file.size > MAX_IMAGE_BYTES) throw new Error("Image file is too large.");
-      const path = `uploads/${currentUser.uid}/${sourceId}/${kind}.${ext}`;
-      const fileRef = ref(storage, path);
-      await uploadBytes(fileRef, file, { contentType: file.type, customMetadata: { ownerId: currentUser.uid, sourceId, kind } });
-      const url = await getDownloadURL(fileRef);
-      return { url, path };
-    }
-
-    window.publishSource = async function(){
-      if(!currentUser || !currentProfile){ openProfileModal(); return; }
-      const name = normalizeName(byId("sourceNameInput").value);
-      const downloadUrl = byId("downloadUrlInput").value.trim();
-      const category = byId("categoryInput").value;
-      if(!name || name.length > 50){ alert("Source code name is required and must be 50 characters or less."); return; }
-      const urlCheck = validateDownloadUrl(downloadUrl);
-      if(!urlCheck.ok){ alert(urlCheck.message); return; }
-      setButtonBusy("publishBtn", true);
-      try {
-        const sourceRef = doc(collection(db, "sources"));
-        const sourceId = sourceRef.id;
-        const profileRef = doc(db, "profiles", currentUser.uid);
-        const nowMs = Date.now();
-        const today = todayKey();
-        await runTransaction(db, async (tx) => {
-          const profileSnap = await tx.get(profileRef);
-          if(!profileSnap.exists()) throw new Error("Profile not found.");
-          const p = profileSnap.data();
+    window.secureLogout=async function(){ try{ await signOut(auth); currentUser=null; currentProfile=null; isAdminUser=false; sources=[]; updateProfileUI(); setLoading(true); await signInAnonymously(auth); showNotice("Logged out."); }catch(error){alert(error.message);} };
+    async function uploadSelectedImage(kind,sourceId){ const file=selectedFiles[kind]; if(!file)return{url:"",path:""}; const extMap={"image/png":"png","image/jpeg":"jpg","image/webp":"webp","image/gif":"gif"}; const ext=extMap[file.type]; if(!ext)throw new Error("Unsupported image type."); if(file.size>MAX_IMAGE_BYTES)throw new Error("Image file is too large."); const path=`uploads/${currentUser.uid}/${sourceId}/${kind}.${ext}`; const fileRef=ref(storage,path); await uploadBytes(fileRef,file,{contentType:file.type,customMetadata:{ownerId:currentUser.uid,sourceId,kind,appVersion:APP_VERSION}}); const url=await getDownloadURL(fileRef); return{url,path}; }
+    window.publishSource=async function(){
+      if(!currentUser||!currentProfile){openProfileModal();return;}
+      const name=normalizeName(byId("sourceNameInput").value), downloadUrl=byId("downloadUrlInput").value.trim(), category=byId("categoryInput").value;
+      if(!name||name.length>50){alert("Source code name is required and must be 50 characters or less.");return;}
+      const sourceKey=compactKey(name);
+      if(!sourceKey){alert("Source code name is not valid.");return;}
+      const urlCheck=validateDownloadUrl(downloadUrl); if(!urlCheck.ok){alert(urlCheck.message);return;}
+      setButtonBusy("publishBtn",true);
+      try{
+        const sourceRef=doc(db,"sources",sourceKey), profileRef=doc(db,"profiles",currentUser.uid), nowMs=Date.now(), today=todayKey();
+        await runTransaction(db,async tx=>{
+          const profileSnap=await tx.get(profileRef); if(!profileSnap.exists())throw new Error("Profile not found.");
+          const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This source code name is already used. Please choose another name.");
+          const p=profileSnap.data();
           if(!isAdminUser){
-            if(nowMs - Number(p.lastPublishAtMs || 0) < 50000) throw new Error("Please wait before publishing again.");
-            if(p.dailyUpload && p.dailyUpload.date === today && p.dailyUpload.activeSourceId) throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
+            if(nowMs-Number(p.lastPublishAtMs||0)<50000)throw new Error("Please wait before publishing again.");
+            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
           }
         });
-
-        const icon = await uploadSelectedImage("icon", sourceId);
-        const banner = await uploadSelectedImage("banner", sourceId);
-
-        await runTransaction(db, async (tx) => {
-          const profileSnap = await tx.get(profileRef);
-          if(!profileSnap.exists()) throw new Error("Profile not found.");
-          const p = profileSnap.data();
+        const icon=await uploadSelectedImage("icon",sourceKey), banner=await uploadSelectedImage("banner",sourceKey);
+        await runTransaction(db,async tx=>{
+          const profileSnap=await tx.get(profileRef); if(!profileSnap.exists())throw new Error("Profile not found.");
+          const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This source code name is already used. Please choose another name.");
+          const p=profileSnap.data();
           if(!isAdminUser){
-            if(nowMs - Number(p.lastPublishAtMs || 0) < 50000) throw new Error("Please wait before publishing again.");
-            if(p.dailyUpload && p.dailyUpload.date === today && p.dailyUpload.activeSourceId) throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
+            if(nowMs-Number(p.lastPublishAtMs||0)<50000)throw new Error("Please wait before publishing again.");
+            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
           }
-          tx.set(sourceRef, { name, downloadUrl, iconUrl: icon.url, bannerUrl: banner.url, iconPath: icon.path, bannerPath: banner.path, category, ownerId: currentUser.uid, ownerName: currentProfile.name, likes: 0, reportCount: 0, status: "active", createdAt: serverTimestamp(), updatedAt: serverTimestamp(), createdAtMs: nowMs, createDay: today });
-          if(!isAdminUser) tx.update(profileRef, { lastPublishAtMs: nowMs, dailyUpload: { date: today, activeSourceId: sourceId }, updatedAt: serverTimestamp() });
+          tx.set(sourceRef,{appVersion:APP_VERSION,visibility:"public",sourceKey,name,downloadUrl,iconUrl:icon.url,bannerUrl:banner.url,iconPath:icon.path,bannerPath:banner.path,category,ownerId:currentUser.uid,ownerName:currentProfile.name,likes:0,reportCount:0,status:"active",createdAt:serverTimestamp(),updatedAt:serverTimestamp(),createdAtMs:nowMs,createDay:today});
+          if(!isAdminUser)tx.update(profileRef,{lastPublishAtMs:nowMs,dailyUpload:{date:today,activeSourceId:sourceKey},updatedAt:serverTimestamp()});
         });
-        byId("sourceNameInput").value=""; byId("downloadUrlInput").value=""; selectedFiles = { icon:null, banner:null }; ["icon", "banner"].forEach(k => { byId(k+"FileInput").value=""; byId(k+"FileName").textContent = k === "icon" ? "Click or drag image here" : "Click or drag banner here"; byId(k+"Preview").removeAttribute("src"); byId(k+"Preview").style.display="none"; });
-        closeModal("addModal"); showNotice(isAdminUser ? "Source published with PMM:Test admin bypass." : "Source published securely."); await loadSources();
-      } catch(error){ alert(error.message); }
-      finally { setButtonBusy("publishBtn", false); }
+        byId("sourceNameInput").value=""; byId("downloadUrlInput").value=""; selectedFiles={icon:null,banner:null};
+        ["icon","banner"].forEach(k=>{byId(k+"FileInput").value=""; byId(k+"FileName").textContent=k==="icon"?"Click or drag image here":"Click or drag banner here"; byId(k+"Preview").removeAttribute("src"); byId(k+"Preview").style.display="none";});
+        closeModal("addModal"); showNotice("Source published."); await loadSources();
+      }catch(error){alert(error.message);}
+      finally{setButtonBusy("publishBtn",false);}
     };
-
-    window.loadSources = async function(){
-      try { const q = query(collection(db,"sources"), orderBy("createdAtMs","desc"), limit(isAdminUser ? 200 : 100)); const snapshot = await getDocs(q); sources = []; snapshot.forEach(item => sources.push({id:item.id, ...item.data()})); renderSources(); }
-      catch(error){ console.error(error); showNotice(error.message || "Cannot load sources."); }
-    };
-
-    window.likeSource = async function(sourceId){
-      if(!currentUser || !currentProfile){ showNotice("Please create a profile before liking."); openProfileModal(); return; }
-      const sourceRef = doc(db,"sources",sourceId);
-      const likeRef = doc(db,"sources",sourceId,"likes",currentUser.uid);
-      try { await runTransaction(db, async (tx) => { const likeSnap = await tx.get(likeRef); if(likeSnap.exists()) throw new Error("You already liked this source."); tx.set(likeRef, { uid: currentUser.uid, createdAt: serverTimestamp() }); tx.update(sourceRef, { likes: increment(1), updatedAt: serverTimestamp() }); }); await loadSources(); }
-      catch(error){ alert(error.message); }
-    };
-
-    window.openReport = function(sourceId){
-      if(!currentUser || !currentProfile){ showNotice("Please create a profile before reporting."); openProfileModal(); return; }
-      selectedReportSourceId = sourceId; openModal("reportModal");
-    };
-
-    window.submitReport = async function(){
-      if(!selectedReportSourceId || !currentUser) return;
-      const sourceRef = doc(db,"sources",selectedReportSourceId);
-      const reportRef = doc(db,"sources",selectedReportSourceId,"reports",currentUser.uid);
-      const reason = byId("reportReasonInput").value;
-      const detail = byId("reportDetailInput").value.trim().slice(0,250);
-      try { await runTransaction(db, async (tx) => { const reportSnap = await tx.get(reportRef); if(reportSnap.exists()) throw new Error("You already reported this source."); const sourceSnap = await tx.get(sourceRef); if(!sourceSnap.exists()) throw new Error("Source not found."); const nextReports = Number(sourceSnap.data().reportCount || 0) + 1; tx.set(reportRef, { uid: currentUser.uid, reason, detail, createdAt: serverTimestamp() }); tx.update(sourceRef, { reportCount: increment(1), lastReportReason: reason, lastReportDetail: detail, status: nextReports >= 10 ? "review" : "active", updatedAt: serverTimestamp() }); }); closeModal("reportModal"); selectedReportSourceId = null; showNotice("Report submitted."); await loadSources(); }
-      catch(error){ alert(error.message); }
-    };
-
-    async function safeDeleteStorage(path){ if(!path) return; try { await deleteObject(ref(storage, path)); } catch(error){ console.warn("Storage delete skipped:", error.message); } }
-
-    window.deleteSource = async function(sourceId){
-      const src = sources.find(item => item.id === sourceId);
-      if(!src || !currentUser){ alert("Source not found or user not ready."); return; }
-      if(!isAdminUser && src.ownerId !== currentUser.uid){ alert("Only the owner or PMM:Test admin can delete this source."); return; }
-      const msg = isAdminUser && src.ownerId !== currentUser.uid ? "Admin delete this source permanently?" : "Delete this source permanently?";
-      if(!confirm(msg)) return;
-      try { await deleteDoc(doc(db,"sources",sourceId)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); if(src.ownerId === currentUser.uid){ const profileRef = doc(db,"profiles",currentUser.uid); const pSnap = await getDoc(profileRef); const p = pSnap.exists() ? pSnap.data() : null; if(p && p.dailyUpload && p.dailyUpload.activeSourceId === sourceId){ await updateDoc(profileRef, { dailyUpload: { date: "", activeSourceId: "" }, updatedAt: serverTimestamp() }); } } showNotice("Source deleted."); await loadSources(); }
-      catch(error){ alert(error.message); }
-    };
-
-    window.openAdminPanel = function(){ if(!isAdminUser){ showNotice("F9 Admin Panel is locked. Login as PMM:Test and approve this UID in /admins first."); return; } openModal("adminModal"); loadAdminTable(); };
-
-    window.loadAdminTable = function(){ if(!isAdminUser) return; const body = byId("adminTableBody"); body.innerHTML = ""; sources.forEach(src => { const tr = document.createElement("tr"); [src.name || "Untitled", src.ownerName || src.ownerId || "Unknown", src.category || "Source Code", src.status || "active", String(src.reportCount || 0)].forEach(value => { const td = document.createElement("td"); td.textContent = value; tr.appendChild(td); }); const action = document.createElement("td"); const del = document.createElement("button"); del.className = "danger-btn"; del.textContent = "Delete"; del.addEventListener("click", () => deleteSource(src.id)); const review = document.createElement("button"); review.className = "secondary-btn"; review.textContent = src.status === "review" ? "Active" : "Review"; review.addEventListener("click", () => setSourceReview(src.id, src.status !== "review")); action.append(del, document.createTextNode(" "), review); tr.appendChild(action); body.appendChild(tr); }); };
-
-    window.setSourceReview = async function(sourceId, review){ if(!isAdminUser) return; try { await updateDoc(doc(db,"sources",sourceId), { status: review ? "review" : "active", updatedAt: serverTimestamp() }); await loadSources(); } catch(error){ alert(error.message); } };
-
-    window.markAllReview = async function(review){ if(!isAdminUser) return; if(!confirm(review ? "Mark all loaded sources as review?" : "Mark all loaded sources as active?")) return; try { const batch = writeBatch(db); sources.forEach(src => batch.update(doc(db,"sources",src.id), { status: review ? "review" : "active", updatedAt: serverTimestamp() })); await batch.commit(); await loadSources(); } catch(error){ alert(error.message); } };
-
-    window.deleteAllLoadedSources = async function(){
-      if(!isAdminUser) return;
-      if(byId("deleteAllConfirm").value !== "DELETE ALL"){ alert("Type DELETE ALL first."); return; }
-      if(!confirm("This will delete all currently loaded sources. Continue?")) return;
-      try { for(const src of sources){ await deleteDoc(doc(db,"sources",src.id)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); } byId("deleteAllConfirm").value = ""; showNotice("All loaded sources were deleted by admin."); await loadSources(); }
-      catch(error){ alert(error.message); }
-    };
+    window.loadSources=async function(){ setLoading(true); try{ const q=query(collection(db,"sources"),orderBy("createdAtMs","desc"),limit(isAdminUser?250:120)); const snapshot=await getDocs(q); const loaded=[]; snapshot.forEach(item=>loaded.push({id:item.id,...item.data()})); adminAllSources=loaded; sources=loaded.filter(isCleanSource); renderSources(); }catch(error){console.error(error); showNotice(error.message||"Cannot load sources.");} finally{setLoading(false); renderSources();} };
+    window.likeSource=async function(sourceId){ if(!currentUser||!currentProfile){openProfileModal();return;} const src=sources.find(s=>s.id===sourceId); if(!src)return; const sourceRef=doc(db,"sources",sourceId), likeRef=doc(db,"sources",sourceId,"likes",currentUser.uid); try{ await runTransaction(db,async tx=>{ const likeSnap=await tx.get(likeRef); if(likeSnap.exists())throw new Error("You already liked this source."); tx.set(likeRef,{uid:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp()}); tx.update(sourceRef,{likes:increment(1),updatedAt:serverTimestamp()}); }); await loadSources(); }catch(error){alert(error.message);} };
+    window.openReport=function(sourceId){ if(!currentUser||!currentProfile){openProfileModal();return;} if(!sources.find(s=>s.id===sourceId))return; selectedReportSourceId=sourceId; openModal("reportModal"); };
+    window.submitReport=async function(){ if(!selectedReportSourceId||!currentUser)return; const sourceRef=doc(db,"sources",selectedReportSourceId), reportRef=doc(db,"sources",selectedReportSourceId,"reports",currentUser.uid), reason=byId("reportReasonInput").value, detail=byId("reportDetailInput").value.trim().slice(0,250); try{ await runTransaction(db,async tx=>{ const reportSnap=await tx.get(reportRef); if(reportSnap.exists())throw new Error("You already reported this source."); const sourceSnap=await tx.get(sourceRef); if(!sourceSnap.exists())throw new Error("Source not found."); if(sourceSnap.data().appVersion!==APP_VERSION)throw new Error("This source is not supported by the current system version."); const nextReports=Number(sourceSnap.data().reportCount||0)+1; tx.set(reportRef,{uid:currentUser.uid,appVersion:APP_VERSION,reason,detail,createdAt:serverTimestamp()}); tx.update(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()}); }); closeModal("reportModal"); selectedReportSourceId=null; showNotice("Report submitted."); await loadSources(); }catch(error){alert(error.message);} };
+    async function safeDeleteStorage(path){ if(!path)return; try{ await deleteObject(ref(storage,path)); }catch(error){console.warn("Storage delete skipped:",error.message);} }
+    window.deleteSource=async function(sourceId){ const src=[...sources,...adminAllSources].find(item=>item.id===sourceId); if(!src||!currentUser)return; if(!isAdminUser&&src.ownerId!==currentUser.uid){alert("Only the owner can delete this source.");return;} if(!confirm("Delete this source permanently?"))return; try{ await deleteDoc(doc(db,"sources",sourceId)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); if(src.ownerId===currentUser.uid){ const profileRef=doc(db,"profiles",currentUser.uid), pSnap=await getDoc(profileRef), p=pSnap.exists()?pSnap.data():null; if(p&&p.dailyUpload&&p.dailyUpload.activeSourceId===sourceId) await updateDoc(profileRef,{dailyUpload:{date:"",activeSourceId:""},updatedAt:serverTimestamp()}); } showNotice("Source deleted."); await loadSources(); }catch(error){alert(error.message);} };
+    window.openAdminPanel=function(){ if(!isAdminUser)return; openModal("adminModal"); loadAdminTable(); };
+    window.loadAdminTable=function(){ if(!isAdminUser)return; const body=byId("adminTableBody"); body.innerHTML=""; const rows=sources.filter(isCleanSource); rows.forEach(src=>{ const tr=document.createElement("tr"); [src.name||"Untitled",src.ownerName||"Unknown",src.category||"Source Code",src.status||"active",String(src.reportCount||0)].forEach(value=>{const td=document.createElement("td"); td.textContent=value; tr.appendChild(td);}); const action=document.createElement("td"); const del=document.createElement("button"); del.className="danger-btn btn"; del.textContent="Delete"; del.addEventListener("click",()=>deleteSource(src.id)); const review=document.createElement("button"); review.className="secondary-btn btn"; review.textContent=src.status==="review"?"Active":"Review"; review.addEventListener("click",()=>setSourceReview(src.id,src.status!=="review")); action.append(del,document.createTextNode(" "),review); tr.appendChild(action); body.appendChild(tr);}); };
+    window.setSourceReview=async function(sourceId,review){ if(!isAdminUser)return; try{ await updateDoc(doc(db,"sources",sourceId),{status:review?"review":"active",updatedAt:serverTimestamp()}); await loadSources(); }catch(error){alert(error.message);} };
+    window.markAllReview=async function(review){ if(!isAdminUser)return; if(!confirm(review?"Mark all clean sources as review?":"Mark all clean sources as active?"))return; try{ const batch=writeBatch(db); sources.filter(isCleanSource).forEach(src=>batch.update(doc(db,"sources",src.id),{status:review?"review":"active",updatedAt:serverTimestamp()})); await batch.commit(); await loadSources(); }catch(error){alert(error.message);} };
+    window.deleteAllLoadedSources=async function(){ if(!isAdminUser)return; if(byId("deleteAllConfirm").value!=="DELETE ALL"){alert("Type DELETE ALL first.");return;} if(!confirm("Delete all currently loaded clean sources?"))return; try{ for(const src of sources.filter(isCleanSource)){ await deleteDoc(doc(db,"sources",src.id)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); } byId("deleteAllConfirm").value=""; showNotice("All clean sources were deleted."); await loadSources(); }catch(error){alert(error.message);} };
+    window.deleteLegacySources=async function(){ if(!isAdminUser)return; const legacy=adminAllSources.filter(src=>src.appVersion!==APP_VERSION); if(!legacy.length){showNotice("No old data found in the current loaded range.");return;} if(!confirm(`Delete ${legacy.length} old source document(s)?`))return; try{ for(const src of legacy){ await deleteDoc(doc(db,"sources",src.id)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); } showNotice("Old data deleted from loaded range."); await loadSources(); }catch(error){alert(error.message);} };
   </script>
 </body>
 </html>
