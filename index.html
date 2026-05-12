@@ -1,27 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home - PMM Open Source</title>
-<style>
-*{box-sizing:border-box}body,html{margin:0;padding:0;width:100%;min-height:100%;font-family:Arial,sans-serif;background:white;overflow-x:hidden}.gradient-bg{width:100%;height:100%;position:fixed;inset:0;filter:blur(80px);z-index:1;pointer-events:none}.color-ball{position:absolute;border-radius:50%;opacity:.45}.ball1{width:60%;height:60%;top:10%;left:8%;background:#64dcff;animation:float 15s infinite}.ball2{width:50%;height:50%;bottom:10%;right:8%;background:#ff64dc;animation:float 20s reverse infinite}@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(10%,15%)}100%{transform:translate(0,0)}}.top-nav{position:fixed;top:0;left:0;width:100%;min-height:60px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 2px 15px rgba(0,0,0,.06);z-index:1000}.nav-left,.nav-right{display:flex;align-items:center;gap:18px}.nav-item{color:#222;text-decoration:none;font-weight:600;font-size:15px;cursor:pointer;border:none;background:none;padding:8px 0}.nav-item:hover{color:#000;text-shadow:2px 2px 4px rgba(0,0,0,.25)}.dropdown{position:relative}.dropdown-menu{display:none;position:absolute;top:38px;left:0;background:white;min-width:200px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.06);overflow:hidden;z-index:1200}.dropdown-menu button{width:100%;padding:14px 16px;border:none;background:white;text-align:left;cursor:pointer;font-weight:600;color:#333}.dropdown-menu button:hover{background:#f4f6ff}.dropdown.open .dropdown-menu{display:block}.auth-box{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.auth-box input{width:150px;padding:8px 10px;border-radius:10px;border:1px solid #ddd;outline:none;background:#fff}.small-btn{border:none;background:#0061ff;color:white;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}.small-btn.secondary{background:#eee;color:#222}.user-status{font-size:12px;color:#333;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-outer-container{position:fixed;top:75px;left:0;width:100%;display:flex;justify-content:center;z-index:900;padding:0 18px}.search-box{width:100%;max-width:460px;position:relative}.search-input{width:100%;padding:13px 48px 13px 20px;border-radius:25px;border:1px solid #eee;background:rgba(255,255,255,.94);outline:none;box-shadow:0 4px 12px rgba(0,0,0,.06)}.search-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#666;cursor:pointer;display:flex;align-items:center}#searchStatus{display:none;position:fixed;top:130px;left:0;width:100%;text-align:center;color:#ff4444;font-weight:bold;z-index:850;padding:0 18px}.page{display:none;position:relative;z-index:100;min-height:100vh;padding-top:150px}.page.active{display:block}.content-area{width:100%;max-width:1180px;margin:0 auto;padding:0 24px 60px}.section-title{text-align:center;font-size:26px;font-weight:800;margin:15px 0 28px;color:#111}.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px;align-items:start}.app-card{width:100%;max-width:520px;background:rgba(255,255,255,.9);backdrop-filter:blur(15px);border-radius:16px;box-shadow:0 15px 35px rgba(0,0,0,.1);border:1px solid rgba(255,255,255,.7);overflow:hidden;display:flex;flex-direction:column;margin:0 auto;transition:opacity .35s,transform .3s}.app-header{background:rgba(245,245,245,1);padding:12px 20px;border-bottom:1px solid #eee;font-weight:bold;color:#555;font-size:14px}.app-main{display:flex;padding:30px 20px;align-items:center;justify-content:center;position:relative;min-height:245px}.app-content{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}.mini-icon{position:absolute;bottom:12px;left:12px;width:50px;height:50px;border-radius:10px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.1);background:white;padding:4px}.banner-logo{width:280px;max-width:85%;height:auto;margin-bottom:15px;object-fit:contain}.app-name{font-size:22px;font-weight:bold;color:#111;margin-bottom:22px}.btn-download{background:#0061ff;color:white;border:none;padding:14px 28px;border-radius:12px;cursor:pointer;font-size:16px;font-weight:600;transition:.3s}.btn-download:hover{background:#004ecc;transform:translateY(-2px)}.white-highlight{animation:whiteFadeOut 3s forwards}@keyframes whiteFadeOut{0%{border:4px solid #fff;box-shadow:0 0 30px 15px rgba(255,255,255,.9);filter:brightness(1.3)}100%{border:1px solid rgba(255,255,255,.7);filter:brightness(1)}}.admin-panel{max-width:760px;margin:24px auto 0;background:rgba(255,255,255,.92);border-radius:18px;box-shadow:0 15px 35px rgba(0,0,0,.1);padding:24px;border:1px solid rgba(255,255,255,.7)}.admin-panel h2{margin:0 0 16px;font-size:22px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.admin-panel input,.admin-panel select{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:12px;outline:none;background:white}.admin-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.about-card{max-width:520px;margin:0 auto;background:rgba(255,255,255,.92);border-radius:18px;box-shadow:0 15px 35px rgba(0,0,0,.1);padding:34px;text-align:center;border:1px solid rgba(255,255,255,.7)}.about-card h1{margin-top:0;font-size:30px}.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:1999}#customAlert{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:30px;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.24);z-index:2000;width:340px;text-align:center}.alert-btns{display:flex;gap:10px;justify-content:center;margin-top:20px}.btn-ok{background:#000;color:white;border:none;padding:10px 25px;border-radius:8px;cursor:pointer}.btn-cancel{background:#eee;color:#333;border:none;padding:10px 25px;border-radius:8px;cursor:pointer}@media(max-width:850px){.top-nav{height:auto;align-items:flex-start;padding:12px 18px;flex-direction:column;gap:12px}.nav-left,.nav-right,.auth-box{width:100%}.nav-right{justify-content:space-between}.auth-box{justify-content:flex-start}.auth-box input{width:calc(50% - 8px)}.search-outer-container{top:150px}#searchStatus{top:205px}.page{padding-top:230px}.cards-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - PMM Open Source Secure</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f6f8fb; color: #111827; }
+    .topbar { min-height: 62px; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 22px; box-shadow: 0 2px 16px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 50; }
+    .brand { font-weight: 900; font-size: 18px; letter-spacing: -.3px; }
+    .nav, .profile-area { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .nav button, .primary-btn, .secondary-btn, .danger-btn, .ghost-btn, .success-btn { border: none; border-radius: 12px; padding: 10px 14px; cursor: pointer; font-weight: 800; }
+    .nav button { background: transparent; color: #374151; }
+    .nav button:hover { background: #eef2ff; color: #111827; }
+    .primary-btn { background: #2563eb; color: #fff; }
+    .secondary-btn { background: #e5e7eb; color: #111827; }
+    .danger-btn { background: #fee2e2; color: #991b1b; }
+    .success-btn { background: #dcfce7; color: #166534; }
+    .ghost-btn { background: transparent; color: #374151; }
+    button:disabled { opacity: .55; cursor: not-allowed; }
+    .profile-pill { display: none; align-items: center; gap: 8px; background: #fff; border: 1px solid #e5e7eb; padding: 6px 10px; border-radius: 999px; box-shadow: 0 4px 12px rgba(0,0,0,.04); }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 900; overflow: hidden; flex: 0 0 auto; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 26px 18px 70px; }
+    .hero { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 18px; }
+    .hero h1 { margin: 0; font-size: clamp(25px, 4vw, 42px); letter-spacing: -1px; }
+    .hero p { margin: 8px 0 0; color: #6b7280; font-weight: 700; }
+    .notice { display: none; background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; padding: 14px 46px 14px 16px; border-radius: 14px; margin-bottom: 18px; position: relative; font-weight: 700; }
+    .notice button { position: absolute; right: 10px; top: 10px; border: none; background: transparent; cursor: pointer; font-weight: 900; color: #9a3412; }
+    .panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 22px; padding: 16px; box-shadow: 0 10px 26px rgba(0,0,0,.05); margin-bottom: 18px; }
+    .panel-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .panel-title h2 { margin: 0; font-size: 20px; }
+    .recommend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .mini-card { border: 1px solid #e5e7eb; border-radius: 18px; padding: 12px; cursor: pointer; background: #f8fafc; }
+    .mini-card:hover { background: #eef2ff; }
+    .mini-card strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .mini-card small { color: #6b7280; font-weight: 700; }
+    .search-wrap { display: flex; gap: 10px; margin: 22px 0; flex-wrap: wrap; }
+    .search-wrap input, .search-wrap select { border: 1px solid #e5e7eb; border-radius: 14px; padding: 13px 14px; outline: none; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.04); font: inherit; }
+    .search-wrap input { flex: 1; min-width: 230px; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: -8px 0 20px; }
+    .chip { border: 1px solid #e5e7eb; background: #fff; color: #374151; border-radius: 999px; padding: 8px 12px; font-weight: 800; cursor: pointer; }
+    .chip.active { background: #111827; color: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 22px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,.06); transition: transform .18s ease, box-shadow .18s ease; position: relative; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(0,0,0,.1); }
+    .banner { height: 110px; background: linear-gradient(135deg, #dbeafe, #fce7f3); display: grid; place-items: center; overflow: hidden; font-weight: 900; color: #374151; }
+    .banner img { width: 100%; height: 100%; object-fit: cover; }
+    .card-body { padding: 16px; }
+    .source-row { display: flex; gap: 12px; align-items: center; margin-top: -36px; }
+    .icon-box { width: 62px; height: 62px; border-radius: 18px; background: #111827; color: #fff; border: 4px solid #fff; display: grid; place-items: center; font-weight: 900; font-size: 22px; overflow: hidden; flex: 0 0 auto; }
+    .icon-box img { width: 100%; height: 100%; object-fit: cover; }
+    .title-area { min-width: 0; padding-top: 34px; }
+    .title-area h3 { margin: 0; font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .title-area small { color: #6b7280; font-weight: 800; }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; color: #6b7280; font-size: 12px; font-weight: 800; }
+    .tag { background: #eef2ff; color: #3730a3; padding: 5px 8px; border-radius: 999px; }
+    .tag.warn { background: #fef3c7; color: #92400e; }
+    .tag.admin { background: #111827; color: #fff; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .actions button { flex: 1; min-width: 90px; }
+    .delete-btn { display: none; position: absolute; top: 10px; right: 10px; border: none; background: rgba(255,255,255,.92); color: #dc2626; border-radius: 12px; padding: 8px; cursor: pointer; box-shadow: 0 8px 22px rgba(0,0,0,.12); font-weight: 900; }
+    .empty { display: none; text-align: center; color: #6b7280; background: #fff; border: 1px dashed #cbd5e1; padding: 38px; border-radius: 22px; font-weight: 800; }
+    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(15,23,42,.55); z-index: 100; align-items: center; justify-content: center; padding: 18px; }
+    .modal { width: min(720px, 100%); max-height: 92vh; overflow-y: auto; background: #fff; border-radius: 24px; padding: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
+    .modal.large { width: min(1000px, 100%); }
+    .modal h2 { margin: 0 0 14px; }
+    .form { display: grid; gap: 12px; }
+    .form label { display: grid; gap: 6px; font-weight: 900; color: #374151; font-size: 14px; }
+    .form input, .form select, .form textarea { border: 1px solid #e5e7eb; border-radius: 14px; padding: 12px 13px; outline: none; font: inherit; }
+    .form small { color: #6b7280; font-weight: 700; }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; flex-wrap: wrap; }
+    .download-check, .security-box { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 16px; padding: 14px; color: #374151; font-weight: 700; line-height: 1.6; font-size: 14px; }
+    .upload-zone { border: 2px dashed #cbd5e1; border-radius: 18px; padding: 14px; background: #f8fafc; display: grid; gap: 10px; cursor: pointer; }
+    .upload-zone.dragover { background: #eef2ff; border-color: #2563eb; }
+    .upload-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: 14px; display: none; background: #e5e7eb; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { border-bottom: 1px solid #e5e7eb; text-align: left; padding: 10px 8px; vertical-align: top; }
+    th { color: #374151; }
+    .danger-zone { border: 1px solid #fecaca; background: #fff1f2; border-radius: 16px; padding: 14px; margin-top: 14px; }
+    .muted { color: #6b7280; font-weight: 700; }
+    @media (max-width: 760px) { .topbar { align-items: flex-start; flex-direction: column; } .hero { flex-direction: column; align-items: flex-start; } table { font-size: 12px; } }
+  </style>
 </head>
 <body>
-<nav class="top-nav"><div class="nav-left"><button class="nav-item" onclick="showPage('home')">Home</button><div class="dropdown" id="categoryDropdown"><button class="nav-item" onclick="toggleDropdown()">Categories</button><div class="dropdown-menu"><button onclick="showPage('os');closeDropdown()">Operating System</button></div></div><button class="nav-item" onclick="showPage('admin')">Add App</button></div><div class="nav-right"><div class="auth-box"><input id="email" type="email" placeholder="Email"><input id="password" type="password" placeholder="Password"><button class="small-btn" onclick="register()">Register</button><button class="small-btn" onclick="login()">Login</button><button class="small-btn secondary" onclick="logout()">Logout</button><span id="userStatus" class="user-status">Not logged in</span></div><button class="nav-item" onclick="showPage('about')">About</button></div></nav>
-<div class="search-outer-container"><div class="search-box"><input type="text" id="searchInput" class="search-input" placeholder="Search..." onkeyup="smartSearch()"><button class="search-btn" onclick="smartSearch()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></div></div><div id="searchStatus">No results found</div>
-<div class="gradient-bg"><div class="color-ball ball1"></div><div class="color-ball ball2"></div></div>
-<main id="homePage" class="page active"><div class="content-area"><div class="section-title">Home</div><div class="cards-grid"><div class="app-card searchable-card" data-name="Waterfox Browser" data-category="Home" data-download="https://github.com/BrowserWorks/waterfox"><div class="app-header">Browser</div><div class="app-main"><img src="https://play-lh.googleusercontent.com/u4zzztxSqLV5qEwhilp8RTP6N0O8BinOVfUs7TN_qeGhWSA86iZ9TM1rPa1lu9o1Kkg" class="mini-icon" alt="Waterfox Icon"><div class="app-content"><img src="https://waterfox.heliopas.ai/wp-content/uploads/2022/09/Logo-mit-neuer-Schrift-v3.png" class="banner-logo" alt="Waterfox Logo"><div class="app-name">Waterfox Browser</div><button class="btn-download" onclick="showAlert('https://github.com/BrowserWorks/waterfox')">Download Now</button></div></div></div></div><div id="homeDynamicApps" class="cards-grid" style="margin-top:24px;"></div></div></main>
-<main id="osPage" class="page"><div class="content-area"><div class="section-title">Operating System</div><div class="cards-grid"><div class="app-card searchable-card" data-name="Ubuntu" data-category="Operating System" data-download="https://ubuntu.com/"><div class="app-header">Operating System</div><div class="app-main"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/UbuntuCoF.svg/960px-UbuntuCoF.svg.png" class="mini-icon" alt="Ubuntu Icon"><div class="app-content"><img src="https://fosstorrents.com/img/Banner/ubuntu.webp" class="banner-logo" alt="Ubuntu Banner"><div class="app-name">Ubuntu</div><button class="btn-download" onclick="showAlert('https://ubuntu.com/')">Download Now</button></div></div></div></div><div id="osDynamicApps" class="cards-grid" style="margin-top:24px;"></div></div></main>
-<main id="adminPage" class="page"><div class="content-area"><div class="section-title">Add App</div><section class="admin-panel"><h2>Add New Application</h2><div class="form-grid"><input id="appName" placeholder="App name"><select id="appCategory"><option value="Home">Home</option><option value="Operating System">Operating System</option></select><input id="appIcon" placeholder="Small icon URL"><input id="appBanner" placeholder="Banner image URL"><input id="downloadUrl" placeholder="Download URL"></div><div class="admin-actions"><button class="small-btn" onclick="saveApp()">Save App</button><button class="small-btn secondary" onclick="loadApps()">Reload Apps</button></div><p style="font-size:13px;color:#555;margin-top:14px;">You must login before saving app data.</p></section></div></main>
-<main id="aboutPage" class="page"><div class="content-area"><div class="about-card"><h1>PMM Open Source</h1><p><b>Version Beta0.1a</b></p><p>This website is an open source software hub prototype.</p></div></div></main>
-<div class="overlay" id="overlay"></div><div id="customAlert"><h3 style="margin:0 0 10px 0;">Confirmation</h3><p>Go to download page?</p><div class="alert-btns"><button class="btn-cancel" onclick="hideAlert()">Cancel</button><button class="btn-ok" onclick="goToDownload()">Yes</button></div></div>
-<script>
-let currentDownloadURL="";function setTitle(pageName){document.title=pageName+" - PMM Open Source"}function showPage(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));if(page==="home"){document.getElementById("homePage").classList.add("active");setTitle("Home")}if(page==="os"){document.getElementById("osPage").classList.add("active");setTitle("Operating System")}if(page==="admin"){document.getElementById("adminPage").classList.add("active");setTitle("Add App")}if(page==="about"){document.getElementById("aboutPage").classList.add("active");setTitle("About")}document.getElementById("searchInput").value="";document.getElementById("searchStatus").style.display="none";document.querySelectorAll(".searchable-card").forEach(card=>{card.style.display="flex";card.style.opacity="1"})}function toggleDropdown(){document.getElementById("categoryDropdown").classList.toggle("open")}function closeDropdown(){document.getElementById("categoryDropdown").classList.remove("open")}document.addEventListener("click",function(event){const dropdown=document.getElementById("categoryDropdown");if(!dropdown.contains(event.target)){dropdown.classList.remove("open")}});function showAlert(url){currentDownloadURL=url;document.getElementById("overlay").style.display="block";document.getElementById("customAlert").style.display="block"}function hideAlert(){document.getElementById("overlay").style.display="none";document.getElementById("customAlert").style.display="none"}function goToDownload(){if(!currentDownloadURL){alert("Download URL not found.");return}window.location.href=currentDownloadURL}function smartSearch(){const query=document.getElementById("searchInput").value.toLowerCase().trim();const cards=document.querySelectorAll(".page.active .searchable-card");const status=document.getElementById("searchStatus");let found=false;if(query===""){cards.forEach(card=>{card.style.display="flex";card.style.opacity="1";card.classList.remove("white-highlight")});status.style.display="none";return}cards.forEach(card=>{const name=(card.dataset.name||"").toLowerCase();const category=(card.dataset.category||"").toLowerCase();if(name.includes(query)||category.includes(query)){card.style.display="flex";card.style.opacity="1";card.classList.remove("white-highlight");void card.offsetWidth;card.classList.add("white-highlight");found=true}else{card.style.opacity="0";setTimeout(()=>{if(card.style.opacity==="0"){card.style.display="none"}},250)}});if(!found){status.style.display="block";status.innerText=`No results found for "${query}"`}else{status.style.display="none"}}function createAppCard(data){const safeName=data.name||"Untitled App";const safeCategory=data.category||"Home";const safeIcon=data.icon||"https://via.placeholder.com/50?text=APP";const safeBanner=data.banner||"https://via.placeholder.com/280x90?text=App";const safeDownload=data.downloadUrl||"#";const card=document.createElement("div");card.className="app-card searchable-card";card.dataset.name=safeName;card.dataset.category=safeCategory;card.dataset.download=safeDownload;card.innerHTML=`<div class="app-header">${safeCategory}</div><div class="app-main"><img src="${safeIcon}" class="mini-icon" alt="${safeName} Icon"><div class="app-content"><img src="${safeBanner}" class="banner-logo" alt="${safeName} Banner"><div class="app-name">${safeName}</div><button class="btn-download">Download Now</button></div></div>`;card.querySelector(".btn-download").addEventListener("click",()=>{showAlert(safeDownload)});return card}
-</script>
-<script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";import{getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";import{getFirestore,collection,addDoc,getDocs,serverTimestamp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";const firebaseConfig={apiKey:"AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",authDomain:"pmm-open-source.firebaseapp.com",projectId:"pmm-open-source",storageBucket:"pmm-open-source.firebasestorage.app",messagingSenderId:"682708192312",appId:"1:682708192312:web:76765761fcea6bf69feacd",measurementId:"G-JZ0RT10XMP"};const app=initializeApp(firebaseConfig);const auth=getAuth(app);const db=getFirestore(app);console.log("Firebase Connected");window.register=async function(){const email=document.getElementById("email").value.trim();const password=document.getElementById("password").value.trim();if(!email||!password){alert("Please enter email and password.");return}try{await createUserWithEmailAndPassword(auth,email,password);alert("Account created successfully.")}catch(error){alert(error.message)}};window.login=async function(){const email=document.getElementById("email").value.trim();const password=document.getElementById("password").value.trim();if(!email||!password){alert("Please enter email and password.");return}try{await signInWithEmailAndPassword(auth,email,password);alert("Login successful.")}catch(error){alert(error.message)}};window.logout=async function(){try{await signOut(auth);alert("Logged out.")}catch(error){alert(error.message)}};onAuthStateChanged(auth,(user)=>{const status=document.getElementById("userStatus");if(user){status.innerText="Logged in: "+user.email}else{status.innerText="Not logged in"}});window.saveApp=async function(){const user=auth.currentUser;if(!user){alert("Please login before saving app.");return}const appName=document.getElementById("appName").value.trim();const appCategory=document.getElementById("appCategory").value;const appIcon=document.getElementById("appIcon").value.trim();const appBanner=document.getElementById("appBanner").value.trim();const downloadUrl=document.getElementById("downloadUrl").value.trim();if(!appName||!downloadUrl){alert("Please enter app name and download URL.");return}try{await addDoc(collection(db,"apps"),{name:appName,category:appCategory,icon:appIcon,banner:appBanner,downloadUrl:downloadUrl,createdBy:user.email,createdAt:serverTimestamp()});alert("App saved successfully.");document.getElementById("appName").value="";document.getElementById("appIcon").value="";document.getElementById("appBanner").value="";document.getElementById("downloadUrl").value="";await window.loadApps()}catch(error){alert(error.message)}};window.loadApps=async function(){const homeDynamicApps=document.getElementById("homeDynamicApps");const osDynamicApps=document.getElementById("osDynamicApps");homeDynamicApps.innerHTML="";osDynamicApps.innerHTML="";try{const querySnapshot=await getDocs(collection(db,"apps"));querySnapshot.forEach((doc)=>{const data=doc.data();const card=createAppCard(data);if(data.category==="Operating System"){osDynamicApps.appendChild(card)}else{homeDynamicApps.appendChild(card)}})}catch(error){console.error(error);alert(error.message)}};window.loadApps();
-</script>
+  <header class="topbar">
+    <div class="brand">PMM Open Source Secure</div>
+    <nav class="nav">
+      <button onclick="showHome()">Home</button>
+      <button onclick="selectCategory('Recommended')">Recommended</button>
+      <button onclick="openAddModal()">Publish Source</button>
+      <button onclick="openAbout()">About</button>
+      <button id="adminBtn" style="display:none" onclick="openAdminPanel()">Admin Panel</button>
+    </nav>
+    <div class="profile-area">
+      <div id="profilePill" class="profile-pill"><div id="avatar" class="avatar">?</div><strong id="profileNameText"></strong><span id="adminTag" class="tag admin" style="display:none">ADMIN</span><button class="ghost-btn" onclick="logoutProfile()">Logout</button></div>
+      <button id="loginBtn" class="primary-btn" onclick="openProfileModal()">Create Profile</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div><h1>Source Code Hub</h1><p>Secure version with Firebase Auth, unique profile names, Storage upload, F9 admin panel, and safer delete.</p></div>
+      <button class="primary-btn" onclick="openAddModal()">+ Publish Source</button>
+    </section>
+
+    <div id="noticeBox" class="notice"><span id="noticeText"></span><button onclick="closeNotice()">×</button></div>
+
+    <section class="panel" id="recommendedPanel">
+      <div class="panel-title"><h2>Recommended</h2><button class="secondary-btn" onclick="selectCategory('Recommended')">View recommended</button></div>
+      <div id="recommendedGrid" class="recommend-grid"></div>
+    </section>
+
+    <section class="search-wrap">
+      <input id="searchInput" placeholder="Search source code..." oninput="renderSources()" />
+      <select id="sortSelect" onchange="renderSources()">
+        <option value="likes">Sort by likes</option>
+        <option value="newest">Sort by newest</option>
+        <option value="reports">Sort by reports</option>
+      </select>
+      <select id="categorySelect" onchange="selectCategory(this.value)">
+        <option value="All">All categories</option>
+        <option value="Recommended">Recommended</option>
+        <option value="Source Code">Source Code</option>
+        <option value="Operating System">Operating System</option>
+        <option value="Browser">Browser</option>
+        <option value="Tool">Tool</option>
+        <option value="Game">Game</option>
+        <option value="AI">AI</option>
+        <option value="Security">Security</option>
+        <option value="Other">Other</option>
+      </select>
+    </section>
+    <section id="categoryChips" class="chips"></section>
+    <section id="sourceGrid" class="grid"></section>
+    <section id="emptyState" class="empty">No source code found.</section>
+  </main>
+
+  <div id="profileModal" class="modal-backdrop"><div class="modal"><h2>Create Profile</h2><div class="security-box">Profile names are now reserved in Firestore, so duplicate names cannot be created. The name <b>PMM:Test</b> becomes super admin only when this browser UID is manually approved in <b>admins/{uid}</b>.</div><div class="form" style="margin-top:14px;"><label>Profile name<input id="profileNameInput" maxlength="30" placeholder="Example: PMM:Test"><small>Allowed: Thai/English letters, numbers, space, underscore, dash, dot, and colon. No slash.</small></label><label>Your current Firebase UID<input id="uidDisplay" readonly></label></div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('profileModal')">Cancel</button><button class="primary-btn" onclick="createProfile()">Create & Login</button></div></div></div>
+
+  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Source Code</h2><div class="download-check">Rules:<br>• Source name is required and must be 50 characters or less.<br>• Download link is required and must be 800 characters or less.<br>• Normal users: 1 publish per day and 50 seconds cooldown.<br>• PMM:Test admin: no publish limit, can delete/manage all records after admin UID approval.<br>• Images can be uploaded from your computer by click or drag & drop.<br>• Upload file size limit: icon/banner max 2 MB each.</div><div class="form" style="margin-top:14px;"><label>Source code name<input id="sourceNameInput" maxlength="50" placeholder="Required, max 50 characters"></label><label>Download link<input id="downloadUrlInput" maxlength="800" placeholder="Required: HTTPS/HTTP supported download link"></label><label>Small icon image<div class="upload-zone" id="iconDrop"><input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn">Choose image</button></div><img id="iconPreview" class="preview" alt="Icon preview"></div></label><label>Horizontal banner image<div class="upload-zone" id="bannerDrop"><input id="bannerFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><div class="upload-row"><span id="bannerFileName">Click or drag banner here</span><button type="button" class="secondary-btn">Choose image</button></div><img id="bannerPreview" class="preview" alt="Banner preview"></div></label><label>Category<select id="categoryInput"><option value="Source Code">Source Code</option><option value="Operating System">Operating System</option><option value="Browser">Browser</option><option value="Tool">Tool</option><option value="Game">Game</option><option value="AI">AI</option><option value="Security">Security</option><option value="Other">Other</option></select></label></div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn" onclick="publishSource()">Publish</button></div></div></div>
+
+  <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Source</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken download link">Broken download link</option><option value="Suspicious or unsafe file">Suspicious or unsafe file</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Copyright concern">Copyright concern</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn" onclick="submitReport()">Submit Report</button></div></div></div>
+
+  <div id="downloadModal" class="modal-backdrop"><div class="modal"><h2>Download Confirmation</h2><p class="muted">Open the download page in a new tab?</p><div class="modal-actions"><button class="secondary-btn" onclick="closeModal('downloadModal')">Cancel</button><button class="primary-btn" onclick="confirmDownload()">Yes</button></div></div></div>
+
+  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Open Source Secure</h2><p><b>Version Beta0.2-secure</b></p><p>This version reduces bypass risk by moving identity to Firebase Auth and authorization to Firestore/Storage Rules.</p><p><b>Important:</b> For production-level rate limits and malware/file inspection, add Cloud Functions + App Check. Frontend-only checks are not enough for serious public release.</p><div class="modal-actions"><button class="primary-btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
+
+  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Admin Panel — F9</h2><p class="muted">PMM:Test super admin can manage all visible sources only after UID is approved in Firestore admins collection.</p><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn" onclick="markAllReview(true)">Mark all review</button></div><div style="overflow:auto; margin-top:12px;"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every source currently loaded in this browser page.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:12px;border-radius:12px;border:1px solid #fecaca;"><div class="modal-actions"><button class="danger-btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
+
+  <script>
+    const PERSON_ICON = "👤";
+    const AVATAR_COLORS = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899", "#111827"];
+    const SUPPORTED_DOWNLOAD_DOMAINS = ["github.com", "gitlab.com", "sourceforge.net", "fosshub.com", "ubuntu.com"];
+    const SUPPORTED_EXTENSIONS = [".zip", ".7z", ".rar", ".tar.gz", ".exe", ".msi", ".apk", ".iso", ".deb", ".rpm"];
+    const CATEGORIES = ["All", "Recommended", "Source Code", "Operating System", "Browser", "Tool", "Game", "AI", "Security", "Other"];
+    const MAX_IMAGE_BYTES = 2 * 1024 * 1024;
+    let currentUser = null;
+    let currentProfile = null;
+    let isAdminUser = false;
+    let sources = [];
+    let selectedReportSourceId = null;
+    let selectedDownloadUrl = null;
+    let selectedCategory = "All";
+    let selectedFiles = { icon: null, banner: null };
+
+    function byId(id){ return document.getElementById(id); }
+    function openModal(id){ byId(id).style.display = "flex"; }
+    function closeModal(id){ byId(id).style.display = "none"; }
+    function showNotice(message){ const box = byId("noticeBox"); byId("noticeText").textContent = message; box.style.display = "block"; setTimeout(()=>{ if(box.style.display === "block") box.style.display="none"; }, 12000); }
+    function closeNotice(){ byId("noticeBox").style.display = "none"; }
+    function normalizeName(name){ return String(name || "").trim().replace(/\s+/g, " "); }
+    function profileNameKey(name){ return normalizeName(name).toLowerCase(); }
+    function validProfileName(name){ return /^[\u0E00-\u0E7Fa-zA-Z0-9 _:\-.]{2,30}$/.test(name) && !name.includes("/"); }
+    function randomColor(){ return AVATAR_COLORS[Math.floor(Math.random()*AVATAR_COLORS.length)]; }
+    function todayKey(){ return new Date().toISOString().slice(0,10); }
+    function defaultIconText(name){ return (name || "S").trim().slice(0,1).toUpperCase(); }
+    function validDisplayUrl(url){ try { const parsed = new URL(url); return ["https:", "http:"].includes(parsed.protocol) ? parsed.href : ""; } catch { return ""; } }
+    function validateDownloadUrl(url){ if(!url || url.length > 800) return {ok:false, message:"Please enter a real download link with 800 characters or less."}; let parsed; try { parsed = new URL(url); } catch { return {ok:false, message:"Please enter a valid download URL."}; } if(!["http:","https:"].includes(parsed.protocol)) return {ok:false, message:"Only HTTP and HTTPS links are supported."}; const hostname = parsed.hostname.replace(/^www\./, "").toLowerCase(), path = parsed.pathname.toLowerCase(); const domainSupported = SUPPORTED_DOWNLOAD_DOMAINS.some(d => hostname === d || hostname.endsWith("."+d)); const extensionSupported = SUPPORTED_EXTENSIONS.some(ext => path.endsWith(ext) || path.includes(ext + "?")); if(!domainSupported && !extensionSupported) return {ok:false, message:"This link may not be a supported download link. Supported: GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file links."}; return {ok:true}; }
+    function setButtonBusy(buttonId, busy){ const btn = byId(buttonId); if(!btn) return; btn.disabled = busy; btn.textContent = busy ? "Processing..." : (buttonId === "publishBtn" ? "Publish" : btn.textContent); }
+    function showHome(){ document.title = "Home - PMM Open Source Secure"; selectedCategory = "All"; byId("categorySelect").value = "All"; renderCategoryChips(); renderSources(); window.scrollTo({top:0, behavior:"smooth"}); }
+    function selectCategory(category){ selectedCategory = category; byId("categorySelect").value = category; renderCategoryChips(); renderSources(); byId("sourceGrid").scrollIntoView({behavior:"smooth", block:"start"}); }
+    function openAbout(){ openModal("aboutModal"); }
+    function openProfileModal(){ if(currentUser) byId("uidDisplay").value = currentUser.uid; openModal("profileModal"); }
+    function openDownload(url){ selectedDownloadUrl = validDisplayUrl(url); if(!selectedDownloadUrl){ alert("Invalid or unsafe download URL."); return; } openModal("downloadModal"); }
+    function confirmDownload(){ if(!selectedDownloadUrl) return; window.open(selectedDownloadUrl, "_blank", "noopener,noreferrer"); closeModal("downloadModal"); }
+    function openAddModal(){ if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; } if(!currentProfile){ showNotice("Please create a unique profile before publishing source code."); openProfileModal(); return; } openModal("addModal"); }
+    function logoutProfile(){ if(!confirm("Logout from this browser? Your reserved name remains protected in Firestore.")) return; window.secureLogout(); }
+
+    function renderCategoryChips(){ const wrap = byId("categoryChips"); wrap.innerHTML = ""; CATEGORIES.forEach(cat => { const btn = document.createElement("button"); btn.className = "chip" + (cat === selectedCategory ? " active" : ""); btn.textContent = cat; btn.addEventListener("click", () => selectCategory(cat)); wrap.appendChild(btn); }); }
+
+    function makeImage(url, alt){ const src = validDisplayUrl(url); if(!src) return null; const img = document.createElement("img"); img.src = src; img.alt = alt || "image"; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; img.onerror = () => img.remove(); return img; }
+
+    function createSourceCard(src, mini=false){
+      const card = document.createElement(mini ? "div" : "article");
+      card.className = mini ? "mini-card" : "card";
+      if(mini){
+        const name = document.createElement("strong"); name.textContent = src.name || "Untitled";
+        const detail = document.createElement("small"); detail.textContent = `${src.category || "Source Code"} • 👍 ${Number(src.likes || 0)}`;
+        card.append(name, detail);
+        card.addEventListener("click", () => openDownload(src.downloadUrl));
+        return card;
+      }
+
+      const canDelete = isAdminUser || (currentUser && src.ownerId === currentUser.uid);
+      const deleteBtn = document.createElement("button"); deleteBtn.className = "delete-btn"; deleteBtn.title = "Delete"; deleteBtn.textContent = "🗑";
+      if(canDelete){ deleteBtn.style.display = "block"; deleteBtn.addEventListener("click", () => deleteSource(src.id)); }
+
+      const banner = document.createElement("div"); banner.className = "banner";
+      const bannerImg = makeImage(src.bannerUrl, `${src.name || "Source"} banner`);
+      if(bannerImg) banner.appendChild(bannerImg); else { const b = document.createElement("strong"); b.textContent = src.category || "Source Code"; banner.appendChild(b); }
+
+      const body = document.createElement("div"); body.className = "card-body";
+      const row = document.createElement("div"); row.className = "source-row";
+      const icon = document.createElement("div"); icon.className = "icon-box";
+      const iconImg = makeImage(src.iconUrl, `${src.name || "Source"} icon`);
+      if(iconImg) icon.appendChild(iconImg); else icon.textContent = defaultIconText(src.name);
+      const titleArea = document.createElement("div"); titleArea.className = "title-area";
+      const h3 = document.createElement("h3"); h3.textContent = src.name || "Untitled"; h3.title = src.name || "Untitled";
+      const small = document.createElement("small"); small.textContent = `by ${src.ownerName || "Unknown"}`;
+      titleArea.append(h3, small);
+      row.append(icon, titleArea);
+
+      const meta = document.createElement("div"); meta.className = "meta";
+      const tags = [src.category || "Source Code", `👍 ${Number(src.likes || 0)}`, `Reports ${Number(src.reportCount || 0)}`];
+      tags.forEach(t => { const span = document.createElement("span"); span.className = "tag"; span.textContent = t; meta.appendChild(span); });
+      if((src.reportCount || 0) >= 10 || src.status === "review"){ const review = document.createElement("span"); review.className = "tag warn"; review.textContent = "Under Review"; meta.appendChild(review); }
+      if(isAdminUser){ const admin = document.createElement("span"); admin.className = "tag admin"; admin.textContent = "Admin View"; meta.appendChild(admin); }
+
+      const actions = document.createElement("div"); actions.className = "actions";
+      const dl = document.createElement("button"); dl.className = "primary-btn"; dl.textContent = "Download"; dl.addEventListener("click", () => openDownload(src.downloadUrl));
+      const like = document.createElement("button"); like.className = "secondary-btn"; like.textContent = "Like"; like.addEventListener("click", () => likeSource(src.id));
+      const report = document.createElement("button"); report.className = "danger-btn"; report.textContent = "Report"; report.addEventListener("click", () => openReport(src.id));
+      actions.append(dl, like, report);
+      body.append(row, meta, actions);
+      card.append(deleteBtn, banner, body);
+      return card;
+    }
+
+    function renderRecommended(){ const wrap = byId("recommendedGrid"); wrap.innerHTML = ""; const recommended = [...sources].filter(s => s.status !== "hidden").sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,2); if(!recommended.length){ const empty = document.createElement("div"); empty.className = "mini-card"; empty.textContent = "No recommended items yet. Publish something clean and useful first."; wrap.appendChild(empty); return; } recommended.forEach(src => wrap.appendChild(createSourceCard(src, true))); }
+
+    function renderSources(){ const grid = byId("sourceGrid"), empty = byId("emptyState"), search = byId("searchInput").value.trim().toLowerCase(), sort = byId("sortSelect").value; grid.innerHTML = ""; let list = sources.filter(src => src.status !== "hidden"); if(selectedCategory === "Recommended") list = [...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory !== "All") list = list.filter(src => (src.category || "").toLowerCase() === selectedCategory.toLowerCase()); if(search) list = list.filter(src => (src.name||"").toLowerCase().includes(search) || (src.category||"").toLowerCase().includes(search) || (src.ownerName||"").toLowerCase().includes(search)); if(sort === "likes") list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort === "reports") list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display = list.length ? "none" : "block"; list.forEach(src => grid.appendChild(createSourceCard(src))); renderRecommended(); if(isAdminUser) loadAdminTable(); }
+
+    function setupUploadZone(kind){
+      const drop = byId(kind + "Drop");
+      const input = byId(kind + "FileInput");
+      const nameEl = byId(kind + "FileName");
+      const preview = byId(kind + "Preview");
+      const handleFile = (file) => {
+        if(!file) return;
+        if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){ alert("Only PNG, JPG, WEBP, or GIF images are allowed."); return; }
+        if(file.size > MAX_IMAGE_BYTES){ alert("Image must be 2 MB or less."); return; }
+        selectedFiles[kind] = file;
+        nameEl.textContent = `${file.name} (${Math.round(file.size/1024)} KB)`;
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+      };
+      drop.addEventListener("click", () => input.click());
+      input.addEventListener("change", () => handleFile(input.files[0]));
+      ["dragenter", "dragover"].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add("dragover"); }));
+      ["dragleave", "drop"].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove("dragover"); }));
+      drop.addEventListener("drop", e => handleFile(e.dataTransfer.files[0]));
+    }
+
+    document.addEventListener("keydown", (e) => { if(e.key === "F9"){ e.preventDefault(); openAdminPanel(); } });
+    setupUploadZone("icon"); setupUploadZone("banner"); renderCategoryChips();
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, getDocs, getDoc, doc, setDoc, updateDoc, deleteDoc, increment, serverTimestamp, query, orderBy, limit, runTransaction, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",
+      authDomain: "pmm-open-source.firebaseapp.com",
+      projectId: "pmm-open-source",
+      storageBucket: "pmm-open-source.firebasestorage.app",
+      messagingSenderId: "682708192312",
+      appId: "1:682708192312:web:76765761fcea6bf69feacd",
+      measurementId: "G-JZ0RT10XMP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    async function refreshProfile(){
+      if(!currentUser) return;
+      const profileSnap = await getDoc(doc(db, "profiles", currentUser.uid));
+      currentProfile = profileSnap.exists() ? profileSnap.data() : null;
+      const adminSnap = await getDoc(doc(db, "admins", currentUser.uid));
+      isAdminUser = Boolean(adminSnap.exists() && currentProfile && currentProfile.name === "PMM:Test");
+      updateProfileUI();
+    }
+
+    function updateProfileUI(){
+      const loginBtn = byId("loginBtn"), profilePill = byId("profilePill"), profileNameText = byId("profileNameText"), avatar = byId("avatar"), adminBtn = byId("adminBtn"), adminTag = byId("adminTag");
+      if(currentUser) byId("uidDisplay").value = currentUser.uid;
+      if(currentProfile){
+        loginBtn.style.display="none"; profilePill.style.display="flex"; profileNameText.textContent=currentProfile.name; avatar.style.background=currentProfile.color || "#111827"; avatar.textContent=PERSON_ICON;
+      } else {
+        loginBtn.style.display="inline-block"; profilePill.style.display="none";
+      }
+      adminBtn.style.display = isAdminUser ? "inline-block" : "none";
+      adminTag.style.display = isAdminUser ? "inline-block" : "none";
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      try {
+        if(!user){ await signInAnonymously(auth); return; }
+        currentUser = user;
+        await refreshProfile();
+        await loadSources();
+      } catch(error){ console.error(error); showNotice(error.message || "Authentication error."); }
+    });
+
+    window.createProfile = async function(){
+      if(!currentUser){ alert("Authentication is not ready yet."); return; }
+      const name = normalizeName(byId("profileNameInput").value);
+      if(!validProfileName(name)){ alert("Profile name must be 2–30 characters and cannot contain unsafe symbols or slash."); return; }
+      const nameKey = profileNameKey(name);
+      const profileRef = doc(db, "profiles", currentUser.uid);
+      const nameRef = doc(db, "profileNames", nameKey);
+      try {
+        await runTransaction(db, async (tx) => {
+          const profileSnap = await tx.get(profileRef);
+          if(profileSnap.exists()) throw new Error("This browser already has a profile.");
+          const nameSnap = await tx.get(nameRef);
+          if(nameSnap.exists()) throw new Error("This profile name is already used. Please choose another name.");
+          const profileData = { uid: currentUser.uid, name, nameKey, color: randomColor(), createdAt: serverTimestamp(), updatedAt: serverTimestamp(), lastPublishAtMs: 0, dailyUpload: { date: "", activeSourceId: "" } };
+          tx.set(nameRef, { uid: currentUser.uid, name, nameKey, createdAt: serverTimestamp() });
+          tx.set(profileRef, profileData);
+        });
+        byId("profileNameInput").value = "";
+        closeModal("profileModal");
+        await refreshProfile();
+        showNotice("Profile created securely. Duplicate names are now blocked.");
+      } catch(error){ alert(error.message); }
+    };
+
+    window.secureLogout = async function(){
+      try { await signOut(auth); currentUser = null; currentProfile = null; isAdminUser = false; sources = []; updateProfileUI(); await signInAnonymously(auth); showNotice("Logged out from this browser."); } catch(error){ alert(error.message); }
+    };
+
+    async function uploadSelectedImage(kind, sourceId){
+      const file = selectedFiles[kind];
+      if(!file) return { url: "", path: "" };
+      const extMap = { "image/png":"png", "image/jpeg":"jpg", "image/webp":"webp", "image/gif":"gif" };
+      const ext = extMap[file.type];
+      if(!ext) throw new Error("Unsupported image type.");
+      if(file.size > MAX_IMAGE_BYTES) throw new Error("Image file is too large.");
+      const path = `uploads/${currentUser.uid}/${sourceId}/${kind}.${ext}`;
+      const fileRef = ref(storage, path);
+      await uploadBytes(fileRef, file, { contentType: file.type, customMetadata: { ownerId: currentUser.uid, sourceId, kind } });
+      const url = await getDownloadURL(fileRef);
+      return { url, path };
+    }
+
+    window.publishSource = async function(){
+      if(!currentUser || !currentProfile){ openProfileModal(); return; }
+      const name = normalizeName(byId("sourceNameInput").value);
+      const downloadUrl = byId("downloadUrlInput").value.trim();
+      const category = byId("categoryInput").value;
+      if(!name || name.length > 50){ alert("Source code name is required and must be 50 characters or less."); return; }
+      const urlCheck = validateDownloadUrl(downloadUrl);
+      if(!urlCheck.ok){ alert(urlCheck.message); return; }
+      setButtonBusy("publishBtn", true);
+      try {
+        const sourceRef = doc(collection(db, "sources"));
+        const sourceId = sourceRef.id;
+        const profileRef = doc(db, "profiles", currentUser.uid);
+        const nowMs = Date.now();
+        const today = todayKey();
+        await runTransaction(db, async (tx) => {
+          const profileSnap = await tx.get(profileRef);
+          if(!profileSnap.exists()) throw new Error("Profile not found.");
+          const p = profileSnap.data();
+          if(!isAdminUser){
+            if(nowMs - Number(p.lastPublishAtMs || 0) < 50000) throw new Error("Please wait before publishing again.");
+            if(p.dailyUpload && p.dailyUpload.date === today && p.dailyUpload.activeSourceId) throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
+          }
+        });
+
+        const icon = await uploadSelectedImage("icon", sourceId);
+        const banner = await uploadSelectedImage("banner", sourceId);
+
+        await runTransaction(db, async (tx) => {
+          const profileSnap = await tx.get(profileRef);
+          if(!profileSnap.exists()) throw new Error("Profile not found.");
+          const p = profileSnap.data();
+          if(!isAdminUser){
+            if(nowMs - Number(p.lastPublishAtMs || 0) < 50000) throw new Error("Please wait before publishing again.");
+            if(p.dailyUpload && p.dailyUpload.date === today && p.dailyUpload.activeSourceId) throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
+          }
+          tx.set(sourceRef, { name, downloadUrl, iconUrl: icon.url, bannerUrl: banner.url, iconPath: icon.path, bannerPath: banner.path, category, ownerId: currentUser.uid, ownerName: currentProfile.name, likes: 0, reportCount: 0, status: "active", createdAt: serverTimestamp(), updatedAt: serverTimestamp(), createdAtMs: nowMs, createDay: today });
+          if(!isAdminUser) tx.update(profileRef, { lastPublishAtMs: nowMs, dailyUpload: { date: today, activeSourceId: sourceId }, updatedAt: serverTimestamp() });
+        });
+        byId("sourceNameInput").value=""; byId("downloadUrlInput").value=""; selectedFiles = { icon:null, banner:null }; ["icon", "banner"].forEach(k => { byId(k+"FileInput").value=""; byId(k+"FileName").textContent = k === "icon" ? "Click or drag image here" : "Click or drag banner here"; byId(k+"Preview").removeAttribute("src"); byId(k+"Preview").style.display="none"; });
+        closeModal("addModal"); showNotice(isAdminUser ? "Source published with PMM:Test admin bypass." : "Source published securely."); await loadSources();
+      } catch(error){ alert(error.message); }
+      finally { setButtonBusy("publishBtn", false); }
+    };
+
+    window.loadSources = async function(){
+      try { const q = query(collection(db,"sources"), orderBy("createdAtMs","desc"), limit(isAdminUser ? 200 : 100)); const snapshot = await getDocs(q); sources = []; snapshot.forEach(item => sources.push({id:item.id, ...item.data()})); renderSources(); }
+      catch(error){ console.error(error); showNotice(error.message || "Cannot load sources."); }
+    };
+
+    window.likeSource = async function(sourceId){
+      if(!currentUser || !currentProfile){ showNotice("Please create a profile before liking."); openProfileModal(); return; }
+      const sourceRef = doc(db,"sources",sourceId);
+      const likeRef = doc(db,"sources",sourceId,"likes",currentUser.uid);
+      try { await runTransaction(db, async (tx) => { const likeSnap = await tx.get(likeRef); if(likeSnap.exists()) throw new Error("You already liked this source."); tx.set(likeRef, { uid: currentUser.uid, createdAt: serverTimestamp() }); tx.update(sourceRef, { likes: increment(1), updatedAt: serverTimestamp() }); }); await loadSources(); }
+      catch(error){ alert(error.message); }
+    };
+
+    window.openReport = function(sourceId){
+      if(!currentUser || !currentProfile){ showNotice("Please create a profile before reporting."); openProfileModal(); return; }
+      selectedReportSourceId = sourceId; openModal("reportModal");
+    };
+
+    window.submitReport = async function(){
+      if(!selectedReportSourceId || !currentUser) return;
+      const sourceRef = doc(db,"sources",selectedReportSourceId);
+      const reportRef = doc(db,"sources",selectedReportSourceId,"reports",currentUser.uid);
+      const reason = byId("reportReasonInput").value;
+      const detail = byId("reportDetailInput").value.trim().slice(0,250);
+      try { await runTransaction(db, async (tx) => { const reportSnap = await tx.get(reportRef); if(reportSnap.exists()) throw new Error("You already reported this source."); const sourceSnap = await tx.get(sourceRef); if(!sourceSnap.exists()) throw new Error("Source not found."); const nextReports = Number(sourceSnap.data().reportCount || 0) + 1; tx.set(reportRef, { uid: currentUser.uid, reason, detail, createdAt: serverTimestamp() }); tx.update(sourceRef, { reportCount: increment(1), lastReportReason: reason, lastReportDetail: detail, status: nextReports >= 10 ? "review" : "active", updatedAt: serverTimestamp() }); }); closeModal("reportModal"); selectedReportSourceId = null; showNotice("Report submitted."); await loadSources(); }
+      catch(error){ alert(error.message); }
+    };
+
+    async function safeDeleteStorage(path){ if(!path) return; try { await deleteObject(ref(storage, path)); } catch(error){ console.warn("Storage delete skipped:", error.message); } }
+
+    window.deleteSource = async function(sourceId){
+      const src = sources.find(item => item.id === sourceId);
+      if(!src || !currentUser){ alert("Source not found or user not ready."); return; }
+      if(!isAdminUser && src.ownerId !== currentUser.uid){ alert("Only the owner or PMM:Test admin can delete this source."); return; }
+      const msg = isAdminUser && src.ownerId !== currentUser.uid ? "Admin delete this source permanently?" : "Delete this source permanently?";
+      if(!confirm(msg)) return;
+      try { await deleteDoc(doc(db,"sources",sourceId)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); if(src.ownerId === currentUser.uid){ const profileRef = doc(db,"profiles",currentUser.uid); const pSnap = await getDoc(profileRef); const p = pSnap.exists() ? pSnap.data() : null; if(p && p.dailyUpload && p.dailyUpload.activeSourceId === sourceId){ await updateDoc(profileRef, { dailyUpload: { date: "", activeSourceId: "" }, updatedAt: serverTimestamp() }); } } showNotice("Source deleted."); await loadSources(); }
+      catch(error){ alert(error.message); }
+    };
+
+    window.openAdminPanel = function(){ if(!isAdminUser){ showNotice("F9 Admin Panel is locked. Login as PMM:Test and approve this UID in /admins first."); return; } openModal("adminModal"); loadAdminTable(); };
+
+    window.loadAdminTable = function(){ if(!isAdminUser) return; const body = byId("adminTableBody"); body.innerHTML = ""; sources.forEach(src => { const tr = document.createElement("tr"); [src.name || "Untitled", src.ownerName || src.ownerId || "Unknown", src.category || "Source Code", src.status || "active", String(src.reportCount || 0)].forEach(value => { const td = document.createElement("td"); td.textContent = value; tr.appendChild(td); }); const action = document.createElement("td"); const del = document.createElement("button"); del.className = "danger-btn"; del.textContent = "Delete"; del.addEventListener("click", () => deleteSource(src.id)); const review = document.createElement("button"); review.className = "secondary-btn"; review.textContent = src.status === "review" ? "Active" : "Review"; review.addEventListener("click", () => setSourceReview(src.id, src.status !== "review")); action.append(del, document.createTextNode(" "), review); tr.appendChild(action); body.appendChild(tr); }); };
+
+    window.setSourceReview = async function(sourceId, review){ if(!isAdminUser) return; try { await updateDoc(doc(db,"sources",sourceId), { status: review ? "review" : "active", updatedAt: serverTimestamp() }); await loadSources(); } catch(error){ alert(error.message); } };
+
+    window.markAllReview = async function(review){ if(!isAdminUser) return; if(!confirm(review ? "Mark all loaded sources as review?" : "Mark all loaded sources as active?")) return; try { const batch = writeBatch(db); sources.forEach(src => batch.update(doc(db,"sources",src.id), { status: review ? "review" : "active", updatedAt: serverTimestamp() })); await batch.commit(); await loadSources(); } catch(error){ alert(error.message); } };
+
+    window.deleteAllLoadedSources = async function(){
+      if(!isAdminUser) return;
+      if(byId("deleteAllConfirm").value !== "DELETE ALL"){ alert("Type DELETE ALL first."); return; }
+      if(!confirm("This will delete all currently loaded sources. Continue?")) return;
+      try { for(const src of sources){ await deleteDoc(doc(db,"sources",src.id)); await safeDeleteStorage(src.iconPath); await safeDeleteStorage(src.bannerPath); } byId("deleteAllConfirm").value = ""; showNotice("All loaded sources were deleted by admin."); await loadSources(); }
+      catch(error){ alert(error.message); }
+    };
+  </script>
 </body>
 </html>
