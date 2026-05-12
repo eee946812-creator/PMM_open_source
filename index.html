@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PMM Open Source</title>
+  <title>Home - PMM ops</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-code" aria-hidden="true">&lt;&gt;</span><span>PMM Open Source</span></div>
+    <div class="brand"><span class="brand-code" aria-hidden="true">&lt;&gt;</span><span>Home - PMM ops</span></div>
     <nav class="nav">
       <button onclick="showHome()">Home</button>
       <button onclick="selectCategory('Recommended')">Recommended</button>
@@ -53,7 +53,7 @@
   </header>
   <main class="container">
     <section class="hero">
-      <div><h1>Source Code Hub</h1><p>Discover and publish trusted source links in one clean workspace.</p></div>
+      <div><h1>PMM ops</h1><p>Discover and publish trusted PMM operation links in one clean workspace.</p></div>
       <div class="hero-actions"><button class="primary-btn btn" onclick="openAddModal()">+ Publish Source</button></div>
     </section>
     <div id="noticeBox" class="notice"><span id="noticeText"></span><button onclick="closeNotice()">×</button></div>
@@ -66,11 +66,11 @@
 
   <div id="profileModal" class="modal-backdrop"><div class="modal"><h2>Create Profile</h2><div class="info-box">Create a unique display name.</div><div class="form" style="margin-top:16px"><label>Profile name<input id="profileNameInput" maxlength="30" placeholder="Enter profile name"><small>Use 2–30 characters.</small></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('profileModal')">Cancel</button><button class="primary-btn btn" onclick="createProfile()">Create & Login</button></div></div></div>
 
-  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Source Code</h2><div class="info-box">Publish trusted source links only. Image links are recommended for large images. Uploaded image files are stored directly in the database and should stay small.</div><div class="form" style="margin-top:16px"><label>Source code name<input id="sourceNameInput" maxlength="50" placeholder="Required, max 50 characters"></label><label>Download link<input id="downloadUrlInput" maxlength="800" placeholder="GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file link"></label><label>Small icon image<div id="iconChoice" class="image-choice"><input id="iconUrlInput" maxlength="1200" placeholder="Paste image link, or upload a file below"><div id="iconDrop" class="upload-zone"><div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="iconPreview" class="preview" alt="Icon preview"></div><button type="button" id="iconClearBtn" class="secondary-btn btn clear-image-btn" onclick="clearImageChoice('icon')">Clear image</button></div><input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Use either image link or image file. Large images should use a link.</small></label><label>Horizontal banner image<div id="bannerChoice" class="image-choice"><input id="bannerUrlInput" maxlength="1200" placeholder="Paste image link, or upload a file below"><div id="bannerDrop" class="upload-zone"><div class="upload-row"><span id="bannerFileName">Click or drag banner here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="bannerPreview" class="preview" alt="Banner preview"></div><button type="button" id="bannerClearBtn" class="secondary-btn btn clear-image-btn" onclick="clearImageChoice('banner')">Clear image</button></div><input id="bannerFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Use either image link or image file. Large images should use a link.</small></label><label>Category<select id="categoryInput"></select></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn btn" onclick="publishSource()">Publish</button></div></div></div>
+  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Source Code</h2><div class="info-box">Publish trusted source links only. Image links are recommended for large images. Direct program/file uploads are not stored in this page; please paste a download URL. The URL may point to a file up to 1 GB. Image files stored in Firestore must stay small; use image links for large images.</div><div class="form" style="margin-top:16px"><label>Source code name<input id="sourceNameInput" maxlength="50" placeholder="Required, max 50 characters"></label><label>Download link<input id="downloadUrlInput" maxlength="800" placeholder="GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file link"></label><label>Small icon image<div id="iconChoice" class="image-choice"><input id="iconUrlInput" maxlength="1200" placeholder="Paste image link, or upload a file below"><div id="iconDrop" class="upload-zone"><div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="iconPreview" class="preview" alt="Icon preview"></div><button type="button" id="iconClearBtn" class="secondary-btn btn clear-image-btn" onclick="clearImageChoice('icon')">Clear image</button></div><input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Use either image link or image file. Large images must use a link.</small></label><label>Horizontal banner image<div id="bannerChoice" class="image-choice"><input id="bannerUrlInput" maxlength="1200" placeholder="Paste image link, or upload a file below"><div id="bannerDrop" class="upload-zone"><div class="upload-row"><span id="bannerFileName">Click or drag banner here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="bannerPreview" class="preview" alt="Banner preview"></div><button type="button" id="bannerClearBtn" class="secondary-btn btn clear-image-btn" onclick="clearImageChoice('banner')">Clear image</button></div><input id="bannerFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Use either image link or image file. Large images must use a link.</small></label><label>Category<select id="categoryInput"></select></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn btn" onclick="publishSource()">Publish</button></div></div></div>
 
   <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Source</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken download link">Broken download link</option><option value="Suspicious or unsafe file">Suspicious or unsafe file</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Copyright concern">Copyright concern</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn btn" onclick="submitReport()">Submit Report</button></div></div></div>
   <div id="downloadModal" class="modal-backdrop"><div class="modal"><h2>Download Confirmation</h2><p class="muted">Open this source in a new tab?</p><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('downloadModal')">Cancel</button><button class="primary-btn btn" onclick="confirmDownload()">Open</button></div></div></div>
-  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Open Source</h2><p class="muted">A clean source hub for publishing useful source links and related files.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
+  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About Home - PMM ops</h2><p class="muted">A clean PMM operation hub for publishing useful links and related source information.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
 
   <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Sources</h2><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn btn" onclick="markAllReview(true)">Mark all review</button><button class="danger-btn btn" onclick="deleteLegacySources()">Clean old data</button></div><div style="overflow:auto;margin-top:14px;max-height:48vh"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every currently loaded source.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:13px;border-radius:14px;border:1px solid #fecaca"><div class="modal-actions"><button class="danger-btn btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
 
@@ -79,7 +79,9 @@
     const CATEGORIES = ["All","Recommended","Source Code","Tool","Game","Operating System","Browser","AI","Design","Other"];
     const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
     const MAX_IMAGE_BYTES = 250 * 1024;
-    const POWER_IMAGE_BYTES = 600 * 1024;
+    const POWER_IMAGE_BYTES = 430 * 1024;
+    const MAX_LINK_FILE_BYTES = 1024 * 1024 * 1024;
+    let testAccessUnlocked = false;
     const SUPPORTED_DOWNLOAD_DOMAINS = ["github.com","gitlab.com","sourceforge.net","fosshub.com","ubuntu.com"];
     const SUPPORTED_EXTENSIONS = [".zip",".7z",".rar",".tar.gz",".exe",".msi",".apk",".iso",".deb",".rpm"];
     const AVATAR_COLORS = ["#2563eb","#7c3aed","#0891b2","#059669","#ea580c","#db2777","#0f172a"];
@@ -97,7 +99,7 @@
     const _zk="f92002c3bda776edbe7e70498fc36c172a4d3755669844fed5b97ec9379ad85e";
     async function needsGate(name){ return _xk.includes(await digestText(profileNameKey(name))); }
     async function passGate(){ const v=prompt("Security code required"); if(v===null)return false; return (await digestText(v))===_zk; }
-    function hasPowerAccess(){ return Boolean(isAdminUser || isLocalManager || (currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk)); }
+    function hasPowerAccess(){ return Boolean(testAccessUnlocked || isAdminUser || isLocalManager || (currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk)); }
     function validProfileName(name){ return /^[\u0E00-\u0E7Fa-zA-Z0-9 _:\-.]{2,30}$/.test(name) && !name.includes("/"); }
     function randomColor(){ return AVATAR_COLORS[Math.floor(Math.random()*AVATAR_COLORS.length)]; }
     function todayKey(){ return new Date().toISOString().slice(0,10); }
@@ -129,7 +131,7 @@
     function renderSources(){ if(loadingSources)return; const grid=byId("sourceGrid"), empty=byId("emptyState"), search=byId("searchInput").value.trim().toLowerCase(), sort=byId("sortSelect").value; grid.innerHTML=""; let list=sources.filter(isCleanSource); if(selectedCategory==="Recommended") list=[...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory!=="All") list=list.filter(src=>(src.category||"").toLowerCase()===selectedCategory.toLowerCase()); if(search) list=list.filter(src=>(src.name||"").toLowerCase().includes(search)||(src.category||"").toLowerCase().includes(search)||(src.ownerName||"").toLowerCase().includes(search)); if(sort==="likes")list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort==="reports")list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display=list.length?"none":"block"; list.forEach(src=>grid.appendChild(createSourceCard(src))); renderRecommended(); if(hasPowerAccess()) loadAdminTable(); }
     function setupUploadZone(kind){ const drop=byId(kind+"Drop"), input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput"); const setMode=mode=>{ if(mode==="url"){drop.classList.add("hidden"); preview.style.display="none";} else if(mode==="file"){urlInput.classList.add("hidden");} else {drop.classList.remove("hidden"); urlInput.classList.remove("hidden");} }; const handleFile=file=>{ if(!file)return; if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){alert("Only PNG, JPG, WEBP, or GIF images are allowed.");return;} const limit=hasPowerAccess()?POWER_IMAGE_BYTES:MAX_IMAGE_BYTES; if(file.size>limit){alert(`Image file is too large. Use an image link for large images. Current file limit is ${Math.round(limit/1024)} KB.`);return;} selectedFiles[kind]=file; urlInput.value=""; setMode("file"); nameEl.textContent=`${file.name} (${Math.round(file.size/1024)} KB)`; preview.src=URL.createObjectURL(file); preview.style.display="block"; }; urlInput.addEventListener("input",()=>{ const v=urlInput.value.trim(); if(v){ selectedFiles[kind]=null; input.value=""; nameEl.textContent=kind==="icon"?"Click or drag image here":"Click or drag banner here"; preview.removeAttribute("src"); preview.style.display="none"; setMode("url"); } else setMode("none"); }); drop.addEventListener("click",()=>input.click()); input.addEventListener("change",()=>handleFile(input.files[0])); ["dragenter","dragover"].forEach(evt=>drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.add("dragover");})); ["dragleave","drop"].forEach(evt=>drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.remove("dragover");})); drop.addEventListener("drop",e=>handleFile(e.dataTransfer.files[0])); }
     window.clearImageChoice=function(kind){ selectedFiles[kind]=null; const input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput"), drop=byId(kind+"Drop"); input.value=""; urlInput.value=""; urlInput.classList.remove("hidden"); drop.classList.remove("hidden"); nameEl.textContent=kind==="icon"?"Click or drag image here":"Click or drag banner here"; preview.removeAttribute("src"); preview.style.display="none"; }
-    document.addEventListener("keydown",e=>{ if(e.key==="F9"){ e.preventDefault(); if(hasPowerAccess()) openAdminPanel(); } });
+    document.addEventListener("keydown",e=>{ if(e.key==="F9"){ e.preventDefault(); window.unlockTestMode && window.unlockTestMode(); } });
     initSelects(); setupUploadZone("icon"); setupUploadZone("banner"); renderCategoryChips(); setLoading(true);
   </script>
   <script type="module">
@@ -138,8 +140,28 @@
     import { getFirestore, collection, getDocs, getDoc, doc, setDoc, updateDoc, deleteDoc, increment, serverTimestamp, query, orderBy, limit, runTransaction, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     const firebaseConfig={apiKey:"AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",authDomain:"pmm-open-source.firebaseapp.com",projectId:"pmm-open-source",storageBucket:"pmm-open-source.firebasestorage.app",messagingSenderId:"682708192312",appId:"1:682708192312:web:76765761fcea6bf69feacd",measurementId:"G-JZ0RT10XMP"};
     const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
+    testAccessUnlocked = sessionStorage.getItem("pmmTestAccess") === "1";
     async function refreshProfile(){ if(!currentUser)return; const profileSnap=await getDoc(doc(db,"profiles",currentUser.uid)); currentProfile=profileSnap.exists()?profileSnap.data():null; const adminSnap=await getDoc(doc(db,"admins",currentUser.uid)); isAdminUser=Boolean(adminSnap.exists()&&currentProfile); isLocalManager=Boolean(currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk); updateProfileUI(); }
     function updateProfileUI(){ const loginBtn=byId("loginBtn"), profilePill=byId("profilePill"), profileNameText=byId("profileNameText"), avatar=byId("avatar"), adminBtn=byId("adminBtn"); if(currentProfile){ loginBtn.style.display="none"; profilePill.style.display="flex"; profileNameText.textContent=currentProfile.name; avatar.style.background=currentProfile.color||"#0f172a"; avatar.textContent=defaultIconText(currentProfile.name); } else { loginBtn.style.display="inline-block"; profilePill.style.display="none"; } adminBtn.style.display=hasPowerAccess()?"inline-block":"none"; }
+    window.unlockTestMode=async function(){
+      try{
+        if(hasPowerAccess()){ openAdminPanel(); return; }
+        const v=prompt("Enter test/admin code");
+        if(v===null) return;
+        if((await digestText(v))!==_zk){ alert("Invalid test code."); return; }
+        testAccessUnlocked=true;
+        sessionStorage.setItem("pmmTestAccess","1");
+        if(currentUser){
+          if(!currentProfile){
+            await setDoc(doc(db,"profiles",currentUser.uid),{uid:currentUser.uid,name:"PMM:Test",nameKey:"pmm:test",color:"#0f172a",appVersion:APP_VERSION,accessLevel:"operator",accessProof:_zk,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),lastPublishAtMs:0,dailyUpload:{date:"",activeSourceId:""}});
+          }
+          await setDoc(doc(db,"powerSessions",currentUser.uid),{uid:currentUser.uid,accessProof:_zk,appVersion:APP_VERSION,updatedAt:serverTimestamp()});
+          await refreshProfile();
+        }
+        showNotice("Test mode unlocked. F9 is active now.");
+        openAdminPanel();
+      }catch(error){ console.error(error); alert(error.message || "Cannot unlock test mode. Please update Firestore rules and try again."); }
+    };
     onAuthStateChanged(auth,async user=>{ try{ if(!user){await signInAnonymously(auth);return;} currentUser=user; await refreshProfile(); await loadSources(); }catch(error){console.error(error); showNotice(error.message||"Authentication error."); setLoading(false);} });
     window.createProfile=async function(){
       if(!currentUser){alert("Authentication is not ready yet.");return;}
@@ -163,7 +185,7 @@
         byId("profileNameInput").value=""; closeModal("profileModal"); await refreshProfile(); showNotice("Profile created.");
       }catch(error){alert(error.message);}
     };
-    window.secureLogout=async function(){ try{ await signOut(auth); currentUser=null; currentProfile=null; isAdminUser=false; isLocalManager=false; sources=[]; updateProfileUI(); setLoading(true); await signInAnonymously(auth); showNotice("Logged out."); }catch(error){alert(error.message);} };
+    window.secureLogout=async function(){ try{ await signOut(auth); currentUser=null; currentProfile=null; isAdminUser=false; isLocalManager=false; testAccessUnlocked=false; sessionStorage.removeItem("pmmTestAccess"); sources=[]; updateProfileUI(); setLoading(true); await signInAnonymously(auth); showNotice("Logged out."); }catch(error){alert(error.message);} };
     async function uploadSelectedImage(kind,sourceId){
       const urlValue=byId(kind+"UrlInput")?.value.trim() || "";
       if(urlValue){ const safe=validDisplayUrl(urlValue); if(!safe)throw new Error("Image link is not valid."); return {data:safe}; }
@@ -174,6 +196,9 @@
       if(file.size>limit)throw new Error(`Image file is too large. Use an image link for large images. Current file limit is ${Math.round(limit/1024)} KB.`);
       return await new Promise((resolve,reject)=>{ const reader=new FileReader(); reader.onload=()=>resolve({data:String(reader.result||"")}); reader.onerror=()=>reject(new Error("Cannot read image file.")); reader.readAsDataURL(file); });
     }
+    function selectedImageBytesTotal(){
+      return (selectedFiles.icon ? selectedFiles.icon.size : 0) + (selectedFiles.banner ? selectedFiles.banner.size : 0);
+    }
     window.publishSource=async function(){
       if(!currentUser||!currentProfile){openProfileModal();return;}
       const name=normalizeName(byId("sourceNameInput").value), downloadUrl=byId("downloadUrlInput").value.trim(), category=byId("categoryInput").value;
@@ -181,6 +206,8 @@
       const sourceKey=compactKey(name);
       if(!sourceKey){alert("Source code name is not valid.");return;}
       const urlCheck=validateDownloadUrl(downloadUrl); if(!urlCheck.ok){alert(urlCheck.message);return;}
+      const imageTotalLimit = hasPowerAccess() ? 900000 : 360000;
+      if(selectedImageBytesTotal() > imageTotalLimit){ alert(`Icon + banner image files are too large for Firestore. Limit is ${Math.round(imageTotalLimit/1024)} KB total. Please use image links for large images.`); return; }
       setButtonBusy("publishBtn",true);
       try{
         const sourceRef=doc(db,"sources",sourceKey), profileRef=doc(db,"profiles",currentUser.uid), nowMs=Date.now(), today=todayKey();
