@@ -14,6 +14,11 @@
   <meta property="og:title" content="PMM Open Source - Source Code Hub" />
   <meta property="og:description" content="Discover and publish trusted open-source links in one clean workspace." />
   <meta property="og:site_name" content="PMM Open Source" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
+  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PMM Open Source - Source Code Hub" />
   <meta name="twitter:description" content="Discover and publish trusted source-code links and useful software downloads." />
@@ -31,7 +36,13 @@
       --radius:18px;--radius-lg:26px;--shadow:0 18px 55px rgba(15,23,42,.08);--shadow-soft:0 10px 32px rgba(15,23,42,.06);
     }
     *{box-sizing:border-box} html{scroll-behavior:auto}
-    body{margin:0;font-family:Inter,Kanit,Arial,sans-serif;background:radial-gradient(circle at top left,#eff6ff 0,#f8fafc 34%,var(--bg) 100%);color:var(--text)}
+    body{margin:0;font-family:Inter,Kanit,Arial,sans-serif;background:radial-gradient(circle at top left,#eff6ff 0,#f8fafc 34%,var(--bg) 100%);color:var(--text);overflow-x:hidden;position:relative}
+    .holo-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:radial-gradient(circle at 18% 12%,rgba(56,189,248,.16),transparent 28%),radial-gradient(circle at 82% 24%,rgba(168,85,247,.14),transparent 30%),linear-gradient(180deg,#f8fafc,#eef2ff)}
+    .holo-bg::before{content:"";position:absolute;inset:-40%;background-image:linear-gradient(rgba(14,165,233,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.12) 1px,transparent 1px);background-size:42px 42px;transform:perspective(640px) rotateX(62deg) translateY(-110px);transform-origin:top;animation:gridFloat 18s linear infinite;opacity:.7}
+    .holo-shape{position:absolute;width:80px;height:80px;border:1px solid rgba(14,165,233,.24);background:linear-gradient(135deg,rgba(255,255,255,.54),rgba(14,165,233,.10));box-shadow:0 18px 50px rgba(14,165,233,.10);backdrop-filter:blur(6px);animation:shapeDrift 16s ease-in-out infinite;opacity:.55}
+    .holo-shape:nth-child(1){left:7%;top:18%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation-duration:19s}.holo-shape:nth-child(2){right:10%;top:14%;border-radius:28px;animation-duration:23s;animation-delay:-6s}.holo-shape:nth-child(3){left:16%;bottom:18%;clip-path:polygon(50% 0,95% 75%,5% 75%);animation-duration:21s;animation-delay:-10s}.holo-shape:nth-child(4){right:17%;bottom:16%;border-radius:50%;animation-duration:17s;animation-delay:-3s}.holo-shape:nth-child(5){left:48%;top:32%;width:54px;height:54px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);animation-duration:25s;animation-delay:-12s}
+    @keyframes gridFloat{0%{background-position:0 0}100%{background-position:0 84px}}@keyframes shapeDrift{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(20px,-34px,0) rotate(12deg)}}
+    @media (prefers-reduced-motion:reduce){.holo-bg::before,.holo-shape,.skeleton-card{animation:none!important}}
     button,input,select,textarea{font:inherit} button{user-select:none}
     .topbar{min-height:72px;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 28px;box-shadow:0 8px 30px rgba(15,23,42,.05);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(226,232,240,.8)}
     .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;letter-spacing:-.45px}.brand-code{width:38px;height:34px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:#111827;font-weight:900;font-size:17px;box-shadow:var(--shadow-soft)}
@@ -47,11 +58,11 @@
     .recommend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.mini-card{border:1px solid rgba(226,232,240,.95);border-radius:20px;padding:16px;cursor:pointer;background:linear-gradient(180deg,#fff,#f8fafc);transition:box-shadow .18s ease,border-color .18s ease}.mini-card:hover{box-shadow:var(--shadow-soft);border-color:#cbd5e1}.mini-card strong{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:15px}.mini-card small{display:block;margin-top:8px;color:var(--muted);font-weight:700}
     .toolbar{display:grid;gap:16px;margin:24px 0}.search-wrap{display:flex;gap:12px;flex-wrap:wrap}.search-box{position:relative;flex:1;min-width:250px}.search-box::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:20px;font-weight:900}.search-wrap input,.search-wrap select{border:1px solid rgba(226,232,240,.95);border-radius:16px;padding:14px 16px;outline:none;background:var(--surface);box-shadow:var(--shadow-soft);color:#334155}.search-wrap input{width:100%;padding-left:44px}.search-wrap input:focus,.search-wrap select:focus,.form input:focus,.form select:focus,.form textarea:focus{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(147,197,253,.25)}
     .chips{display:flex;gap:10px;flex-wrap:wrap}.chip{border:1px solid rgba(226,232,240,.95);background:#fff;color:#475569;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;transition:.18s ease}.chip:hover{background:var(--primary-soft);color:var(--primary)}.chip.active{background:#0f172a;color:#fff;border-color:#0f172a;box-shadow:0 12px 28px rgba(15,23,42,.18)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.card{background:rgba(255,255,255,.96);border:1px solid rgba(226,232,240,.92);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);transition:box-shadow .2s ease,border-color .2s ease;position:relative}.card:hover{box-shadow:0 18px 55px rgba(15,23,42,.10);border-color:#cbd5e1}.banner{height:122px;background:linear-gradient(135deg,#dbeafe,#f5d0fe);display:grid;place-items:center;overflow:hidden;font-weight:900;color:#475569}.banner img{width:100%;height:100%;object-fit:cover}.card-body{padding:20px}.source-row{display:flex;gap:14px;align-items:center;margin-top:-42px}.icon-box{width:66px;height:66px;border-radius:20px;background:#0f172a;color:#fff;border:5px solid #fff;display:grid;place-items:center;font-weight:900;font-size:23px;overflow:hidden;flex:0 0 auto;box-shadow:0 14px 30px rgba(15,23,42,.16)}.icon-box img{width:100%;height:100%;object-fit:cover}.title-area{min-width:0;padding-top:40px}.title-area h3{margin:0;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px}.title-area small{display:block;margin-top:5px;color:var(--muted);font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;color:var(--muted);font-size:12px;font-weight:800}.tag{background:var(--primary-soft);color:#1e40af;padding:6px 9px;border-radius:999px}.tag.warn{background:#fef3c7;color:#92400e}.tag.admin{background:#0f172a;color:#fff}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1;min-width:92px}.delete-btn{display:none;position:absolute;top:12px;right:12px;border:none;background:rgba(255,255,255,.94);color:var(--danger);border-radius:14px;padding:9px;cursor:pointer;box-shadow:0 10px 28px rgba(15,23,42,.15);font-weight:900;transition:.18s}.delete-btn:hover{background:#fff1f2}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.card{background:rgba(255,255,255,.96);border:1px solid rgba(226,232,240,.92);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);transition:box-shadow .2s ease,border-color .2s ease;position:relative}.card:hover{box-shadow:0 18px 55px rgba(15,23,42,.10);border-color:#cbd5e1}.banner{height:122px;background:linear-gradient(135deg,#dbeafe,#f5d0fe);display:grid;place-items:center;overflow:hidden;font-weight:900;color:#475569}.banner img{width:100%;height:100%;object-fit:cover}.card-body{padding:20px}.source-row{display:flex;gap:14px;align-items:center;margin-top:-42px}.icon-box{width:66px;height:66px;border-radius:20px;background:#0f172a;color:#fff;border:5px solid #fff;display:grid;place-items:center;font-weight:900;font-size:23px;overflow:hidden;flex:0 0 auto;box-shadow:0 14px 30px rgba(15,23,42,.16)}.icon-box img{width:100%;height:100%;object-fit:cover}.title-area{min-width:0;padding-top:40px}.title-area h3{margin:0;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px}.title-area small{display:block;margin-top:5px;color:var(--muted);font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;color:var(--muted);font-size:12px;font-weight:800}.tag{background:var(--primary-soft);color:#1e40af;padding:6px 9px;border-radius:999px}.tag.warn{background:#fef3c7;color:#92400e}.tag.admin{background:#0f172a;color:#fff}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1;min-width:92px}.delete-btn{display:none;position:absolute;top:10px;right:10px;width:38px;height:38px;min-width:38px;max-width:38px;padding:0;border:none;background:rgba(255,255,255,.96);color:var(--danger);border-radius:14px;cursor:pointer;box-shadow:0 10px 28px rgba(15,23,42,.15);font-weight:900;transition:.18s;place-items:center;line-height:1;overflow:hidden}.delete-btn:hover{background:#fff1f2;transform:translateY(-1px)}.card{contain:layout paint;content-visibility:auto;contain-intrinsic-size:330px}.banner.placeholder{color:#fff;position:relative;text-shadow:0 1px 10px rgba(15,23,42,.24)}.banner.placeholder::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 18%,rgba(255,255,255,.30),transparent 32%),linear-gradient(135deg,rgba(255,255,255,.10),transparent);pointer-events:none}.banner.placeholder strong{position:relative;z-index:1}.icon-box.placeholder{color:#fff;text-shadow:0 1px 8px rgba(15,23,42,.22)}.missing-state{display:grid;place-items:center;text-align:center;min-height:420px;background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.95);border-radius:32px;box-shadow:var(--shadow);padding:32px}.missing-icon{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;margin-bottom:16px;background:#fff1f2;color:#dc2626;font-size:42px;font-weight:1000;border:1px solid #fecaca;box-shadow:0 18px 48px rgba(220,38,38,.14)}
     .empty{display:none;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cbd5e1;padding:44px;border-radius:var(--radius-lg);font-weight:800}.skeleton-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.skeleton-card{height:310px;border-radius:var(--radius-lg);background:linear-gradient(90deg,#eef2f7 25%,#f8fafc 37%,#eef2f7 63%);background-size:400% 100%;animation:shine 1.35s infinite;box-shadow:var(--shadow-soft)}@keyframes shine{0%{background-position:100% 0}100%{background-position:0 0}}
     .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:100;align-items:center;justify-content:center;padding:18px}.modal{width:min(720px,100%);max-height:92vh;overflow-y:auto;overscroll-behavior:contain;background:#fff;border-radius:28px;padding:24px;box-shadow:0 32px 95px rgba(15,23,42,.33)}.modal.large{width:min(1040px,100%)}.modal h2{margin:0 0 16px;letter-spacing:-.35px}.form{display:grid;gap:14px}.form label{display:grid;gap:7px;font-weight:800;color:#334155;font-size:14px}.form input,.form select,.form textarea{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}.form small{color:var(--muted);font-weight:600}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}.info-box{background:var(--surface-soft);border:1px solid var(--line);border-radius:18px;padding:15px;color:#334155;font-weight:600;line-height:1.65;font-size:14px}.upload-zone{border:2px dashed #cbd5e1;border-radius:20px;padding:16px;background:#f8fafc;display:grid;gap:12px;cursor:pointer;transition:background .18s,border-color .18s}.upload-zone:hover,.upload-zone.dragover{background:var(--primary-soft);border-color:var(--primary)}.upload-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.preview{width:100%;max-height:170px;object-fit:cover;border-radius:16px;display:none;background:#e5e7eb}.image-choice{display:grid;gap:10px}.image-choice.hidden-choice{display:none}.clear-image-btn{justify-self:start}.position-tools{border:1px solid var(--line);border-radius:18px;padding:13px;background:#f8fafc;display:grid;gap:10px}.position-tools .range-row{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;color:#334155;font-weight:800}.position-tools input[type="range"]{width:100%;padding:0;box-shadow:none}.position-preview{width:100%;height:122px;object-fit:cover;border-radius:16px;background:#e5e7eb;display:none;overflow:hidden}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);text-align:left;padding:11px 8px;vertical-align:top}th{color:#334155}.danger-zone{border:1px solid #fecaca;background:#fff1f2;border-radius:18px;padding:15px;margin-top:16px}.muted{color:var(--muted);font-weight:700}.hidden{display:none!important}
 
-    .admin-tools{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;margin:14px 0}.admin-tools input{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}.confirm-name{font-weight:900;color:#b91c1c}.edit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.range-row.compact{grid-template-columns:90px 1fr 48px}.inline-actions{display:flex;gap:8px;flex-wrap:wrap}.inline-actions .btn{padding:8px 11px;border-radius:12px;font-size:12px}.admin-hint{margin-top:8px;font-size:13px;color:var(--muted);font-weight:700}
+    .admin-tools{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;margin:14px 0}.admin-tools input,.admin-tools select{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}.ban-tools{display:grid;grid-template-columns:1.2fr .55fr .8fr auto auto;gap:10px;align-items:end;margin-top:12px}.ban-tools label{display:grid;gap:6px;font-weight:800;color:#334155;font-size:13px}.ban-tools input,.ban-tools select{border:1px solid var(--line);border-radius:16px;padding:12px 13px;outline:none;background:#fff}@media(max-width:860px){.admin-tools,.ban-tools{grid-template-columns:1fr}.delete-btn{top:8px;right:8px}}.confirm-name{font-weight:900;color:#b91c1c}.edit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.range-row.compact{grid-template-columns:90px 1fr 48px}.inline-actions{display:flex;gap:8px;flex-wrap:wrap}.inline-actions .btn{padding:8px 11px;border-radius:12px;font-size:12px}.admin-hint{margin-top:8px;font-size:13px;color:var(--muted);font-weight:700}
 
     .source-detail{display:none;min-height:calc(100vh - 120px)}
     .detail-shell{background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.95);border-radius:32px;overflow:hidden;box-shadow:var(--shadow)}
@@ -68,6 +79,129 @@
     @media(max-width:860px){.detail-body{grid-template-columns:1fr}.detail-title-wrap{align-items:flex-start;flex-direction:column}.detail-hero{min-height:260px}.detail-actions .btn{width:100%}}
 
     @media(max-width:760px){.topbar{align-items:flex-start;flex-direction:column;padding:14px 18px}.hero{flex-direction:column;align-items:flex-start}.container{padding:26px 16px 70px}.grid{grid-template-columns:1fr}table{font-size:12px}.modal{padding:20px}.actions button{min-width:100%}}
+
+    /* Clean white background mode: removed holographic grid and floating shapes for stability. */
+    body{background:#ffffff!important;overflow-x:hidden;position:relative}
+    .holo-bg,.holo-shape{display:none!important;animation:none!important}
+    .topbar{background:#ffffff!important;backdrop-filter:none!important}
+    .panel,.card,.modal,.detail-shell,.detail-card,.missing-state{background:#ffffff!important}
+    .container{background:#ffffff}
+    .card{overflow:hidden!important;contain:layout paint;content-visibility:auto;contain-intrinsic-size:320px}
+    .banner{height:122px;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+    .banner img,.icon-box img,.detail-hero>img,.detail-icon img{display:none!important}
+    .source-row{margin-top:0!important;align-items:center!important}
+    .card-body{padding:18px 20px 20px!important}
+    .icon-box{width:56px!important;height:56px!important;border:0!important;border-radius:16px!important;overflow:hidden!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;box-shadow:0 10px 24px rgba(15,23,42,.12)!important}
+    .title-area{padding-top:0!important;min-width:0!important}
+    .delete-btn{top:10px!important;right:10px!important;width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;padding:0!important;display:none;align-items:center!important;justify-content:center!important;overflow:hidden!important;line-height:1!important;z-index:6!important}
+    .delete-btn[style*="block"]{display:flex!important}
+    .detail-hero{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+    .detail-icon{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;overflow:hidden!important}
+    @media(max-width:760px){.icon-box{width:52px!important;height:52px!important}.delete-btn{top:8px!important;right:8px!important}}
+
+
+    /* UI polish: white theme, rounded modal scrollbars, cleaner selects and upload controls */
+    .modal-backdrop{padding:clamp(14px,3vw,30px)!important;background:rgba(15,23,42,.52)!important;backdrop-filter:blur(2px);}
+    .modal{
+      border-radius:30px!important;
+      border:1px solid rgba(226,232,240,.95)!important;
+      max-height:min(88vh,900px)!important;
+      overflow-y:auto!important;
+      overflow-x:hidden!important;
+      scrollbar-gutter:stable both-edges;
+      background:#fff!important;
+      box-shadow:0 26px 80px rgba(15,23,42,.22)!important;
+    }
+    .modal.large{width:min(980px,calc(100vw - 36px))!important;}
+    .modal::-webkit-scrollbar{width:12px;}
+    .modal::-webkit-scrollbar-track{background:transparent;margin:20px 0;border-radius:999px;}
+    .modal::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px;border:4px solid #fff;}
+    .modal::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+    .modal{scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;}
+    .modal h2{line-height:1.15;}
+    .form input,.form select,.form textarea,.search-wrap select,.search-wrap input,.admin-tools input,.admin-tools select,.ban-tools input,.ban-tools select{
+      border-radius:18px!important;
+      border:1px solid #e2e8f0!important;
+      background:#fff!important;
+      box-shadow:0 6px 20px rgba(15,23,42,.035)!important;
+    }
+    select{
+      appearance:none;
+      -webkit-appearance:none;
+      background-image:linear-gradient(45deg,transparent 50%,#334155 50%),linear-gradient(135deg,#334155 50%,transparent 50%)!important;
+      background-position:calc(100% - 18px) 50%,calc(100% - 12px) 50%!important;
+      background-size:6px 6px,6px 6px!important;
+      background-repeat:no-repeat!important;
+      padding-right:40px!important;
+    }
+    select option{background:#fff;color:#111827;}
+    select option:checked,select option:hover{background:#f1f5f9!important;color:#111827!important;}
+    .upload-zone{border-radius:22px!important;background:#f8fafc!important;border-color:#d7e0ec!important;}
+    .upload-zone:hover,.upload-zone.dragover{background:#f1f5f9!important;border-color:#94a3b8!important;}
+    .position-tools{border-radius:22px!important;background:#f8fafc!important;overflow:hidden;}
+    .position-tools input[type=range]{accent-color:#111827;}
+    .delete-btn{box-sizing:border-box!important;transform:none!important;}
+    .delete-btn:hover{transform:none!important;}
+    @media(max-width:760px){.modal{width:calc(100vw - 24px)!important;border-radius:24px!important;padding:18px!important}.modal.large{width:calc(100vw - 24px)!important}}
+
+
+    /* Final fix: custom dropdowns, stronger button hit-area, delete icon inside card */
+    .topbar,.nav,.profile-area,.hero-actions,.actions,.modal-actions{position:relative;z-index:20;}
+    .nav button,.btn{min-height:42px;touch-action:manipulation;pointer-events:auto!important;}
+    .card{overflow:hidden!important;border-radius:28px!important;isolation:isolate;}
+    .card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:8;box-shadow:inset 0 0 0 1px rgba(226,232,240,.9);}
+    .delete-btn{
+      position:absolute!important;
+      top:12px!important;
+      right:12px!important;
+      left:auto!important;
+      display:none;
+      width:30px!important;
+      height:30px!important;
+      min-width:30px!important;
+      max-width:30px!important;
+      padding:0!important;
+      border-radius:10px!important;
+      z-index:12!important;
+      align-items:center!important;
+      justify-content:center!important;
+      background:rgba(255,255,255,.94)!important;
+      border:1px solid rgba(254,202,202,.95)!important;
+      box-shadow:0 8px 18px rgba(15,23,42,.12)!important;
+      font-size:13px!important;
+      line-height:1!important;
+      overflow:hidden!important;
+    }
+    .delete-btn[style*="block"]{display:flex!important;}
+    .banner{border-top-left-radius:inherit;border-top-right-radius:inherit;overflow:hidden;}
+    .search-wrap{align-items:center;}
+    .search-wrap .custom-select{min-width:170px;}
+    .native-select-hidden{position:absolute!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;}
+    .custom-select{position:relative;z-index:15;}
+    .custom-select.open{z-index:80;}
+    .custom-select-button{
+      width:100%;min-height:46px;border:1px solid #e2e8f0;border-radius:18px;background:#fff;color:#334155;
+      box-shadow:0 6px 20px rgba(15,23,42,.04);padding:12px 42px 12px 16px;text-align:left;font-weight:500;cursor:pointer;
+      position:relative;transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
+    }
+    .custom-select-button::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid #475569;border-bottom:2px solid #475569;transform:translateY(-65%) rotate(45deg);transition:transform .16s ease;}
+    .custom-select.open .custom-select-button{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(147,197,253,.20),0 10px 24px rgba(15,23,42,.06);}
+    .custom-select.open .custom-select-button::after{transform:translateY(-30%) rotate(225deg);}
+    .custom-select-menu{
+      position:absolute;left:0;right:0;top:calc(100% + 8px);max-height:320px;overflow:auto;background:#fff;border:1px solid #e2e8f0;
+      border-radius:20px;box-shadow:0 24px 60px rgba(15,23,42,.16);padding:8px;display:none;animation:softDrop .14s ease-out;z-index:90;
+    }
+    .custom-select.open .custom-select-menu{display:block;}
+    .custom-select-option{border-radius:14px;padding:10px 12px;cursor:pointer;color:#111827;font-weight:500;}
+    .custom-select-option:hover{background:#f1f5f9;}
+    .custom-select-option.selected{background:#0f172a;color:#fff;font-weight:800;}
+    .custom-select-menu::-webkit-scrollbar{width:10px;}
+    .custom-select-menu::-webkit-scrollbar-track{background:transparent;margin:10px 0;}
+    .custom-select-menu::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px;border:3px solid #fff;}
+    @keyframes softDrop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:760px){.search-wrap .custom-select{width:100%;}.delete-btn{top:10px!important;right:10px!important;width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;}}
+
+
   </style>
 </head>
 <body>
@@ -92,7 +226,7 @@
     </section>
     <div id="noticeBox" class="notice"><span id="noticeText"></span><button onclick="closeNotice()">×</button></div>
     <section class="panel" id="recommendedPanel"><div class="panel-title"><div><h2>Recommended</h2><div class="muted">Top useful sources based on engagement</div></div><button class="secondary-btn btn" onclick="selectCategory('Recommended')">View all</button></div><div id="recommendedGrid" class="recommend-grid"></div></section>
-    <section class="toolbar"><div class="search-wrap"><div class="search-box"><input id="searchInput" placeholder="Search source code, category, or owner..." oninput="renderSources()" /></div><select id="sortSelect" onchange="renderSources()"><option value="likes">Sort by likes</option><option value="newest">Sort by newest</option><option value="reports">Sort by reports</option></select><select id="categorySelect" onchange="selectCategory(this.value)"></select></div><div id="categoryChips" class="chips"></div></section>
+    <section class="toolbar"><div class="search-wrap"><div class="search-box"><input id="searchInput" placeholder="Search source code, category, or owner..." oninput="scheduleRenderSources()" /></div><select id="sortSelect" onchange="renderSources()"><option value="likes">Sort by likes</option><option value="newest">Sort by newest</option><option value="reports">Sort by reports</option></select><select id="categorySelect" onchange="selectCategory(this.value)"></select></div><div id="categoryChips" class="chips"></div></section>
     <section id="skeletonGrid" class="skeleton-grid"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></section>
     <section id="sourceGrid" class="grid"></section>
     <section id="emptyState" class="empty">No clean source data found. Publish a new source to start fresh.</section>
@@ -109,7 +243,7 @@
   <div id="downloadModal" class="modal-backdrop"><div class="modal"><h2>Download Confirmation</h2><p class="muted">Open this source in a new tab?</p><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('downloadModal')">Cancel</button><button class="primary-btn btn" onclick="confirmDownload()">Open</button></div></div></div>
   <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About Home - PMM Open Source</h2><p class="muted">A clean PMM open-source hub for publishing useful links and related source information.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
 
-  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Sources</h2><div class="info-box">Test access can manage any source: edit name, owner display, category, URLs, banner position, status, and delete. Search by source name below.</div><div class="admin-tools"><input id="adminFindInput" placeholder="Type source name to manage..." oninput="filterAdminTable()"><button class="secondary-btn btn" onclick="filterAdminTable()">Search</button><button class="primary-btn btn" onclick="openSourceByAdminName()">Open by name</button></div><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn btn" onclick="markAllReview(true)">Mark all review</button><button class="danger-btn btn" onclick="deleteLegacySources()">Clean old data</button></div><div class="admin-hint">Tip: the Manage button on each card also opens this editor.</div><div style="overflow:auto;margin-top:14px;max-height:48vh"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every currently loaded source.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:13px;border-radius:14px;border:1px solid #fecaca"><div class="modal-actions"><button class="danger-btn btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
+  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Sources</h2><div class="info-box">Test access can manage any source: edit name, owner display, category, URLs, banner position, status, and delete. Search by source name below.</div><div class="admin-tools"><input id="adminFindInput" placeholder="Type source name to manage..." oninput="filterAdminTable()"><button class="secondary-btn btn" onclick="filterAdminTable()">Search</button><button class="primary-btn btn" onclick="openSourceByAdminName()">Open by name</button></div><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn btn" onclick="markAllReview(true)">Mark all review</button><button class="danger-btn btn" onclick="deleteLegacySources()">Clean old data</button><button class="danger-btn btn" onclick="cleanBrokenDownloads()">Clean broken links</button></div><div class="admin-hint">Tip: the Manage button on each card also opens this editor.</div><div class="danger-zone"><b>User Ban Control</b><p class="muted">Ban by Username or UID. Max 365 days. Ban & Wipe deletes the user profile and owned source documents that this client can access.</p><div class="ban-tools"><label>Username / UID<input id="adminBanUserInput" placeholder="username or Firebase UID"></label><label>Days<input id="adminBanDaysInput" type="number" min="1" max="365" value="7"></label><label>Mode<select id="adminBanModeInput"><option value="ban">Ban only</option><option value="ban_wipe">Ban & Wipe Data</option></select></label><button class="danger-btn btn" onclick="applyUserBan()">Apply Ban</button><button class="secondary-btn btn" onclick="unbanUser()">Unban</button></div><div id="banStatusText" class="admin-hint"></div></div><div style="overflow:auto;margin-top:14px;max-height:48vh"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every currently loaded source.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:13px;border-radius:14px;border:1px solid #fecaca"><div class="modal-actions"><button class="danger-btn btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
 
   <div id="editSourceModal" class="modal-backdrop"><div class="modal large"><h2>Edit Source</h2><div class="info-box">This editor is available only after PMM_Test/F9 access is unlocked. It updates the selected source directly in Firestore.</div><div class="form" style="margin-top:16px"><div class="edit-grid"><label>Source display name<input id="editSourceNameInput" maxlength="50"></label><label>Owner display name<input id="editOwnerNameInput" maxlength="50"></label><label>Category<select id="editCategoryInput"></select></label><label>Status<select id="editStatusInput"><option value="active">active</option><option value="review">review</option><option value="hidden">hidden</option></select></label></div><label>Download link<input id="editDownloadUrlInput" maxlength="800"></label><label>Icon image URL<input id="editIconUrlInput" maxlength="1200" placeholder="Paste icon image link or leave blank"></label><label>Horizontal banner image URL<input id="editBannerUrlInput" maxlength="1200" placeholder="Paste banner image link or leave blank"></label><div class="position-tools"><strong>Banner image position</strong><div class="range-row compact"><span>Left/Right</span><input id="editBannerPosXInput" type="range" min="0" max="100" value="50" oninput="updateEditPositionLabel()"><b id="editPosXLabel">50%</b></div><div class="range-row compact"><span>Up/Down</span><input id="editBannerPosYInput" type="range" min="0" max="100" value="50" oninput="updateEditPositionLabel()"><b id="editPosYLabel">50%</b></div></div></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('editSourceModal')">Cancel</button><button class="danger-btn btn" onclick="deleteSource(selectedEditSourceId)">Delete this source</button><button class="primary-btn btn" onclick="saveEditSource()">Save Changes</button></div></div></div>
 
@@ -117,6 +251,65 @@
 
   <script>
     const APP_VERSION = "pmm-clean-v5";
+    const PUBLIC_SITE_URL = "https://eee946812-creator.github.io/PMM_open_source/";
+
+    const SHARE_IMAGE_URL = "https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi";
+    function setMetaContent(selector, content){
+      let el=document.querySelector(selector);
+      if(!el){
+        el=document.createElement('meta');
+        if(selector.includes('property=')) el.setAttribute('property', selector.match(/property="([^"]+)"/)?.[1] || 'og:image');
+        else el.setAttribute('name', selector.match(/name="([^"]+)"/)?.[1] || 'twitter:image');
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    }
+    function refreshShareImageMeta(){
+      setMetaContent('meta[property="og:image"]', SHARE_IMAGE_URL);
+      setMetaContent('meta[property="og:image:secure_url"]', SHARE_IMAGE_URL);
+      setMetaContent('meta[name="twitter:image"]', SHARE_IMAGE_URL);
+    }
+    function enhanceSelect(select){
+      if(!select || select.dataset.enhancedSelect==='1') return;
+      select.dataset.enhancedSelect='1';
+      select.classList.add('native-select-hidden');
+      const wrap=document.createElement('div');
+      wrap.className='custom-select';
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='custom-select-button';
+      const menu=document.createElement('div');
+      menu.className='custom-select-menu';
+      wrap.append(btn,menu);
+      select.parentNode.insertBefore(wrap,select.nextSibling);
+      function rebuild(){
+        const selected=select.options[select.selectedIndex];
+        btn.textContent=selected ? selected.textContent : '';
+        menu.innerHTML='';
+        [...select.options].forEach(opt=>{
+          const item=document.createElement('div');
+          item.className='custom-select-option'+(opt.value===select.value?' selected':'');
+          item.textContent=opt.textContent;
+          item.addEventListener('click',e=>{
+            e.stopPropagation();
+            select.value=opt.value;
+            wrap.classList.remove('open');
+            select.dispatchEvent(new Event('change',{bubbles:true}));
+            rebuild();
+          });
+          menu.appendChild(item);
+        });
+      }
+      btn.addEventListener('click',e=>{
+        e.preventDefault(); e.stopPropagation();
+        document.querySelectorAll('.custom-select.open').forEach(el=>{if(el!==wrap)el.classList.remove('open')});
+        wrap.classList.toggle('open');
+      });
+      document.addEventListener('click',()=>wrap.classList.remove('open'));
+      select.addEventListener('change',rebuild);
+      rebuild();
+    }
+    function enhanceAllSelects(){ ['sortSelect','categorySelect'].forEach(id=>enhanceSelect(safeById(id))); }
     const CATEGORIES = ["All","Recommended","Source Code","Tool","Game","Operating System","Browser","AI","Design","Other"];
     const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
     const MAX_IMAGE_BYTES = 250 * 1024;
@@ -126,7 +319,7 @@
     const SUPPORTED_DOWNLOAD_DOMAINS = ["github.com","gitlab.com","sourceforge.net","fosshub.com","ubuntu.com"];
     const SUPPORTED_EXTENSIONS = [".zip",".7z",".rar",".tar.gz",".exe",".msi",".apk",".iso",".deb",".rpm"];
     const AVATAR_COLORS = ["#2563eb","#7c3aed","#0891b2","#059669","#ea580c","#db2777","#0f172a"];
-    let currentUser = null, currentProfile = null, isAdminUser = false, isLocalManager = false, sources = [], adminAllSources = [], selectedCategory = "All", selectedReportSourceId = null, selectedDownloadUrl = null, selectedEditSourceId = null, pendingConfirmAction = null, selectedFiles = {icon:null,banner:null}, loadingSources = false;
+    let currentUser = null, currentProfile = null, isAdminUser = false, isLocalManager = false, sources = [], adminAllSources = [], selectedCategory = "All", selectedReportSourceId = null, selectedDownloadUrl = null, selectedDownloadSourceId = null, selectedEditSourceId = null, pendingConfirmAction = null, selectedFiles = {icon:null,banner:null}, loadingSources = false, currentBan = null, renderTimer = 0;
     const byId = id => document.getElementById(id);
     const safeById = id => document.getElementById(id);
     window.addEventListener("error", event => { console.error("Runtime error:", event.error || event.message); try{ showNotice("A system error was detected, but the page is still running. Please refresh if data looks incorrect."); }catch{} });
@@ -159,12 +352,15 @@
     function updateBannerPreviewPosition(){ const p=getBannerPosition(); ["bannerPreview","bannerUrlPreview"].forEach(id=>{ const img=safeById(id); if(img) img.style.objectPosition=`${p.x}% ${p.y}%`; }); const label=safeById("bannerPositionLabel"); if(label) label.textContent=`X ${p.x}% / Y ${p.y}%`; }
     async function needsGate(name){ return profileNameKey(name) === TEST_PROFILE_KEY && _xk.includes(await digestText(profileNameKey(name))); }
     function passGate(){ return new Promise(resolve=>{ securityCodeResolver=resolve; const input=safeById("securityCodeInput"); if(input){ input.value=""; setTimeout(()=>input.focus(),80); } openModal("securityCodeModal"); }); }
-    window.submitSecurityCode=async function(){ const input=safeById("securityCodeInput"); const value=input ? input.value : ""; const passed=(await digestText(value))===_zk; closeModal("securityCodeModal"); if(securityCodeResolver){ securityCodeResolver(passed); securityCodeResolver=null; } if(!passed) notifyUser("Invalid test access code for PMM_Test."); };
-    window.cancelSecurityCode=function(){ closeModal("securityCodeModal"); if(securityCodeResolver){ securityCodeResolver(false); securityCodeResolver=null; } notifyUser("PMM_Test verification was cancelled."); };
+    window.submitSecurityCode=async function(){ const input=safeById("securityCodeInput"); const value=input ? input.value : ""; const passed=(await digestText(value))===_zk; closeModal("securityCodeModal"); if(securityCodeResolver){ securityCodeResolver(passed); securityCodeResolver=null; } if(!passed) return; };
+    window.cancelSecurityCode=function(){ closeModal("securityCodeModal"); if(securityCodeResolver){ securityCodeResolver(false); securityCodeResolver=null; }  };
     window.updateBannerPreviewPosition=updateBannerPreviewPosition;
     function hasPowerAccess(){ return Boolean(testAccessUnlocked || isAdminUser || isLocalManager || (currentProfile && currentProfile.nameKey === TEST_PROFILE_KEY && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk)); }
     function validProfileName(name){ return /^[\u0E00-\u0E7Fa-zA-Z0-9 _:\-.]{2,30}$/.test(name) && !name.includes("/"); }
     function randomColor(){ return AVATAR_COLORS[Math.floor(Math.random()*AVATAR_COLORS.length)]; }
+    function colorFromText(value){ const text=String(value||"PMM"); let hash=0; for(let i=0;i<text.length;i++) hash=(hash*31+text.charCodeAt(i))>>>0; return `hsl(${hash%360} 72% 42%)`; }
+    function sourceAccent(src){ return src?.color || colorFromText(`${src?.ownerName||""}-${src?.category||""}-${src?.name||""}`); }
+    function placeholderGradient(src){ const c=sourceAccent(src); return `linear-gradient(135deg, ${c}, #0f172a)`; }
     function todayKey(){ return new Date().toISOString().slice(0,10); }
     function defaultIconText(name){ return (name||"S").trim().slice(0,1).toUpperCase(); }
     function validDisplayUrl(url){ try{ const parsed = new URL(url); return ["https:","http:"].includes(parsed.protocol) ? parsed.href : ""; }catch{return "";} }
@@ -172,37 +368,84 @@
     function validateDownloadUrl(url){ const raw=String(url||"").trim(); if(!raw || raw.length>800) return {ok:false,message:"Please enter a real download link with 800 characters or less."}; let parsed; try{parsed=new URL(raw)}catch{return{ok:false,message:"Please enter a valid download URL."}} if(!["http:","https:"].includes(parsed.protocol)) return {ok:false,message:"Only HTTP and HTTPS links are supported."}; return {ok:true}; }
     function setButtonBusy(buttonId,busy){ const btn=byId(buttonId); if(!btn)return; btn.disabled=busy; btn.textContent=busy?"Processing...":"Publish"; }
     function setLoading(state){ loadingSources=state; byId("skeletonGrid").style.display=state?"grid":"none"; byId("sourceGrid").style.display=state?"none":"grid"; if(state) byId("emptyState").style.display="none"; }
-    function showHome(){ selectedCategory="All"; byId("categorySelect").value="All"; renderCategoryChips(); renderSources(); window.scrollTo(0,0); }
-    function selectCategory(category){ selectedCategory=category; byId("categorySelect").value=category; renderCategoryChips(); renderSources(); }
+    function showHome(){ selectedCategory="All"; const cat=byId("categorySelect"); if(cat){ cat.value="All"; cat.dispatchEvent(new Event('change',{bubbles:true})); } closeSourcePage(); renderCategoryChips(); renderSources(); window.scrollTo(0,0); }
+    function selectCategory(category){ selectedCategory=category; const cat=byId("categorySelect"); if(cat && cat.value!==category){ cat.value=category; cat.dispatchEvent(new Event('change',{bubbles:true})); } renderCategoryChips(); renderSources(); }
     function openAbout(){ openModal("aboutModal"); }
     function openProfileModal(){ openModal("profileModal"); }
-    function openDownload(url){ selectedDownloadUrl=validDisplayUrl(url); if(!selectedDownloadUrl){notifyUser("Invalid or unsafe download URL."); return;} openModal("downloadModal"); }
-    function confirmDownload(){ if(selectedDownloadUrl) window.open(selectedDownloadUrl,"_blank","noopener,noreferrer"); closeModal("downloadModal"); }
-    function openAddModal(){ if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; } if(!currentProfile){ openProfileModal(); return; } openModal("addModal"); }
+    function openDownload(url,sourceId=null){ selectedDownloadUrl=validDisplayUrl(url); selectedDownloadSourceId=sourceId; if(!selectedDownloadUrl){notifyUser("Invalid or unsafe download URL."); return;} openModal("downloadModal"); }
+    async function checkDownloadAvailability(url){
+      const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),5200);
+      try{ const res=await fetch(url,{method:"HEAD",mode:"cors",redirect:"follow",cache:"no-store",signal:controller.signal}); if(res.status===404||res.status===410) return {state:"missing",status:res.status}; if(res.ok || (res.status>=200&&res.status<400)) return {state:"ok",status:res.status}; if(res.status>=400&&res.status<500) return {state:"invalid",status:res.status}; return {state:"unknown",status:res.status}; }
+      catch(_){ return {state:"unknown",status:0}; }
+      finally{ clearTimeout(timer); }
+    }
+    function showMissingDetail(){ const detail=safeById("sourceDetail"); setHomeVisible(false); if(detail) detail.innerHTML=`<div class="missing-state"><div><div class="missing-icon">!</div><h2>Data missing or invalid link</h2><p class="muted">The requested source was deleted, hidden, or the link is no longer valid.</p><div class="detail-actions" style="justify-content:center"><button class="secondary-btn btn" onclick="closeSourcePage()">Back Home</button></div></div></div>`; }
+    async function cleanupSourceRecord(sourceId,reason="invalid-link"){
+      if(!sourceId||!currentUser)return false;
+      const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
+      if(!src)return false;
+      if(!(hasPowerAccess()||src.ownerId===currentUser.uid))return false;
+      try{ if(typeof window.cleanupSourceRecordFromDb!=="function")return false; const ok=await window.cleanupSourceRecordFromDb(sourceId,reason); if(ok) showNotice(`Cleaned invalid source data: ${src.name||sourceId}`); return ok; }
+      catch(error){ console.warn("Cleanup skipped:",reason,error); return false; }
+    }
+    async function confirmDownload(){
+      if(!selectedDownloadUrl){ closeModal("downloadModal"); return; }
+      const result=await checkDownloadAvailability(selectedDownloadUrl);
+      if(result.state==="missing"||result.state==="invalid"){ closeModal("downloadModal"); await cleanupSourceRecord(selectedDownloadSourceId,`download-${result.status}`); showMissingDetail(); return; }
+      window.open(selectedDownloadUrl,"_blank","noopener,noreferrer"); closeModal("downloadModal");
+    }
+    function openAddModal(){ if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; } if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Publishing is disabled."); return; } if(!currentProfile){ openProfileModal(); return; } openModal("addModal"); }
     function logoutProfile(){ askConfirm("Logout", "Logout from this browser?", ()=>window.secureLogout()); }
-    function initSelects(){ const categorySelect=byId("categorySelect"), categoryInput=byId("categoryInput"); categorySelect.innerHTML=""; CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categorySelect.appendChild(o); }); categoryInput.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categoryInput.appendChild(o); }); const editCategory=byId("editCategoryInput"); if(editCategory){ editCategory.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;editCategory.appendChild(o); }); } }
+    function initSelects(){ const categorySelect=byId("categorySelect"), categoryInput=byId("categoryInput"); categorySelect.innerHTML=""; CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categorySelect.appendChild(o); }); categoryInput.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categoryInput.appendChild(o); }); const editCategory=byId("editCategoryInput"); if(editCategory){ editCategory.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;editCategory.appendChild(o); }); } setTimeout(enhanceAllSelects,0); }
     function renderCategoryChips(){ const wrap=byId("categoryChips"); wrap.innerHTML=""; CATEGORIES.forEach(cat=>{ const btn=document.createElement("button"); btn.className="chip"+(cat===selectedCategory?" active":""); btn.textContent=cat; btn.addEventListener("click",()=>selectCategory(cat)); wrap.appendChild(btn); }); }
-    function makeImage(url,alt){ const src=validImageSrc(url); if(!src)return null; const img=document.createElement("img"); img.src=src; img.alt=alt||"image"; img.loading="lazy"; img.referrerPolicy="no-referrer"; img.onerror=()=>img.remove(); return img; }
+    function cssUrl(value){ return `url(${JSON.stringify(String(value||""))})`; }
+    function loadAsBackground(el,url,options={}){
+      const src=validImageSrc(url);
+      if(!el || !src) return false;
+      const probe=new Image();
+      probe.referrerPolicy="no-referrer";
+      probe.decoding="async";
+      probe.onload=()=>{
+        el.style.backgroundImage=cssUrl(src);
+        el.style.backgroundSize=options.size||"cover";
+        el.style.backgroundPosition=options.position||"center";
+        el.style.backgroundRepeat="no-repeat";
+        if(options.clearText!==false) el.textContent="";
+        if(options.loadedClass) el.classList.add(options.loadedClass);
+        if(options.removePlaceholder!==false) el.classList.remove("placeholder");
+        if(typeof options.onSuccess==="function") options.onSuccess(src);
+      };
+      probe.onerror=()=>{ if(typeof options.onError==="function") options.onError(); };
+      probe.src=src;
+      return true;
+    }
+    function makeImage(url,alt,onError){ const src=validImageSrc(url); if(!src)return null; const img=document.createElement("img"); img.src=src; img.alt=alt||"image"; img.loading="lazy"; img.decoding="async"; img.referrerPolicy="no-referrer"; img.onerror=()=>{ img.remove(); if(typeof onError==="function") onError(); }; return img; }
     function isCleanSource(src){ return src && src.appVersion === APP_VERSION && src.visibility !== "hidden" && src.status !== "hidden"; }
     function createSourceCard(src,mini=false){
       const card=document.createElement(mini?"div":"article");
       card.className=mini?"mini-card":"card";
       if(mini){ const name=document.createElement("strong"); name.textContent=src.name||"Untitled"; const detail=document.createElement("small"); detail.textContent=`${src.category||"Source Code"} • 👍 ${Number(src.likes||0)}`; card.append(name,detail); card.addEventListener("click",()=>openSourcePage(src.id)); return card; }
       const canDelete=hasPowerAccess()||(currentUser&&src.ownerId===currentUser.uid);
-      const deleteBtn=document.createElement("button"); deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.textContent="🗑"; if(canDelete){deleteBtn.style.display="block"; deleteBtn.addEventListener("click",()=>deleteSource(src.id));}
-      const banner=document.createElement("div"); banner.className="banner";
-      const bannerImg=makeImage(src.bannerUrl,`${src.name||"Source"} banner`); if(bannerImg){ bannerImg.style.objectPosition=`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`; banner.appendChild(bannerImg); } else {const b=document.createElement("strong"); b.textContent=src.category||"Source Code"; banner.appendChild(b);}
+      const deleteBtn=document.createElement("button"); deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.textContent="🗑"; if(canDelete){deleteBtn.style.display="block"; deleteBtn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();deleteSource(src.id);});}
+      const banner=document.createElement("div"); banner.className="banner placeholder";
+      const applyBannerFallback=()=>{ banner.classList.add("placeholder"); banner.style.background=placeholderGradient(src); banner.style.backgroundImage=""; banner.innerHTML=""; const b=document.createElement("strong"); b.textContent=src.category||"Source Code"; banner.appendChild(b); };
+      applyBannerFallback();
+      loadAsBackground(banner,src.bannerUrl,{position:`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`,clearText:false,onSuccess:()=>{ banner.innerHTML=""; }});
       const body=document.createElement("div"); body.className="card-body";
       const row=document.createElement("div"); row.className="source-row";
-      const icon=document.createElement("div"); icon.className="icon-box"; const iconImg=makeImage(src.iconUrl,`${src.name||"Source"} icon`); if(iconImg)icon.appendChild(iconImg); else icon.textContent=defaultIconText(src.name);
+      const icon=document.createElement("div"); icon.className="icon-box placeholder"; const applyIconFallback=()=>{ icon.classList.add("placeholder"); icon.style.background=sourceAccent(src); icon.style.backgroundImage=""; icon.textContent=defaultIconText(src.name); }; applyIconFallback(); loadAsBackground(icon,src.iconUrl,{clearText:true});
       const titleArea=document.createElement("div"); titleArea.className="title-area"; const h3=document.createElement("h3"); const titleLink=document.createElement("a"); titleLink.textContent=src.name||"Untitled"; titleLink.title=src.name||"Untitled"; titleLink.href=sourceUrl(src.id); titleLink.addEventListener("click",e=>{e.preventDefault();openSourcePage(src.id);}); h3.appendChild(titleLink); const small=document.createElement("small"); small.textContent=`by ${src.ownerName||"Unknown"}`; titleArea.append(h3,small); row.append(icon,titleArea);
       const meta=document.createElement("div"); meta.className="meta"; [src.category||"Source Code",`👍 ${Number(src.likes||0)}`,`Reports ${Number(src.reportCount||0)}`].forEach(t=>{const span=document.createElement("span"); span.className="tag"; span.textContent=t; meta.appendChild(span);}); if((src.reportCount||0)>=10||src.status==="review"){const review=document.createElement("span"); review.className="tag warn"; review.textContent="Under Review"; meta.appendChild(review);} if(hasPowerAccess()){const admin=document.createElement("span"); admin.className="tag admin"; admin.textContent="Test Access"; meta.appendChild(admin);}
-      const actions=document.createElement("div"); actions.className="actions"; const view=document.createElement("button"); view.className="view-source-btn btn"; view.textContent="View"; view.addEventListener("click",e=>{e.stopPropagation();openSourcePage(src.id);}); const dl=document.createElement("button"); dl.className="primary-btn btn"; dl.textContent="Download"; dl.addEventListener("click",e=>{e.stopPropagation();openDownload(src.downloadUrl);}); const like=document.createElement("button"); like.className="secondary-btn btn"; like.textContent="Like"; like.addEventListener("click",e=>{e.stopPropagation();likeSource(src.id);}); const report=document.createElement("button"); report.className="danger-btn btn"; report.textContent="Report"; report.addEventListener("click",e=>{e.stopPropagation();openReport(src.id);}); actions.append(view,dl,like,report); if(hasPowerAccess()){ const manage=document.createElement("button"); manage.className="secondary-btn btn"; manage.textContent="Manage"; manage.addEventListener("click",e=>{e.stopPropagation();openEditSource(src.id);}); actions.append(manage); }
+      const actions=document.createElement("div"); actions.className="actions"; const view=document.createElement("button"); view.className="view-source-btn btn"; view.textContent="View"; view.addEventListener("click",e=>{e.stopPropagation();openSourcePage(src.id);}); const dl=document.createElement("button"); dl.className="primary-btn btn"; dl.textContent="Download"; dl.addEventListener("click",e=>{e.stopPropagation();openDownload(src.downloadUrl,src.id);}); const like=document.createElement("button"); like.className="secondary-btn btn"; like.textContent="Like"; like.addEventListener("click",e=>{e.stopPropagation();likeSource(src.id);}); const report=document.createElement("button"); report.className="danger-btn btn"; report.textContent="Report"; report.addEventListener("click",e=>{e.stopPropagation();openReport(src.id);}); actions.append(view,dl,like,report); if(hasPowerAccess()){ const manage=document.createElement("button"); manage.className="secondary-btn btn"; manage.textContent="Manage"; manage.addEventListener("click",e=>{e.stopPropagation();openEditSource(src.id);}); actions.append(manage); }
       body.append(row,meta,actions); card.append(deleteBtn,banner,body); card.addEventListener("click",()=>openSourcePage(src.id)); return card;
     }
     function renderRecommended(){ const wrap=byId("recommendedGrid"); wrap.innerHTML=""; const recommended=[...sources].filter(isCleanSource).sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,3); if(!recommended.length){ const empty=document.createElement("div"); empty.className="mini-card"; empty.textContent="No recommended items yet. Publish a new clean source first."; wrap.appendChild(empty); return; } recommended.forEach(src=>wrap.appendChild(createSourceCard(src,true))); }
 
-    function sourceUrl(sourceId){ return `${location.origin}${location.pathname}#source=${encodeURIComponent(sourceId)}`; }
+    function sourceUrl(sourceId){
+      const canonical=document.querySelector('link[rel="canonical"]')?.href || PUBLIC_SITE_URL;
+      const base = /^https?:/i.test(canonical) ? canonical : PUBLIC_SITE_URL;
+      return `${base.replace(/#.*$/,"").replace(/\?+$/,"").replace(/\/?$/,"/")}#source=${encodeURIComponent(sourceId)}`;
+    }
     function setHomeVisible(show){
       ["recommendedPanel","sourceGrid","emptyState","skeletonGrid"].forEach(id=>{ const el=safeById(id); if(el) el.style.display=show?"":"none"; });
       document.querySelectorAll(".hero,.toolbar").forEach(el=>el.style.display=show?"":"none");
@@ -215,8 +458,8 @@
       const detail=byId("sourceDetail");
       setHomeVisible(false);
       if(!src){
-        document.title="Source not found - PMM Open Source";
-        detail.innerHTML=`<div class="detail-shell"><div class="detail-body"><div class="detail-card"><h2>Source not found</h2><p class="muted">This source may be hidden, deleted, or not loaded yet.</p><div class="detail-actions"><button class="secondary-btn btn" onclick="closeSourcePage()">← Back Home</button></div></div></div></div>`;
+        document.title="Data missing or invalid link - PMM Open Source";
+        showMissingDetail();
         return;
       }
       const safeName=(src.name||"Untitled Source").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]));
@@ -230,10 +473,9 @@
       let desc=document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute("content",`${src.name||"Source"} by ${src.ownerName||"Unknown"}. Category: ${src.category||"Source Code"}. Download and view details on PMM Open Source.`);
       detail.innerHTML=`
         <div class="detail-shell">
-          <div class="detail-hero">
-            ${banner?`<img src="${banner}" alt="${safeName} banner" referrerpolicy="no-referrer" style="object-position:${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%">`:""}
+          <div class="detail-hero placeholder" style="background:${placeholderGradient(src)};background-position:${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%">
             <div class="detail-title-wrap">
-              <div class="detail-icon">${icon?`<img src="${icon}" alt="${safeName} icon" referrerpolicy="no-referrer">`:defaultIconText(src.name)}</div>
+              <div class="detail-icon placeholder" id="detailIconBox" style="background:${sourceAccent(src)}">${defaultIconText(src.name)}</div>
               <div class="detail-title"><h2>${safeName}</h2><p>${safeCategory} • by ${safeOwner}</p></div>
             </div>
           </div>
@@ -243,7 +485,7 @@
               <p class="muted">Open this source in a clean full-screen detail page. The banner, icon, category, owner, and download action are arranged for easier reading and sharing.</p>
               <div class="detail-meta"><span class="tag">${safeCategory}</span><span class="tag">👍 ${Number(src.likes||0)}</span><span class="tag">Reports ${Number(src.reportCount||0)}</span><span class="tag ${src.status==='review'?'warn':''}">${src.status||"active"}</span></div>
               <div class="detail-actions">
-                <button class="primary-btn btn" onclick="openDownload('${url.replace(/'/g,"%27")}')">Download</button>
+                <button class="primary-btn btn" onclick="openDownload('${url.replace(/'/g,"%27")}', '${src.id.replace(/'/g,"%27")}')">Download</button>
                 <button class="secondary-btn btn" onclick="navigator.clipboard.writeText('${share}').then(()=>showNotice('Source link copied.'))">Copy Link</button>
                 <button class="ghost-btn btn" onclick="closeSourcePage()">← Back Home</button>
               </div>
@@ -257,8 +499,13 @@
             </div>
           </div>
         </div>`;
+      const heroEl=detail.querySelector(".detail-hero");
+      const detailIconEl=detail.querySelector("#detailIconBox");
+      if(heroEl) loadAsBackground(heroEl,banner,{position:`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`,clearText:false});
+      if(detailIconEl) loadAsBackground(detailIconEl,icon,{clearText:true});
     }
     function renderRoute(){
+      refreshShareImageMeta();
       const match=location.hash.match(/^#source=([^&]+)/);
       if(match){ renderSourceDetail(decodeURIComponent(match[1])); }
       else { setHomeVisible(true); document.title="PMM Open Source - Free Source Code, Tools, AI, Games and Downloads"; const desc=document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute("content","PMM Open Source is a clean source-code hub for discovering trusted source code, tools, AI projects, games, operating systems, browsers, and useful download links."); renderSources(); }
@@ -271,7 +518,9 @@
     }
     window.openSourcePage=openSourcePage; window.closeSourcePage=closeSourcePage; window.addEventListener("hashchange",renderRoute);
 
-    function renderSources(){ if(loadingSources)return; const grid=byId("sourceGrid"), empty=byId("emptyState"), search=byId("searchInput").value.trim().toLowerCase(), sort=byId("sortSelect").value; grid.innerHTML=""; let list=sources.filter(isCleanSource); if(selectedCategory==="Recommended") list=[...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory!=="All") list=list.filter(src=>(src.category||"").toLowerCase()===selectedCategory.toLowerCase()); if(search) list=list.filter(src=>(src.name||"").toLowerCase().includes(search)||(src.category||"").toLowerCase().includes(search)||(src.ownerName||"").toLowerCase().includes(search)); if(sort==="likes")list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort==="reports")list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display=list.length?"none":"block"; list.forEach(src=>grid.appendChild(createSourceCard(src))); renderRecommended(); if(hasPowerAccess()) loadAdminTable(); }
+    function renderSources(){ if(loadingSources)return; const grid=byId("sourceGrid"), empty=byId("emptyState"), search=byId("searchInput").value.trim().toLowerCase(), sort=byId("sortSelect").value; grid.innerHTML=""; let list=sources.filter(isCleanSource); if(selectedCategory==="Recommended") list=[...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory!=="All") list=list.filter(src=>(src.category||"").toLowerCase()===selectedCategory.toLowerCase()); if(search) list=list.filter(src=>(src.name||"").toLowerCase().includes(search)||(src.category||"").toLowerCase().includes(search)||(src.ownerName||"").toLowerCase().includes(search)); if(sort==="likes")list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort==="reports")list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display=list.length?"none":"block"; const frag=document.createDocumentFragment(); list.forEach(src=>frag.appendChild(createSourceCard(src))); grid.appendChild(frag); renderRecommended(); if(hasPowerAccess()) loadAdminTable(); }
+    function scheduleRenderSources(){ cancelAnimationFrame(renderTimer); renderTimer=requestAnimationFrame(renderSources); }
+    window.scheduleRenderSources=scheduleRenderSources;
     function setupUploadZone(kind){
       const drop=byId(kind+"Drop"), input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput"), urlPreview=byId(kind+"UrlPreview");
       const setMode=mode=>{
@@ -298,7 +547,7 @@
         const v=urlInput.value.trim();
         if(v){
           selectedFiles[kind]=null; input.value=""; nameEl.textContent=kind==="icon"?"Click or drag image here":"Click or drag banner here"; preview.removeAttribute("src"); preview.style.display="none"; setMode("url");
-          if(kind==="banner" && urlPreview){ const safe=validDisplayUrl(v); if(safe){ urlPreview.src=safe; urlPreview.style.display="block"; updateBannerPreviewPosition(); } else { urlPreview.removeAttribute("src"); urlPreview.style.display="none"; } }
+          if(kind==="banner" && urlPreview){ const safe=validDisplayUrl(v); if(safe){ urlPreview.onerror=()=>{ urlPreview.removeAttribute("src"); urlPreview.style.display="none"; }; urlPreview.src=safe; urlPreview.style.display="block"; updateBannerPreviewPosition(); } else { urlPreview.removeAttribute("src"); urlPreview.style.display="none"; } }
         } else setMode("none");
       });
       drop.addEventListener("click",()=>input.click()); input.addEventListener("change",()=>handleFile(input.files[0]));
@@ -316,18 +565,23 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, collection, getDocs, getDoc, doc, setDoc, updateDoc, deleteDoc, increment, serverTimestamp, query, orderBy, limit, runTransaction, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, collection, getDocs, getDoc, doc, setDoc, updateDoc, deleteDoc, increment, serverTimestamp, query, orderBy, where, limit, runTransaction, writeBatch, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     const firebaseConfig={apiKey:"AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",authDomain:"pmm-open-source.firebaseapp.com",projectId:"pmm-open-source",storageBucket:"pmm-open-source.firebasestorage.app",messagingSenderId:"682708192312",appId:"1:682708192312:web:76765761fcea6bf69feacd",measurementId:"G-JZ0RT10XMP"};
     const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
+    function tsToMs(value){ if(!value)return 0; if(typeof value.toMillis==="function")return value.toMillis(); if(value instanceof Date)return value.getTime(); return Number(value)||0; }
+    function isBanActiveLocal(ban){ return Boolean(ban && ban.active!==false && tsToMs(ban.expiresAt)>Date.now()); }
+    function isCurrentUserBanned(){ return isBanActiveLocal(currentBan) && !hasPowerAccess(); }
+    window.isCurrentUserBanned=isCurrentUserBanned;
     if(!window.crypto || !window.crypto.subtle){ showNotice("This browser is missing secure crypto support. Some security features may not work."); }
     testAccessUnlocked = sessionStorage.getItem("pmmTestAccess") === "1";
-    async function refreshProfile(){ if(!currentUser)return; const profileSnap=await getDoc(doc(db,"profiles",currentUser.uid)); currentProfile=profileSnap.exists()?profileSnap.data():null; const adminSnap=await getDoc(doc(db,"admins",currentUser.uid)); isAdminUser=Boolean(adminSnap.exists()&&currentProfile); isLocalManager=Boolean(currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk); try{ const ps=await getDoc(doc(db,"powerSessions",currentUser.uid)); if(ps.exists() && ps.data().accessProof===_zk){ testAccessUnlocked=true; sessionStorage.setItem("pmmTestAccess","1"); } }catch{} updateProfileUI(); }
+    async function refreshProfile(){ if(!currentUser)return; const profileSnap=await getDoc(doc(db,"profiles",currentUser.uid)); currentProfile=profileSnap.exists()?profileSnap.data():null; const adminSnap=await getDoc(doc(db,"admins",currentUser.uid)); isAdminUser=Boolean(adminSnap.exists()&&currentProfile); isLocalManager=Boolean(currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk); try{ const banSnap=await getDoc(doc(db,"bans",currentUser.uid)); currentBan=banSnap.exists()?banSnap.data():null; }catch{ currentBan=null; } try{ const ps=await getDoc(doc(db,"powerSessions",currentUser.uid)); if(ps.exists() && ps.data().accessProof===_zk){ testAccessUnlocked=true; sessionStorage.setItem("pmmTestAccess","1"); } }catch{} updateProfileUI(); if(isCurrentUserBanned()){ const until=new Date(tsToMs(currentBan.expiresAt)).toLocaleString(); showNotice(`Your account is temporarily banned until ${until}.`); } }
     function updateProfileUI(){ const loginBtn=byId("loginBtn"), profilePill=byId("profilePill"), profileNameText=byId("profileNameText"), avatar=byId("avatar"), adminBtn=byId("adminBtn"); if(currentProfile){ loginBtn.style.display="none"; profilePill.style.display="flex"; profileNameText.textContent=currentProfile.name; avatar.style.background=currentProfile.color||"#0f172a"; avatar.textContent=defaultIconText(currentProfile.name); } else { loginBtn.style.display="inline-block"; profilePill.style.display="none"; } adminBtn.style.display=hasPowerAccess()?"inline-block":"none"; }
     window.requestTestAccess=async function(){
-      if(!currentUser){ notifyUser("Authentication is still loading. Please try again."); return; }
+      if(!currentUser){ return; }
       if(hasPowerAccess()){ openAdminPanel(); return; }
+      if(!currentProfile || currentProfile.nameKey !== TEST_PROFILE_KEY){ return; }
       const passed=await passGate();
-      if(!passed){ notifyUser("Invalid test access code."); return; }
+      if(!passed){ return; }
       try{
         await setDoc(doc(db,"powerSessions",currentUser.uid),{uid:currentUser.uid,accessProof:_zk,appVersion:APP_VERSION,updatedAt:serverTimestamp()});
         testAccessUnlocked=true;
@@ -344,7 +598,7 @@
       const name=normalizeName(byId("profileNameInput").value);
       if(!validProfileName(name)){notifyUser("Profile name must be 2–30 characters and cannot contain unsafe symbols or slash.");return;}
       const gated=await needsGate(name);
-      if(gated && !(await passGate())){notifyUser("Invalid code.");return;}
+      if(gated && !(await passGate())){return;}
       const nameKey=profileNameKey(name), profileRef=doc(db,"profiles",currentUser.uid), nameRef=doc(db,"profileNames",nameKey);
       try{
         await runTransaction(db,async tx=>{
@@ -376,6 +630,7 @@
       return (selectedFiles.icon ? selectedFiles.icon.size : 0) + (selectedFiles.banner ? selectedFiles.banner.size : 0);
     }
     window.publishSource=async function(){
+      if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Publishing is disabled."); return; }
       if(!currentUser||!currentProfile){openProfileModal();return;}
       const name=normalizeName(byId("sourceNameInput").value), downloadUrl=byId("downloadUrlInput").value.trim(), category=byId("categoryInput").value, bannerPosition=getBannerPosition();
       if(!name||name.length>50){notifyUser("Source code name is required and must be 50 characters or less.");return;}
@@ -415,8 +670,8 @@
       finally{setButtonBusy("publishBtn",false);}
     };
     window.loadSources=async function(){ setLoading(true); try{ const q=query(collection(db,"sources"),orderBy("createdAtMs","desc"),limit(hasPowerAccess()?250:120)); const snapshot=await getDocs(q); const loaded=[]; snapshot.forEach(item=>loaded.push({id:item.id,...item.data()})); adminAllSources=loaded; sources=loaded.filter(isCleanSource); updateSeoItemList(); renderRoute(); }catch(error){console.error(error); showNotice(error.message||"Cannot load sources.");} finally{setLoading(false); renderRoute();} };
-    window.likeSource=async function(sourceId){ if(!currentUser||!currentProfile){openProfileModal();return;} const src=sources.find(s=>s.id===sourceId); if(!src)return; const sourceRef=doc(db,"sources",sourceId), likeRef=doc(db,"sources",sourceId,"likes",currentUser.uid); try{ await runTransaction(db,async tx=>{ const likeSnap=await tx.get(likeRef); if(likeSnap.exists())throw new Error("You already liked this source."); tx.set(likeRef,{uid:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp()}); tx.update(sourceRef,{likes:increment(1),updatedAt:serverTimestamp()}); }); await loadSources(); }catch(error){notifyUser(error.message);} };
-    window.openReport=function(sourceId){ if(!currentUser||!currentProfile){openProfileModal();return;} if(!sources.find(s=>s.id===sourceId))return; selectedReportSourceId=sourceId; openModal("reportModal"); };
+    window.likeSource=async function(sourceId){ if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Like action is disabled."); return; } if(!currentUser||!currentProfile){openProfileModal();return;} const src=sources.find(s=>s.id===sourceId); if(!src)return; const sourceRef=doc(db,"sources",sourceId), likeRef=doc(db,"sources",sourceId,"likes",currentUser.uid); try{ await runTransaction(db,async tx=>{ const likeSnap=await tx.get(likeRef); if(likeSnap.exists())throw new Error("You already liked this source."); tx.set(likeRef,{uid:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp()}); tx.update(sourceRef,{likes:increment(1),updatedAt:serverTimestamp()}); }); await loadSources(); }catch(error){notifyUser(error.message);} };
+    window.openReport=function(sourceId){ if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Report action is disabled."); return; } if(!currentUser||!currentProfile){openProfileModal();return;} if(!sources.find(s=>s.id===sourceId))return; selectedReportSourceId=sourceId; openModal("reportModal"); };
     window.submitReport=async function(){ if(!selectedReportSourceId||!currentUser)return; const sourceRef=doc(db,"sources",selectedReportSourceId), reportRef=doc(db,"sources",selectedReportSourceId,"reports",currentUser.uid), reason=byId("reportReasonInput").value, detail=byId("reportDetailInput").value.trim().slice(0,250); try{ await runTransaction(db,async tx=>{ const reportSnap=await tx.get(reportRef); if(reportSnap.exists())throw new Error("You already reported this source."); const sourceSnap=await tx.get(sourceRef); if(!sourceSnap.exists())throw new Error("Source not found."); if(sourceSnap.data().appVersion!==APP_VERSION)throw new Error("This source is not supported by the current system version."); const nextReports=Number(sourceSnap.data().reportCount||0)+1; tx.set(reportRef,{uid:currentUser.uid,appVersion:APP_VERSION,reason,detail,createdAt:serverTimestamp()}); tx.update(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()}); }); closeModal("reportModal"); selectedReportSourceId=null; showNotice("Report submitted."); await loadSources(); }catch(error){notifyUser(error.message);} };
     async function performDeleteSource(sourceId){
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
@@ -428,12 +683,73 @@
         closeModal("editSourceModal"); showNotice(`Source deleted: ${src.name||sourceId}`); await loadSources();
       }catch(error){console.error(error); notifyUser(error.message || "Delete failed. Please check Firestore Rules and PMM_Test access.");}
     }
+    window.cleanupSourceRecordFromDb=async function(sourceId,reason){
+      const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
+      if(!src || !(hasPowerAccess() || src.ownerId===currentUser?.uid))return false;
+      await deleteDoc(doc(db,"sources",sourceId));
+      await loadSources();
+      return true;
+    };
     window.deleteSource=function(sourceId){
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
       if(!src){ notifyUser("Source not found."); return; }
       askConfirm("Delete Source", `Delete "${src.name||sourceId}" permanently? This cannot be undone.`, ()=>performDeleteSource(sourceId));
     };
-    window.openAdminPanel=function(){ if(!hasPowerAccess()){ notifyUser("Press F9 and enter the PMM_Test code first."); return; } openModal("adminModal"); loadAdminTable(); };
+    async function resolveBanTarget(raw){
+      const value=normalizeName(raw);
+      if(!value)throw new Error("Please enter username or UID.");
+      const direct=await getDoc(doc(db,"profiles",value));
+      if(direct.exists())return {uid:value,name:direct.data().name||value,nameKey:direct.data().nameKey||profileNameKey(direct.data().name||value)};
+      const key=profileNameKey(value);
+      const nameSnap=await getDoc(doc(db,"profileNames",key));
+      if(nameSnap.exists())return {uid:nameSnap.data().uid,name:nameSnap.data().name||value,nameKey:key};
+      if(/^[A-Za-z0-9_-]{10,80}$/.test(value))return {uid:value,name:value,nameKey:key};
+      throw new Error("User not found. Use exact username or Firebase UID.");
+    }
+    async function wipeUserData(target,batchMode=true){
+      const owned=query(collection(db,"sources"),where("ownerId","==",target.uid),limit(450));
+      const snap=await getDocs(owned);
+      const batch=writeBatch(db);
+      snap.forEach(item=>batch.delete(item.ref));
+      batch.delete(doc(db,"profiles",target.uid));
+      if(target.nameKey)batch.delete(doc(db,"profileNames",target.nameKey));
+      await batch.commit();
+      return snap.size;
+    }
+    window.applyUserBan=async function(){
+      if(!hasPowerAccess())return;
+      const input=byId("adminBanUserInput").value;
+      const days=clampNumber(byId("adminBanDaysInput").value,7,1,365);
+      const mode=byId("adminBanModeInput").value==="ban_wipe"?"ban_wipe":"ban";
+      try{
+        const target=await resolveBanTarget(input);
+        const expiresAt=Timestamp.fromMillis(Date.now()+days*24*60*60*1000);
+        await setDoc(doc(db,"bans",target.uid),{uid:target.uid,username:target.name,nameKey:target.nameKey||"",mode,days,active:true,reason:"Admin action",createdBy:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),expiresAt},{merge:false});
+        let wiped=0;
+        if(mode==="ban_wipe")wiped=await wipeUserData(target);
+        byId("banStatusText").textContent=mode==="ban_wipe"?`Banned and wiped ${wiped} owned source document(s).`:`User banned until ${expiresAt.toDate().toLocaleDateString()}.`;
+        showNotice("Ban action completed.");
+        await loadSources();
+      }catch(error){ notifyUser(error.message||"Ban action failed."); }
+    };
+    window.unbanUser=async function(){
+      if(!hasPowerAccess())return;
+      try{ const target=await resolveBanTarget(byId("adminBanUserInput").value); await deleteDoc(doc(db,"bans",target.uid)); byId("banStatusText").textContent="User unbanned."; showNotice("User unbanned."); }
+      catch(error){ notifyUser(error.message||"Unban failed."); }
+    };
+    window.cleanBrokenDownloads=async function(){
+      if(!hasPowerAccess())return;
+      let cleaned=0, checked=0;
+      for(const src of sources.filter(isCleanSource)){
+        checked++;
+        const url=validDisplayUrl(src.downloadUrl);
+        if(!url) { if(await cleanupSourceRecord(src.id,"empty-url")) cleaned++; continue; }
+        const result=await checkDownloadAvailability(url);
+        if(result.state==="missing"||result.state==="invalid") if(await cleanupSourceRecord(src.id,`bulk-${result.status}`)) cleaned++;
+      }
+      showNotice(`Broken-link cleanup finished. Checked ${checked}, cleaned ${cleaned}. Unknown/CORS-blocked links were left untouched.`);
+    };
+    window.openAdminPanel=function(){ if(!hasPowerAccess()){ return; } openModal("adminModal"); loadAdminTable(); };
     window.filterAdminTable=function(){ loadAdminTable(); };
     window.loadAdminTable=function(){
       if(!hasPowerAccess())return;
@@ -453,7 +769,7 @@
     };
     window.updateEditPositionLabel=function(){ byId("editPosXLabel").textContent=`${byId("editBannerPosXInput").value}%`; byId("editPosYLabel").textContent=`${byId("editBannerPosYInput").value}%`; };
     window.openEditSource=function(sourceId){
-      if(!hasPowerAccess()){ notifyUser("Press F9 and enter the PMM_Test code first."); return; }
+      if(!hasPowerAccess()){ return; }
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
       if(!src){ notifyUser("Source not found."); return; }
       selectedEditSourceId=sourceId;
