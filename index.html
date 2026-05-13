@@ -5,28 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <title>PMM Open Source - Free Source Code, Tools, AI, Games and Downloads</title>
-  <meta name="description" content="PMM Open Source is a clean source-code hub for discovering trusted source code, tools, AI projects, games, operating systems, browsers, and useful download links." />
-  <meta name="keywords" content="PMM Open Source, source code, free download, open source tools, AI tools, GitHub Pages, software download, PMM ops" />
+  <title>PMM Media Hub - Free Inline Video &amp; Audio Player</title>
+  <meta name="description" content="PMM Media Hub - share video and audio links that play instantly in-page. Supports direct files, YouTube, Vimeo, Dropbox, Google Drive, OneDrive and SoundCloud." />
+  <meta name="keywords" content="PMM Media Hub, inline video player, audio player, dropbox player, google drive player, youtube embed, discord embed video" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow" />
+
+  <!-- Open Graph defaults (overridden on detail pages so Discord can embed and play) -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PMM Open Source - Source Code Hub" />
-  <meta property="og:description" content="Discover and publish trusted open-source links in one clean workspace." />
-  <meta property="og:site_name" content="PMM Open Source" />
+  <meta property="og:title" content="PMM Media Hub - Inline Video &amp; Audio" />
+  <meta property="og:description" content="Share video and audio links that play instantly in the page. Discord-friendly embeds for direct files." />
+  <meta property="og:site_name" content="PMM Media Hub" />
   <meta property="og:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
-  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PMM Open Source - Source Code Hub" />
-  <meta name="twitter:description" content="Discover and publish trusted source-code links and useful software downloads." />
+  <meta name="twitter:title" content="PMM Media Hub" />
+  <meta name="twitter:description" content="Inline video and audio player." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
+
   <link rel="canonical" href="https://eee946812-creator.github.io/PMM_open_source/" />
-  <script type="application/ld+json" id="siteSchema">
-  {"@context":"https://schema.org","@type":"WebSite","name":"PMM Open Source","url":"https://eee946812-creator.github.io/PMM_open_source/","description":"A clean source-code hub for trusted open-source links, tools, AI projects, games and downloads.","potentialAction":{"@type":"SearchAction","target":"https://eee946812-creator.github.io/PMM_open_source/?q={search_term_string}","query-input":"required name=search_term_string"}}
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,201 +32,182 @@
     :root{
       --bg:#f5f7fb;--surface:#ffffff;--surface-soft:#f8fafc;--text:#111827;--muted:#64748b;--line:#e5e7eb;
       --primary:#111827;--primary-dark:#000000;--primary-soft:#f3f4f6;--danger:#dc2626;--danger-soft:#fff1f2;
+      --accent:#2563eb;--accent-soft:#dbeafe;
       --radius:18px;--radius-lg:26px;--shadow:0 18px 55px rgba(15,23,42,.08);--shadow-soft:0 10px 32px rgba(15,23,42,.06);
     }
     *{box-sizing:border-box} html{scroll-behavior:auto}
-    body{margin:0;font-family:Inter,Kanit,Arial,sans-serif;background:radial-gradient(circle at top left,#eff6ff 0,#f8fafc 34%,var(--bg) 100%);color:var(--text);overflow-x:hidden;position:relative}
-    .holo-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:radial-gradient(circle at 18% 12%,rgba(56,189,248,.16),transparent 28%),radial-gradient(circle at 82% 24%,rgba(168,85,247,.14),transparent 30%),linear-gradient(180deg,#f8fafc,#eef2ff)}
-    .holo-bg::before{content:"";position:absolute;inset:-40%;background-image:linear-gradient(rgba(14,165,233,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(168,85,247,.12) 1px,transparent 1px);background-size:42px 42px;transform:perspective(640px) rotateX(62deg) translateY(-110px);transform-origin:top;animation:gridFloat 18s linear infinite;opacity:.7}
-    .holo-shape{position:absolute;width:80px;height:80px;border:1px solid rgba(14,165,233,.24);background:linear-gradient(135deg,rgba(255,255,255,.54),rgba(14,165,233,.10));box-shadow:0 18px 50px rgba(14,165,233,.10);backdrop-filter:blur(6px);animation:shapeDrift 16s ease-in-out infinite;opacity:.55}
-    .holo-shape:nth-child(1){left:7%;top:18%;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation-duration:19s}.holo-shape:nth-child(2){right:10%;top:14%;border-radius:28px;animation-duration:23s;animation-delay:-6s}.holo-shape:nth-child(3){left:16%;bottom:18%;clip-path:polygon(50% 0,95% 75%,5% 75%);animation-duration:21s;animation-delay:-10s}.holo-shape:nth-child(4){right:17%;bottom:16%;border-radius:50%;animation-duration:17s;animation-delay:-3s}.holo-shape:nth-child(5){left:48%;top:32%;width:54px;height:54px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);animation-duration:25s;animation-delay:-12s}
-    @keyframes gridFloat{0%{background-position:0 0}100%{background-position:0 84px}}@keyframes shapeDrift{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(20px,-34px,0) rotate(12deg)}}
-    @media (prefers-reduced-motion:reduce){.holo-bg::before,.holo-shape,.skeleton-card{animation:none!important}}
-    button,input,select,textarea{font:inherit} button{user-select:none}
-    .topbar{min-height:72px;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 28px;box-shadow:0 8px 30px rgba(15,23,42,.05);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(226,232,240,.8)}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;letter-spacing:-.45px}.brand-code{width:38px;height:34px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:#111827;font-weight:900;font-size:17px;box-shadow:var(--shadow-soft)}
-    .nav,.profile-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.nav button,.btn{border:none;border-radius:14px;padding:10px 15px;cursor:pointer;font-weight:800;transition:.18s ease}.nav button{background:transparent;color:#334155}.nav button:hover{background:var(--primary-soft);color:var(--primary)}
-    .primary-btn{background:var(--primary);color:white;box-shadow:0 10px 22px rgba(17,24,39,.12)}.primary-btn:hover{background:var(--primary-dark)}
-    .secondary-btn{background:#eef2f7;color:#334155}.secondary-btn:hover{background:#e2e8f0}
-    .danger-btn{background:var(--danger-soft);color:#b91c1c}.danger-btn:hover{background:#fee2e2}
-    .ghost-btn{background:transparent;color:#475569}.ghost-btn:hover{background:#f1f5f9}.success-btn{background:#ecfdf5;color:#047857}.success-btn:hover{background:#d1fae5}button:disabled{opacity:.55;cursor:not-allowed}
-    .profile-pill{display:none;align-items:center;gap:9px;background:var(--surface);border:1px solid rgba(226,232,240,.9);padding:7px 10px;border-radius:999px;box-shadow:var(--shadow-soft)}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;overflow:hidden;flex:0 0 auto}
-    .container{max-width:1200px;margin:0 auto;padding:34px 22px 100px;min-height:calc(100vh - 72px)}.hero{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-bottom:24px}.hero h1{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-1.25px;line-height:1.04}.hero p{margin:12px 0 0;color:var(--muted);font-weight:600;max-width:760px;line-height:1.65}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .notice{display:none;background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:15px 48px 15px 18px;border-radius:var(--radius);margin-bottom:22px;position:relative;font-weight:700;box-shadow:var(--shadow-soft)}.notice button{position:absolute;right:12px;top:10px;border:none;background:transparent;cursor:pointer;font-weight:900;color:#92400e;font-size:18px}
-    .panel{background:rgba(255,255,255,.92);border:1px solid rgba(226,232,240,.92);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow);margin-bottom:24px}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}.panel-title h2{margin:0;font-size:21px;letter-spacing:-.25px}.panel-title .muted{font-size:14px}
-    .recommend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.mini-card{border:1px solid rgba(226,232,240,.95);border-radius:20px;padding:16px;cursor:pointer;background:linear-gradient(180deg,#fff,#f8fafc);transition:box-shadow .18s ease,border-color .18s ease}.mini-card:hover{box-shadow:var(--shadow-soft);border-color:#cbd5e1}.mini-card strong{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:15px}.mini-card small{display:block;margin-top:8px;color:var(--muted);font-weight:700}
-    .toolbar{display:grid;gap:16px;margin:24px 0}.search-wrap{display:flex;gap:12px;flex-wrap:wrap}.search-box{position:relative;flex:1;min-width:250px}.search-box::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:20px;font-weight:900}.search-wrap input,.search-wrap select{border:1px solid rgba(226,232,240,.95);border-radius:16px;padding:14px 16px;outline:none;background:var(--surface);box-shadow:var(--shadow-soft);color:#334155}.search-wrap input{width:100%;padding-left:44px}.search-wrap input:focus,.search-wrap select:focus,.form input:focus,.form select:focus,.form textarea:focus{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(147,197,253,.25)}
-    .chips{display:flex;gap:10px;flex-wrap:wrap}.chip{border:1px solid rgba(226,232,240,.95);background:#fff;color:#475569;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;transition:.18s ease}.chip:hover{background:var(--primary-soft);color:var(--primary)}.chip.active{background:#0f172a;color:#fff;border-color:#0f172a;box-shadow:0 12px 28px rgba(15,23,42,.18)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.card{background:rgba(255,255,255,.96);border:1px solid rgba(226,232,240,.92);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);transition:box-shadow .2s ease,border-color .2s ease;position:relative}.card:hover{box-shadow:0 18px 55px rgba(15,23,42,.10);border-color:#cbd5e1}.banner{height:122px;background:linear-gradient(135deg,#dbeafe,#f5d0fe);display:grid;place-items:center;overflow:hidden;font-weight:900;color:#475569}.banner img{width:100%;height:100%;object-fit:cover}.card-body{padding:20px}.source-row{display:flex;gap:14px;align-items:center;margin-top:-42px}.icon-box{width:66px;height:66px;border-radius:20px;background:#0f172a;color:#fff;border:5px solid #fff;display:grid;place-items:center;font-weight:900;font-size:23px;overflow:hidden;flex:0 0 auto;box-shadow:0 14px 30px rgba(15,23,42,.16)}.icon-box img{width:100%;height:100%;object-fit:cover}.title-area{min-width:0;padding-top:40px}.title-area h3{margin:0;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px}.title-area small{display:block;margin-top:5px;color:var(--muted);font-weight:700}.meta{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;color:var(--muted);font-size:12px;font-weight:800}.tag{background:var(--primary-soft);color:#1e40af;padding:6px 9px;border-radius:999px}.tag.warn{background:#fef3c7;color:#92400e}.tag.admin{background:#0f172a;color:#fff}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1;min-width:92px}.delete-btn{display:none;position:absolute;top:10px;right:10px;width:38px;height:38px;min-width:38px;max-width:38px;padding:0;border:none;background:rgba(255,255,255,.96);color:var(--danger);border-radius:14px;cursor:pointer;box-shadow:0 10px 28px rgba(15,23,42,.15);font-weight:900;transition:.18s;place-items:center;line-height:1;overflow:hidden}.delete-btn:hover{background:#fff1f2;transform:translateY(-1px)}.card{contain:layout paint;content-visibility:auto;contain-intrinsic-size:330px}.banner.placeholder{color:#fff;position:relative;text-shadow:0 1px 10px rgba(15,23,42,.24)}.banner.placeholder::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 18%,rgba(255,255,255,.30),transparent 32%),linear-gradient(135deg,rgba(255,255,255,.10),transparent);pointer-events:none}.banner.placeholder strong{position:relative;z-index:1}.icon-box.placeholder{color:#fff;text-shadow:0 1px 8px rgba(15,23,42,.22)}.missing-state{display:grid;place-items:center;text-align:center;min-height:420px;background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.95);border-radius:32px;box-shadow:var(--shadow);padding:32px}.missing-icon{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;margin-bottom:16px;background:#fff1f2;color:#dc2626;font-size:42px;font-weight:1000;border:1px solid #fecaca;box-shadow:0 18px 48px rgba(220,38,38,.14)}
-    .empty{display:none;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cbd5e1;padding:44px;border-radius:var(--radius-lg);font-weight:800}.skeleton-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:22px}.skeleton-card{height:310px;border-radius:var(--radius-lg);background:linear-gradient(90deg,#eef2f7 25%,#f8fafc 37%,#eef2f7 63%);background-size:400% 100%;animation:shine 1.35s infinite;box-shadow:var(--shadow-soft)}@keyframes shine{0%{background-position:100% 0}100%{background-position:0 0}}
-    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:100;align-items:center;justify-content:center;padding:18px}.modal{width:min(720px,100%);max-height:92vh;overflow-y:auto;overscroll-behavior:contain;background:#fff;border-radius:28px;padding:24px;box-shadow:0 32px 95px rgba(15,23,42,.33)}.modal.large{width:min(1040px,100%)}.modal h2{margin:0 0 16px;letter-spacing:-.35px}.form{display:grid;gap:14px}.form label{display:grid;gap:7px;font-weight:800;color:#334155;font-size:14px}.form input,.form select,.form textarea{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}.form small{color:var(--muted);font-weight:600}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}.info-box{background:var(--surface-soft);border:1px solid var(--line);border-radius:18px;padding:15px;color:#334155;font-weight:600;line-height:1.65;font-size:14px}.upload-zone{border:2px dashed #cbd5e1;border-radius:20px;padding:16px;background:#f8fafc;display:grid;gap:12px;cursor:pointer;transition:background .18s,border-color .18s}.upload-zone:hover,.upload-zone.dragover{background:var(--primary-soft);border-color:var(--primary)}.upload-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.preview{width:100%;max-height:170px;object-fit:cover;border-radius:16px;display:none;background:#e5e7eb}.image-choice{display:grid;gap:10px}.image-choice.hidden-choice{display:none}.clear-image-btn{justify-self:start}.position-tools{border:1px solid var(--line);border-radius:18px;padding:13px;background:#f8fafc;display:grid;gap:10px}.position-tools .range-row{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;color:#334155;font-weight:800}.position-tools input[type="range"]{width:100%;padding:0;box-shadow:none}.position-preview{width:100%;height:122px;object-fit:cover;border-radius:16px;background:#e5e7eb;display:none;overflow:hidden}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);text-align:left;padding:11px 8px;vertical-align:top}th{color:#334155}.danger-zone{border:1px solid #fecaca;background:#fff1f2;border-radius:18px;padding:15px;margin-top:16px}.muted{color:var(--muted);font-weight:700}.hidden{display:none!important}
+    body{margin:0;font-family:Inter,Kanit,Arial,sans-serif;background:#ffffff;color:var(--text);overflow-x:hidden}
 
-    .admin-tools{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;margin:14px 0}.admin-tools input,.admin-tools select{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}.ban-tools{display:grid;grid-template-columns:1.2fr .55fr .8fr auto auto;gap:10px;align-items:end;margin-top:12px}.ban-tools label{display:grid;gap:6px;font-weight:800;color:#334155;font-size:13px}.ban-tools input,.ban-tools select{border:1px solid var(--line);border-radius:16px;padding:12px 13px;outline:none;background:#fff}@media(max-width:860px){.admin-tools,.ban-tools{grid-template-columns:1fr}.delete-btn{top:8px;right:8px}}.confirm-name{font-weight:900;color:#b91c1c}.edit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.range-row.compact{grid-template-columns:90px 1fr 48px}.inline-actions{display:flex;gap:8px;flex-wrap:wrap}.inline-actions .btn{padding:8px 11px;border-radius:12px;font-size:12px}.admin-hint{margin-top:8px;font-size:13px;color:var(--muted);font-weight:700}
+    .topbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:14px 26px;background:#ffffff;border-bottom:1px solid var(--line);gap:14px;flex-wrap:wrap}
+    .brand{font-weight:900;letter-spacing:-.5px;font-size:18px;display:flex;align-items:center;gap:10px}
+    .brand-code{background:#0f172a;color:#fff;padding:6px 9px;border-radius:10px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav button,.btn{border:1px solid var(--line);background:#fff;color:#111827;border-radius:14px;padding:10px 14px;font-weight:700;cursor:pointer;min-height:42px;transition:.16s ease}
+    .nav button:hover{background:var(--primary-soft)}
+    .primary-btn{background:#111827!important;color:#fff!important;border-color:#111827!important}
+    .primary-btn:hover{background:#000!important}
+    .secondary-btn{background:#f1f5f9!important;color:#0f172a!important;border-color:#e2e8f0!important}
+    .ghost-btn{background:transparent!important;color:#475569!important}
+    .danger-btn{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+    .success-btn{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+    .profile-area{display:flex;align-items:center;gap:10px}
+    .profile-pill{display:none;align-items:center;gap:10px;background:#f8fafc;border:1px solid var(--line);padding:6px 12px 6px 6px;border-radius:999px}
+    .avatar{width:34px;height:34px;border-radius:50%;background:#0f172a;color:#fff;display:grid;place-items:center;font-weight:800}
 
-    .source-detail{display:none;min-height:calc(100vh - 120px)}
-    .detail-shell{background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.95);border-radius:32px;overflow:hidden;box-shadow:var(--shadow)}
-    .detail-hero{min-height:300px;background:linear-gradient(135deg,#dbeafe,#f5d0fe);position:relative;display:flex;align-items:flex-end;padding:28px;overflow:hidden}
-    .detail-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:saturate(1.04)}
-    .detail-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,.08),rgba(15,23,42,.72));z-index:1}
-    .detail-title-wrap{position:relative;z-index:2;color:#fff;display:flex;align-items:flex-end;gap:18px;width:100%}
-    .detail-icon{width:92px;height:92px;border-radius:26px;background:#0f172a;border:6px solid rgba(255,255,255,.95);display:grid;place-items:center;font-weight:900;font-size:34px;box-shadow:0 18px 42px rgba(0,0,0,.24);overflow:hidden;flex:0 0 auto}
-    .detail-icon img{position:static;width:100%;height:100%;object-fit:cover;filter:none}
-    .detail-title{min-width:0}.detail-title h2{margin:0;font-size:clamp(28px,4vw,52px);letter-spacing:-1.1px;line-height:1}.detail-title p{margin:10px 0 0;font-weight:800;color:rgba(255,255,255,.86)}
-    .detail-body{padding:26px;display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.detail-card{border:1px solid var(--line);border-radius:24px;background:#fff;padding:20px;box-shadow:var(--shadow-soft)}
-    .detail-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}.detail-actions .btn{min-width:150px}.detail-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.detail-link{word-break:break-all;color:#1d4ed8;font-weight:800;text-decoration:none}.detail-link:hover{text-decoration:underline}
-    .view-source-btn{background:#eff6ff;color:#1d4ed8}.view-source-btn:hover{background:#dbeafe}.card-link-cover{position:absolute;inset:0;z-index:1}.card .actions,.card .delete-btn{position:relative;z-index:3}.card{cursor:pointer}.title-area h3 a{color:inherit;text-decoration:none}.title-area h3 a:hover{text-decoration:underline}
-    @media(max-width:860px){.detail-body{grid-template-columns:1fr}.detail-title-wrap{align-items:flex-start;flex-direction:column}.detail-hero{min-height:260px}.detail-actions .btn{width:100%}}
+    .container{max-width:1180px;margin:0 auto;padding:26px 22px 70px}
+    .hero{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px;flex-wrap:wrap}
+    .hero h1{margin:0;font-size:clamp(28px,4vw,42px);letter-spacing:-1px}
+    .hero p{color:var(--muted);margin:6px 0 0;font-weight:600}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
 
-    @media(max-width:760px){.topbar{align-items:flex-start;flex-direction:column;padding:14px 18px}.hero{flex-direction:column;align-items:flex-start}.container{padding:26px 16px 70px}.grid{grid-template-columns:1fr}table{font-size:12px}.modal{padding:20px}.actions button{min-width:100%}}
+    .notice{display:none;background:#fef3c7;border:1px solid #fde68a;color:#92400e;padding:12px 16px;border-radius:16px;margin:12px 0;font-weight:700;display:none;align-items:center;justify-content:space-between;gap:14px}
+    .notice button{background:transparent;border:none;font-size:20px;cursor:pointer;color:#92400e;font-weight:900}
 
-    /* Clean white background mode: removed holographic grid and floating shapes for stability. */
-    body{background:#ffffff!important;overflow-x:hidden;position:relative}
-    .holo-bg,.holo-shape{display:none!important;animation:none!important}
-    .topbar{background:#ffffff!important;backdrop-filter:none!important}
-    .panel,.card,.modal,.detail-shell,.detail-card,.missing-state{background:#ffffff!important}
-    .container{background:#ffffff}
-    .card{overflow:hidden!important;contain:layout paint;content-visibility:auto;contain-intrinsic-size:320px}
-    .banner{height:122px;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
-    .banner img,.icon-box img,.detail-hero>img,.detail-icon img{display:none!important}
-    .source-row{margin-top:0!important;align-items:center!important}
-    .card-body{padding:18px 20px 20px!important}
-    .icon-box{width:56px!important;height:56px!important;border:0!important;border-radius:16px!important;overflow:hidden!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;box-shadow:0 10px 24px rgba(15,23,42,.12)!important}
-    .title-area{padding-top:0!important;min-width:0!important}
-    .delete-btn{top:10px!important;right:10px!important;width:34px!important;height:34px!important;min-width:34px!important;max-width:34px!important;padding:0!important;display:none;align-items:center!important;justify-content:center!important;overflow:hidden!important;line-height:1!important;z-index:6!important}
-    .delete-btn[style*="block"]{display:flex!important}
-    .detail-hero{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
-    .detail-icon{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;overflow:hidden!important}
-    @media(max-width:760px){.icon-box{width:52px!important;height:52px!important}.delete-btn{top:8px!important;right:8px!important}}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px;margin:18px 0;box-shadow:var(--shadow-soft)}
+    .panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+    .panel-title h2{margin:0;font-size:20px;letter-spacing:-.3px}
+    .muted{color:var(--muted);font-weight:600}
 
+    .recommend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+    .mini-card{background:#f8fafc;border:1px solid var(--line);border-radius:18px;padding:14px;cursor:pointer;transition:.16s}
+    .mini-card:hover{background:var(--primary-soft);border-color:#cbd5e1}
+    .mini-card strong{display:block;font-size:15px;margin-bottom:4px}
+    .mini-card small{color:var(--muted);font-weight:700}
 
-    /* UI polish: white theme, rounded modal scrollbars, cleaner selects and upload controls */
-    .modal-backdrop{padding:clamp(14px,3vw,30px)!important;background:rgba(15,23,42,.52)!important;backdrop-filter:blur(2px);}
-    .modal{
-      border-radius:30px!important;
-      border:1px solid rgba(226,232,240,.95)!important;
-      max-height:min(88vh,900px)!important;
-      overflow-y:auto!important;
-      overflow-x:hidden!important;
-      scrollbar-gutter:stable both-edges;
-      background:#fff!important;
-      box-shadow:0 26px 80px rgba(15,23,42,.22)!important;
+    .toolbar{margin:18px 0 14px}
+    .search-wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .search-box{flex:1;min-width:240px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:6px 14px;display:flex;align-items:center;box-shadow:0 6px 20px rgba(15,23,42,.035)}
+    .search-box input{flex:1;border:none;outline:none;padding:10px 0;font-size:14px;background:transparent}
+    .search-wrap select,.search-wrap input{border:1px solid var(--line);border-radius:16px;padding:12px 14px;outline:none;background:#fff;box-shadow:0 6px 20px rgba(15,23,42,.035)}
+
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .chip{border:1px solid var(--line);background:#fff;color:#475569;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer}
+    .chip:hover{background:var(--primary-soft);color:var(--primary)}
+    .chip.active{background:#0f172a;color:#fff;border-color:#0f172a}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:22px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-soft);transition:.18s;position:relative;cursor:pointer;isolation:isolate}
+    .card:hover{box-shadow:0 18px 50px rgba(15,23,42,.10);border-color:#cbd5e1;transform:translateY(-2px)}
+    .card-thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#dbeafe,#f5d0fe);overflow:hidden;display:grid;place-items:center;color:#fff;font-weight:900}
+    .card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .card-thumb .type-badge{position:absolute;top:10px;left:10px;background:rgba(15,23,42,.82);color:#fff;border-radius:999px;padding:5px 11px;font-size:11px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;backdrop-filter:blur(4px)}
+    .card-thumb .play-overlay{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(15,23,42,0),rgba(15,23,42,.35));opacity:.95;transition:.18s}
+    .card-thumb .play-overlay svg{width:62px;height:62px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}
+    .card:hover .play-overlay{background:linear-gradient(180deg,rgba(15,23,42,0),rgba(15,23,42,.55))}
+    .card-body{padding:16px 18px 18px}
+    .card-body h3{margin:0 0 6px;font-size:16px;letter-spacing:-.2px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .card-body small{color:var(--muted);font-weight:700;font-size:12px}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0;font-size:11px;font-weight:800}
+    .tag{background:var(--primary-soft);color:#1e40af;padding:5px 9px;border-radius:999px}
+    .tag.warn{background:#fef3c7;color:#92400e}
+    .tag.video{background:#fee2e2;color:#b91c1c}
+    .tag.audio{background:#dcfce7;color:#166534}
+    .tag.youtube{background:#fee2e2;color:#dc2626}
+    .tag.vimeo{background:#cffafe;color:#0e7490}
+    .tag.dropbox{background:#dbeafe;color:#1d4ed8}
+    .tag.drive{background:#fef3c7;color:#a16207}
+    .tag.onedrive{background:#e0e7ff;color:#3730a3}
+    .tag.soundcloud{background:#ffedd5;color:#c2410c}
+    .delete-btn{position:absolute;top:10px;right:10px;width:32px;height:32px;border:1px solid #fecaca;background:rgba(255,255,255,.95);color:var(--danger);border-radius:10px;cursor:pointer;font-weight:900;display:none;align-items:center;justify-content:center;z-index:5;box-shadow:0 6px 16px rgba(15,23,42,.12);font-size:13px}
+    .delete-btn:hover{background:#fff1f2}
+
+    .empty{display:none;text-align:center;color:var(--muted);background:#fff;border:1px dashed #cbd5e1;padding:44px;border-radius:var(--radius-lg);font-weight:800}
+    .skeleton-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:22px}
+    .skeleton-card{height:280px;border-radius:24px;background:linear-gradient(90deg,#eef2f7 25%,#f8fafc 37%,#eef2f7 63%);background-size:400% 100%;animation:shine 1.35s infinite}
+    @keyframes shine{0%{background-position:100% 0}100%{background-position:0 0}}
+
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:1200;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(2px)}
+    .modal{width:min(720px,100%);max-height:92vh;overflow-y:auto;background:#fff;border-radius:28px;padding:24px;box-shadow:0 32px 95px rgba(15,23,42,.33);border:1px solid var(--line)}
+    .modal.large{width:min(1040px,100%)}
+    .modal h2{margin:0 0 14px;letter-spacing:-.35px}
+    .form{display:grid;gap:14px}
+    .form label{display:grid;gap:7px;font-weight:800;color:#334155;font-size:14px}
+    .form input,.form select,.form textarea{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff;font-family:inherit;font-size:14px}
+    .form small{color:var(--muted);font-weight:600}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+    .info-box{background:var(--surface-soft);border:1px solid var(--line);border-radius:18px;padding:15px;color:#334155;font-weight:600;line-height:1.65;font-size:14px}
+
+    .upload-zone{border:2px dashed #cbd5e1;border-radius:20px;padding:16px;background:#f8fafc;display:grid;gap:12px;cursor:pointer;transition:.18s}
+    .upload-zone:hover,.upload-zone.dragover{background:var(--primary-soft);border-color:var(--primary)}
+    .upload-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .preview{width:100%;max-height:170px;object-fit:cover;border-radius:16px;display:none;background:#e5e7eb}
+
+    /* ========== MEDIA DETAIL PAGE ========== */
+    .source-detail{display:none}
+    .player-shell{background:#000;border-radius:24px;overflow:hidden;border:1px solid #0f172a;box-shadow:0 30px 80px rgba(15,23,42,.4);position:relative}
+    .player-frame{position:relative;width:100%;background:#000;aspect-ratio:16/9}
+    .player-frame.audio-mode{aspect-ratio:auto;min-height:260px;display:grid;place-items:center;background:linear-gradient(135deg,#0f172a,#1e293b);padding:30px}
+    .player-frame iframe,
+    .player-frame video,
+    .player-frame audio{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+    .player-frame.audio-mode audio{position:static;width:min(560px,100%);height:60px}
+    .audio-art{display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;color:#fff}
+    .audio-art .disc{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#60a5fa,#1e3a8a);box-shadow:0 18px 40px rgba(0,0,0,.5);display:grid;place-items:center;font-size:48px;animation:spin 8s linear infinite paused}
+    .audio-art .disc.playing{animation-play-state:running}
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    .audio-art h3{margin:0;font-size:20px;text-align:center;letter-spacing:-.3px}
+    .audio-art small{color:#cbd5e1;font-weight:700}
+
+    .player-controls{display:flex;gap:8px;flex-wrap:wrap;padding:14px;background:#0f172a;border-top:1px solid #1e293b}
+    .player-controls button{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:9px 14px;font-weight:700;cursor:pointer;font-size:13px;transition:.16s}
+    .player-controls button:hover{background:rgba(255,255,255,.16)}
+    .player-controls .err-state{color:#fca5a5;padding:8px 0;font-weight:700;font-size:13px;flex:1}
+
+    .detail-header{display:flex;gap:18px;align-items:flex-start;margin:22px 0 14px;flex-wrap:wrap}
+    .detail-header .detail-icon{width:72px;height:72px;border-radius:20px;background:#0f172a;color:#fff;display:grid;place-items:center;font-weight:900;font-size:28px;overflow:hidden;flex:0 0 auto;background-size:cover;background-position:center}
+    .detail-title{flex:1;min-width:0}
+    .detail-title h2{margin:0;font-size:clamp(22px,3vw,32px);letter-spacing:-.6px;line-height:1.15}
+    .detail-title p{margin:6px 0 0;color:var(--muted);font-weight:700}
+    .detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .detail-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .detail-link{word-break:break-all;color:#1d4ed8;font-weight:700;text-decoration:none;font-size:13px}
+    .detail-link:hover{text-decoration:underline}
+    .detail-info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px;box-shadow:var(--shadow-soft)}
+    .detail-info-card h3{margin:0 0 10px;font-size:16px}
+
+    .missing-state{display:grid;place-items:center;text-align:center;min-height:380px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:var(--shadow-soft);margin-top:20px}
+    .missing-icon{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;margin:0 auto 14px;background:#fff1f2;color:#dc2626;font-size:36px;font-weight:900;border:1px solid #fecaca}
+
+    .admin-tools{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;margin:14px 0}
+    .admin-tools input,.admin-tools select{border:1px solid var(--line);border-radius:16px;padding:13px 14px;outline:none;background:#fff}
+    .ban-tools{display:grid;grid-template-columns:1.2fr .55fr .8fr auto auto;gap:10px;align-items:end;margin-top:12px}
+    .ban-tools label{display:grid;gap:6px;font-weight:800;color:#334155;font-size:13px}
+    .ban-tools input,.ban-tools select{border:1px solid var(--line);border-radius:16px;padding:12px 13px;outline:none;background:#fff}
+    .edit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .danger-zone{border:1px solid #fecaca;background:#fff1f2;border-radius:18px;padding:15px;margin-top:16px}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{border-bottom:1px solid var(--line);text-align:left;padding:11px 8px;vertical-align:top}
+    .inline-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .inline-actions .btn{padding:7px 11px;border-radius:11px;font-size:12px}
+    .admin-hint{margin-top:8px;font-size:13px;color:var(--muted);font-weight:700}
+    .hidden{display:none!important}
+
+    .media-test-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+    .media-test-row .badge{padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#f1f5f9;color:#334155}
+    .media-test-row .badge.video{background:#fee2e2;color:#b91c1c}
+    .media-test-row .badge.audio{background:#dcfce7;color:#166534}
+    .media-test-row .badge.ok{background:#dcfce7;color:#166534}
+    .media-test-row .badge.warn{background:#fef3c7;color:#92400e}
+
+    @media(max-width:760px){
+      .topbar{padding:12px 16px}
+      .container{padding:20px 14px 70px}
+      .grid{grid-template-columns:1fr}
+      .modal{padding:18px;border-radius:24px}
+      .actions button{min-width:100%}
+      .ban-tools,.admin-tools{grid-template-columns:1fr}
+      .player-controls button{flex:1;min-width:42%}
+      .audio-art .disc{width:90px;height:90px;font-size:36px}
     }
-    .modal.large{width:min(980px,calc(100vw - 36px))!important;}
-    .modal::-webkit-scrollbar{width:12px;}
-    .modal::-webkit-scrollbar-track{background:transparent;margin:20px 0;border-radius:999px;}
-    .modal::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px;border:4px solid #fff;}
-    .modal::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
-    .modal{scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent;}
-    .modal h2{line-height:1.15;}
-    .form input,.form select,.form textarea,.search-wrap select,.search-wrap input,.admin-tools input,.admin-tools select,.ban-tools input,.ban-tools select{
-      border-radius:18px!important;
-      border:1px solid #e2e8f0!important;
-      background:#fff!important;
-      box-shadow:0 6px 20px rgba(15,23,42,.035)!important;
-    }
-    select{
-      appearance:none;
-      -webkit-appearance:none;
-      background-image:linear-gradient(45deg,transparent 50%,#334155 50%),linear-gradient(135deg,#334155 50%,transparent 50%)!important;
-      background-position:calc(100% - 18px) 50%,calc(100% - 12px) 50%!important;
-      background-size:6px 6px,6px 6px!important;
-      background-repeat:no-repeat!important;
-      padding-right:40px!important;
-    }
-    select option{background:#fff;color:#111827;}
-    select option:checked,select option:hover{background:#f1f5f9!important;color:#111827!important;}
-    .upload-zone{border-radius:22px!important;background:#f8fafc!important;border-color:#d7e0ec!important;}
-    .upload-zone:hover,.upload-zone.dragover{background:#f1f5f9!important;border-color:#94a3b8!important;}
-    .position-tools{border-radius:22px!important;background:#f8fafc!important;overflow:hidden;}
-    .position-tools input[type=range]{accent-color:#111827;}
-    .delete-btn{box-sizing:border-box!important;transform:none!important;}
-    .delete-btn:hover{transform:none!important;}
-    @media(max-width:760px){.modal{width:calc(100vw - 24px)!important;border-radius:24px!important;padding:18px!important}.modal.large{width:calc(100vw - 24px)!important}}
-
-
-    /* Final fix: custom dropdowns, stronger button hit-area, delete icon inside card */
-    .topbar,.nav,.profile-area,.hero-actions,.actions,.modal-actions{position:relative;z-index:20;}
-    .nav button,.btn{min-height:42px;touch-action:manipulation;pointer-events:auto!important;}
-    .card{overflow:hidden!important;border-radius:28px!important;isolation:isolate;}
-    .card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:8;box-shadow:inset 0 0 0 1px rgba(226,232,240,.9);}
-    .delete-btn{
-      position:absolute!important;
-      top:12px!important;
-      right:12px!important;
-      left:auto!important;
-      display:none;
-      width:30px!important;
-      height:30px!important;
-      min-width:30px!important;
-      max-width:30px!important;
-      padding:0!important;
-      border-radius:10px!important;
-      z-index:12!important;
-      align-items:center!important;
-      justify-content:center!important;
-      background:rgba(255,255,255,.94)!important;
-      border:1px solid rgba(254,202,202,.95)!important;
-      box-shadow:0 8px 18px rgba(15,23,42,.12)!important;
-      font-size:13px!important;
-      line-height:1!important;
-      overflow:hidden!important;
-    }
-    .delete-btn[style*="block"]{display:flex!important;}
-    .banner{border-top-left-radius:inherit;border-top-right-radius:inherit;overflow:hidden;}
-    .search-wrap{align-items:center;}
-    .search-wrap .custom-select{min-width:170px;}
-    .native-select-hidden{position:absolute!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;}
-    .custom-select{position:relative;z-index:15;}
-    .custom-select.open{z-index:80;}
-    .custom-select-button{
-      width:100%;min-height:46px;border:1px solid #e2e8f0;border-radius:18px;background:#fff;color:#334155;
-      box-shadow:0 6px 20px rgba(15,23,42,.04);padding:12px 42px 12px 16px;text-align:left;font-weight:500;cursor:pointer;
-      position:relative;transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
-    }
-    .custom-select-button::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid #475569;border-bottom:2px solid #475569;transform:translateY(-65%) rotate(45deg);transition:transform .16s ease;}
-    .custom-select.open .custom-select-button{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(147,197,253,.20),0 10px 24px rgba(15,23,42,.06);}
-    .custom-select.open .custom-select-button::after{transform:translateY(-30%) rotate(225deg);}
-    .custom-select-menu{
-      position:absolute;left:0;right:0;top:calc(100% + 8px);max-height:320px;overflow:auto;background:#fff;border:1px solid #e2e8f0;
-      border-radius:20px;box-shadow:0 24px 60px rgba(15,23,42,.16);padding:8px;display:none;animation:softDrop .14s ease-out;z-index:90;
-    }
-    .custom-select.open .custom-select-menu{display:block;}
-    .custom-select-option{border-radius:14px;padding:10px 12px;cursor:pointer;color:#111827;font-weight:500;}
-    .custom-select-option:hover{background:#f1f5f9;}
-    .custom-select-option.selected{background:#0f172a;color:#fff;font-weight:800;}
-    .custom-select-menu::-webkit-scrollbar{width:10px;}
-    .custom-select-menu::-webkit-scrollbar-track{background:transparent;margin:10px 0;}
-    .custom-select-menu::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px;border:3px solid #fff;}
-    @keyframes softDrop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-    @media(max-width:760px){.search-wrap .custom-select{width:100%;}.delete-btn{top:10px!important;right:10px!important;width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;}}
-
-
-    /* V3 fixes: report GUI, safer clicks, image/link reliability */
-    .topbar{z-index:1000!important;pointer-events:auto!important;}
-    .nav button{position:relative!important;z-index:1001!important;cursor:pointer!important;}
-    .modal-backdrop{z-index:1200!important;}
-    .source-detail{position:relative;z-index:1;}
-    .card{padding-top:0!important;}
-    .delete-btn{inset:auto 14px auto auto!important;top:14px!important;right:14px!important;translate:0 0!important;}
-    .report-reason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:8px;}
-    .report-reason-btn{border:1px solid #e2e8f0;background:#fff;border-radius:18px;padding:12px 14px;text-align:left;font-weight:800;color:#334155;cursor:pointer;box-shadow:0 6px 20px rgba(15,23,42,.035);transition:.16s ease;}
-    .report-reason-btn:hover{background:#f8fafc;border-color:#cbd5e1;}
-    .report-reason-btn.active{background:#111827;color:#fff;border-color:#111827;box-shadow:0 12px 28px rgba(15,23,42,.14);}
-    #reportReasonInput{display:none!important;}
-    #reportModal .modal{border-radius:30px!important;overflow:hidden auto!important;}
-    #reportModal textarea{min-height:96px;resize:vertical;}
-    @media(max-width:760px){.delete-btn{top:12px!important;right:12px!important;width:26px!important;height:26px!important;min-width:26px!important;max-width:26px!important}.report-reason-grid{grid-template-columns:1fr}}
-
-
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-code" aria-hidden="true">&lt;&gt;</span><span>Home - PMM Open Source</span></div>
+    <div class="brand"><span class="brand-code">▶</span><span>PMM Media Hub</span></div>
     <nav class="nav">
       <button onclick="showHome()">Home</button>
       <button onclick="selectCategory('Recommended')">Recommended</button>
-      <button onclick="openAddModal()">Publish Source</button>
+      <button onclick="openAddModal()">Publish Media</button>
       <button onclick="openAbout()">About</button>
       <button id="adminBtn" style="display:none" onclick="openAdminPanel()">Manage</button>
     </nav>
@@ -237,41 +216,329 @@
       <button id="loginBtn" class="primary-btn btn" onclick="openProfileModal()">Create Profile</button>
     </div>
   </header>
+
   <main class="container">
-    <section class="hero">
-      <div><h1>PMM Open Source</h1><p>Discover and publish trusted open-source links in one clean, reliable workspace.</p></div>
-      <div class="hero-actions"><button class="primary-btn btn" onclick="openAddModal()">+ Publish Source</button></div>
+    <section class="hero" id="heroSection">
+      <div>
+        <h1>PMM Media Hub</h1>
+        <p>Paste a link &mdash; play it instantly. Supports direct files, YouTube, Vimeo, Dropbox, Google Drive, OneDrive, SoundCloud.</p>
+      </div>
+      <div class="hero-actions"><button class="primary-btn btn" onclick="openAddModal()">+ Publish Media</button></div>
     </section>
+
     <div id="noticeBox" class="notice"><span id="noticeText"></span><button onclick="closeNotice()">×</button></div>
-    <section class="panel" id="recommendedPanel"><div class="panel-title"><div><h2>Recommended</h2><div class="muted">Top useful sources based on engagement</div></div><button class="secondary-btn btn" onclick="selectCategory('Recommended')">View all</button></div><div id="recommendedGrid" class="recommend-grid"></div></section>
-    <section class="toolbar"><div class="search-wrap"><div class="search-box"><input id="searchInput" placeholder="Search source code, category, or owner..." oninput="scheduleRenderSources()" /></div><select id="sortSelect" onchange="renderSources()"><option value="likes">Sort by likes</option><option value="newest">Sort by newest</option><option value="reports">Sort by reports</option></select><select id="categorySelect" onchange="selectCategory(this.value)"></select></div><div id="categoryChips" class="chips"></div></section>
+
+    <section class="panel" id="recommendedPanel">
+      <div class="panel-title">
+        <div><h2>Recommended</h2><div class="muted">Top media based on likes</div></div>
+        <button class="secondary-btn btn" onclick="selectCategory('Recommended')">View all</button>
+      </div>
+      <div id="recommendedGrid" class="recommend-grid"></div>
+    </section>
+
+    <section class="toolbar" id="toolbarSection">
+      <div class="search-wrap">
+        <div class="search-box"><input id="searchInput" placeholder="Search media, category, or owner..." oninput="scheduleRenderSources()" /></div>
+        <select id="sortSelect" onchange="renderSources()">
+          <option value="newest">Sort by newest</option>
+          <option value="likes">Sort by likes</option>
+          <option value="reports">Sort by reports</option>
+        </select>
+        <select id="categorySelect" onchange="selectCategory(this.value)"></select>
+      </div>
+      <div id="categoryChips" class="chips"></div>
+    </section>
+
     <section id="skeletonGrid" class="skeleton-grid"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></section>
     <section id="sourceGrid" class="grid"></section>
-    <section id="emptyState" class="empty">No clean source data found. Publish a new source to start fresh.</section>
+    <section id="emptyState" class="empty">No media found. Publish a new media link to get started.</section>
     <section id="sourceDetail" class="source-detail" aria-live="polite"></section>
   </main>
 
-  <div id="profileModal" class="modal-backdrop"><div class="modal"><h2>Create Profile</h2><div class="info-box">Create a unique display name.</div><div class="form" style="margin-top:16px"><label>Profile name<input id="profileNameInput" maxlength="30" placeholder="Enter profile name"><small>Use 2–30 characters.</small></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('profileModal')">Cancel</button><button class="primary-btn btn" onclick="createProfile()">Create & Login</button></div></div></div>
+  <!-- ========== MODALS ========== -->
+  <div id="profileModal" class="modal-backdrop"><div class="modal"><h2>Create Profile</h2><div class="info-box">Create a unique display name.</div><div class="form" style="margin-top:16px"><label>Profile name<input id="profileNameInput" maxlength="30" placeholder="Enter profile name"><small>Use 2–30 characters.</small></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('profileModal')">Cancel</button><button class="primary-btn btn" onclick="createProfile()">Create &amp; Login</button></div></div></div>
 
-  <div id="securityCodeModal" class="modal-backdrop"><div class="modal"><h2>PMM_Test Verification</h2><div class="info-box">This profile name requires a test access code. The code is checked locally by SHA-256 hash and is not stored as plain text in this page.</div><div class="form" style="margin-top:16px"><label>Test access code<input id="securityCodeInput" type="password" autocomplete="off" placeholder="Enter test code"><small>Only the PMM_Test profile can use test access.</small></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="cancelSecurityCode()">Cancel</button><button class="primary-btn btn" onclick="submitSecurityCode()">Verify</button></div></div></div>
+  <div id="securityCodeModal" class="modal-backdrop"><div class="modal"><h2>PMM_Test Verification</h2><div class="info-box">This profile name requires a test access code. The code is checked locally by SHA-256 hash.</div><div class="form" style="margin-top:16px"><label>Test access code<input id="securityCodeInput" type="password" autocomplete="off" placeholder="Enter test code"></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="cancelSecurityCode()">Cancel</button><button class="primary-btn btn" onclick="submitSecurityCode()">Verify</button></div></div></div>
 
-  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Source Code</h2><div class="info-box">Publish trusted source links only. Image links are recommended for large images. Direct program/file uploads are not stored in this page; please paste a download URL. The URL may point to a file up to 1 GB. Direct image storage in Firestore must stay small; use image links for large images and adjust the banner position below.</div><div class="form" style="margin-top:16px"><label>Source code name<input id="sourceNameInput" maxlength="50" placeholder="Required, max 50 characters"></label><label>Download link<input id="downloadUrlInput" maxlength="800" placeholder="GitHub, GitLab, SourceForge, FossHub, Ubuntu, or direct file link"></label><label>Small icon image<div id="iconChoice" class="image-choice"><input id="iconUrlInput" maxlength="1200" placeholder="Paste image link, or upload a file below"><div id="iconDrop" class="upload-zone"><div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="iconPreview" class="preview" alt="Icon preview"></div><button type="button" id="iconClearBtn" class="secondary-btn btn clear-image-btn" onclick="clearImageChoice('icon')">Clear image</button></div><input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Use either image link or image file. Large images must use a link.</small></label><label>Horizontal banner image<div id="bannerChoice" class="image-choice"><input id="bannerUrlInput" maxlength="1200" placeholder="Paste image link, or upload a file below"><img id="bannerUrlPreview" class="position-preview" alt="Banner link preview"><div id="bannerDrop" class="upload-zone"><div class="upload-row"><span id="bannerFileName">Click or drag banner here</span><button type="button" class="secondary-btn btn">Choose</button></div><img id="bannerPreview" class="preview" alt="Banner preview"></div><button type="button" id="bannerClearBtn" class="secondary-btn btn clear-image-btn" onclick="clearImageChoice('banner')">Clear image</button><div class="position-tools"><strong>Banner image position</strong><div class="range-row"><span>Left/Right</span><input id="bannerPosXInput" type="range" min="0" max="100" value="50" oninput="updateBannerPreviewPosition()"></div><div class="range-row"><span>Up/Down</span><input id="bannerPosYInput" type="range" min="0" max="100" value="50" oninput="updateBannerPreviewPosition()"></div><small id="bannerPositionLabel">X 50% / Y 50%</small></div></div><input id="bannerFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden><small>Use either image link or image file. Direct image storage is limited by Firestore; use image links for large images. The banner will stay inside its frame.</small></label><label>Category<select id="categoryInput"></select></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn btn" onclick="publishSource()">Publish</button></div></div></div>
+  <div id="addModal" class="modal-backdrop"><div class="modal"><h2>Publish Media</h2>
+    <div class="info-box">
+      Paste any media link &mdash; PMM auto-detects the type and shows an in-page player.
+      <br><b>Supported:</b> direct <code>.mp4 .webm .mp3 .wav .ogg .m4a .flac</code>, YouTube, Vimeo, Dropbox, Google Drive, OneDrive, SoundCloud.
+    </div>
+    <div class="form" style="margin-top:16px">
+      <label>Media name<input id="sourceNameInput" maxlength="60" placeholder="Required, max 60 characters"></label>
+      <label>Media link
+        <input id="downloadUrlInput" maxlength="800" placeholder="https://... (paste any video or audio link)" oninput="updateMediaPreview()">
+        <small>Examples: <code>youtu.be/...</code>, <code>dropbox.com/.../song.mp3</code>, <code>drive.google.com/.../view</code>, <code>example.com/video.mp4</code></small>
+        <div class="media-test-row" id="mediaTestRow">
+          <span class="badge" id="mediaTypeBadge">No link</span>
+          <span class="badge" id="mediaProviderBadge">—</span>
+        </div>
+      </label>
+      <label>Custom thumbnail image (optional)
+        <input id="iconUrlInput" maxlength="1200" placeholder="Image link (auto-fetched for YouTube)">
+        <div id="iconDrop" class="upload-zone" style="margin-top:8px">
+          <div class="upload-row"><span id="iconFileName">Click or drag image here</span><button type="button" class="secondary-btn btn">Choose</button></div>
+          <img id="iconPreview" class="preview" alt="Thumbnail preview">
+        </div>
+        <button type="button" id="iconClearBtn" class="secondary-btn btn" onclick="clearImageChoice('icon')" style="justify-self:start">Clear image</button>
+      </label>
+      <input id="iconFileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+      <label>Category<select id="categoryInput"></select></label>
+    </div>
+    <div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('addModal')">Cancel</button><button id="publishBtn" class="primary-btn btn" onclick="publishSource()">Publish</button></div>
+  </div></div>
 
-  <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Source</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken download link">Broken download link</option><option value="Suspicious or unsafe file">Suspicious or unsafe file</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Copyright concern">Copyright concern</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn btn" onclick="submitReport()">Submit Report</button></div></div></div>
-  <div id="downloadModal" class="modal-backdrop"><div class="modal"><h2>Download Confirmation</h2><p class="muted">Open this source in a new tab?</p><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('downloadModal')">Cancel</button><button class="primary-btn btn" onclick="confirmDownload()">Open</button></div></div></div>
-  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About Home - PMM Open Source</h2><p class="muted">A clean PMM open-source hub for publishing useful links and related source information.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
+  <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Media</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken or invalid link">Broken or invalid link</option><option value="Inappropriate content">Inappropriate content</option><option value="Copyright concern">Copyright concern</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn btn" onclick="submitReport()">Submit Report</button></div></div></div>
 
-  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Sources</h2><div class="info-box">Test access can manage any source: edit name, owner display, category, URLs, banner position, status, and delete. Search by source name below.</div><div class="admin-tools"><input id="adminFindInput" placeholder="Type source name to manage..." oninput="filterAdminTable()"><button class="secondary-btn btn" onclick="filterAdminTable()">Search</button><button class="primary-btn btn" onclick="openSourceByAdminName()">Open by name</button></div><div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn btn" onclick="markAllReview(true)">Mark all review</button><button class="danger-btn btn" onclick="deleteLegacySources()">Clean old data</button><button class="danger-btn btn" onclick="cleanBrokenDownloads()">Clean broken links</button></div><div class="admin-hint">Tip: the Manage button on each card also opens this editor.</div><div class="danger-zone"><b>User Ban Control</b><p class="muted">Ban by Username or UID. Max 365 days. Ban & Wipe deletes the user profile and owned source documents that this client can access.</p><div class="ban-tools"><label>Username / UID<input id="adminBanUserInput" placeholder="username or Firebase UID"></label><label>Days<input id="adminBanDaysInput" type="number" min="1" max="365" value="7"></label><label>Mode<select id="adminBanModeInput"><option value="ban">Ban only</option><option value="ban_wipe">Ban & Wipe Data</option></select></label><button class="danger-btn btn" onclick="applyUserBan()">Apply Ban</button><button class="secondary-btn btn" onclick="unbanUser()">Unban</button></div><div id="banStatusText" class="admin-hint"></div></div><div style="overflow:auto;margin-top:14px;max-height:48vh"><table><thead><tr><th>Name</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div><div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every currently loaded source.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:13px;border-radius:14px;border:1px solid #fecaca"><div class="modal-actions"><button class="danger-btn btn" onclick="deleteAllLoadedSources()">Delete all loaded sources</button></div></div><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('adminModal')">Close</button></div></div></div>
+  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Media Hub</h2><p class="muted">A clean hub for sharing media links that play instantly in-page &mdash; with Discord-friendly embeds for direct files.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
 
-  <div id="editSourceModal" class="modal-backdrop"><div class="modal large"><h2>Edit Source</h2><div class="info-box">This editor is available only after PMM_Test/F9 access is unlocked. It updates the selected source directly in Firestore.</div><div class="form" style="margin-top:16px"><div class="edit-grid"><label>Source display name<input id="editSourceNameInput" maxlength="50"></label><label>Owner display name<input id="editOwnerNameInput" maxlength="50"></label><label>Category<select id="editCategoryInput"></select></label><label>Status<select id="editStatusInput"><option value="active">active</option><option value="review">review</option><option value="hidden">hidden</option></select></label></div><label>Download link<input id="editDownloadUrlInput" maxlength="800"></label><label>Icon image URL<input id="editIconUrlInput" maxlength="1200" placeholder="Paste icon image link or leave blank"></label><label>Horizontal banner image URL<input id="editBannerUrlInput" maxlength="1200" placeholder="Paste banner image link or leave blank"></label><div class="position-tools"><strong>Banner image position</strong><div class="range-row compact"><span>Left/Right</span><input id="editBannerPosXInput" type="range" min="0" max="100" value="50" oninput="updateEditPositionLabel()"><b id="editPosXLabel">50%</b></div><div class="range-row compact"><span>Up/Down</span><input id="editBannerPosYInput" type="range" min="0" max="100" value="50" oninput="updateEditPositionLabel()"><b id="editPosYLabel">50%</b></div></div></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('editSourceModal')">Cancel</button><button class="danger-btn btn" onclick="deleteSource(selectedEditSourceId)">Delete this source</button><button class="primary-btn btn" onclick="saveEditSource()">Save Changes</button></div></div></div>
+  <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Media</h2>
+    <div class="info-box">Test access can manage any source: edit name, owner display, category, URLs, status, and delete.</div>
+    <div class="admin-tools"><input id="adminFindInput" placeholder="Type media name to manage..." oninput="filterAdminTable()"><button class="secondary-btn btn" onclick="filterAdminTable()">Search</button><button class="primary-btn btn" onclick="openSourceByAdminName()">Open by name</button></div>
+    <div class="modal-actions" style="justify-content:flex-start"><button class="secondary-btn btn" onclick="loadAdminTable()">Refresh</button><button class="success-btn btn" onclick="markAllReview(false)">Mark all active</button><button class="secondary-btn btn" onclick="markAllReview(true)">Mark all review</button><button class="danger-btn btn" onclick="deleteLegacySources()">Clean old data</button></div>
+    <div class="danger-zone"><b>User Ban Control</b><p class="muted">Ban by Username or UID. Max 365 days.</p>
+      <div class="ban-tools">
+        <label>Username / UID<input id="adminBanUserInput" placeholder="username or Firebase UID"></label>
+        <label>Days<input id="adminBanDaysInput" type="number" min="1" max="365" value="7"></label>
+        <label>Mode<select id="adminBanModeInput"><option value="ban">Ban only</option><option value="ban_wipe">Ban &amp; Wipe Data</option></select></label>
+        <button class="danger-btn btn" onclick="applyUserBan()">Apply Ban</button>
+        <button class="secondary-btn btn" onclick="unbanUser()">Unban</button>
+      </div>
+      <div id="banStatusText" class="admin-hint"></div>
+    </div>
+    <div style="overflow:auto;margin-top:14px;max-height:48vh"><table><thead><tr><th>Name</th><th>Type</th><th>Owner</th><th>Category</th><th>Status</th><th>Reports</th><th>Action</th></tr></thead><tbody id="adminTableBody"></tbody></table></div>
+    <div class="danger-zone"><b>Danger Zone</b><p class="muted">Type DELETE ALL to delete every currently loaded media.</p><input id="deleteAllConfirm" placeholder="DELETE ALL" style="width:100%;padding:13px;border-radius:14px;border:1px solid #fecaca"><div class="modal-actions"><button class="danger-btn btn" onclick="deleteAllLoadedSources()">Delete all loaded media</button></div></div>
+    <div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('adminModal')">Close</button></div>
+  </div></div>
+
+  <div id="editSourceModal" class="modal-backdrop"><div class="modal large"><h2>Edit Media</h2>
+    <div class="info-box">This editor updates the selected media directly in Firestore.</div>
+    <div class="form" style="margin-top:16px">
+      <div class="edit-grid">
+        <label>Media name<input id="editSourceNameInput" maxlength="60"></label>
+        <label>Owner display name<input id="editOwnerNameInput" maxlength="50"></label>
+        <label>Category<select id="editCategoryInput"></select></label>
+        <label>Status<select id="editStatusInput"><option value="active">active</option><option value="review">review</option><option value="hidden">hidden</option></select></label>
+      </div>
+      <label>Media link<input id="editDownloadUrlInput" maxlength="800"></label>
+      <label>Thumbnail URL<input id="editIconUrlInput" maxlength="1200" placeholder="Paste thumbnail image link or leave blank"></label>
+    </div>
+    <div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('editSourceModal')">Cancel</button><button class="danger-btn btn" onclick="deleteSource(selectedEditSourceId)">Delete this media</button><button class="primary-btn btn" onclick="saveEditSource()">Save Changes</button></div>
+  </div></div>
 
   <div id="confirmModal" class="modal-backdrop"><div class="modal"><h2 id="confirmTitle">Confirm Action</h2><p id="confirmMessage" class="muted"></p><div class="modal-actions"><button class="secondary-btn btn" onclick="pendingConfirmAction=null;closeModal('confirmModal')">Cancel</button><button id="confirmOkBtn" class="danger-btn btn">Confirm</button></div></div></div>
 
+  <!-- ========== MAIN SCRIPT ========== -->
   <script>
-    const APP_VERSION = "pmm-clean-v5";
+    const APP_VERSION = "pmm-clean-v5"; // keep same version key so existing Firestore rules accept writes
     const PUBLIC_SITE_URL = "https://eee946812-creator.github.io/PMM_open_source/";
-
     const SHARE_IMAGE_URL = "https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi";
+
+    // ===========================================================
+    // MEDIA RESOLVER — turns any pasted link into a playable form
+    // ===========================================================
+    // Returns: { kind, provider, embed, raw, poster, title, isDirect }
+    //   kind:     'video' | 'audio' | 'unknown'
+    //   provider: 'direct' | 'youtube' | 'vimeo' | 'dropbox' | 'gdrive' | 'onedrive' | 'soundcloud' | 'unknown'
+    //   embed:    URL safe to load in <iframe> OR <video>/<audio>
+    //   raw:      raw file URL when available (for <video>/<audio>)
+    //   poster:   thumbnail URL when guessable (YouTube)
+    //   isDirect: true if served as raw file (use <video>/<audio>)
+    const VIDEO_EXT = ['mp4','webm','ogv','mov','m4v','mkv'];
+    const AUDIO_EXT = ['mp3','wav','ogg','m4a','flac','aac','opus'];
+
+    function getUrlExt(u){
+      try{
+        const p = new URL(u);
+        const path = p.pathname.toLowerCase();
+        const m = path.match(/\.([a-z0-9]+)(?:$|\?)/);
+        return m ? m[1] : '';
+      }catch{ return ''; }
+    }
+
+    function pickKindFromExt(ext){
+      if(VIDEO_EXT.includes(ext)) return 'video';
+      if(AUDIO_EXT.includes(ext)) return 'audio';
+      return 'unknown';
+    }
+
+    function pickKindFromUrl(u){
+      return pickKindFromExt(getUrlExt(u));
+    }
+
+    // ---- YouTube ----
+    function ytId(u){
+      try{
+        const p = new URL(u);
+        const h = p.hostname.replace(/^www\./,'');
+        if(h === 'youtu.be') return p.pathname.slice(1).split('/')[0] || '';
+        if(h.endsWith('youtube.com') || h.endsWith('youtube-nocookie.com')){
+          if(p.pathname.startsWith('/watch')) return p.searchParams.get('v') || '';
+          const m = p.pathname.match(/^\/(embed|shorts|live|v)\/([^/?#]+)/);
+          if(m) return m[2];
+        }
+      }catch{}
+      return '';
+    }
+
+    // ---- Vimeo ----
+    function vimeoId(u){
+      try{
+        const p = new URL(u);
+        if(p.hostname.replace(/^www\./,'') !== 'vimeo.com' && !p.hostname.endsWith('player.vimeo.com')) return '';
+        const m = p.pathname.match(/(\d{6,})/);
+        return m ? m[1] : '';
+      }catch{ return ''; }
+    }
+
+    // ---- Dropbox ----
+    // Strategy: rewrite to dl.dropboxusercontent.com (raw file delivery) so <video>/<audio> can stream it.
+    // www.dropbox.com/scl/fi/.../file.mp4?dl=0   ->   dl.dropboxusercontent.com/scl/fi/.../file.mp4?raw=1
+    function dropboxRaw(u){
+      try{
+        const p = new URL(u);
+        const h = p.hostname.replace(/^www\./,'');
+        if(h !== 'dropbox.com' && h !== 'dl.dropboxusercontent.com') return '';
+        const np = new URL(u);
+        np.hostname = 'dl.dropboxusercontent.com';
+        np.searchParams.delete('dl');
+        np.searchParams.set('raw','1');
+        return np.toString();
+      }catch{ return ''; }
+    }
+
+    // ---- Google Drive ----
+    // Two outputs:
+    //   preview iframe: https://drive.google.com/file/d/{id}/preview      (works for video, audio, pdf)
+    //   raw download:   https://drive.google.com/uc?export=download&id={id} (browsers may block large files)
+    function gdriveId(u){
+      try{
+        const p = new URL(u);
+        if(!p.hostname.endsWith('google.com')) return '';
+        let m = p.pathname.match(/\/file\/d\/([^/]+)/);
+        if(m) return m[1];
+        m = p.pathname.match(/\/d\/([^/]+)/);
+        if(m) return m[1];
+        const id = p.searchParams.get('id');
+        if(id) return id;
+      }catch{}
+      return '';
+    }
+
+    // ---- OneDrive / SharePoint ----
+    // OneDrive share links can be turned into embed by replacing /:v: or appending ?embed=1; the cleanest cross-tenant
+    // approach is to use the official embed endpoint:
+    //   https://onedrive.live.com/embed?resid=...&authkey=...
+    // For arbitrary share links, fall back to passing the URL through onedrive.live.com/embed?cid=... when possible,
+    // otherwise just iframe the share URL with ?embed=1 (works for most personal links).
+    function onedriveEmbed(u){
+      try{
+        const p = new URL(u);
+        const h = p.hostname;
+        if(!(h.endsWith('onedrive.live.com') || h.endsWith('1drv.ms') || h.endsWith('sharepoint.com'))) return '';
+        // 1drv.ms short links: just append ?embed=1 — Microsoft auto-resolves
+        const np = new URL(u);
+        np.searchParams.set('embed','1');
+        return np.toString();
+      }catch{ return ''; }
+    }
+
+    // ---- SoundCloud ----
+    function soundcloudEmbed(u){
+      try{
+        const p = new URL(u);
+        if(!p.hostname.endsWith('soundcloud.com')) return '';
+        const api = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(u) + '&color=%23111827&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true';
+        return api;
+      }catch{ return ''; }
+    }
+
+    function resolveMedia(rawUrl){
+      const fail = { kind:'unknown', provider:'unknown', embed:'', raw:'', poster:'', isDirect:false };
+      const url = String(rawUrl||'').trim();
+      if(!url) return fail;
+      let parsed;
+      try{ parsed = new URL(url); }catch{ return fail; }
+      if(!['http:','https:'].includes(parsed.protocol)) return fail;
+
+      // YouTube
+      const yt = ytId(url);
+      if(yt){
+        return {
+          kind:'video', provider:'youtube',
+          embed:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(yt)}?rel=0&modestbranding=1&playsinline=1`,
+          raw:'',
+          poster:`https://i.ytimg.com/vi/${encodeURIComponent(yt)}/hqdefault.jpg`,
+          isDirect:false
+        };
+      }
+      // Vimeo
+      const vid = vimeoId(url);
+      if(vid){
+        return {
+          kind:'video', provider:'vimeo',
+          embed:`https://player.vimeo.com/video/${encodeURIComponent(vid)}?title=0&byline=0&portrait=0`,
+          raw:'', poster:'', isDirect:false
+        };
+      }
+      // SoundCloud (audio)
+      const sc = soundcloudEmbed(url);
+      if(sc) return { kind:'audio', provider:'soundcloud', embed:sc, raw:'', poster:'', isDirect:false };
+
+      // Google Drive
+      const gid = gdriveId(url);
+      if(gid){
+        const ext = getUrlExt(url);
+        const kindGuess = pickKindFromExt(ext);
+        return {
+          kind: kindGuess === 'unknown' ? 'video' : kindGuess, // Drive preview iframe handles both video + audio
+          provider:'gdrive',
+          embed:`https://drive.google.com/file/d/${encodeURIComponent(gid)}/preview`,
+          raw:`https://drive.google.com/uc?export=download&id=${encodeURIComponent(gid)}`,
+          poster:'', isDirect:false
+        };
+      }
+
+      // Dropbox — try to get raw file URL; let kind be decided by extension
+      const dbox = dropboxRaw(url);
+      if(dbox){
+        const kindGuess = pickKindFromUrl(dbox);
+        return {
+          kind: kindGuess === 'unknown' ? 'video' : kindGuess, // default to video; user can correct
+          provider:'dropbox',
+          embed: dbox,   // for direct playback
+          raw: dbox,
+          poster:'',
+          isDirect: kindGuess !== 'unknown'
+        };
+      }
+
+      // OneDrive
+      const od = onedriveEmbed(url);
+      if(od){
+        return { kind:'video', provider:'onedrive', embed:od, raw:'', poster:'', isDirect:false };
+      }
+
+      // Direct file
+      const ext = getUrlExt(url);
+      const direct = pickKindFromExt(ext);
+      if(direct !== 'unknown'){
+        return { kind:direct, provider:'direct', embed:url, raw:url, poster:'', isDirect:true };
+      }
+
+      return fail;
+    }
+
+    // Friendly label for badges
+    function providerLabel(p){
+      return ({direct:'Direct file',youtube:'YouTube',vimeo:'Vimeo',dropbox:'Dropbox',gdrive:'Google Drive',onedrive:'OneDrive',soundcloud:'SoundCloud',unknown:'Unknown'})[p]||'Unknown';
+    }
+    function kindLabel(k){ return k==='video'?'Video':(k==='audio'?'Audio':'Unknown'); }
+
+    // ===========================================================
+    // META + UTIL
+    // ===========================================================
     function setMetaContent(selector, content){
       let el=document.querySelector(selector);
       if(!el){
@@ -282,92 +549,70 @@
       }
       el.setAttribute('content', content);
     }
+    function removeMeta(selector){
+      document.querySelectorAll(selector).forEach(el=>el.remove());
+    }
     function refreshShareImageMeta(){
       setMetaContent('meta[property="og:image"]', SHARE_IMAGE_URL);
-      setMetaContent('meta[property="og:image:secure_url"]', SHARE_IMAGE_URL);
       setMetaContent('meta[name="twitter:image"]', SHARE_IMAGE_URL);
     }
-    function enhanceSelect(select){
-      if(!select || select.dataset.enhancedSelect==='1') return;
-      select.dataset.enhancedSelect='1';
-      select.classList.add('native-select-hidden');
-      const wrap=document.createElement('div');
-      wrap.className='custom-select';
-      const btn=document.createElement('button');
-      btn.type='button';
-      btn.className='custom-select-button';
-      const menu=document.createElement('div');
-      menu.className='custom-select-menu';
-      wrap.append(btn,menu);
-      select.parentNode.insertBefore(wrap,select.nextSibling);
-      function rebuild(){
-        const selected=select.options[select.selectedIndex];
-        btn.textContent=selected ? selected.textContent : '';
-        menu.innerHTML='';
-        [...select.options].forEach(opt=>{
-          const item=document.createElement('div');
-          item.className='custom-select-option'+(opt.value===select.value?' selected':'');
-          item.textContent=opt.textContent;
-          item.addEventListener('click',e=>{
-            e.stopPropagation();
-            select.value=opt.value;
-            wrap.classList.remove('open');
-            select.dispatchEvent(new Event('change',{bubbles:true}));
-            rebuild();
-          });
-          menu.appendChild(item);
-        });
+    // Apply Open Graph video/audio meta so Discord can embed and play directly.
+    function applyMediaShareMeta(src){
+      // Reset video/audio specific tags first
+      ['meta[property="og:video"]','meta[property="og:video:secure_url"]','meta[property="og:video:type"]','meta[property="og:video:width"]','meta[property="og:video:height"]','meta[property="og:audio"]','meta[property="og:audio:type"]','meta[name="twitter:player"]','meta[name="twitter:player:width"]','meta[name="twitter:player:height"]','meta[name="twitter:player:stream"]','meta[name="twitter:player:stream:content_type"]']
+        .forEach(removeMeta);
+
+      const url = String(src?.downloadUrl||'');
+      const media = resolveMedia(url);
+      if(!media || media.kind==='unknown') return;
+
+      // Use a Twitter "summary_large_image" by default; only switch to player card for direct files (Discord respects og:video).
+      setMetaContent('meta[property="og:title"]', `${src?.name||'Media'} - PMM Media Hub`);
+      setMetaContent('meta[property="og:description"]', `${kindLabel(media.kind)} via ${providerLabel(media.provider)}. Click to play.`);
+
+      if(media.isDirect && media.raw){
+        const ext = getUrlExt(media.raw);
+        if(media.kind==='video'){
+          const mime = ext==='webm' ? 'video/webm' : (ext==='ogv' ? 'video/ogg' : 'video/mp4');
+          setMetaContent('meta[property="og:type"]', 'video.other');
+          setMetaContent('meta[property="og:video"]', media.raw);
+          setMetaContent('meta[property="og:video:secure_url"]', media.raw);
+          setMetaContent('meta[property="og:video:type"]', mime);
+          setMetaContent('meta[property="og:video:width"]', '1280');
+          setMetaContent('meta[property="og:video:height"]', '720');
+          // Twitter player card (also picked up by some embedders)
+          setMetaContent('meta[name="twitter:card"]', 'player');
+          setMetaContent('meta[name="twitter:player:stream"]', media.raw);
+          setMetaContent('meta[name="twitter:player:stream:content_type"]', mime);
+          setMetaContent('meta[name="twitter:player:width"]', '1280');
+          setMetaContent('meta[name="twitter:player:height"]', '720');
+        } else if(media.kind==='audio'){
+          const mime = ext==='wav' ? 'audio/wav' : (ext==='ogg'||ext==='opus' ? 'audio/ogg' : (ext==='flac' ? 'audio/flac' : 'audio/mpeg'));
+          setMetaContent('meta[property="og:type"]', 'music.song');
+          setMetaContent('meta[property="og:audio"]', media.raw);
+          setMetaContent('meta[property="og:audio:type"]', mime);
+          setMetaContent('meta[name="twitter:card"]', 'player');
+          setMetaContent('meta[name="twitter:player:stream"]', media.raw);
+          setMetaContent('meta[name="twitter:player:stream:content_type"]', mime);
+          setMetaContent('meta[name="twitter:player:width"]', '480');
+          setMetaContent('meta[name="twitter:player:height"]', '120');
+        }
+      } else if(media.poster){
+        setMetaContent('meta[property="og:image"]', media.poster);
+        setMetaContent('meta[name="twitter:image"]', media.poster);
       }
-      btn.addEventListener('click',e=>{
-        e.preventDefault(); e.stopPropagation();
-        document.querySelectorAll('.custom-select.open').forEach(el=>{if(el!==wrap)el.classList.remove('open')});
-        wrap.classList.toggle('open');
-      });
-      document.addEventListener('click',()=>wrap.classList.remove('open'));
-      select.addEventListener('change',rebuild);
-      rebuild();
     }
-    function enhanceAllSelects(){ ['sortSelect','categorySelect','categoryInput','editCategoryInput','editStatusInput','adminBanModeInput'].forEach(id=>enhanceSelect(safeById(id))); }
-    function setupReportReasonButtons(){
-      const select=safeById('reportReasonInput');
-      if(!select || select.dataset.reportButtons==='1') return;
-      select.dataset.reportButtons='1';
-      const grid=document.createElement('div');
-      grid.className='report-reason-grid';
-      function rebuild(){
-        grid.innerHTML='';
-        [...select.options].forEach(opt=>{
-          const btn=document.createElement('button');
-          btn.type='button';
-          btn.className='report-reason-btn'+(opt.value===select.value?' active':'');
-          btn.textContent=opt.textContent;
-          btn.addEventListener('click',()=>{select.value=opt.value;select.dispatchEvent(new Event('change',{bubbles:true}));rebuild();});
-          grid.appendChild(btn);
-        });
-      }
-      select.addEventListener('change',rebuild);
-      select.parentNode.appendChild(grid);
-      rebuild();
+
+    function showNotice(message){
+      const box=safeById("noticeBox"), text=safeById("noticeText");
+      if(!box||!text){ console.warn(message); return; }
+      text.textContent=String(message||"").slice(0,220);
+      box.style.display="flex";
+      clearTimeout(showNotice.t);
+      showNotice.t=setTimeout(()=>{box.style.display="none"},9000);
     }
-    const CATEGORIES = ["All","Recommended","Source Code","Tool","Game","Operating System","Browser","AI","Design","Other"];
-    const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
-    const MAX_IMAGE_BYTES = 250 * 1024;
-    const POWER_IMAGE_BYTES = 430 * 1024;
-    const MAX_LINK_FILE_BYTES = 1024 * 1024 * 1024;
-    let testAccessUnlocked = false;
-    const SUPPORTED_DOWNLOAD_DOMAINS = ["github.com","gitlab.com","sourceforge.net","fosshub.com","ubuntu.com"];
-    const SUPPORTED_EXTENSIONS = [".zip",".7z",".rar",".tar.gz",".exe",".msi",".apk",".iso",".deb",".rpm"];
-    const AVATAR_COLORS = ["#2563eb","#7c3aed","#0891b2","#059669","#ea580c","#db2777","#0f172a"];
-    let currentUser = null, currentProfile = null, isAdminUser = false, isLocalManager = false, sources = [], adminAllSources = [], selectedCategory = "All", selectedReportSourceId = null, selectedDownloadUrl = null, selectedDownloadSourceId = null, selectedEditSourceId = null, pendingConfirmAction = null, selectedFiles = {icon:null,banner:null}, loadingSources = false, currentBan = null, renderTimer = 0;
-    const byId = id => document.getElementById(id);
-    const safeById = id => document.getElementById(id);
-    window.addEventListener("error", event => { console.error("Runtime error:", event.error || event.message); try{ showNotice("A system error was detected, but the page is still running. Please refresh if data looks incorrect."); }catch{} });
-    window.addEventListener("unhandledrejection", event => { console.error("Unhandled promise rejection:", event.reason); try{ showNotice("Network or database action failed safely. Please try again."); }catch{} });
-    function openModal(id){ const el=safeById(id); if(el) el.style.display="flex"; }
-    function closeModal(id){ const el=safeById(id); if(el) el.style.display="none"; }
-    function showNotice(message){ const box=safeById("noticeBox"), text=safeById("noticeText"); if(!box||!text){ console.warn(message); return; } text.textContent=String(message||"").slice(0,220); box.style.display="block"; clearTimeout(showNotice.t); showNotice.t=setTimeout(()=>{box.style.display="none"},9000); }
     function notifyUser(message){ showNotice(message); }
-    function closeNotice(){ byId("noticeBox").style.display="none"; }
+    function closeNotice(){ const b=byId("noticeBox"); if(b) b.style.display="none"; }
     function askConfirm(title, message, onConfirm){
       const titleEl=safeById("confirmTitle"), msgEl=safeById("confirmMessage"), okBtn=safeById("confirmOkBtn");
       if(!titleEl||!msgEl||!okBtn){ if(confirm(message)) onConfirm(); return; }
@@ -386,14 +631,11 @@
     const _xk=["c1c7a84537fffb27a25b1461274a00117c7fcb01e8273e6abcd44fe5c27ec3b5"];
     const _zk="d5f65b47651d96ae8c32450e00e50982c78b5f3a1af1db037a890b0fc4899d52";
     let securityCodeResolver = null;
-    function clampPercent(value){ const n=Number(value); return Number.isFinite(n) ? Math.max(0,Math.min(100,Math.round(n))) : 50; }
-    function getBannerPosition(){ return {x:clampPercent(byId("bannerPosXInput")?.value ?? 50), y:clampPercent(byId("bannerPosYInput")?.value ?? 50)}; }
-    function updateBannerPreviewPosition(){ const p=getBannerPosition(); ["bannerPreview","bannerUrlPreview"].forEach(id=>{ const img=safeById(id); if(img) img.style.objectPosition=`${p.x}% ${p.y}%`; }); const label=safeById("bannerPositionLabel"); if(label) label.textContent=`X ${p.x}% / Y ${p.y}%`; }
     async function needsGate(name){ return profileNameKey(name) === TEST_PROFILE_KEY && _xk.includes(await digestText(profileNameKey(name))); }
     function passGate(){ return new Promise(resolve=>{ securityCodeResolver=resolve; const input=safeById("securityCodeInput"); if(input){ input.value=""; setTimeout(()=>input.focus(),80); } openModal("securityCodeModal"); }); }
     window.submitSecurityCode=async function(){ const input=safeById("securityCodeInput"); const value=input ? input.value : ""; const passed=(await digestText(value))===_zk; closeModal("securityCodeModal"); if(securityCodeResolver){ securityCodeResolver(passed); securityCodeResolver=null; } if(!passed) return; };
     window.cancelSecurityCode=function(){ closeModal("securityCodeModal"); if(securityCodeResolver){ securityCodeResolver(false); securityCodeResolver=null; }  };
-    window.updateBannerPreviewPosition=updateBannerPreviewPosition;
+
     function hasPowerAccess(){ return Boolean(testAccessUnlocked || isAdminUser || isLocalManager || (currentProfile && currentProfile.nameKey === TEST_PROFILE_KEY && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk)); }
     function validProfileName(name){ return /^[\u0E00-\u0E7Fa-zA-Z0-9 _:\-.]{2,30}$/.test(name) && !name.includes("/"); }
     function randomColor(){ return AVATAR_COLORS[Math.floor(Math.random()*AVATAR_COLORS.length)]; }
@@ -401,237 +643,493 @@
     function sourceAccent(src){ return src?.color || colorFromText(`${src?.ownerName||""}-${src?.category||""}-${src?.name||""}`); }
     function placeholderGradient(src){ const c=sourceAccent(src); return `linear-gradient(135deg, ${c}, #0f172a)`; }
     function todayKey(){ return new Date().toISOString().slice(0,10); }
-    function defaultIconText(name){ return (name||"S").trim().slice(0,1).toUpperCase(); }
+    function defaultIconText(name){ return (name||"M").trim().slice(0,1).toUpperCase(); }
     function validDisplayUrl(url){ try{ const parsed = new URL(url); return ["https:","http:"].includes(parsed.protocol) ? parsed.href : ""; }catch{return "";} }
     function validImageSrc(value){ const src=String(value||""); if(/^data:image\/(png|jpeg|webp|gif);base64,/i.test(src)) return src; return validDisplayUrl(src); }
-    function validateDownloadUrl(url){ const raw=String(url||"").trim(); if(!raw || raw.length>800) return {ok:false,message:"Please enter a real download link with 800 characters or less."}; let parsed; try{parsed=new URL(raw)}catch{return{ok:false,message:"Please enter a valid download URL."}} if(!["http:","https:"].includes(parsed.protocol)) return {ok:false,message:"Only HTTP and HTTPS links are supported."}; return {ok:true}; }
+    function validateDownloadUrl(url){ const raw=String(url||"").trim(); if(!raw || raw.length>800) return {ok:false,message:"Please enter a media link with 800 characters or less."}; let parsed; try{parsed=new URL(raw)}catch{return{ok:false,message:"Please enter a valid URL."}} if(!["http:","https:"].includes(parsed.protocol)) return {ok:false,message:"Only HTTP and HTTPS links are supported."}; return {ok:true}; }
     function setButtonBusy(buttonId,busy){ const btn=byId(buttonId); if(!btn)return; btn.disabled=busy; btn.textContent=busy?"Processing...":"Publish"; }
-    function setLoading(state){ loadingSources=state; byId("skeletonGrid").style.display=state?"grid":"none"; byId("sourceGrid").style.display=state?"none":"grid"; if(state) byId("emptyState").style.display="none"; }
-    function showHome(){ selectedCategory="All"; const cat=byId("categorySelect"); if(cat){ cat.value="All"; cat.dispatchEvent(new Event('change',{bubbles:true})); } closeSourcePage(); renderCategoryChips(); renderSources(); window.scrollTo(0,0); }
-    function selectCategory(category){ selectedCategory=category; const cat=byId("categorySelect"); if(cat && cat.value!==category){ cat.value=category; cat.dispatchEvent(new Event('change',{bubbles:true})); } renderCategoryChips(); renderSources(); }
+    function setLoading(state){ loadingSources=state; const sk=byId("skeletonGrid"), gr=byId("sourceGrid"); if(sk) sk.style.display=state?"grid":"none"; if(gr) gr.style.display=state?"none":"grid"; if(state){ const e=byId("emptyState"); if(e) e.style.display="none"; } }
+    function showHome(){ selectedCategory="All"; const cat=byId("categorySelect"); if(cat){ cat.value="All"; } closeSourcePage(); renderCategoryChips(); renderSources(); window.scrollTo(0,0); }
+    function selectCategory(category){ selectedCategory=category; const cat=byId("categorySelect"); if(cat && cat.value!==category){ cat.value=category; } renderCategoryChips(); renderSources(); }
     function openAbout(){ openModal("aboutModal"); }
     function openProfileModal(){ openModal("profileModal"); }
-    function openDownload(url,sourceId=null){ selectedDownloadUrl=validDisplayUrl(url); selectedDownloadSourceId=sourceId; if(!selectedDownloadUrl){notifyUser("Invalid or unsafe download URL."); return;} openModal("downloadModal"); }
-    async function checkDownloadAvailability(url){
-      const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),5200);
-      try{ const res=await fetch(url,{method:"HEAD",mode:"cors",redirect:"follow",cache:"no-store",signal:controller.signal}); if(res.status===404||res.status===410) return {state:"missing",status:res.status}; if(res.ok || (res.status>=200&&res.status<400)) return {state:"ok",status:res.status}; if(res.status>=400&&res.status<500) return {state:"invalid",status:res.status}; return {state:"unknown",status:res.status}; }
-      catch(_){ return {state:"unknown",status:0}; }
-      finally{ clearTimeout(timer); }
+
+    function openAddModal(){
+      if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; }
+      if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Publishing is disabled."); return; }
+      if(!currentProfile){ openProfileModal(); return; }
+      openModal("addModal");
+      updateMediaPreview();
     }
-    function showMissingDetail(){ const detail=safeById("sourceDetail"); setHomeVisible(false); if(detail) detail.innerHTML=`<div class="missing-state"><div><div class="missing-icon">!</div><h2>Data missing or invalid link</h2><p class="muted">The requested source was deleted, hidden, or the link is no longer valid.</p><div class="detail-actions" style="justify-content:center"><button class="secondary-btn btn" onclick="closeSourcePage()">Back Home</button></div></div></div>`; }
-    async function cleanupSourceRecord(sourceId,reason="invalid-link"){
-      if(!sourceId||!currentUser)return false;
-      const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
-      if(!src)return false;
-      if(!(hasPowerAccess()||src.ownerId===currentUser.uid))return false;
-      try{ if(typeof window.cleanupSourceRecordFromDb!=="function")return false; const ok=await window.cleanupSourceRecordFromDb(sourceId,reason); if(ok) showNotice(`Cleaned invalid source data: ${src.name||sourceId}`); return ok; }
-      catch(error){ console.warn("Cleanup skipped:",reason,error); return false; }
-    }
-    async function confirmDownload(){
-      if(!selectedDownloadUrl){ closeModal("downloadModal"); return; }
-      const result=await checkDownloadAvailability(selectedDownloadUrl);
-      if(result.state==="missing"||result.state==="invalid"){ closeModal("downloadModal"); await cleanupSourceRecord(selectedDownloadSourceId,`download-${result.status}`); showMissingDetail(); return; }
-      window.open(selectedDownloadUrl,"_blank","noopener,noreferrer"); closeModal("downloadModal");
-    }
-    function openAddModal(){ if(!currentUser){ showNotice("Authentication is still loading. Please try again."); return; } if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Publishing is disabled."); return; } if(!currentProfile){ openProfileModal(); return; } openModal("addModal"); }
     function logoutProfile(){ askConfirm("Logout", "Logout from this browser?", ()=>window.secureLogout()); }
-    function initSelects(){ const categorySelect=byId("categorySelect"), categoryInput=byId("categoryInput"); categorySelect.innerHTML=""; CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categorySelect.appendChild(o); }); categoryInput.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categoryInput.appendChild(o); }); const editCategory=byId("editCategoryInput"); if(editCategory){ editCategory.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;editCategory.appendChild(o); }); } setTimeout(enhanceAllSelects,0); }
-    function renderCategoryChips(){ const wrap=byId("categoryChips"); wrap.innerHTML=""; CATEGORIES.forEach(cat=>{ const btn=document.createElement("button"); btn.className="chip"+(cat===selectedCategory?" active":""); btn.textContent=cat; btn.addEventListener("click",()=>selectCategory(cat)); wrap.appendChild(btn); }); }
-    function cssUrl(value){ return `url(${JSON.stringify(String(value||""))})`; }
-    function loadAsBackground(el,url,options={}){
-      const src=validImageSrc(url);
-      if(!el || !src) return false;
-      const probe=new Image();
-      probe.referrerPolicy="no-referrer";
-      probe.decoding="async";
-      probe.onload=()=>{
-        el.style.backgroundImage=cssUrl(src);
-        el.style.backgroundSize=options.size||"cover";
-        el.style.backgroundPosition=options.position||"center";
-        el.style.backgroundRepeat="no-repeat";
-        if(options.clearText!==false) el.textContent="";
-        if(options.loadedClass) el.classList.add(options.loadedClass);
-        if(options.removePlaceholder!==false) el.classList.remove("placeholder");
-        if(typeof options.onSuccess==="function") options.onSuccess(src);
-      };
-      probe.onerror=()=>{ if(typeof options.onError==="function") options.onError(); };
-      probe.src=src;
-      return true;
+
+    function initSelects(){
+      const categorySelect=byId("categorySelect"), categoryInput=byId("categoryInput");
+      categorySelect.innerHTML=""; CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categorySelect.appendChild(o); });
+      categoryInput.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;categoryInput.appendChild(o); });
+      const editCategory=byId("editCategoryInput"); if(editCategory){ editCategory.innerHTML=""; PUBLISH_CATEGORIES.forEach(cat=>{ const o=document.createElement("option"); o.value=cat;o.textContent=cat;editCategory.appendChild(o); }); }
     }
-    function makeImage(url,alt,onError){ const src=validImageSrc(url); if(!src)return null; const img=document.createElement("img"); img.src=src; img.alt=alt||"image"; img.loading="lazy"; img.decoding="async"; img.referrerPolicy="no-referrer"; img.onerror=()=>{ img.remove(); if(typeof onError==="function") onError(); }; return img; }
+    function renderCategoryChips(){
+      const wrap=byId("categoryChips"); wrap.innerHTML="";
+      CATEGORIES.forEach(cat=>{
+        const btn=document.createElement("button");
+        btn.className="chip"+(cat===selectedCategory?" active":"");
+        btn.textContent=cat;
+        btn.addEventListener("click",()=>selectCategory(cat));
+        wrap.appendChild(btn);
+      });
+    }
+
+    // Live media preview in the publish modal
+    function updateMediaPreview(){
+      const url = byId("downloadUrlInput")?.value?.trim() || "";
+      const typeBadge = byId("mediaTypeBadge");
+      const provBadge = byId("mediaProviderBadge");
+      if(!typeBadge || !provBadge) return;
+      if(!url){
+        typeBadge.className = "badge"; typeBadge.textContent = "No link";
+        provBadge.className = "badge"; provBadge.textContent = "—";
+        return;
+      }
+      const m = resolveMedia(url);
+      typeBadge.className = "badge " + (m.kind==='video'?'video':(m.kind==='audio'?'audio':'warn'));
+      typeBadge.textContent = kindLabel(m.kind);
+      provBadge.className = "badge " + (m.provider==='unknown'?'warn':'ok');
+      provBadge.textContent = providerLabel(m.provider);
+      // Auto-fill YouTube thumbnail into icon URL if user hasn't typed one
+      const iconInput = byId("iconUrlInput");
+      if(iconInput && !iconInput.value && m.poster){
+        iconInput.value = m.poster;
+      }
+    }
+    window.updateMediaPreview = updateMediaPreview;
+
+    function escHtml(s){ return String(s||"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m])); }
+
     function isCleanSource(src){ return src && src.appVersion === APP_VERSION && src.visibility !== "hidden" && src.status !== "hidden"; }
+
     function createSourceCard(src,mini=false){
-      const card=document.createElement(mini?"div":"article");
-      card.className=mini?"mini-card":"card";
-      if(mini){ const name=document.createElement("strong"); name.textContent=src.name||"Untitled"; const detail=document.createElement("small"); detail.textContent=`${src.category||"Source Code"} • 👍 ${Number(src.likes||0)}`; card.append(name,detail); card.addEventListener("click",()=>openSourcePage(src.id)); return card; }
+      if(mini){
+        const card=document.createElement("div");
+        card.className="mini-card";
+        const m = resolveMedia(src.downloadUrl||"");
+        const name=document.createElement("strong"); name.textContent=src.name||"Untitled";
+        const detail=document.createElement("small"); detail.textContent=`${kindLabel(m.kind)} • ${providerLabel(m.provider)} • 👍 ${Number(src.likes||0)}`;
+        card.append(name,detail);
+        card.addEventListener("click",()=>openSourcePage(src.id));
+        return card;
+      }
+
+      const card=document.createElement("article");
+      card.className="card";
+
       const canDelete=hasPowerAccess()||(currentUser&&src.ownerId===currentUser.uid);
-      const deleteBtn=document.createElement("button"); deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.textContent="🗑"; if(canDelete){deleteBtn.style.display="block"; deleteBtn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();deleteSource(src.id);});}
-      const banner=document.createElement("div"); banner.className="banner placeholder";
-      const applyBannerFallback=()=>{ banner.classList.add("placeholder"); banner.style.background=placeholderGradient(src); banner.style.backgroundImage=""; banner.innerHTML=""; const b=document.createElement("strong"); b.textContent=src.category||"Source Code"; banner.appendChild(b); };
-      applyBannerFallback();
-      loadAsBackground(banner,src.bannerUrl,{position:`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`,clearText:false,onSuccess:()=>{ banner.innerHTML=""; },onError:applyBannerFallback});
+      const deleteBtn=document.createElement("button");
+      deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.textContent="🗑";
+      if(canDelete){ deleteBtn.style.display="flex"; deleteBtn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();deleteSource(src.id);}); }
+
+      const m = resolveMedia(src.downloadUrl||"");
+      const thumb=document.createElement("div"); thumb.className="card-thumb";
+      thumb.style.background = placeholderGradient(src);
+
+      // Pick a thumbnail: explicit iconUrl > provider poster > placeholder text
+      const thumbUrl = validImageSrc(src.iconUrl) || (m.poster ? validImageSrc(m.poster) : "");
+      if(thumbUrl){
+        const img=document.createElement("img");
+        img.src=thumbUrl; img.alt=src.name||"thumbnail";
+        img.loading="lazy"; img.decoding="async"; img.referrerPolicy="no-referrer";
+        img.onerror=()=>img.remove();
+        thumb.appendChild(img);
+      } else {
+        const txt=document.createElement("strong"); txt.textContent=src.category||"Media";
+        txt.style.fontSize="20px"; txt.style.letterSpacing="-.4px";
+        thumb.appendChild(txt);
+      }
+
+      const typeBadge=document.createElement("span");
+      typeBadge.className="type-badge";
+      typeBadge.textContent = `${kindLabel(m.kind)} • ${providerLabel(m.provider)}`;
+      thumb.appendChild(typeBadge);
+
+      // Play icon overlay
+      const overlay=document.createElement("div"); overlay.className="play-overlay";
+      overlay.innerHTML = `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" fill="rgba(255,255,255,.95)"/><path d="M26 20l20 12-20 12V20z" fill="#0f172a"/></svg>`;
+      thumb.appendChild(overlay);
+
       const body=document.createElement("div"); body.className="card-body";
-      const row=document.createElement("div"); row.className="source-row";
-      const icon=document.createElement("div"); icon.className="icon-box placeholder"; const applyIconFallback=()=>{ icon.classList.add("placeholder"); icon.style.background=sourceAccent(src); icon.style.backgroundImage=""; icon.textContent=defaultIconText(src.name); }; applyIconFallback(); loadAsBackground(icon,src.iconUrl,{clearText:true,onError:applyIconFallback});
-      const titleArea=document.createElement("div"); titleArea.className="title-area"; const h3=document.createElement("h3"); const titleLink=document.createElement("a"); titleLink.textContent=src.name||"Untitled"; titleLink.title=src.name||"Untitled"; titleLink.href=sourceUrl(src.id); titleLink.addEventListener("click",e=>{e.preventDefault();openSourcePage(src.id);}); h3.appendChild(titleLink); const small=document.createElement("small"); small.textContent=`by ${src.ownerName||"Unknown"}`; titleArea.append(h3,small); row.append(icon,titleArea);
-      const meta=document.createElement("div"); meta.className="meta"; [src.category||"Source Code",`👍 ${Number(src.likes||0)}`,`Reports ${Number(src.reportCount||0)}`].forEach(t=>{const span=document.createElement("span"); span.className="tag"; span.textContent=t; meta.appendChild(span);}); if((src.reportCount||0)>=10||src.status==="review"){const review=document.createElement("span"); review.className="tag warn"; review.textContent="Under Review"; meta.appendChild(review);} if(hasPowerAccess()){const admin=document.createElement("span"); admin.className="tag admin"; admin.textContent="Test Access"; meta.appendChild(admin);}
-      const actions=document.createElement("div"); actions.className="actions"; const view=document.createElement("button"); view.className="view-source-btn btn"; view.textContent="View"; view.addEventListener("click",e=>{e.stopPropagation();openSourcePage(src.id);}); const dl=document.createElement("button"); dl.className="primary-btn btn"; dl.textContent="Download"; dl.addEventListener("click",e=>{e.stopPropagation();openDownload(src.downloadUrl,src.id);}); const like=document.createElement("button"); like.className="secondary-btn btn"; like.textContent="Like"; like.addEventListener("click",e=>{e.stopPropagation();likeSource(src.id);}); const report=document.createElement("button"); report.className="danger-btn btn"; report.textContent="Report"; report.addEventListener("click",e=>{e.stopPropagation();openReport(src.id);}); actions.append(view,dl,like,report); if(hasPowerAccess()){ const manage=document.createElement("button"); manage.className="secondary-btn btn"; manage.textContent="Manage"; manage.addEventListener("click",e=>{e.stopPropagation();openEditSource(src.id);}); actions.append(manage); }
-      body.append(row,meta,actions); card.append(deleteBtn,banner,body); card.addEventListener("click",()=>openSourcePage(src.id)); return card;
+      const h3=document.createElement("h3"); h3.textContent=src.name||"Untitled";
+      const small=document.createElement("small"); small.textContent=`${src.category||"Media"} • by ${src.ownerName||"Unknown"}`;
+      const meta=document.createElement("div"); meta.className="meta";
+
+      const tagKind=document.createElement("span"); tagKind.className=`tag ${m.kind==='video'?'video':(m.kind==='audio'?'audio':'warn')}`; tagKind.textContent=kindLabel(m.kind);
+      const tagProv=document.createElement("span"); tagProv.className=`tag ${m.provider}`; tagProv.textContent=providerLabel(m.provider);
+      const tagLikes=document.createElement("span"); tagLikes.className="tag"; tagLikes.textContent=`👍 ${Number(src.likes||0)}`;
+      const tagReports=document.createElement("span"); tagReports.className=`tag ${Number(src.reportCount||0)>0?'warn':''}`; tagReports.textContent=`R ${Number(src.reportCount||0)}`;
+      meta.append(tagKind,tagProv,tagLikes,tagReports);
+
+      body.append(h3,small,meta);
+      card.append(deleteBtn,thumb,body);
+      card.addEventListener("click",()=>openSourcePage(src.id));
+      return card;
     }
-    function renderRecommended(){ const wrap=byId("recommendedGrid"); wrap.innerHTML=""; const recommended=[...sources].filter(isCleanSource).sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,3); if(!recommended.length){ const empty=document.createElement("div"); empty.className="mini-card"; empty.textContent="No recommended items yet. Publish a new clean source first."; wrap.appendChild(empty); return; } recommended.forEach(src=>wrap.appendChild(createSourceCard(src,true))); }
+
+    function renderRecommended(){
+      const wrap=byId("recommendedGrid"); wrap.innerHTML="";
+      const recommended=[...sources].filter(isCleanSource).sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,3);
+      if(!recommended.length){
+        const empty=document.createElement("div"); empty.className="mini-card";
+        empty.style.cursor="default"; empty.textContent="No recommended items yet. Publish a media link first.";
+        wrap.appendChild(empty); return;
+      }
+      recommended.forEach(src=>wrap.appendChild(createSourceCard(src,true)));
+    }
 
     function sourceUrl(sourceId){
       const canonical=document.querySelector('link[rel="canonical"]')?.href || PUBLIC_SITE_URL;
       const base = /^https?:/i.test(canonical) ? canonical : PUBLIC_SITE_URL;
       return `${base.replace(/#.*$/,"").replace(/\?+$/,"").replace(/\/?$/,"/")}#source=${encodeURIComponent(sourceId)}`;
     }
+
     function setHomeVisible(show){
-      ["recommendedPanel","sourceGrid","emptyState","skeletonGrid"].forEach(id=>{ const el=safeById(id); if(el) el.style.display=show?"":"none"; });
-      document.querySelectorAll(".hero,.toolbar").forEach(el=>el.style.display=show?"":"none");
+      ["recommendedPanel","sourceGrid","emptyState","skeletonGrid","heroSection","toolbarSection"].forEach(id=>{
+        const el=safeById(id); if(el) el.style.display=show?"":"none";
+      });
+      const chips=safeById("categoryChips"); if(chips) chips.style.display=show?"":"none";
       const detail=safeById("sourceDetail"); if(detail) detail.style.display=show?"none":"block";
     }
+
     function openSourcePage(sourceId){ if(!sourceId)return; location.hash=`source=${encodeURIComponent(sourceId)}`; renderRoute(); }
     function closeSourcePage(){ history.pushState("",document.title,location.pathname+location.search); renderRoute(); }
+
+    function showMissingDetail(){
+      const detail=safeById("sourceDetail");
+      setHomeVisible(false);
+      if(detail) detail.innerHTML = `
+        <div class="missing-state">
+          <div class="missing-icon">!</div>
+          <h2 style="margin:0 0 6px">Data missing or invalid link</h2>
+          <p class="muted">The requested media was deleted, hidden, or the link is no longer valid.</p>
+          <div class="detail-actions" style="justify-content:center"><button class="secondary-btn btn" onclick="closeSourcePage()">← Back Home</button></div>
+        </div>`;
+    }
+
+    // ===========================================================
+    // BUILD THE PLAYER
+    // ===========================================================
+    function buildPlayerHtml(media, src){
+      // media: result of resolveMedia
+      if(!media || media.kind==='unknown'){
+        return `<div class="player-frame" style="display:grid;place-items:center;color:#fff;text-align:center;padding:30px">
+          <div>
+            <div style="font-size:42px">⚠️</div>
+            <h3 style="margin:8px 0 4px">Cannot play this link in-page</h3>
+            <p style="color:#cbd5e1">The provider isn't supported, or the URL doesn't point to a media file.</p>
+            <a class="btn primary-btn" style="margin-top:10px;display:inline-block" target="_blank" rel="noopener noreferrer" href="${escHtml(src.downloadUrl||'#')}">Open link in new tab</a>
+          </div>
+        </div>`;
+      }
+
+      if(media.isDirect && media.kind==='video'){
+        const poster = validImageSrc(src.iconUrl) || media.poster || '';
+        return `<div class="player-frame">
+          <video id="pmmPlayer" controls preload="metadata" playsinline crossorigin="anonymous" ${poster?`poster="${escHtml(poster)}"`:''}>
+            <source src="${escHtml(media.raw)}">
+            Your browser cannot play this video.
+          </video>
+        </div>`;
+      }
+      if(media.isDirect && media.kind==='audio'){
+        return `<div class="player-frame audio-mode">
+          <div class="audio-art">
+            <div class="disc" id="pmmDisc">🎵</div>
+            <h3>${escHtml(src.name||'Audio')}</h3>
+            <small>${escHtml(providerLabel(media.provider))} • ${escHtml(kindLabel(media.kind))}</small>
+            <audio id="pmmPlayer" controls preload="metadata" crossorigin="anonymous">
+              <source src="${escHtml(media.raw)}">
+              Your browser cannot play this audio.
+            </audio>
+          </div>
+        </div>`;
+      }
+      // iframe providers (YouTube, Vimeo, Dropbox preview, Drive preview, OneDrive, SoundCloud)
+      const allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
+      const frameClass = media.kind==='audio' && media.provider==='soundcloud' ? 'player-frame' : 'player-frame';
+      return `<div class="${frameClass}">
+        <iframe id="pmmPlayer" src="${escHtml(media.embed)}" allow="${allow}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
+      </div>`;
+    }
+
     function renderSourceDetail(sourceId){
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
       const detail=byId("sourceDetail");
       setHomeVisible(false);
       if(!src){
-        document.title="Data missing or invalid link - PMM Open Source";
+        document.title="Data missing or invalid link - PMM Media Hub";
         showMissingDetail();
         return;
       }
-      const safeName=(src.name||"Untitled Source").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]));
-      const safeOwner=(src.ownerName||"Unknown").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]));
-      const safeCategory=(src.category||"Source Code").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]));
-      const banner=validImageSrc(src.bannerUrl);
-      const icon=validImageSrc(src.iconUrl);
+      const m = resolveMedia(src.downloadUrl||"");
+      const safeName=escHtml(src.name||"Untitled Media");
+      const safeOwner=escHtml(src.ownerName||"Unknown");
+      const safeCategory=escHtml(src.category||"Media");
+      const icon=validImageSrc(src.iconUrl) || (m.poster ? validImageSrc(m.poster) : "");
       const url=validDisplayUrl(src.downloadUrl);
       const share=sourceUrl(src.id);
-      document.title=`${src.name||"Source"} - PMM Open Source`;
-      let desc=document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute("content",`${src.name||"Source"} by ${src.ownerName||"Unknown"}. Category: ${src.category||"Source Code"}. Download and view details on PMM Open Source.`);
-      detail.innerHTML=`
-        <div class="detail-shell">
-          <div class="detail-hero placeholder" style="background:${placeholderGradient(src)};background-position:${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%">
-            <div class="detail-title-wrap">
-              <div class="detail-icon placeholder" id="detailIconBox" style="background:${sourceAccent(src)}">${defaultIconText(src.name)}</div>
-              <div class="detail-title"><h2>${safeName}</h2><p>${safeCategory} • by ${safeOwner}</p></div>
+      document.title=`${src.name||"Media"} - PMM Media Hub`;
+
+      const desc=document.querySelector('meta[name="description"]');
+      if(desc) desc.setAttribute("content",`${src.name||"Media"} by ${src.ownerName||"Unknown"} — ${kindLabel(m.kind)} via ${providerLabel(m.provider)}. Plays inline on PMM Media Hub.`);
+
+      applyMediaShareMeta(src);
+
+      const playerHtml = buildPlayerHtml(m, src);
+
+      detail.innerHTML = `
+        ${playerHtml}
+        <div class="player-controls">
+          <button onclick="enterFullscreen()" title="Full screen">⛶ Fullscreen</button>
+          <button onclick="window.open('${escHtml(url)}', '_blank', 'noopener,noreferrer')">Open original</button>
+          <button onclick="navigator.clipboard.writeText('${escHtml(share)}').then(()=>showNotice('Share link copied.'))">Copy share link</button>
+          <button onclick="likeSource('${escHtml(src.id)}')">👍 Like (${Number(src.likes||0)})</button>
+          <button onclick="openReport('${escHtml(src.id)}')">⚠ Report</button>
+          <button onclick="closeSourcePage()">← Back</button>
+        </div>
+
+        <div class="detail-header">
+          <div class="detail-icon" id="detailIconBox" style="background:${sourceAccent(src)}">${defaultIconText(src.name)}</div>
+          <div class="detail-title">
+            <h2>${safeName}</h2>
+            <p>${safeCategory} • by ${safeOwner}</p>
+            <div class="detail-meta">
+              <span class="tag ${m.kind==='video'?'video':(m.kind==='audio'?'audio':'warn')}">${kindLabel(m.kind)}</span>
+              <span class="tag ${m.provider}">${escHtml(providerLabel(m.provider))}</span>
+              <span class="tag">👍 ${Number(src.likes||0)}</span>
+              <span class="tag ${Number(src.reportCount||0)>0?'warn':''}">Reports ${Number(src.reportCount||0)}</span>
+              <span class="tag ${src.status==='review'?'warn':''}">${src.status||"active"}</span>
             </div>
           </div>
-          <div class="detail-body">
-            <div class="detail-card">
-              <h2>Source Overview</h2>
-              <p class="muted">Open this source in a clean full-screen detail page. The banner, icon, category, owner, and download action are arranged for easier reading and sharing.</p>
-              <div class="detail-meta"><span class="tag">${safeCategory}</span><span class="tag">👍 ${Number(src.likes||0)}</span><span class="tag">Reports ${Number(src.reportCount||0)}</span><span class="tag ${src.status==='review'?'warn':''}">${src.status||"active"}</span></div>
-              <div class="detail-actions">
-                <button class="primary-btn btn" onclick="openDownload('${url.replace(/'/g,"%27")}', '${src.id.replace(/'/g,"%27")}')">Download</button>
-                <button class="secondary-btn btn" onclick="navigator.clipboard.writeText('${share}').then(()=>showNotice('Source link copied.'))">Copy Link</button>
-                <button class="ghost-btn btn" onclick="closeSourcePage()">← Back Home</button>
-              </div>
-            </div>
-            <div class="detail-card">
-              <h2>Direct Link</h2>
-              <p class="muted">Use this link to open this source directly.</p>
-              <a class="detail-link" href="${share}">${share}</a>
-              <h2 style="margin-top:22px">Download URL</h2>
-              ${url?`<a class="detail-link" href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`:`<p class="muted">No valid download URL.</p>`}
-            </div>
-          </div>
-        </div>`;
-      const heroEl=detail.querySelector(".detail-hero");
-      const detailIconEl=detail.querySelector("#detailIconBox");
-      if(heroEl) loadAsBackground(heroEl,banner,{position:`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`,clearText:false});
-      if(detailIconEl) loadAsBackground(detailIconEl,icon,{clearText:true});
+        </div>
+
+        <div class="detail-info-card">
+          <h3>Share link</h3>
+          <p class="muted">Paste this link in Discord, social apps, or anywhere — it opens this page with the player ready. Direct files (mp4, mp3, etc.) embed and play right inside Discord.</p>
+          <a class="detail-link" href="${escHtml(share)}">${escHtml(share)}</a>
+          <h3 style="margin-top:18px">Original media URL</h3>
+          ${url ? `<a class="detail-link" href="${escHtml(url)}" target="_blank" rel="noopener noreferrer">${escHtml(url)}</a>` : `<p class="muted">No valid URL.</p>`}
+        </div>
+      `;
+
+      // Set icon background after innerHTML is in place
+      if(icon){
+        const box=detail.querySelector("#detailIconBox");
+        if(box){
+          const probe=new Image();
+          probe.referrerPolicy="no-referrer";
+          probe.onload=()=>{
+            box.style.backgroundImage=`url("${icon.replace(/"/g,'%22')}")`;
+            box.style.backgroundSize="cover";
+            box.style.backgroundPosition="center";
+            box.textContent="";
+          };
+          probe.src=icon;
+        }
+      }
+
+      // Audio disc spin while playing (only for direct audio)
+      const audioEl = detail.querySelector("audio#pmmPlayer");
+      const disc = detail.querySelector("#pmmDisc");
+      if(audioEl && disc){
+        audioEl.addEventListener("play",()=>disc.classList.add("playing"));
+        audioEl.addEventListener("pause",()=>disc.classList.remove("playing"));
+        audioEl.addEventListener("ended",()=>disc.classList.remove("playing"));
+      }
+
+      // Video error fallback message
+      const videoEl = detail.querySelector("video#pmmPlayer");
+      if(videoEl){
+        videoEl.addEventListener("error",()=>{
+          videoEl.replaceWith(Object.assign(document.createElement("div"),{
+            innerHTML:`<div style="color:#fca5a5;padding:30px;text-align:center"><h3>Cannot stream this file directly</h3><p>The host may block cross-origin playback. Use the "Open original" button.</p></div>`
+          }));
+        });
+      }
     }
+
+    function enterFullscreen(){
+      const el = document.querySelector("#pmmPlayer");
+      if(!el){ showNotice("No player to fullscreen."); return; }
+      const req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || el.mozRequestFullScreen;
+      if(req){ req.call(el).catch(()=>{ /* iOS Safari falls back to native control */ }); }
+      else { showNotice("Fullscreen is not supported on this browser."); }
+    }
+    window.enterFullscreen = enterFullscreen;
+
     function renderRoute(){
       refreshShareImageMeta();
       const match=location.hash.match(/^#source=([^&]+)/);
       if(match){ renderSourceDetail(decodeURIComponent(match[1])); }
-      else { setHomeVisible(true); document.title="PMM Open Source - Free Source Code, Tools, AI, Games and Downloads"; const desc=document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute("content","PMM Open Source is a clean source-code hub for discovering trusted source code, tools, AI projects, games, operating systems, browsers, and useful download links."); renderSources(); }
+      else {
+        // Restore homepage meta
+        ['meta[property="og:video"]','meta[property="og:video:secure_url"]','meta[property="og:video:type"]','meta[property="og:video:width"]','meta[property="og:video:height"]','meta[property="og:audio"]','meta[property="og:audio:type"]','meta[name="twitter:player"]','meta[name="twitter:player:width"]','meta[name="twitter:player:height"]','meta[name="twitter:player:stream"]','meta[name="twitter:player:stream:content_type"]']
+          .forEach(removeMeta);
+        setMetaContent('meta[property="og:type"]','website');
+        setMetaContent('meta[property="og:title"]','PMM Media Hub - Inline Video & Audio');
+        setMetaContent('meta[property="og:description"]','Share video and audio links that play instantly in the page.');
+        setMetaContent('meta[name="twitter:card"]','summary_large_image');
+        setHomeVisible(true);
+        document.title="PMM Media Hub - Free Inline Video & Audio Player";
+        renderSources();
+      }
     }
-    function updateSeoItemList(){
-      const old=document.getElementById("sourceItemListSchema"); if(old) old.remove();
-      const list=sources.filter(isCleanSource).slice(0,30).map((src,index)=>({"@type":"ListItem",position:index+1,url:sourceUrl(src.id),name:src.name||"Untitled Source",item:{"@type":"SoftwareSourceCode",name:src.name||"Untitled Source",codeRepository:validDisplayUrl(src.downloadUrl)||sourceUrl(src.id),programmingLanguage:src.category||"Source Code",author:{"@type":"Person",name:src.ownerName||"Unknown"}}}));
-      if(!list.length)return;
-      const script=document.createElement("script"); script.type="application/ld+json"; script.id="sourceItemListSchema"; script.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"PMM Open Source Items","itemListElement":list}); document.head.appendChild(script);
-    }
-    window.openSourcePage=openSourcePage; window.closeSourcePage=closeSourcePage; window.addEventListener("hashchange",renderRoute);
 
-    function renderSources(){ if(loadingSources)return; const grid=byId("sourceGrid"), empty=byId("emptyState"), search=byId("searchInput").value.trim().toLowerCase(), sort=byId("sortSelect").value; grid.innerHTML=""; let list=sources.filter(isCleanSource); if(selectedCategory==="Recommended") list=[...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12); else if(selectedCategory!=="All") list=list.filter(src=>(src.category||"").toLowerCase()===selectedCategory.toLowerCase()); if(search) list=list.filter(src=>(src.name||"").toLowerCase().includes(search)||(src.category||"").toLowerCase().includes(search)||(src.ownerName||"").toLowerCase().includes(search)); if(sort==="likes")list.sort((a,b)=>(b.likes||0)-(a.likes||0)); else if(sort==="reports")list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0)); else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0)); empty.style.display=list.length?"none":"block"; const frag=document.createDocumentFragment(); list.forEach(src=>frag.appendChild(createSourceCard(src))); grid.appendChild(frag); renderRecommended(); if(hasPowerAccess()) loadAdminTable(); }
+    function renderSources(){
+      if(loadingSources)return;
+      const grid=byId("sourceGrid"), empty=byId("emptyState"),
+            search=byId("searchInput").value.trim().toLowerCase(),
+            sort=byId("sortSelect").value;
+      grid.innerHTML="";
+      let list=sources.filter(isCleanSource);
+      if(selectedCategory==="Recommended") list=[...list].sort((a,b)=>(b.likes||0)-(a.likes||0)).slice(0,12);
+      else if(selectedCategory!=="All") list=list.filter(src=>(src.category||"").toLowerCase()===selectedCategory.toLowerCase());
+      if(search) list=list.filter(src=>(src.name||"").toLowerCase().includes(search)||(src.category||"").toLowerCase().includes(search)||(src.ownerName||"").toLowerCase().includes(search));
+      if(sort==="likes")list.sort((a,b)=>(b.likes||0)-(a.likes||0));
+      else if(sort==="reports")list.sort((a,b)=>(b.reportCount||0)-(a.reportCount||0));
+      else list.sort((a,b)=>(b.createdAtMs||0)-(a.createdAtMs||0));
+      empty.style.display=list.length?"none":"block";
+      const frag=document.createDocumentFragment();
+      list.forEach(src=>frag.appendChild(createSourceCard(src)));
+      grid.appendChild(frag);
+      renderRecommended();
+      if(hasPowerAccess() && typeof window.loadAdminTable === "function") window.loadAdminTable();
+    }
     function scheduleRenderSources(){ cancelAnimationFrame(renderTimer); renderTimer=requestAnimationFrame(renderSources); }
     window.scheduleRenderSources=scheduleRenderSources;
+
     function setupUploadZone(kind){
-      const drop=byId(kind+"Drop"), input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput"), urlPreview=byId(kind+"UrlPreview");
-      const setMode=mode=>{
-        if(mode==="url"){
-          drop.classList.add("hidden");
-          if(kind!=="banner") preview.style.display="none";
-        } else if(mode==="file"){
-          urlInput.classList.add("hidden");
-          if(urlPreview){ urlPreview.removeAttribute("src"); urlPreview.style.display="none"; }
-        } else {
-          drop.classList.remove("hidden");
-          urlInput.classList.remove("hidden");
-          if(urlPreview){ urlPreview.removeAttribute("src"); urlPreview.style.display="none"; }
-        }
-      };
+      const drop=byId(kind+"Drop"), input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput");
       const handleFile=file=>{
         if(!file)return;
         if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){notifyUser("Only PNG, JPG, WEBP, or GIF images are allowed.");return;}
         const limit=hasPowerAccess()?POWER_IMAGE_BYTES:MAX_IMAGE_BYTES;
-        if(file.size>limit){notifyUser(`Image file is too large for Firestore direct storage. Use an image link for large images. Current file limit is ${Math.round(limit/1024)} KB.`);return;}
-        selectedFiles[kind]=file; urlInput.value=""; setMode("file"); nameEl.textContent=`${file.name} (${Math.round(file.size/1024)} KB)`; preview.src=URL.createObjectURL(file); preview.style.display="block"; if(kind==="banner") updateBannerPreviewPosition();
+        if(file.size>limit){notifyUser(`Thumbnail is too large. Use an image link for large images. Current limit is ${Math.round(limit/1024)} KB.`);return;}
+        selectedFiles[kind]=file; urlInput.value=""; nameEl.textContent=`${file.name} (${Math.round(file.size/1024)} KB)`;
+        preview.src=URL.createObjectURL(file); preview.style.display="block";
       };
       urlInput.addEventListener("input",()=>{
-        const v=urlInput.value.trim();
-        if(v){
-          selectedFiles[kind]=null; input.value=""; nameEl.textContent=kind==="icon"?"Click or drag image here":"Click or drag banner here"; preview.removeAttribute("src"); preview.style.display="none"; setMode("url");
-          if(kind==="banner" && urlPreview){ const safe=validDisplayUrl(v); if(safe){ urlPreview.onerror=()=>{ urlPreview.removeAttribute("src"); urlPreview.style.display="none"; }; urlPreview.src=safe; urlPreview.style.display="block"; updateBannerPreviewPosition(); } else { urlPreview.removeAttribute("src"); urlPreview.style.display="none"; } }
-        } else setMode("none");
+        if(urlInput.value.trim()){
+          selectedFiles[kind]=null; input.value=""; nameEl.textContent="Click or drag image here"; preview.removeAttribute("src"); preview.style.display="none";
+        }
       });
-      drop.addEventListener("click",()=>input.click()); input.addEventListener("change",()=>handleFile(input.files[0]));
+      drop.addEventListener("click",()=>input.click());
+      input.addEventListener("change",()=>handleFile(input.files[0]));
       ["dragenter","dragover"].forEach(evt=>drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.add("dragover");}));
       ["dragleave","drop"].forEach(evt=>drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.remove("dragover");}));
       drop.addEventListener("drop",e=>handleFile(e.dataTransfer.files[0]));
     }
-    window.clearImageChoice=function(kind){ selectedFiles[kind]=null; const input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput"), drop=byId(kind+"Drop"), urlPreview=byId(kind+"UrlPreview"); input.value=""; urlInput.value=""; urlInput.classList.remove("hidden"); drop.classList.remove("hidden"); nameEl.textContent=kind==="icon"?"Click or drag image here":"Click or drag banner here"; preview.removeAttribute("src"); preview.style.display="none"; if(urlPreview){urlPreview.removeAttribute("src"); urlPreview.style.display="none";} if(kind==="banner"){ byId("bannerPosXInput").value=50; byId("bannerPosYInput").value=50; updateBannerPreviewPosition(); } }
+    window.clearImageChoice=function(kind){
+      selectedFiles[kind]=null;
+      const input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput");
+      input.value=""; urlInput.value=""; nameEl.textContent="Click or drag image here"; preview.removeAttribute("src"); preview.style.display="none";
+    };
     document.addEventListener("keydown",e=>{ if(e.key==="F9"){ e.preventDefault(); if(window.requestTestAccess) window.requestTestAccess(); else notifyUser("Security module is still loading. Please try again."); } });
-
     document.addEventListener("click", e => { if(e.target && e.target.classList && e.target.classList.contains("modal-backdrop")) e.target.style.display="none"; });
     document.addEventListener("keydown", e => { if(e.key==="Escape") document.querySelectorAll(".modal-backdrop").forEach(m=>m.style.display="none"); });
-    initSelects(); setupUploadZone("icon"); setupUploadZone("banner"); renderCategoryChips(); const initialQuery=new URLSearchParams(location.search).get("q"); if(initialQuery&&safeById("searchInput")) safeById("searchInput").value=initialQuery; setLoading(true);
+
+    // ===========================================================
+    // GLOBAL STATE / CONSTANTS
+    // ===========================================================
+    const CATEGORIES = ["All","Recommended","Video","Audio","Music","Podcast","Education","Entertainment","Other"];
+    const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
+    const MAX_IMAGE_BYTES = 250 * 1024;
+    const POWER_IMAGE_BYTES = 430 * 1024;
+    const AVATAR_COLORS = ["#2563eb","#7c3aed","#0891b2","#059669","#ea580c","#db2777","#0f172a"];
+    let testAccessUnlocked = false;
+    let currentUser = null, currentProfile = null, isAdminUser = false, isLocalManager = false,
+        sources = [], adminAllSources = [], selectedCategory = "All",
+        selectedReportSourceId = null, selectedEditSourceId = null,
+        pendingConfirmAction = null, selectedFiles = {icon:null}, loadingSources = false,
+        currentBan = null, renderTimer = 0;
+
+    const byId = id => document.getElementById(id);
+    const safeById = id => document.getElementById(id);
+
+    window.addEventListener("error", event => { console.error("Runtime error:", event.error || event.message); try{ showNotice("A system error was detected, but the page is still running."); }catch{} });
+    window.addEventListener("unhandledrejection", event => { console.error("Unhandled rejection:", event.reason); try{ showNotice("Network or database action failed safely."); }catch{} });
+
+    function openModal(id){ const el=safeById(id); if(el) el.style.display="flex"; }
+    function closeModal(id){ const el=safeById(id); if(el) el.style.display="none"; }
+
+    function updateProfileUI(){
+      const pill=byId("profilePill"), loginBtn=byId("loginBtn"), adminBtn=byId("adminBtn");
+      if(currentProfile){
+        pill.style.display="flex";
+        loginBtn.style.display="none";
+        byId("avatar").textContent=defaultIconText(currentProfile.name);
+        byId("avatar").style.background=currentProfile.color||"#0f172a";
+        byId("profileNameText").textContent=currentProfile.name||"Profile";
+      } else {
+        pill.style.display="none";
+        loginBtn.style.display="inline-flex";
+      }
+      adminBtn.style.display=hasPowerAccess()?"inline-flex":"none";
+    }
+
+    initSelects();
+    setupUploadZone("icon");
+    renderCategoryChips();
+    const initialQuery=new URLSearchParams(location.search).get("q");
+    if(initialQuery&&safeById("searchInput")) safeById("searchInput").value=initialQuery;
+    setLoading(true);
   </script>
+
+  <!-- ========== FIREBASE MODULE (same Firestore schema) ========== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
     import { getFirestore, collection, getDocs, getDoc, doc, setDoc, updateDoc, deleteDoc, increment, serverTimestamp, query, orderBy, where, limit, runTransaction, writeBatch, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     const firebaseConfig={apiKey:"AIzaSyAbfE_Gm0Dw-SlLoppA0SSrKD5xYhzyd8M",authDomain:"pmm-open-source.firebaseapp.com",projectId:"pmm-open-source",storageBucket:"pmm-open-source.firebasestorage.app",messagingSenderId:"682708192312",appId:"1:682708192312:web:76765761fcea6bf69feacd",measurementId:"G-JZ0RT10XMP"};
     const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
+
     function tsToMs(value){ if(!value)return 0; if(typeof value.toMillis==="function")return value.toMillis(); if(value instanceof Date)return value.getTime(); return Number(value)||0; }
     function isBanActiveLocal(ban){ return Boolean(ban && ban.active!==false && tsToMs(ban.expiresAt)>Date.now()); }
     function isCurrentUserBanned(){ return isBanActiveLocal(currentBan) && !hasPowerAccess(); }
     window.isCurrentUserBanned=isCurrentUserBanned;
-    if(!window.crypto || !window.crypto.subtle){ showNotice("This browser is missing secure crypto support. Some security features may not work."); }
+
     testAccessUnlocked = sessionStorage.getItem("pmmTestAccess") === "1";
-    async function refreshProfile(){ if(!currentUser)return; const profileSnap=await getDoc(doc(db,"profiles",currentUser.uid)); currentProfile=profileSnap.exists()?profileSnap.data():null; const adminSnap=await getDoc(doc(db,"admins",currentUser.uid)); isAdminUser=Boolean(adminSnap.exists()&&currentProfile); isLocalManager=Boolean(currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk); try{ const banSnap=await getDoc(doc(db,"bans",currentUser.uid)); currentBan=banSnap.exists()?banSnap.data():null; }catch{ currentBan=null; } try{ const ps=await getDoc(doc(db,"powerSessions",currentUser.uid)); if(ps.exists() && ps.data().accessProof===_zk){ testAccessUnlocked=true; sessionStorage.setItem("pmmTestAccess","1"); } }catch{} updateProfileUI(); if(isCurrentUserBanned()){ const until=new Date(tsToMs(currentBan.expiresAt)).toLocaleString(); showNotice(`Your account is temporarily banned until ${until}.`); } }
-    function updateProfileUI(){ const loginBtn=byId("loginBtn"), profilePill=byId("profilePill"), profileNameText=byId("profileNameText"), avatar=byId("avatar"), adminBtn=byId("adminBtn"); if(currentProfile){ loginBtn.style.display="none"; profilePill.style.display="flex"; profileNameText.textContent=currentProfile.name; avatar.style.background=currentProfile.color||"#0f172a"; avatar.textContent=defaultIconText(currentProfile.name); } else { loginBtn.style.display="inline-block"; profilePill.style.display="none"; } adminBtn.style.display=hasPowerAccess()?"inline-block":"none"; }
-    window.requestTestAccess=async function(){
-      if(!currentUser){ return; }
-      if(hasPowerAccess()){ openAdminPanel(); return; }
-      if(!currentProfile || currentProfile.nameKey !== TEST_PROFILE_KEY){ return; }
+
+    async function refreshProfile(){
+      if(!currentUser)return;
+      const profileSnap=await getDoc(doc(db,"profiles",currentUser.uid));
+      currentProfile=profileSnap.exists()?profileSnap.data():null;
+      const adminSnap=await getDoc(doc(db,"admins",currentUser.uid));
+      isAdminUser=Boolean(adminSnap.exists()&&currentProfile);
+      isLocalManager=Boolean(currentProfile && currentProfile.accessLevel === "operator" && currentProfile.accessProof === _zk);
+      try{ const banSnap=await getDoc(doc(db,"bans",currentUser.uid)); currentBan=banSnap.exists()?banSnap.data():null; }catch{ currentBan=null; }
+      try{ const ps=await getDoc(doc(db,"powerSessions",currentUser.uid)); if(ps.exists() && ps.data().accessProof===_zk){ testAccessUnlocked=true; sessionStorage.setItem("pmmTestAccess","1"); } }catch{}
+      updateProfileUI();
+      if(isCurrentUserBanned()){ const until=new Date(tsToMs(currentBan.expiresAt)).toLocaleString(); showNotice(`Your account is temporarily banned until ${until}.`); }
+    }
+
+    window.requestTestAccess = async function(){
+      if(!currentUser){ showNotice("Authentication is loading."); return; }
       const passed=await passGate();
-      if(!passed){ return; }
-      try{
-        await setDoc(doc(db,"powerSessions",currentUser.uid),{uid:currentUser.uid,accessProof:_zk,appVersion:APP_VERSION,updatedAt:serverTimestamp()});
-        testAccessUnlocked=true;
-        sessionStorage.setItem("pmmTestAccess","1");
-        await refreshProfile();
-        showNotice("Test access unlocked. Manage panel is ready.");
-        openAdminPanel();
-      }catch(error){ notifyUser(error.message || "Cannot unlock test access. Please update Firestore rules first."); }
+      if(!passed){ showNotice("Access denied."); return; }
+      testAccessUnlocked=true; sessionStorage.setItem("pmmTestAccess","1");
+      try{ await setDoc(doc(db,"powerSessions",currentUser.uid),{uid:currentUser.uid,accessProof:_zk,appVersion:APP_VERSION,updatedAt:serverTimestamp()},{merge:true}); }catch(e){ console.warn("powerSessions write:",e); }
+      updateProfileUI();
+      await loadSources();
+      showNotice("Test access unlocked for this session.");
     };
-    window.unlockTestMode=window.requestTestAccess;
-    onAuthStateChanged(auth,async user=>{ try{ if(!user){await signInAnonymously(auth);return;} currentUser=user; await refreshProfile(); await loadSources(); }catch(error){console.error(error); showNotice(error.message||"Authentication error."); setLoading(false);} });
+
+    onAuthStateChanged(auth,async user=>{
+      try{
+        if(!user){ await signInAnonymously(auth); return; }
+        currentUser=user;
+        await refreshProfile();
+        await loadSources();
+      }catch(error){ console.error(error); showNotice(error.message||"Authentication error."); setLoading(false); }
+    });
+
     window.createProfile=async function(){
       if(!currentUser){notifyUser("Authentication is not ready yet.");return;}
       const name=normalizeName(byId("profileNameInput").value);
@@ -654,63 +1152,129 @@
         byId("profileNameInput").value=""; closeModal("profileModal"); await refreshProfile(); showNotice("Profile created.");
       }catch(error){notifyUser(error.message);}
     };
-    window.secureLogout=async function(){ try{ await signOut(auth); currentUser=null; currentProfile=null; isAdminUser=false; isLocalManager=false; testAccessUnlocked=false; sessionStorage.removeItem("pmmTestAccess"); sources=[]; updateProfileUI(); setLoading(true); await signInAnonymously(auth); showNotice("Logged out."); }catch(error){notifyUser(error.message);} };
-    async function uploadSelectedImage(kind,sourceId){
+
+    window.secureLogout=async function(){
+      try{
+        await signOut(auth); currentUser=null; currentProfile=null;
+        isAdminUser=false; isLocalManager=false; testAccessUnlocked=false;
+        sessionStorage.removeItem("pmmTestAccess"); sources=[];
+        updateProfileUI(); setLoading(true);
+        await signInAnonymously(auth);
+        showNotice("Logged out.");
+      }catch(error){notifyUser(error.message);}
+    };
+
+    async function uploadSelectedImage(kind){
       const urlValue=byId(kind+"UrlInput")?.value.trim() || "";
       if(urlValue){ const safe=validDisplayUrl(urlValue); if(!safe)throw new Error("Image link is not valid."); return {data:safe}; }
       const file=selectedFiles[kind];
       if(!file)return{data:""};
       if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type))throw new Error("Unsupported image type.");
       const limit=hasPowerAccess()?POWER_IMAGE_BYTES:MAX_IMAGE_BYTES;
-      if(file.size>limit)throw new Error(`Image file is too large. Use an image link for large images. Current file limit is ${Math.round(limit/1024)} KB.`);
+      if(file.size>limit)throw new Error(`Thumbnail is too large. Current limit is ${Math.round(limit/1024)} KB.`);
       return await new Promise((resolve,reject)=>{ const reader=new FileReader(); reader.onload=()=>resolve({data:String(reader.result||"")}); reader.onerror=()=>reject(new Error("Cannot read image file.")); reader.readAsDataURL(file); });
     }
-    function selectedImageBytesTotal(){
-      return (selectedFiles.icon ? selectedFiles.icon.size : 0) + (selectedFiles.banner ? selectedFiles.banner.size : 0);
-    }
+
+    function selectedImageBytesTotal(){ return (selectedFiles.icon ? selectedFiles.icon.size : 0); }
+
     window.publishSource=async function(){
       if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Publishing is disabled."); return; }
       if(!currentUser||!currentProfile){openProfileModal();return;}
-      const name=normalizeName(byId("sourceNameInput").value), downloadUrl=byId("downloadUrlInput").value.trim(), category=byId("categoryInput").value, bannerPosition=getBannerPosition();
-      if(!name||name.length>50){notifyUser("Source code name is required and must be 50 characters or less.");return;}
+      const name=normalizeName(byId("sourceNameInput").value), downloadUrl=byId("downloadUrlInput").value.trim(), category=byId("categoryInput").value;
+      if(!name||name.length>60){notifyUser("Media name is required and must be 60 characters or less.");return;}
       const sourceKey=compactKey(name);
-      if(!sourceKey){notifyUser("Source code name is not valid.");return;}
+      if(!sourceKey){notifyUser("Media name is not valid.");return;}
       const urlCheck=validateDownloadUrl(downloadUrl); if(!urlCheck.ok){notifyUser(urlCheck.message);return;}
+
+      // Soft warning if media isn't recognized
+      const resolved = resolveMedia(downloadUrl);
+      if(resolved.kind==='unknown'){
+        const cont = confirm("This link doesn't look like a supported media file or provider. Publish anyway? It will show an error player.");
+        if(!cont) return;
+      }
+
       const imageTotalLimit = hasPowerAccess() ? 900000 : 360000;
-      if(selectedImageBytesTotal() > imageTotalLimit){ notifyUser(`Icon + banner image files are too large for Firestore. Limit is ${Math.round(imageTotalLimit/1024)} KB total. Please use image links for large images.`); return; }
+      if(selectedImageBytesTotal() > imageTotalLimit){ notifyUser(`Thumbnail file is too large. Limit is ${Math.round(imageTotalLimit/1024)} KB.`); return; }
+
       setButtonBusy("publishBtn",true);
       try{
         const sourceRef=doc(db,"sources",sourceKey), profileRef=doc(db,"profiles",currentUser.uid), nowMs=Date.now(), today=todayKey();
         await runTransaction(db,async tx=>{
           const profileSnap=await tx.get(profileRef); if(!profileSnap.exists())throw new Error("Profile not found.");
-          const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This source code name is already used. Please choose another name.");
+          const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This media name is already used. Please choose another name.");
           const p=profileSnap.data();
           if(!hasPowerAccess()){
             if(nowMs-Number(p.lastPublishAtMs||0)<50000)throw new Error("Please wait before publishing again.");
-            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
+            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 media per day. Delete the active one first.");
           }
         });
-        const icon=await uploadSelectedImage("icon",sourceKey), banner=await uploadSelectedImage("banner",sourceKey);
+        const icon=await uploadSelectedImage("icon");
+        // Store using the SAME field names so existing Firestore rules accept it.
+        // - downloadUrl  -> the media link (renamed in UI)
+        // - iconUrl      -> the thumbnail (renamed in UI)
+        // - bannerUrl    -> empty (kept for schema)
+        // - bannerPosX/Y -> 50 (kept for schema)
         await runTransaction(db,async tx=>{
           const profileSnap=await tx.get(profileRef); if(!profileSnap.exists())throw new Error("Profile not found.");
-          const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This source code name is already used. Please choose another name.");
+          const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This media name is already used. Please choose another name.");
           const p=profileSnap.data();
           if(!hasPowerAccess()){
             if(nowMs-Number(p.lastPublishAtMs||0)<50000)throw new Error("Please wait before publishing again.");
-            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 source per day. Delete the active source first.");
+            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 media per day. Delete the active one first.");
           }
-          tx.set(sourceRef,{appVersion:APP_VERSION,visibility:"public",sourceKey,name,downloadUrl,iconUrl:icon.data,bannerUrl:banner.data,bannerPosX:bannerPosition.x,bannerPosY:bannerPosition.y,category,ownerId:currentUser.uid,ownerName:currentProfile.name,likes:0,reportCount:0,status:"active",createdAt:serverTimestamp(),updatedAt:serverTimestamp(),createdAtMs:nowMs,createDay:today});
+          tx.set(sourceRef,{
+            appVersion:APP_VERSION, visibility:"public", sourceKey, name,
+            downloadUrl, iconUrl:icon.data, bannerUrl:"",
+            bannerPosX:50, bannerPosY:50,
+            category, ownerId:currentUser.uid, ownerName:currentProfile.name,
+            likes:0, reportCount:0, status:"active",
+            createdAt:serverTimestamp(), updatedAt:serverTimestamp(),
+            createdAtMs:nowMs, createDay:today
+          });
           if(!hasPowerAccess())tx.update(profileRef,{lastPublishAtMs:nowMs,dailyUpload:{date:today,activeSourceId:sourceKey},updatedAt:serverTimestamp()});
         });
-        byId("sourceNameInput").value=""; byId("downloadUrlInput").value=""; selectedFiles={icon:null,banner:null};
-        ["icon","banner"].forEach(k=>clearImageChoice(k));
-        closeModal("addModal"); showNotice("Source published."); await loadSources();
+        byId("sourceNameInput").value=""; byId("downloadUrlInput").value=""; selectedFiles={icon:null};
+        clearImageChoice("icon");
+        closeModal("addModal"); showNotice("Media published."); await loadSources();
       }catch(error){notifyUser(error.message);}
       finally{setButtonBusy("publishBtn",false);}
     };
-    window.loadSources=async function(){ setLoading(true); try{ const q=query(collection(db,"sources"),orderBy("createdAtMs","desc"),limit(hasPowerAccess()?250:120)); const snapshot=await getDocs(q); const loaded=[]; snapshot.forEach(item=>loaded.push({id:item.id,...item.data()})); adminAllSources=loaded; sources=loaded.filter(isCleanSource); updateSeoItemList(); renderRoute(); }catch(error){console.error(error); showNotice(error.message||"Cannot load sources.");} finally{setLoading(false); renderRoute();} };
-    window.likeSource=async function(sourceId){ if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Like action is disabled."); return; } if(!currentUser||!currentProfile){openProfileModal();return;} const src=sources.find(s=>s.id===sourceId); if(!src)return; const sourceRef=doc(db,"sources",sourceId), likeRef=doc(db,"sources",sourceId,"likes",currentUser.uid); try{ await runTransaction(db,async tx=>{ const likeSnap=await tx.get(likeRef); if(likeSnap.exists())throw new Error("You already liked this source."); tx.set(likeRef,{uid:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp()}); tx.update(sourceRef,{likes:increment(1),updatedAt:serverTimestamp()}); }); await loadSources(); }catch(error){notifyUser(error.message);} };
-    window.openReport=function(sourceId){ if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Report action is disabled."); return; } if(!currentUser||!currentProfile){openProfileModal();return;} if(!sources.find(s=>s.id===sourceId))return; selectedReportSourceId=sourceId; openModal("reportModal"); };
+
+    window.loadSources=async function(){
+      setLoading(true);
+      try{
+        const q=query(collection(db,"sources"),orderBy("createdAtMs","desc"),limit(hasPowerAccess()?250:120));
+        const snapshot=await getDocs(q);
+        const loaded=[]; snapshot.forEach(item=>loaded.push({id:item.id,...item.data()}));
+        adminAllSources=loaded; sources=loaded.filter(isCleanSource);
+        renderRoute();
+      }catch(error){ console.error(error); showNotice(error.message||"Cannot load media."); }
+      finally{ setLoading(false); renderRoute(); }
+    };
+
+    window.likeSource=async function(sourceId){
+      if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Like action is disabled."); return; }
+      if(!currentUser||!currentProfile){openProfileModal();return;}
+      const src=sources.find(s=>s.id===sourceId); if(!src)return;
+      const sourceRef=doc(db,"sources",sourceId), likeRef=doc(db,"sources",sourceId,"likes",currentUser.uid);
+      try{
+        await runTransaction(db,async tx=>{
+          const likeSnap=await tx.get(likeRef);
+          if(likeSnap.exists())throw new Error("You already liked this media.");
+          tx.set(likeRef,{uid:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp()});
+          tx.update(sourceRef,{likes:increment(1),updatedAt:serverTimestamp()});
+        });
+        await loadSources();
+      }catch(error){notifyUser(error.message);}
+    };
+
+    window.openReport=function(sourceId){
+      if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Report action is disabled."); return; }
+      if(!currentUser||!currentProfile){openProfileModal();return;}
+      if(!sources.find(s=>s.id===sourceId))return;
+      selectedReportSourceId=sourceId; openModal("reportModal");
+    };
+
     window.submitReport=async function(){
       if(!selectedReportSourceId||!currentUser)return;
       const sourceRef=doc(db,"sources",selectedReportSourceId);
@@ -720,10 +1284,10 @@
       try{
         await runTransaction(db,async tx=>{
           const reportSnap=await tx.get(reportRef);
-          if(reportSnap.exists())throw new Error("You already reported this source.");
+          if(reportSnap.exists())throw new Error("You already reported this media.");
           const sourceSnap=await tx.get(sourceRef);
-          if(!sourceSnap.exists())throw new Error("Source not found.");
-          if(sourceSnap.data().appVersion!==APP_VERSION)throw new Error("This source is not supported by the current system version.");
+          if(!sourceSnap.exists())throw new Error("Media not found.");
+          if(sourceSnap.data().appVersion!==APP_VERSION)throw new Error("This media is not supported by the current system version.");
           const nextReports=Number(sourceSnap.data().reportCount||0)+1;
           tx.set(reportRef,{uid:currentUser.uid,appVersion:APP_VERSION,reason,detail,createdAt:serverTimestamp()});
           tx.update(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()});
@@ -733,40 +1297,35 @@
         console.warn("Report transaction failed:",error);
         try{
           const localKey=`pmm_reported_${selectedReportSourceId}_${currentUser.uid}`;
-          if(localStorage.getItem(localKey)) throw new Error("You already reported this source.");
+          if(localStorage.getItem(localKey)) throw new Error("You already reported this media.");
           const snap=await getDoc(sourceRef);
-          if(!snap.exists()) throw new Error("Source not found.");
+          if(!snap.exists()) throw new Error("Media not found.");
           const nextReports=Number(snap.data().reportCount||0)+1;
           await updateDoc(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()});
           localStorage.setItem(localKey,"1");
           closeModal("reportModal"); selectedReportSourceId=null; byId("reportDetailInput").value=""; showNotice("Report submitted."); await loadSources();
         }catch(fallbackError){
-          notifyUser("Report failed. Please update Firestore Rules with the new fixed rules file and try again.");
+          notifyUser("Report failed. Please update Firestore rules and try again.");
         }
       }
     };
+
     async function performDeleteSource(sourceId){
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
-      if(!src||!currentUser){ notifyUser("Source not found or authentication is not ready."); return; }
-      if(!hasPowerAccess()&&src.ownerId!==currentUser.uid){notifyUser("Only the owner or PMM_Test access can delete this source.");return;}
+      if(!src||!currentUser){ notifyUser("Media not found or authentication is not ready."); return; }
+      if(!hasPowerAccess()&&src.ownerId!==currentUser.uid){notifyUser("Only the owner or PMM_Test access can delete this media.");return;}
       try{
         await deleteDoc(doc(db,"sources",sourceId));
         if(src.ownerId===currentUser.uid){ const profileRef=doc(db,"profiles",currentUser.uid), pSnap=await getDoc(profileRef), p=pSnap.exists()?pSnap.data():null; if(p&&p.dailyUpload&&p.dailyUpload.activeSourceId===sourceId) await updateDoc(profileRef,{dailyUpload:{date:"",activeSourceId:""},updatedAt:serverTimestamp()}); }
-        closeModal("editSourceModal"); showNotice(`Source deleted: ${src.name||sourceId}`); await loadSources();
-      }catch(error){console.error(error); notifyUser(error.message || "Delete failed. Please check Firestore Rules and PMM_Test access.");}
+        closeModal("editSourceModal"); showNotice(`Media deleted: ${src.name||sourceId}`); await loadSources();
+      }catch(error){console.error(error); notifyUser(error.message || "Delete failed.");}
     }
-    window.cleanupSourceRecordFromDb=async function(sourceId,reason){
-      const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
-      if(!src || !(hasPowerAccess() || src.ownerId===currentUser?.uid))return false;
-      await deleteDoc(doc(db,"sources",sourceId));
-      await loadSources();
-      return true;
-    };
     window.deleteSource=function(sourceId){
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
-      if(!src){ notifyUser("Source not found."); return; }
-      askConfirm("Delete Source", `Delete "${src.name||sourceId}" permanently? This cannot be undone.`, ()=>performDeleteSource(sourceId));
+      if(!src){ notifyUser("Media not found."); return; }
+      askConfirm("Delete Media", `Delete "${src.name||sourceId}" permanently? This cannot be undone.`, ()=>performDeleteSource(sourceId));
     };
+
     async function resolveBanTarget(raw){
       const value=normalizeName(raw);
       if(!value)throw new Error("Please enter username or UID.");
@@ -778,7 +1337,7 @@
       if(/^[A-Za-z0-9_-]{10,80}$/.test(value))return {uid:value,name:value,nameKey:key};
       throw new Error("User not found. Use exact username or Firebase UID.");
     }
-    async function wipeUserData(target,batchMode=true){
+    async function wipeUserData(target){
       const owned=query(collection(db,"sources"),where("ownerId","==",target.uid),limit(450));
       const snap=await getDocs(owned);
       const batch=writeBatch(db);
@@ -797,11 +1356,9 @@
         const target=await resolveBanTarget(input);
         const expiresAt=Timestamp.fromMillis(Date.now()+days*24*60*60*1000);
         await setDoc(doc(db,"bans",target.uid),{uid:target.uid,username:target.name,nameKey:target.nameKey||"",mode,days,active:true,reason:"Admin action",createdBy:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),expiresAt},{merge:false});
-        let wiped=0;
-        if(mode==="ban_wipe")wiped=await wipeUserData(target);
-        byId("banStatusText").textContent=mode==="ban_wipe"?`Banned and wiped ${wiped} owned source document(s).`:`User banned until ${expiresAt.toDate().toLocaleDateString()}.`;
-        showNotice("Ban action completed.");
-        await loadSources();
+        let wiped=0; if(mode==="ban_wipe")wiped=await wipeUserData(target);
+        byId("banStatusText").textContent=mode==="ban_wipe"?`Banned and wiped ${wiped} owned document(s).`:`User banned until ${expiresAt.toDate().toLocaleDateString()}.`;
+        showNotice("Ban action completed."); await loadSources();
       }catch(error){ notifyUser(error.message||"Ban action failed."); }
     };
     window.unbanUser=async function(){
@@ -809,18 +1366,7 @@
       try{ const target=await resolveBanTarget(byId("adminBanUserInput").value); await deleteDoc(doc(db,"bans",target.uid)); byId("banStatusText").textContent="User unbanned."; showNotice("User unbanned."); }
       catch(error){ notifyUser(error.message||"Unban failed."); }
     };
-    window.cleanBrokenDownloads=async function(){
-      if(!hasPowerAccess())return;
-      let cleaned=0, checked=0;
-      for(const src of sources.filter(isCleanSource)){
-        checked++;
-        const url=validDisplayUrl(src.downloadUrl);
-        if(!url) { if(await cleanupSourceRecord(src.id,"empty-url")) cleaned++; continue; }
-        const result=await checkDownloadAvailability(url);
-        if(result.state==="missing"||result.state==="invalid") if(await cleanupSourceRecord(src.id,`bulk-${result.status}`)) cleaned++;
-      }
-      showNotice(`Broken-link cleanup finished. Checked ${checked}, cleaned ${cleaned}. Unknown/CORS-blocked links were left untouched.`);
-    };
+
     window.openAdminPanel=function(){ if(!hasPowerAccess()){ return; } openModal("adminModal"); loadAdminTable(); };
     window.filterAdminTable=function(){ loadAdminTable(); };
     window.loadAdminTable=function(){
@@ -828,56 +1374,62 @@
       const body=byId("adminTableBody"); body.innerHTML="";
       const keyword=(byId("adminFindInput")?.value||"").trim().toLowerCase();
       const rows=sources.filter(isCleanSource).filter(src=>!keyword || (src.name||"").toLowerCase().includes(keyword) || (src.ownerName||"").toLowerCase().includes(keyword) || (src.category||"").toLowerCase().includes(keyword));
-      if(!rows.length){ const tr=document.createElement("tr"); const td=document.createElement("td"); td.colSpan=6; td.textContent="No matching source found."; td.className="muted"; tr.appendChild(td); body.appendChild(tr); return; }
-      rows.forEach(src=>{ const tr=document.createElement("tr"); [src.name||"Untitled",src.ownerName||"Unknown",src.category||"Source Code",src.status||"active",String(src.reportCount||0)].forEach(value=>{const td=document.createElement("td"); td.textContent=value; tr.appendChild(td);}); const action=document.createElement("td"); const wrap=document.createElement("div"); wrap.className="inline-actions"; const edit=document.createElement("button"); edit.className="primary-btn btn"; edit.textContent="Edit"; edit.addEventListener("click",()=>openEditSource(src.id)); const del=document.createElement("button"); del.className="danger-btn btn"; del.textContent="Delete"; del.addEventListener("click",()=>deleteSource(src.id)); const review=document.createElement("button"); review.className="secondary-btn btn"; review.textContent=src.status==="review"?"Active":"Review"; review.addEventListener("click",()=>setSourceReview(src.id,src.status!=="review")); wrap.append(edit,del,review); action.appendChild(wrap); tr.appendChild(action); body.appendChild(tr);});
+      if(!rows.length){ const tr=document.createElement("tr"); const td=document.createElement("td"); td.colSpan=7; td.textContent="No matching media."; td.className="muted"; tr.appendChild(td); body.appendChild(tr); return; }
+      rows.forEach(src=>{
+        const tr=document.createElement("tr");
+        const m=resolveMedia(src.downloadUrl||"");
+        const typeStr = `${kindLabel(m.kind)}/${providerLabel(m.provider)}`;
+        [src.name||"Untitled", typeStr, src.ownerName||"Unknown",src.category||"Media",src.status||"active",String(src.reportCount||0)].forEach(value=>{
+          const td=document.createElement("td"); td.textContent=value; tr.appendChild(td);
+        });
+        const action=document.createElement("td"); const wrap=document.createElement("div"); wrap.className="inline-actions";
+        const edit=document.createElement("button"); edit.className="primary-btn btn"; edit.textContent="Edit"; edit.addEventListener("click",()=>openEditSource(src.id));
+        const del=document.createElement("button"); del.className="danger-btn btn"; del.textContent="Delete"; del.addEventListener("click",()=>deleteSource(src.id));
+        const review=document.createElement("button"); review.className="secondary-btn btn"; review.textContent=src.status==="review"?"Active":"Review"; review.addEventListener("click",()=>setSourceReview(src.id,src.status!=="review"));
+        wrap.append(edit,del,review); action.appendChild(wrap); tr.appendChild(action); body.appendChild(tr);
+      });
     };
     window.openSourceByAdminName=function(){
       if(!hasPowerAccess())return;
       const keyword=(byId("adminFindInput")?.value||"").trim().toLowerCase();
-      if(!keyword){ notifyUser("Please type a source name first."); return; }
+      if(!keyword){ notifyUser("Please type a media name first."); return; }
       const found=sources.find(src=>(src.name||"").toLowerCase()===keyword) || sources.find(src=>(src.name||"").toLowerCase().includes(keyword));
-      if(!found){ notifyUser("No source matched that name."); return; }
+      if(!found){ notifyUser("No media matched that name."); return; }
       openEditSource(found.id);
     };
-    window.updateEditPositionLabel=function(){ byId("editPosXLabel").textContent=`${byId("editBannerPosXInput").value}%`; byId("editPosYLabel").textContent=`${byId("editBannerPosYInput").value}%`; };
     window.openEditSource=function(sourceId){
       if(!hasPowerAccess()){ return; }
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
-      if(!src){ notifyUser("Source not found."); return; }
+      if(!src){ notifyUser("Media not found."); return; }
       selectedEditSourceId=sourceId;
       byId("editSourceNameInput").value=src.name||"";
       byId("editOwnerNameInput").value=src.ownerName||"";
       byId("editDownloadUrlInput").value=src.downloadUrl||"";
       byId("editIconUrlInput").value=src.iconUrl||"";
-      byId("editBannerUrlInput").value=src.bannerUrl||"";
       byId("editCategoryInput").value=PUBLISH_CATEGORIES.includes(src.category)?src.category:"Other";
       byId("editStatusInput").value=["active","review","hidden"].includes(src.status)?src.status:"active";
-      byId("editBannerPosXInput").value=clampNumber(src.bannerPosX,50,0,100);
-      byId("editBannerPosYInput").value=clampNumber(src.bannerPosY,50,0,100);
-      updateEditPositionLabel(); openModal("editSourceModal");
+      openModal("editSourceModal");
     };
     window.saveEditSource=async function(){
       if(!hasPowerAccess()||!selectedEditSourceId){ notifyUser("PMM_Test access is required."); return; }
-      const name=normalizeName(byId("editSourceNameInput").value).slice(0,50);
+      const name=normalizeName(byId("editSourceNameInput").value).slice(0,60);
       const ownerName=normalizeName(byId("editOwnerNameInput").value).slice(0,50);
       const downloadUrl=byId("editDownloadUrlInput").value.trim();
       const iconUrl=byId("editIconUrlInput").value.trim();
-      const bannerUrl=byId("editBannerUrlInput").value.trim();
       const category=byId("editCategoryInput").value;
       const status=byId("editStatusInput").value;
-      if(!name){ notifyUser("Source name is required."); return; }
+      if(!name){ notifyUser("Media name is required."); return; }
       const urlCheck=validateDownloadUrl(downloadUrl); if(!urlCheck.ok){ notifyUser(urlCheck.message); return; }
-      if(iconUrl && !validDisplayUrl(iconUrl)){ notifyUser("Icon image URL is invalid."); return; }
-      if(bannerUrl && !validDisplayUrl(bannerUrl)){ notifyUser("Banner image URL is invalid."); return; }
+      if(iconUrl && !validDisplayUrl(iconUrl)){ notifyUser("Thumbnail URL is invalid."); return; }
       try{
-        await updateDoc(doc(db,"sources",selectedEditSourceId),{name,ownerName:ownerName||"Unknown",downloadUrl,iconUrl,bannerUrl,category,status,bannerPosX:clampNumber(byId("editBannerPosXInput").value,50,0,100),bannerPosY:clampNumber(byId("editBannerPosYInput").value,50,0,100),updatedAt:serverTimestamp()});
-        showNotice("Source updated successfully."); closeModal("editSourceModal"); await loadSources();
-      }catch(error){console.error(error); notifyUser(error.message || "Update failed. Please check Firestore Rules and PMM_Test access.");}
+        await updateDoc(doc(db,"sources",selectedEditSourceId),{name,ownerName:ownerName||"Unknown",downloadUrl,iconUrl,bannerUrl:"",category,status,bannerPosX:50,bannerPosY:50,updatedAt:serverTimestamp()});
+        showNotice("Media updated successfully."); closeModal("editSourceModal"); await loadSources();
+      }catch(error){console.error(error); notifyUser(error.message || "Update failed.");}
     };
     window.setSourceReview=async function(sourceId,review){ if(!hasPowerAccess())return; try{ await updateDoc(doc(db,"sources",sourceId),{status:review?"review":"active",updatedAt:serverTimestamp()}); await loadSources(); }catch(error){notifyUser(error.message);} };
-    window.markAllReview=function(review){ if(!hasPowerAccess())return; askConfirm(review?"Mark All Review":"Mark All Active", review?"Mark all clean sources as review?":"Mark all clean sources as active?", async()=>{ try{ const batch=writeBatch(db); sources.filter(isCleanSource).forEach(src=>batch.update(doc(db,"sources",src.id),{status:review?"review":"active",updatedAt:serverTimestamp()})); await batch.commit(); await loadSources(); }catch(error){notifyUser(error.message);} }); };
-    window.deleteAllLoadedSources=function(){ if(!hasPowerAccess())return; if(byId("deleteAllConfirm").value!=="DELETE ALL"){notifyUser("Type DELETE ALL first.");return;} askConfirm("Delete All Loaded Sources", "Delete all currently loaded clean sources?", async()=>{ try{ for(const src of sources.filter(isCleanSource)){ await deleteDoc(doc(db,"sources",src.id)); } byId("deleteAllConfirm").value=""; showNotice("All clean sources were deleted."); await loadSources(); }catch(error){notifyUser(error.message);} }); };
-    window.deleteLegacySources=function(){ if(!hasPowerAccess())return; const legacy=adminAllSources.filter(src=>src.appVersion!==APP_VERSION); if(!legacy.length){showNotice("No old data found in the current loaded range.");return;} askConfirm("Clean Old Data", `Delete ${legacy.length} old source document(s)?`, async()=>{ try{ for(const src of legacy){ await deleteDoc(doc(db,"sources",src.id)); } showNotice("Old data deleted from loaded range."); await loadSources(); }catch(error){notifyUser(error.message);} }); };
+    window.markAllReview=function(review){ if(!hasPowerAccess())return; askConfirm(review?"Mark All Review":"Mark All Active", review?"Mark all clean media as review?":"Mark all clean media as active?", async()=>{ try{ const batch=writeBatch(db); sources.filter(isCleanSource).forEach(src=>batch.update(doc(db,"sources",src.id),{status:review?"review":"active",updatedAt:serverTimestamp()})); await batch.commit(); await loadSources(); }catch(error){notifyUser(error.message);} }); };
+    window.deleteAllLoadedSources=function(){ if(!hasPowerAccess())return; if(byId("deleteAllConfirm").value!=="DELETE ALL"){notifyUser("Type DELETE ALL first.");return;} askConfirm("Delete All Loaded Media", "Delete all currently loaded media?", async()=>{ try{ for(const src of sources.filter(isCleanSource)){ await deleteDoc(doc(db,"sources",src.id)); } byId("deleteAllConfirm").value=""; showNotice("All clean media were deleted."); await loadSources(); }catch(error){notifyUser(error.message);} }); };
+    window.deleteLegacySources=function(){ if(!hasPowerAccess())return; const legacy=adminAllSources.filter(src=>src.appVersion!==APP_VERSION); if(!legacy.length){showNotice("No old data found in the current loaded range.");return;} askConfirm("Clean Old Data", `Delete ${legacy.length} old document(s)?`, async()=>{ try{ for(const src of legacy){ await deleteDoc(doc(db,"sources",src.id)); } showNotice("Old data deleted from loaded range."); await loadSources(); }catch(error){notifyUser(error.message);} }); };
   </script>
 </body>
 </html>
