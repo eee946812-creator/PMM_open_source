@@ -18,6 +18,7 @@
   <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PMM Open Source - Source Code Hub" />
@@ -202,6 +203,23 @@
     @media(max-width:760px){.search-wrap .custom-select{width:100%;}.delete-btn{top:10px!important;right:10px!important;width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;}}
 
 
+    /* V3 fixes: report GUI, safer clicks, image/link reliability */
+    .topbar{z-index:1000!important;pointer-events:auto!important;}
+    .nav button{position:relative!important;z-index:1001!important;cursor:pointer!important;}
+    .modal-backdrop{z-index:1200!important;}
+    .source-detail{position:relative;z-index:1;}
+    .card{padding-top:0!important;}
+    .delete-btn{inset:auto 14px auto auto!important;top:14px!important;right:14px!important;translate:0 0!important;}
+    .report-reason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:8px;}
+    .report-reason-btn{border:1px solid #e2e8f0;background:#fff;border-radius:18px;padding:12px 14px;text-align:left;font-weight:800;color:#334155;cursor:pointer;box-shadow:0 6px 20px rgba(15,23,42,.035);transition:.16s ease;}
+    .report-reason-btn:hover{background:#f8fafc;border-color:#cbd5e1;}
+    .report-reason-btn.active{background:#111827;color:#fff;border-color:#111827;box-shadow:0 12px 28px rgba(15,23,42,.14);}
+    #reportReasonInput{display:none!important;}
+    #reportModal .modal{border-radius:30px!important;overflow:hidden auto!important;}
+    #reportModal textarea{min-height:96px;resize:vertical;}
+    @media(max-width:760px){.delete-btn{top:12px!important;right:12px!important;width:26px!important;height:26px!important;min-width:26px!important;max-width:26px!important}.report-reason-grid{grid-template-columns:1fr}}
+
+
   </style>
 </head>
 <body>
@@ -309,7 +327,28 @@
       select.addEventListener('change',rebuild);
       rebuild();
     }
-    function enhanceAllSelects(){ ['sortSelect','categorySelect'].forEach(id=>enhanceSelect(safeById(id))); }
+    function enhanceAllSelects(){ ['sortSelect','categorySelect','categoryInput','editCategoryInput','editStatusInput','adminBanModeInput'].forEach(id=>enhanceSelect(safeById(id))); }
+    function setupReportReasonButtons(){
+      const select=safeById('reportReasonInput');
+      if(!select || select.dataset.reportButtons==='1') return;
+      select.dataset.reportButtons='1';
+      const grid=document.createElement('div');
+      grid.className='report-reason-grid';
+      function rebuild(){
+        grid.innerHTML='';
+        [...select.options].forEach(opt=>{
+          const btn=document.createElement('button');
+          btn.type='button';
+          btn.className='report-reason-btn'+(opt.value===select.value?' active':'');
+          btn.textContent=opt.textContent;
+          btn.addEventListener('click',()=>{select.value=opt.value;select.dispatchEvent(new Event('change',{bubbles:true}));rebuild();});
+          grid.appendChild(btn);
+        });
+      }
+      select.addEventListener('change',rebuild);
+      select.parentNode.appendChild(grid);
+      rebuild();
+    }
     const CATEGORIES = ["All","Recommended","Source Code","Tool","Game","Operating System","Browser","AI","Design","Other"];
     const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
     const MAX_IMAGE_BYTES = 250 * 1024;
@@ -430,10 +469,10 @@
       const banner=document.createElement("div"); banner.className="banner placeholder";
       const applyBannerFallback=()=>{ banner.classList.add("placeholder"); banner.style.background=placeholderGradient(src); banner.style.backgroundImage=""; banner.innerHTML=""; const b=document.createElement("strong"); b.textContent=src.category||"Source Code"; banner.appendChild(b); };
       applyBannerFallback();
-      loadAsBackground(banner,src.bannerUrl,{position:`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`,clearText:false,onSuccess:()=>{ banner.innerHTML=""; }});
+      loadAsBackground(banner,src.bannerUrl,{position:`${clampNumber(src.bannerPosX,50,0,100)}% ${clampNumber(src.bannerPosY,50,0,100)}%`,clearText:false,onSuccess:()=>{ banner.innerHTML=""; },onError:applyBannerFallback});
       const body=document.createElement("div"); body.className="card-body";
       const row=document.createElement("div"); row.className="source-row";
-      const icon=document.createElement("div"); icon.className="icon-box placeholder"; const applyIconFallback=()=>{ icon.classList.add("placeholder"); icon.style.background=sourceAccent(src); icon.style.backgroundImage=""; icon.textContent=defaultIconText(src.name); }; applyIconFallback(); loadAsBackground(icon,src.iconUrl,{clearText:true});
+      const icon=document.createElement("div"); icon.className="icon-box placeholder"; const applyIconFallback=()=>{ icon.classList.add("placeholder"); icon.style.background=sourceAccent(src); icon.style.backgroundImage=""; icon.textContent=defaultIconText(src.name); }; applyIconFallback(); loadAsBackground(icon,src.iconUrl,{clearText:true,onError:applyIconFallback});
       const titleArea=document.createElement("div"); titleArea.className="title-area"; const h3=document.createElement("h3"); const titleLink=document.createElement("a"); titleLink.textContent=src.name||"Untitled"; titleLink.title=src.name||"Untitled"; titleLink.href=sourceUrl(src.id); titleLink.addEventListener("click",e=>{e.preventDefault();openSourcePage(src.id);}); h3.appendChild(titleLink); const small=document.createElement("small"); small.textContent=`by ${src.ownerName||"Unknown"}`; titleArea.append(h3,small); row.append(icon,titleArea);
       const meta=document.createElement("div"); meta.className="meta"; [src.category||"Source Code",`👍 ${Number(src.likes||0)}`,`Reports ${Number(src.reportCount||0)}`].forEach(t=>{const span=document.createElement("span"); span.className="tag"; span.textContent=t; meta.appendChild(span);}); if((src.reportCount||0)>=10||src.status==="review"){const review=document.createElement("span"); review.className="tag warn"; review.textContent="Under Review"; meta.appendChild(review);} if(hasPowerAccess()){const admin=document.createElement("span"); admin.className="tag admin"; admin.textContent="Test Access"; meta.appendChild(admin);}
       const actions=document.createElement("div"); actions.className="actions"; const view=document.createElement("button"); view.className="view-source-btn btn"; view.textContent="View"; view.addEventListener("click",e=>{e.stopPropagation();openSourcePage(src.id);}); const dl=document.createElement("button"); dl.className="primary-btn btn"; dl.textContent="Download"; dl.addEventListener("click",e=>{e.stopPropagation();openDownload(src.downloadUrl,src.id);}); const like=document.createElement("button"); like.className="secondary-btn btn"; like.textContent="Like"; like.addEventListener("click",e=>{e.stopPropagation();likeSource(src.id);}); const report=document.createElement("button"); report.className="danger-btn btn"; report.textContent="Report"; report.addEventListener("click",e=>{e.stopPropagation();openReport(src.id);}); actions.append(view,dl,like,report); if(hasPowerAccess()){ const manage=document.createElement("button"); manage.className="secondary-btn btn"; manage.textContent="Manage"; manage.addEventListener("click",e=>{e.stopPropagation();openEditSource(src.id);}); actions.append(manage); }
@@ -672,7 +711,40 @@
     window.loadSources=async function(){ setLoading(true); try{ const q=query(collection(db,"sources"),orderBy("createdAtMs","desc"),limit(hasPowerAccess()?250:120)); const snapshot=await getDocs(q); const loaded=[]; snapshot.forEach(item=>loaded.push({id:item.id,...item.data()})); adminAllSources=loaded; sources=loaded.filter(isCleanSource); updateSeoItemList(); renderRoute(); }catch(error){console.error(error); showNotice(error.message||"Cannot load sources.");} finally{setLoading(false); renderRoute();} };
     window.likeSource=async function(sourceId){ if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Like action is disabled."); return; } if(!currentUser||!currentProfile){openProfileModal();return;} const src=sources.find(s=>s.id===sourceId); if(!src)return; const sourceRef=doc(db,"sources",sourceId), likeRef=doc(db,"sources",sourceId,"likes",currentUser.uid); try{ await runTransaction(db,async tx=>{ const likeSnap=await tx.get(likeRef); if(likeSnap.exists())throw new Error("You already liked this source."); tx.set(likeRef,{uid:currentUser.uid,appVersion:APP_VERSION,createdAt:serverTimestamp()}); tx.update(sourceRef,{likes:increment(1),updatedAt:serverTimestamp()}); }); await loadSources(); }catch(error){notifyUser(error.message);} };
     window.openReport=function(sourceId){ if(isCurrentUserBanned()){ showNotice("Your account is temporarily banned. Report action is disabled."); return; } if(!currentUser||!currentProfile){openProfileModal();return;} if(!sources.find(s=>s.id===sourceId))return; selectedReportSourceId=sourceId; openModal("reportModal"); };
-    window.submitReport=async function(){ if(!selectedReportSourceId||!currentUser)return; const sourceRef=doc(db,"sources",selectedReportSourceId), reportRef=doc(db,"sources",selectedReportSourceId,"reports",currentUser.uid), reason=byId("reportReasonInput").value, detail=byId("reportDetailInput").value.trim().slice(0,250); try{ await runTransaction(db,async tx=>{ const reportSnap=await tx.get(reportRef); if(reportSnap.exists())throw new Error("You already reported this source."); const sourceSnap=await tx.get(sourceRef); if(!sourceSnap.exists())throw new Error("Source not found."); if(sourceSnap.data().appVersion!==APP_VERSION)throw new Error("This source is not supported by the current system version."); const nextReports=Number(sourceSnap.data().reportCount||0)+1; tx.set(reportRef,{uid:currentUser.uid,appVersion:APP_VERSION,reason,detail,createdAt:serverTimestamp()}); tx.update(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()}); }); closeModal("reportModal"); selectedReportSourceId=null; showNotice("Report submitted."); await loadSources(); }catch(error){notifyUser(error.message);} };
+    window.submitReport=async function(){
+      if(!selectedReportSourceId||!currentUser)return;
+      const sourceRef=doc(db,"sources",selectedReportSourceId);
+      const reportRef=doc(db,"sources",selectedReportSourceId,"reports",currentUser.uid);
+      const reason=byId("reportReasonInput").value;
+      const detail=byId("reportDetailInput").value.trim().slice(0,250);
+      try{
+        await runTransaction(db,async tx=>{
+          const reportSnap=await tx.get(reportRef);
+          if(reportSnap.exists())throw new Error("You already reported this source.");
+          const sourceSnap=await tx.get(sourceRef);
+          if(!sourceSnap.exists())throw new Error("Source not found.");
+          if(sourceSnap.data().appVersion!==APP_VERSION)throw new Error("This source is not supported by the current system version.");
+          const nextReports=Number(sourceSnap.data().reportCount||0)+1;
+          tx.set(reportRef,{uid:currentUser.uid,appVersion:APP_VERSION,reason,detail,createdAt:serverTimestamp()});
+          tx.update(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()});
+        });
+        closeModal("reportModal"); selectedReportSourceId=null; byId("reportDetailInput").value=""; showNotice("Report submitted."); await loadSources();
+      }catch(error){
+        console.warn("Report transaction failed:",error);
+        try{
+          const localKey=`pmm_reported_${selectedReportSourceId}_${currentUser.uid}`;
+          if(localStorage.getItem(localKey)) throw new Error("You already reported this source.");
+          const snap=await getDoc(sourceRef);
+          if(!snap.exists()) throw new Error("Source not found.");
+          const nextReports=Number(snap.data().reportCount||0)+1;
+          await updateDoc(sourceRef,{reportCount:increment(1),lastReportReason:reason,lastReportDetail:detail,status:nextReports>=10?"review":"active",updatedAt:serverTimestamp()});
+          localStorage.setItem(localKey,"1");
+          closeModal("reportModal"); selectedReportSourceId=null; byId("reportDetailInput").value=""; showNotice("Report submitted."); await loadSources();
+        }catch(fallbackError){
+          notifyUser("Report failed. Please update Firestore Rules with the new fixed rules file and try again.");
+        }
+      }
+    };
     async function performDeleteSource(sourceId){
       const src=[...sources,...adminAllSources].find(item=>item.id===sourceId);
       if(!src||!currentUser){ notifyUser("Source not found or authentication is not ready."); return; }
