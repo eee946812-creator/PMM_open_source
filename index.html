@@ -5,22 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <title>PMM Media Hub - Free Inline Video &amp; Audio Player</title>
-  <meta name="description" content="PMM Media Hub - share video and audio links that play instantly in-page. Supports direct files, YouTube, Vimeo, Dropbox, Google Drive, OneDrive and SoundCloud." />
-  <meta name="keywords" content="PMM Media Hub, inline video player, audio player, dropbox player, google drive player, youtube embed, discord embed video" />
+  <title>PMM Media</title>
+  <meta name="description" content="PMM Media - share video and audio links that play instantly in-page. Supports direct files, YouTube, Vimeo, Dropbox, Google Drive, OneDrive and SoundCloud." />
+  <meta name="keywords" content="PMM Media, inline video player, audio player, dropbox player, google drive player, youtube embed, discord embed video" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow" />
 
+  <!-- Permanent preview image source: https://github.com/eee946812-creator/PMM_open_source/blob/main/67skibidi -> raw file URL used by the app: https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi -->
   <!-- Open Graph defaults (overridden on detail pages so Discord can embed and play) -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PMM Media Hub - Inline Video &amp; Audio" />
+  <meta property="og:title" content="PMM Media - Inline Video &amp; Audio" />
   <meta property="og:description" content="Share video and audio links that play instantly in the page. Discord-friendly embeds for direct files." />
-  <meta property="og:site_name" content="PMM Media Hub" />
+  <meta property="og:site_name" content="PMM Media" />
   <meta property="og:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PMM Media Hub" />
+  <meta name="twitter:title" content="PMM Media" />
   <meta name="twitter:description" content="Inline video and audio player." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi" />
 
@@ -199,11 +200,195 @@
       .player-controls button{flex:1;min-width:42%}
       .audio-art .disc{width:90px;height:90px;font-size:36px}
     }
-  </style>
+
+
+    /* ===== PMM Minimal Human-made UI Refresh ===== */
+    :root{
+      --bg:#f6f7f9;--surface:#ffffff;--surface-soft:#f8fafc;--text:#111827;--muted:#667085;--line:#e6e8ee;
+      --primary:#101114;--primary-dark:#000;--primary-soft:#f2f4f7;--accent:#111827;
+      --radius:16px;--radius-lg:24px;--shadow:0 18px 50px rgba(17,24,39,.08);--shadow-soft:0 10px 30px rgba(17,24,39,.06);
+    }
+    body{background:linear-gradient(180deg,#ffffff 0%,#f7f8fb 100%);color:var(--text)}
+    .topbar{background:rgba(255,255,255,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(230,232,238,.9);padding:12px 24px}
+    .brand-code{background:#111;color:#fff;border-radius:12px;box-shadow:inset 0 -8px 18px rgba(255,255,255,.08)}
+    .nav button,.btn{border-radius:999px;border-color:#e5e7eb;background:#fff;box-shadow:0 1px 1px rgba(16,24,40,.04)}
+    .primary-btn{background:#111!important;border-color:#111!important;color:#fff!important;box-shadow:0 10px 24px rgba(17,24,39,.15)}
+    .secondary-btn{background:#f6f7f9!important;border-color:#e5e7eb!important;color:#111827!important}
+    .container{max-width:1120px;padding-top:30px}
+    .hero{padding:28px;border:1px solid var(--line);background:rgba(255,255,255,.75);border-radius:28px;box-shadow:var(--shadow-soft)}
+    .hero h1{font-weight:900;letter-spacing:-1.4px}
+    .hero p{max-width:720px;line-height:1.6}
+    .panel,.card,.detail-info-card,.missing-state,.modal{border:1px solid rgba(230,232,238,.95);box-shadow:var(--shadow-soft)}
+    .panel{background:rgba(255,255,255,.8)}
+    .card{border-radius:22px;background:#fff;box-shadow:0 10px 28px rgba(17,24,39,.055)}
+    .card:hover{transform:translateY(-3px);box-shadow:0 22px 52px rgba(17,24,39,.11)}
+    .card-thumb{background:linear-gradient(135deg,#111827,#475467)}
+    .type-badge{background:rgba(17,24,39,.86)!important;letter-spacing:.2px}
+    .play-overlay svg circle{fill:rgba(255,255,255,.92)}
+    .search-box,.search-wrap select,.search-wrap input,.form input,.form select,.form textarea{border-radius:18px;background:#fff;border-color:#e5e7eb}
+    .chip{background:#fff;border-color:#e5e7eb;color:#344054}.chip.active{background:#111;color:#fff;border-color:#111}
+    .player-shell,.player-frame{border-radius:26px}.player-controls{background:#111114;border-top:1px solid #26272b}.player-controls button{border-radius:999px;background:rgba(255,255,255,.08)}
+    .player-frame.audio-mode{min-height:340px;background:radial-gradient(circle at 50% 0%,#303238 0%,#151619 42%,#050506 100%)}
+    .audio-art .disc{position:relative;width:168px;height:168px;border-radius:50%;background:
+      radial-gradient(circle at center,#101114 0 8%,#d1d5db 8.4% 11%,#111 11.4% 16%,transparent 16.5%),
+      repeating-radial-gradient(circle at center,#050506 0 4px,#1d1f24 5px,#060607 7px,#0b0c0f 10px),
+      radial-gradient(circle at 32% 25%,rgba(255,255,255,.2),transparent 28%);
+      box-shadow:0 28px 55px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.08), inset 0 0 36px rgba(255,255,255,.06);
+      font-size:0;animation:spin 7s linear infinite paused}
+    .audio-art .disc::before{content:"";position:absolute;inset:18px;border-radius:50%;border:1px solid rgba(255,255,255,.07)}
+    .audio-art .disc::after{content:"PMM";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,#f8fafc,#9ca3af);color:#111;display:grid;place-items:center;font-size:11px;font-weight:900;letter-spacing:.5px}
+    .audio-art h3{font-weight:900;letter-spacing:-.5px}.audio-art small{color:#d1d5db}
+    @media(max-width:760px){.hero{padding:20px}.topbar{padding:12px 14px}.audio-art .disc{width:132px;height:132px}}
+
+  
+
+    /* ===== PMM Detailed Media GUI polish v2 ===== */
+    .brand-code{display:grid;place-items:center;width:42px;height:42px;padding:0;border-radius:14px}
+    .brand-code svg{width:21px;height:21px;display:block}
+    .icon-inline{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:0 0 16px}
+    .icon-inline svg{width:100%;height:100%;display:block}
+    .btn-icon-label,.icon-text{display:inline-flex;align-items:center;gap:10px}
+    .delete-btn{font-size:0}
+    .delete-btn .icon-inline{width:15px;height:15px}
+    .mini-card small,.detail-meta .tag{display:inline-flex;align-items:center;gap:6px}
+
+    .detail-player-card{background:#070708;border:1px solid #191a1f;border-radius:34px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.28);margin-bottom:20px;isolation:isolate}
+    .detail-player-card .player-frame{border-radius:34px 34px 0 0;overflow:hidden;background:#050506}
+    .detail-player-card .player-controls{justify-content:center;gap:12px;padding:18px 18px 20px;background:#0c0d11;border-top:1px solid rgba(255,255,255,.08)}
+    .detail-player-card .player-controls button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:42px;padding:10px 16px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);font-weight:800}
+    .detail-player-card .player-controls button:hover{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.09))}
+    .detail-player-card .player-controls .icon-inline{width:17px;height:17px}
+
+    .player-frame.audio-mode{aspect-ratio:auto;min-height:392px;padding:34px 26px 26px;background:
+      radial-gradient(circle at 50% 16%, rgba(255,255,255,.16), rgba(255,255,255,0) 18%),
+      linear-gradient(90deg,#040405 0%,#17181c 50%,#040405 100%)}
+    .audio-art{position:relative;gap:16px;max-width:620px;margin:0 auto;padding-top:6px}
+    .audio-corner-chip{position:absolute;left:6px;top:52%;transform:translateY(-50%);width:34px;height:34px;border-radius:9px;background:linear-gradient(180deg,#ffffff,#ebedf1);border:1px solid rgba(0,0,0,.12);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.26)}
+    .audio-corner-chip .icon-inline{width:16px;height:16px;color:#17181c}
+    .audio-art .disc{position:relative;width:178px;height:178px;border-radius:50%;background:
+      radial-gradient(circle at center,#060607 0 17%,#e5e7eb 17.4% 20%,#070708 20.4% 24%,transparent 24.4%),
+      repeating-radial-gradient(circle at center,#040405 0 4px,#14161a 4px 6px,#050607 6px 9px),
+      radial-gradient(circle at 34% 22%,rgba(255,255,255,.16),transparent 28%);
+      box-shadow:0 32px 60px rgba(0,0,0,.56), inset 0 0 0 1px rgba(255,255,255,.08), inset 0 0 30px rgba(255,255,255,.05);font-size:0;animation:spin 7s linear infinite paused}
+    .audio-art .disc::before{content:"";position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
+    .audio-art .disc::after{content:"PMM";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:linear-gradient(180deg,#ffffff,#bcc3cf);color:#111827;display:grid;place-items:center;font-size:11px;font-weight:900;letter-spacing:.8px;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+    .audio-art h3{margin:4px 0 0;font-size:22px;font-weight:900;letter-spacing:-.5px}
+    .audio-art small{color:#d7d9df;font-size:16px;font-weight:700}
+    .audio-art audio{position:static!important;inset:auto!important;width:min(560px,100%)!important;height:58px!important;display:block;background:#fff;border-radius:0;box-shadow:0 14px 38px rgba(0,0,0,.22)}
+    .audio-art .audio-player-wrap{margin-top:4px;background:#000;padding:0;border-radius:0;width:min(560px,100%);box-shadow:none}
+
+    .player-frame.video-mode video,.player-frame.video-mode iframe,.player-frame.embed-mode iframe{border-radius:0}
+    .player-frame.unknown-mode{display:grid;place-items:center;padding:34px;background:linear-gradient(180deg,#101114,#070708);color:#fff;text-align:center}
+    .unknown-state{max-width:520px}
+    .unknown-state .icon-inline{width:44px;height:44px;margin:0 auto 12px;color:#fff}
+    .unknown-state .btn{margin-top:14px;display:inline-flex;align-items:center;gap:8px}
+
+    .detail-header{padding:4px 4px 0}
+    .detail-header .detail-icon{border-radius:22px;border:1px solid rgba(17,24,39,.08);box-shadow:0 8px 24px rgba(17,24,39,.08)}
+    .detail-info-card{border-radius:24px;padding:22px}
+    .missing-icon{font-size:0}
+    .missing-icon .icon-inline{width:32px;height:32px}
+
+    @media(max-width:760px){
+      .detail-player-card{border-radius:26px}
+      .detail-player-card .player-frame{border-radius:26px 26px 0 0}
+      .detail-player-card .player-controls button{flex:1 1 calc(50% - 12px);min-width:calc(50% - 12px)}
+      .player-frame.audio-mode{min-height:320px;padding:24px 16px 22px}
+      .audio-corner-chip{left:0;top:50%}
+      .audio-art .disc{width:146px;height:146px}
+      .audio-art small{font-size:14px}
+    }
+
+
+
+    /* ===== Final smooth player UI + Firebase static mode ===== */
+    .source-detail{max-width:1080px;margin:0 auto}
+    .detail-player-card{
+      background:#090a0d!important;
+      border:1px solid rgba(255,255,255,.09)!important;
+      border-radius:24px!important;
+      overflow:hidden!important;
+      box-shadow:0 22px 54px rgba(0,0,0,.24),0 1px 0 rgba(255,255,255,.05) inset!important;
+      margin:0 0 22px!important;
+    }
+    .detail-player-card .player-frame{
+      border-radius:0!important;
+      overflow:hidden!important;
+      border:none!important;
+      box-shadow:none!important;
+    }
+    .player-frame.video-mode,
+    .player-frame.embed-mode{
+      background:#000!important;
+      aspect-ratio:16/9!important;
+    }
+    .player-frame.video-mode video,
+    .player-frame.video-mode iframe,
+    .player-frame.embed-mode iframe{
+      width:100%!important;height:100%!important;display:block!important;border:0!important;background:#000!important;
+    }
+    .player-frame.audio-mode{
+      min-height:380px!important;
+      padding:34px 24px 28px!important;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,0) 36%),
+        radial-gradient(circle at 50% 22%,rgba(255,255,255,.12),rgba(255,255,255,0) 28%),
+        linear-gradient(90deg,#050506 0%,#17181b 50%,#050506 100%)!important;
+      border-radius:0!important;
+    }
+    .audio-art{max-width:620px;margin:0 auto;gap:14px!important;padding:0!important;position:relative}
+    .audio-corner-chip{
+      left:18px!important;top:53%!important;width:32px!important;height:32px!important;border-radius:8px!important;
+      background:linear-gradient(180deg,#fff,#e8eaee)!important;opacity:.95!important;
+    }
+    .audio-art .disc{
+      width:164px!important;height:164px!important;margin-bottom:2px!important;
+      background:
+        radial-gradient(circle at center,#050506 0 16%,#f6f7f9 16.6% 19.5%,#0b0c0f 20% 23.5%,transparent 24%),
+        repeating-radial-gradient(circle at center,#030304 0 3px,#15171b 4px 5px,#060708 6px 8px,#111318 9px 10px),
+        radial-gradient(circle at 32% 24%,rgba(255,255,255,.18),transparent 30%)!important;
+      box-shadow:0 26px 56px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08),inset 0 0 38px rgba(255,255,255,.04)!important;
+    }
+    .audio-art h3{font-size:22px!important;line-height:1.15!important;margin:2px 0 0!important;color:#f8fafc!important}
+    .audio-art small{font-size:15px!important;color:#d0d5dd!important;font-weight:800!important}
+    .audio-player-wrap{
+      margin-top:10px!important;width:min(560px,100%)!important;background:#f7f7f8!important;border-radius:0!important;
+      padding:0!important;overflow:hidden!important;box-shadow:0 16px 40px rgba(0,0,0,.24)!important;
+    }
+    .audio-art audio{
+      width:100%!important;height:56px!important;border-radius:0!important;background:#f7f7f8!important;display:block!important;
+      box-shadow:none!important;color-scheme:light!important;
+    }
+    .detail-player-card .player-controls{
+      background:#0f1014!important;border-top:1px solid rgba(255,255,255,.08)!important;
+      padding:16px 18px 18px!important;gap:10px!important;justify-content:center!important;
+    }
+    .detail-player-card .player-controls button{
+      min-height:40px!important;border-radius:999px!important;padding:9px 15px!important;
+      background:linear-gradient(180deg,rgba(255,255,255,.115),rgba(255,255,255,.055))!important;
+      border:1px solid rgba(255,255,255,.16)!important;color:#fff!important;
+      box-shadow:0 1px 0 rgba(255,255,255,.06) inset!important;
+      transform:translateZ(0);
+    }
+    .detail-player-card .player-controls button:hover{transform:translateY(-1px);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08))!important}
+    .detail-header,.detail-info-card{background:rgba(255,255,255,.82);backdrop-filter:blur(14px)}
+    .detail-header{border:1px solid rgba(230,232,238,.8);border-radius:24px;padding:18px!important;box-shadow:var(--shadow-soft)}
+    .detail-info-card{border-radius:24px!important;border-color:rgba(230,232,238,.9)!important}
+    .discord-helper{margin-top:16px;padding:14px 16px;border-radius:18px;background:#f8fafc;border:1px solid #e5e7eb;color:#475467;font-weight:700;line-height:1.55;font-size:13px}
+    .discord-helper strong{color:#111827}
+    @media(max-width:760px){
+      .detail-player-card{border-radius:20px!important}
+      .player-frame.audio-mode{min-height:330px!important;padding:26px 14px 22px!important}
+      .audio-art .disc{width:136px!important;height:136px!important}
+      .audio-corner-chip{left:4px!important}
+      .detail-player-card .player-controls button{flex:1 1 calc(50% - 10px)!important;min-width:calc(50% - 10px)!important;padding:9px 10px!important}
+    }
+
+</style>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><span class="brand-code">▶</span><span>PMM Media Hub</span></div>
+    <div class="brand"><span class="brand-code" id="brandCode"></span><span>PMM Media</span></div>
     <nav class="nav">
       <button onclick="showHome()">Home</button>
       <button onclick="selectCategory('Recommended')">Recommended</button>
@@ -220,8 +405,8 @@
   <main class="container">
     <section class="hero" id="heroSection">
       <div>
-        <h1>PMM Media Hub</h1>
-        <p>Paste a link &mdash; play it instantly. Supports direct files, YouTube, Vimeo, Dropbox, Google Drive, OneDrive, SoundCloud.</p>
+        <h1>PMM Media</h1>
+        <p>Drop a media link — keep it clean, simple, and playable.</p>
       </div>
       <div class="hero-actions"><button class="primary-btn btn" onclick="openAddModal()">+ Publish Media</button></div>
     </section>
@@ -291,7 +476,7 @@
 
   <div id="reportModal" class="modal-backdrop"><div class="modal"><h2>Report Media</h2><div class="form"><label>Reason<select id="reportReasonInput"><option value="Broken or invalid link">Broken or invalid link</option><option value="Inappropriate content">Inappropriate content</option><option value="Copyright concern">Copyright concern</option><option value="Wrong category">Wrong category</option><option value="Spam or misleading">Spam or misleading</option><option value="Other">Other</option></select></label><label>Detail<textarea id="reportDetailInput" maxlength="250" placeholder="Optional, max 250 characters"></textarea></label></div><div class="modal-actions"><button class="secondary-btn btn" onclick="closeModal('reportModal')">Cancel</button><button class="danger-btn btn" onclick="submitReport()">Submit Report</button></div></div></div>
 
-  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Media Hub</h2><p class="muted">A clean hub for sharing media links that play instantly in-page &mdash; with Discord-friendly embeds for direct files.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
+  <div id="aboutModal" class="modal-backdrop"><div class="modal"><h2>About PMM Media</h2><p class="muted">A clean hub for sharing media links that play instantly in-page &mdash; with Discord-friendly embeds for direct files.</p><div class="modal-actions"><button class="primary-btn btn" onclick="closeModal('aboutModal')">OK</button></div></div></div>
 
   <div id="adminModal" class="modal-backdrop"><div class="modal large"><h2>Manage Media</h2>
     <div class="info-box">Test access can manage any source: edit name, owner display, category, URLs, status, and delete.</div>
@@ -329,11 +514,18 @@
 
   <div id="confirmModal" class="modal-backdrop"><div class="modal"><h2 id="confirmTitle">Confirm Action</h2><p id="confirmMessage" class="muted"></p><div class="modal-actions"><button class="secondary-btn btn" onclick="pendingConfirmAction=null;closeModal('confirmModal')">Cancel</button><button id="confirmOkBtn" class="danger-btn btn">Confirm</button></div></div></div>
 
+  <!-- PMM_YOUTUBE_153_FIX_APPLIED: YouTube embed uses explicit origin to reduce Error 153 on GitHub Pages. -->
   <!-- ========== MAIN SCRIPT ========== -->
   <script>
     const APP_VERSION = "pmm-clean-v5"; // keep same version key so existing Firestore rules accept writes
     const PUBLIC_SITE_URL = "https://eee946812-creator.github.io/PMM_open_source/";
     const SHARE_IMAGE_URL = "https://raw.githubusercontent.com/eee946812-creator/PMM_open_source/main/67skibidi";
+    function getSafeEmbedOrigin(){
+      try{
+        if(location && location.origin && location.origin !== 'null') return location.origin;
+      }catch{}
+      return 'https://eee946812-creator.github.io';
+    }
 
     // ===========================================================
     // MEDIA RESOLVER — turns any pasted link into a playable form
@@ -351,10 +543,20 @@
     function getUrlExt(u){
       try{
         const p = new URL(u);
-        const path = p.pathname.toLowerCase();
-        const m = path.match(/\.([a-z0-9]+)(?:$|\?)/);
+        const searchNames = ['filename','file','name','download','attachment'];
+        const haystack = [p.pathname, ...searchNames.map(key=>p.searchParams.get(key)||'')].join(' ').toLowerCase();
+        const m = haystack.match(/\.([a-z0-9]{2,5})(?:$|[?#&\s])/);
         return m ? m[1] : '';
       }catch{ return ''; }
+    }
+
+    function normalizeMediaUrl(u){
+      try{
+        const p = new URL(u);
+        const host = p.hostname.replace(/^www\./,'');
+        if(host === 'cdn.discordapp.com' || host === 'media.discordapp.net') return p.toString();
+        return p.toString();
+      }catch{ return String(u||'').trim(); }
     }
 
     function pickKindFromExt(ext){
@@ -408,6 +610,11 @@
       }catch{ return ''; }
     }
 
+
+    // ---- GitHub raw / blob links ----
+    // GitHub-specific media conversion removed. Use Firebase/Cloud/CDN direct links instead.
+    function githubRaw(u){ return ''; }
+
     // ---- Google Drive ----
     // Two outputs:
     //   preview iframe: https://drive.google.com/file/d/{id}/preview      (works for video, audio, pdf)
@@ -456,7 +663,7 @@
 
     function resolveMedia(rawUrl){
       const fail = { kind:'unknown', provider:'unknown', embed:'', raw:'', poster:'', isDirect:false };
-      const url = String(rawUrl||'').trim();
+      const url = normalizeMediaUrl(rawUrl);
       if(!url) return fail;
       let parsed;
       try{ parsed = new URL(url); }catch{ return fail; }
@@ -465,9 +672,11 @@
       // YouTube
       const yt = ytId(url);
       if(yt){
+        const ytOrigin = encodeURIComponent(getSafeEmbedOrigin());
         return {
           kind:'video', provider:'youtube',
-          embed:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(yt)}?rel=0&modestbranding=1&playsinline=1`,
+          // Error 153 fix: use youtube.com embed with explicit origin + referrer policy on iframe
+          embed:`https://www.youtube.com/embed/${encodeURIComponent(yt)}?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${ytOrigin}`,
           raw:'',
           poster:`https://i.ytimg.com/vi/${encodeURIComponent(yt)}/hqdefault.jpg`,
           isDirect:false
@@ -520,6 +729,13 @@
         return { kind:'video', provider:'onedrive', embed:od, raw:'', poster:'', isDirect:false };
       }
 
+      // GitHub raw/blob direct file
+      const gh = githubRaw(url);
+      if(gh){
+        const kindGuess = pickKindFromUrl(gh);
+        return { kind:kindGuess === 'unknown' ? 'unknown' : kindGuess, provider:'direct', embed:gh, raw:gh, poster:'', isDirect:kindGuess !== 'unknown' };
+      }
+
       // Direct file
       const ext = getUrlExt(url);
       const direct = pickKindFromExt(ext);
@@ -535,6 +751,32 @@
       return ({direct:'Direct file',youtube:'YouTube',vimeo:'Vimeo',dropbox:'Dropbox',gdrive:'Google Drive',onedrive:'OneDrive',soundcloud:'SoundCloud',unknown:'Unknown'})[p]||'Unknown';
     }
     function kindLabel(k){ return k==='video'?'Video':(k==='audio'?'Audio':'Unknown'); }
+
+
+    const ICONS = {
+      brand:`<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"3\" y=\"5.5\" width=\"18\" height=\"13\" rx=\"4\" fill=\"white\" fill-opacity=\"0.14\"/><path d=\"M9.5 8.2v7.6L16.2 12 9.5 8.2Z\" fill=\"white\"/></svg>`,
+      trash:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 4.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7.5 7l.7 10.04A2 2 0 0 0 10.2 19h3.6a2 2 0 0 0 1.99-1.96L16.5 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 10.25v5.5M14 10.25v5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+      fullscreen:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 4H5a1 1 0 0 0-1 1v3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      external:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14 19 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      copy:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      like:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 10.5 12 5a2 2 0 0 1 2 2v3h3.74a1.8 1.8 0 0 1 1.77 2.14l-1 5A2 2 0 0 1 16.55 19H9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10h4.5v9H6.5A1.5 1.5 0 0 1 5 17.5V10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`,
+      report:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4 20 19H4L12 4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9v4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.4" r="1" fill="currentColor"/></svg>`,
+      back:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m10 17-5-5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+      audio:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.25" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.75v2.1M20.25 12h-2.1M12 20.25v-2.1M3.75 12h2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+      video:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="5.5" width="12.5" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m16 10 4.5-2.5v9L16 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      link:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 13.5 8 16a3 3 0 1 1-4.24-4.24L6.25 9.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 10.5 16 8a3 3 0 1 1 4.24 4.24l-2.49 2.46" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 15 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+      warning:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5 20 18.5H4L12 4.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.2" r="1" fill="currentColor"/></svg>`,
+      close:`<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`
+    };
+    function iconSvg(name){ return ICONS[name] || ICONS.link; }
+    function icon(name){ return `<span class="icon-inline" aria-hidden="true">${iconSvg(name)}</span>`; }
+    function iconLabel(name,label){ return `<span class="btn-icon-label">${icon(name)}<span>${label}</span></span>`; }
+    function initStaticIcons(){
+      const brand = document.getElementById('brandCode');
+      if(brand) brand.innerHTML = iconSvg('brand');
+      const noticeClose = document.querySelector('#noticeBox button');
+      if(noticeClose) noticeClose.innerHTML = iconSvg('close');
+    }
 
     // ===========================================================
     // META + UTIL
@@ -567,7 +809,7 @@
       if(!media || media.kind==='unknown') return;
 
       // Use a Twitter "summary_large_image" by default; only switch to player card for direct files (Discord respects og:video).
-      setMetaContent('meta[property="og:title"]', `${src?.name||'Media'} - PMM Media Hub`);
+      setMetaContent('meta[property="og:title"]', `${src?.name||'Media'} - PMM Media`);
       setMetaContent('meta[property="og:description"]', `${kindLabel(media.kind)} via ${providerLabel(media.provider)}. Click to play.`);
 
       if(media.isDirect && media.raw){
@@ -714,7 +956,7 @@
         card.className="mini-card";
         const m = resolveMedia(src.downloadUrl||"");
         const name=document.createElement("strong"); name.textContent=src.name||"Untitled";
-        const detail=document.createElement("small"); detail.textContent=`${kindLabel(m.kind)} • ${providerLabel(m.provider)} • 👍 ${Number(src.likes||0)}`;
+        const detail=document.createElement("small"); detail.textContent=`${kindLabel(m.kind)} • ${providerLabel(m.provider)} • Likes ${Number(src.likes||0)}`;
         card.append(name,detail);
         card.addEventListener("click",()=>openSourcePage(src.id));
         return card;
@@ -725,7 +967,7 @@
 
       const canDelete=hasPowerAccess()||(currentUser&&src.ownerId===currentUser.uid);
       const deleteBtn=document.createElement("button");
-      deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.textContent="🗑";
+      deleteBtn.className="delete-btn"; deleteBtn.title="Delete"; deleteBtn.innerHTML=icon('trash');
       if(canDelete){ deleteBtn.style.display="flex"; deleteBtn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();deleteSource(src.id);}); }
 
       const m = resolveMedia(src.downloadUrl||"");
@@ -763,7 +1005,7 @@
 
       const tagKind=document.createElement("span"); tagKind.className=`tag ${m.kind==='video'?'video':(m.kind==='audio'?'audio':'warn')}`; tagKind.textContent=kindLabel(m.kind);
       const tagProv=document.createElement("span"); tagProv.className=`tag ${m.provider}`; tagProv.textContent=providerLabel(m.provider);
-      const tagLikes=document.createElement("span"); tagLikes.className="tag"; tagLikes.textContent=`👍 ${Number(src.likes||0)}`;
+      const tagLikes=document.createElement("span"); tagLikes.className="tag"; tagLikes.textContent=`Likes ${Number(src.likes||0)}`;
       const tagReports=document.createElement("span"); tagReports.className=`tag ${Number(src.reportCount||0)>0?'warn':''}`; tagReports.textContent=`R ${Number(src.reportCount||0)}`;
       meta.append(tagKind,tagProv,tagLikes,tagReports);
 
@@ -787,8 +1029,15 @@
     function sourceUrl(sourceId){
       const canonical=document.querySelector('link[rel="canonical"]')?.href || PUBLIC_SITE_URL;
       const base = /^https?:/i.test(canonical) ? canonical : PUBLIC_SITE_URL;
-      return `${base.replace(/#.*$/,"").replace(/\?+$/,"").replace(/\/?$/,"/")}#source=${encodeURIComponent(sourceId)}`;
+      return `${base.replace(/#.*$/,"").replace(/\?.*$/,"").replace(/\/?$/,"/")}?source=${encodeURIComponent(sourceId)}`;
     }
+
+    function discordBestLink(src){
+      const media = resolveMedia(src?.downloadUrl || '');
+      if(media && media.isDirect && media.raw) return media.raw;
+      return sourceUrl(src?.id || '');
+    }
+
 
     function setHomeVisible(show){
       ["recommendedPanel","sourceGrid","emptyState","skeletonGrid","heroSection","toolbarSection"].forEach(id=>{
@@ -798,18 +1047,18 @@
       const detail=safeById("sourceDetail"); if(detail) detail.style.display=show?"none":"block";
     }
 
-    function openSourcePage(sourceId){ if(!sourceId)return; location.hash=`source=${encodeURIComponent(sourceId)}`; renderRoute(); }
-    function closeSourcePage(){ history.pushState("",document.title,location.pathname+location.search); renderRoute(); }
+    function openSourcePage(sourceId){ if(!sourceId)return; history.pushState('', document.title, `${location.pathname}?source=${encodeURIComponent(sourceId)}`); renderRoute(); }
+    function closeSourcePage(){ history.pushState('',document.title,location.pathname); renderRoute(); }
 
     function showMissingDetail(){
       const detail=safeById("sourceDetail");
       setHomeVisible(false);
       if(detail) detail.innerHTML = `
         <div class="missing-state">
-          <div class="missing-icon">!</div>
+          <div class="missing-icon">${icon('warning')}</div>
           <h2 style="margin:0 0 6px">Data missing or invalid link</h2>
           <p class="muted">The requested media was deleted, hidden, or the link is no longer valid.</p>
-          <div class="detail-actions" style="justify-content:center"><button class="secondary-btn btn" onclick="closeSourcePage()">← Back Home</button></div>
+          <div class="detail-actions" style="justify-content:center"><button class="secondary-btn btn" onclick="closeSourcePage()">${iconLabel('back','Back Home')}</button></div>
         </div>`;
     }
 
@@ -819,20 +1068,23 @@
     function buildPlayerHtml(media, src){
       // media: result of resolveMedia
       if(!media || media.kind==='unknown'){
-        return `<div class="player-frame" style="display:grid;place-items:center;color:#fff;text-align:center;padding:30px">
-          <div>
-            <div style="font-size:42px">⚠️</div>
-            <h3 style="margin:8px 0 4px">Cannot play this link in-page</h3>
-            <p style="color:#cbd5e1">The provider isn't supported, or the URL doesn't point to a media file.</p>
-            <a class="btn primary-btn" style="margin-top:10px;display:inline-block" target="_blank" rel="noopener noreferrer" href="${escHtml(src.downloadUrl||'#')}">Open link in new tab</a>
+        const directUrl = escHtml(src.downloadUrl||'#');
+        return `<div class="player-frame" style="min-height:360px;display:grid;place-items:center;color:#fff;text-align:center;padding:24px;background:radial-gradient(circle at 50% 0%,#34363d,#070708 62%)">
+          <div style="width:min(760px,100%);display:grid;gap:14px">
+            <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#d1d5db;font-weight:900">Smart fallback player</div>
+            <h3 style="margin:0;font-size:24px">This link has no clear file extension</h3>
+            <p style="color:#cbd5e1;margin:0">I added both video and audio fallback players. If the host sends a playable media content-type, one of these will work.</p>
+            <video controls preload="metadata" playsinline style="width:100%;max-height:320px;border-radius:18px;background:#000"><source src="${directUrl}"></video>
+            <audio controls preload="metadata" style="width:100%"><source src="${directUrl}"></audio>
+            <a class="btn primary-btn" style="justify-self:center;margin-top:4px;display:inline-block" target="_blank" rel="noopener noreferrer" href="${directUrl}">Open original link</a>
           </div>
         </div>`;
       }
 
       if(media.isDirect && media.kind==='video'){
         const poster = validImageSrc(src.iconUrl) || media.poster || '';
-        return `<div class="player-frame">
-          <video id="pmmPlayer" controls preload="metadata" playsinline crossorigin="anonymous" ${poster?`poster="${escHtml(poster)}"`:''}>
+        return `<div class="player-frame video-mode">
+          <video id="pmmPlayer" controls preload="metadata" playsinline ${poster?`poster="${escHtml(poster)}"`:''}>
             <source src="${escHtml(media.raw)}">
             Your browser cannot play this video.
           </video>
@@ -841,21 +1093,24 @@
       if(media.isDirect && media.kind==='audio'){
         return `<div class="player-frame audio-mode">
           <div class="audio-art">
-            <div class="disc" id="pmmDisc">🎵</div>
+            <div class="audio-corner-chip">${icon('audio')}</div>
+            <div class="disc" id="pmmDisc"></div>
             <h3>${escHtml(src.name||'Audio')}</h3>
             <small>${escHtml(providerLabel(media.provider))} • ${escHtml(kindLabel(media.kind))}</small>
-            <audio id="pmmPlayer" controls preload="metadata" crossorigin="anonymous">
-              <source src="${escHtml(media.raw)}">
-              Your browser cannot play this audio.
-            </audio>
+            <div class="audio-player-wrap">
+              <audio id="pmmPlayer" controls preload="metadata">
+                <source src="${escHtml(media.raw)}">
+                Your browser cannot play this audio.
+              </audio>
+            </div>
           </div>
         </div>`;
       }
       // iframe providers (YouTube, Vimeo, Dropbox preview, Drive preview, OneDrive, SoundCloud)
       const allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
-      const frameClass = media.kind==='audio' && media.provider==='soundcloud' ? 'player-frame' : 'player-frame';
+      const frameClass = media.kind==='video' ? 'player-frame embed-mode video-mode' : 'player-frame embed-mode';
       return `<div class="${frameClass}">
-        <iframe id="pmmPlayer" src="${escHtml(media.embed)}" allow="${allow}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
+        <iframe id="pmmPlayer" title="PMM Media Player" src="${escHtml(media.embed)}" allow="${allow}" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
       </div>`;
     }
 
@@ -864,7 +1119,7 @@
       const detail=byId("sourceDetail");
       setHomeVisible(false);
       if(!src){
-        document.title="Data missing or invalid link - PMM Media Hub";
+        document.title="Data missing or invalid link - PMM Media";
         showMissingDetail();
         return;
       }
@@ -875,24 +1130,27 @@
       const icon=validImageSrc(src.iconUrl) || (m.poster ? validImageSrc(m.poster) : "");
       const url=validDisplayUrl(src.downloadUrl);
       const share=sourceUrl(src.id);
-      document.title=`${src.name||"Media"} - PMM Media Hub`;
+      document.title=`${src.name||"Media"} - PMM Media`;
 
       const desc=document.querySelector('meta[name="description"]');
-      if(desc) desc.setAttribute("content",`${src.name||"Media"} by ${src.ownerName||"Unknown"} — ${kindLabel(m.kind)} via ${providerLabel(m.provider)}. Plays inline on PMM Media Hub.`);
+      if(desc) desc.setAttribute("content",`${src.name||"Media"} by ${src.ownerName||"Unknown"} — ${kindLabel(m.kind)} via ${providerLabel(m.provider)}. Plays inline on PMM Media.`);
 
       applyMediaShareMeta(src);
 
       const playerHtml = buildPlayerHtml(m, src);
 
       detail.innerHTML = `
-        ${playerHtml}
-        <div class="player-controls">
-          <button onclick="enterFullscreen()" title="Full screen">⛶ Fullscreen</button>
-          <button onclick="window.open('${escHtml(url)}', '_blank', 'noopener,noreferrer')">Open original</button>
-          <button onclick="navigator.clipboard.writeText('${escHtml(share)}').then(()=>showNotice('Share link copied.'))">Copy share link</button>
-          <button onclick="likeSource('${escHtml(src.id)}')">👍 Like (${Number(src.likes||0)})</button>
-          <button onclick="openReport('${escHtml(src.id)}')">⚠ Report</button>
-          <button onclick="closeSourcePage()">← Back</button>
+        <div class="detail-player-card">
+          ${playerHtml}
+          <div class="player-controls">
+            <button onclick="enterFullscreen()" title="Full screen">${iconLabel('fullscreen','Fullscreen')}</button>
+            <button onclick="window.open('${escHtml(url)}', '_blank', 'noopener,noreferrer')">${iconLabel('external','Open original')}</button>
+            <button onclick="navigator.clipboard.writeText('${escHtml(share)}').then(()=>showNotice('Share page link copied.'))">${iconLabel('copy','Copy page link')}</button>
+            <button onclick="navigator.clipboard.writeText('${escHtml(discordBestLink(src))}').then(()=>showNotice('Best Discord link copied.'))">${iconLabel('link','Discord link')}</button>
+            <button onclick="likeSource('${escHtml(src.id)}')">${iconLabel('like',`Like (${Number(src.likes||0)})`)}</button>
+            <button onclick="openReport('${escHtml(src.id)}')">${iconLabel('report','Report')}</button>
+            <button onclick="closeSourcePage()">${iconLabel('back','Back')}</button>
+          </div>
         </div>
 
         <div class="detail-header">
@@ -903,7 +1161,7 @@
             <div class="detail-meta">
               <span class="tag ${m.kind==='video'?'video':(m.kind==='audio'?'audio':'warn')}">${kindLabel(m.kind)}</span>
               <span class="tag ${m.provider}">${escHtml(providerLabel(m.provider))}</span>
-              <span class="tag">👍 ${Number(src.likes||0)}</span>
+              <span class="tag">Likes ${Number(src.likes||0)}</span>
               <span class="tag ${Number(src.reportCount||0)>0?'warn':''}">Reports ${Number(src.reportCount||0)}</span>
               <span class="tag ${src.status==='review'?'warn':''}">${src.status||"active"}</span>
             </div>
@@ -916,6 +1174,7 @@
           <a class="detail-link" href="${escHtml(share)}">${escHtml(share)}</a>
           <h3 style="margin-top:18px">Original media URL</h3>
           ${url ? `<a class="detail-link" href="${escHtml(url)}" target="_blank" rel="noopener noreferrer">${escHtml(url)}</a>` : `<p class="muted">No valid URL.</p>`}
+          <div class="discord-helper"><strong>Discord best chance mode:</strong> ถ้าไฟล์เป็น direct video/audio ระบบจะคัดลอกลิงก์ไฟล์ตรงให้ Discord มีโอกาสเล่นในแชตสูงสุด ส่วนลิงก์หน้า PMM ใช้สำหรับเปิด player แบบสวยในเว็บ</div>
         </div>
       `;
 
@@ -966,18 +1225,20 @@
 
     function renderRoute(){
       refreshShareImageMeta();
-      const match=location.hash.match(/^#source=([^&]+)/);
-      if(match){ renderSourceDetail(decodeURIComponent(match[1])); }
+      const querySource = new URLSearchParams(location.search).get('source');
+      const hashMatch=location.hash.match(/^#source=([^&]+)/);
+      const sourceParam = querySource || (hashMatch ? decodeURIComponent(hashMatch[1]) : '');
+      if(sourceParam){ renderSourceDetail(sourceParam); }
       else {
         // Restore homepage meta
         ['meta[property="og:video"]','meta[property="og:video:secure_url"]','meta[property="og:video:type"]','meta[property="og:video:width"]','meta[property="og:video:height"]','meta[property="og:audio"]','meta[property="og:audio:type"]','meta[name="twitter:player"]','meta[name="twitter:player:width"]','meta[name="twitter:player:height"]','meta[name="twitter:player:stream"]','meta[name="twitter:player:stream:content_type"]']
           .forEach(removeMeta);
         setMetaContent('meta[property="og:type"]','website');
-        setMetaContent('meta[property="og:title"]','PMM Media Hub - Inline Video & Audio');
+        setMetaContent('meta[property="og:title"]','PMM Media - Inline Video & Audio');
         setMetaContent('meta[property="og:description"]','Share video and audio links that play instantly in the page.');
         setMetaContent('meta[name="twitter:card"]','summary_large_image');
         setHomeVisible(true);
-        document.title="PMM Media Hub - Free Inline Video & Audio Player";
+        document.title="PMM Media - Clean Inline Video & Audio Player";
         renderSources();
       }
     }
@@ -1004,6 +1265,8 @@
     }
     function scheduleRenderSources(){ cancelAnimationFrame(renderTimer); renderTimer=requestAnimationFrame(renderSources); }
     window.scheduleRenderSources=scheduleRenderSources;
+    window.addEventListener('popstate', renderRoute);
+    window.addEventListener('hashchange', renderRoute);
 
     function setupUploadZone(kind){
       const drop=byId(kind+"Drop"), input=byId(kind+"FileInput"), nameEl=byId(kind+"FileName"), preview=byId(kind+"Preview"), urlInput=byId(kind+"UrlInput");
@@ -1075,6 +1338,7 @@
     }
 
     initSelects();
+    initStaticIcons();
     setupUploadZone("icon");
     renderCategoryChips();
     const initialQuery=new URLSearchParams(location.search).get("q");
@@ -1204,8 +1468,7 @@
           const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This media name is already used. Please choose another name.");
           const p=profileSnap.data();
           if(!hasPowerAccess()){
-            if(nowMs-Number(p.lastPublishAtMs||0)<50000)throw new Error("Please wait before publishing again.");
-            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 media per day. Delete the active one first.");
+            if(nowMs-Number(p.lastPublishAtMs||0)<30000)throw new Error("Please wait 30 seconds before publishing again.");
           }
         });
         const icon=await uploadSelectedImage("icon");
@@ -1219,8 +1482,7 @@
           const sourceSnap=await tx.get(sourceRef); if(sourceSnap.exists())throw new Error("This media name is already used. Please choose another name.");
           const p=profileSnap.data();
           if(!hasPowerAccess()){
-            if(nowMs-Number(p.lastPublishAtMs||0)<50000)throw new Error("Please wait before publishing again.");
-            if(p.dailyUpload&&p.dailyUpload.date===today&&p.dailyUpload.activeSourceId)throw new Error("Normal users can publish only 1 media per day. Delete the active one first.");
+            if(nowMs-Number(p.lastPublishAtMs||0)<30000)throw new Error("Please wait 30 seconds before publishing again.");
           }
           tx.set(sourceRef,{
             appVersion:APP_VERSION, visibility:"public", sourceKey, name,
@@ -1231,7 +1493,7 @@
             createdAt:serverTimestamp(), updatedAt:serverTimestamp(),
             createdAtMs:nowMs, createDay:today
           });
-          if(!hasPowerAccess())tx.update(profileRef,{lastPublishAtMs:nowMs,dailyUpload:{date:today,activeSourceId:sourceKey},updatedAt:serverTimestamp()});
+          if(!hasPowerAccess())tx.update(profileRef,{lastPublishAtMs:nowMs,dailyUpload:{date:'',activeSourceId:''},updatedAt:serverTimestamp()});
         });
         byId("sourceNameInput").value=""; byId("downloadUrlInput").value=""; selectedFiles={icon:null};
         clearImageChoice("icon");
