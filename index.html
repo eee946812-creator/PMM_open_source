@@ -384,7 +384,40 @@
       .detail-player-card .player-controls button{flex:1 1 calc(50% - 10px)!important;min-width:calc(50% - 10px)!important;padding:9px 10px!important}
     }
 
-</style>
+
+
+/* ===== PMM Request Patch: clean white GUI + safe unsupported link state ===== */
+:root{--pmm-green:#22c55e;--pmm-white:#ffffff;--pmm-soft:#f8fafc;--pmm-border:#e5e7eb;--pmm-text:#111827;--pmm-muted:#667085;}
+body{background:linear-gradient(180deg,#fff 0%,#f8fafc 100%)!important;color:var(--pmm-text)!important;}
+.topbar,.hero,.panel,.card,.modal,.detail-header,.detail-info-card,.missing-state{background:rgba(255,255,255,.92)!important;border-color:var(--pmm-border)!important;box-shadow:0 12px 32px rgba(15,23,42,.06)!important;}
+.card,.panel,.modal,.detail-header,.detail-info-card,.missing-state,.upload-zone,.search-box,.form input,.form select,.form textarea{border-radius:22px!important;}
+.detail-player-card{border-radius:28px!important;background:#fff!important;border:1px solid var(--pmm-border)!important;box-shadow:0 16px 40px rgba(15,23,42,.08)!important;}
+.detail-player-card .player-frame.video-mode,.detail-player-card .player-frame.embed-mode{background:#000!important;border-radius:24px 24px 0 0!important;overflow:hidden!important;}
+.detail-player-card .player-controls{background:#fff!important;border-top:1px solid var(--pmm-border)!important;}
+.detail-player-card .player-controls button{background:#111827!important;color:#fff!important;border:1px solid #111827!important;border-radius:999px!important;}
+.detail-player-card.no-player{background:#fff!important;border-radius:28px!important;overflow:hidden!important;}
+.detail-player-card.no-player .player-controls{display:none!important;}
+.unsupported-link-card{min-height:280px;display:grid;place-items:center;text-align:center;padding:34px 22px;background:linear-gradient(180deg,#ffffff,#f8fafc);color:#111827;border-radius:28px;}
+.unsupported-link-card .unsupported-icon{width:72px;height:72px;border-radius:24px;display:grid;place-items:center;margin:0 auto 14px;background:#f8fafc;border:1px solid #e5e7eb;color:#111827;box-shadow:0 10px 28px rgba(15,23,42,.06)}
+.unsupported-link-card .unsupported-icon .icon-inline{width:34px;height:34px;color:#fff;background:#111827;border-radius:14px;padding:7px;}
+.unsupported-link-card h3{margin:0 0 8px;font-size:24px;letter-spacing:-.4px;}
+.unsupported-link-card p{margin:0 auto;color:#667085;font-weight:700;line-height:1.6;max-width:650px;}
+.raw-link-box{margin-top:16px;padding:12px 14px;border:1px solid #e5e7eb;background:#fff;border-radius:18px;word-break:break-all;color:#1d4ed8;font-weight:800;}
+.media-error-card{min-height:300px;display:grid;place-items:center;text-align:center;padding:30px;background:#fff;border-radius:24px;color:#111827;}
+.media-error-card h3{margin:0 0 8px;font-size:24px;}
+.media-error-card p{margin:0;color:#667085;font-weight:700;line-height:1.55;}
+.audio-art .disc.broken{animation:none!important;filter:grayscale(.15);}
+.audio-art .disc.broken::before{content:""!important;position:absolute!important;inset:0!important;border-radius:50%!important;background:linear-gradient(120deg,transparent 0 43%,rgba(255,255,255,.95) 44% 46%,transparent 47% 100%)!important;transform:rotate(-12deg)!important;border:0!important;}
+.play-overlay svg circle{fill:rgba(255,255,255,.95)!important;}
+.play-overlay svg path{fill:var(--pmm-green)!important;stroke:var(--pmm-green)!important;}
+.icon-inline svg{color:#fff;}
+.detail-icon,.brand-code,.avatar{color:#fff!important;}
+.card-thumb .type-badge{background:#fff!important;color:#111827!important;border:1px solid rgba(17,24,39,.08)!important;}
+.card-thumb{border-radius:22px 22px 0 0!important;}
+::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-track{background:#f1f5f9;border-radius:999px}::-webkit-scrollbar-thumb{background:#cbd5e1;border:3px solid #f1f5f9;border-radius:999px}::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+@media(max-width:760px){.detail-player-card,.unsupported-link-card{border-radius:22px!important}.detail-player-card .player-controls button{min-width:100%!important}}
+
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -1301,7 +1334,7 @@
     // ===========================================================
     // GLOBAL STATE / CONSTANTS
     // ===========================================================
-    const CATEGORIES = ["All","Recommended","Video","Audio","Music","Podcast","Education","Entertainment","Other"];
+    const CATEGORIES = ["All","Recommended","Video","Audio","Music","Podcast","Education","Entertainment","Movie","Short Clip","MV","Sound Effect","Voice","Image Link","Document Link","Raw File","Other"];
     const PUBLISH_CATEGORIES = CATEGORIES.filter(c => !["All","Recommended"].includes(c));
     const MAX_IMAGE_BYTES = 250 * 1024;
     const POWER_IMAGE_BYTES = 430 * 1024;
@@ -1344,6 +1377,123 @@
     const initialQuery=new URLSearchParams(location.search).get("q");
     if(initialQuery&&safeById("searchInput")) safeById("searchInput").value=initialQuery;
     setLoading(true);
+
+
+    /* ===== PMM Request Patch JS: accept any link, raw conversion, no-player state, safe cleanup ===== */
+    function PMM_escapeAttr(value){ return String(value||'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m])); }
+    function PMM_cleanupActiveMedia(){
+      document.querySelectorAll('audio,video').forEach(el=>{ try{ el.pause(); el.removeAttribute('src'); el.querySelectorAll('source').forEach(s=>s.removeAttribute('src')); el.load(); }catch(e){} });
+      document.querySelectorAll('iframe').forEach(frame=>{ try{ frame.src='about:blank'; }catch(e){} });
+    }
+    function PMM_rawCandidate(rawUrl){
+      const url = normalizeMediaUrl(rawUrl);
+      if(!url) return '';
+      try{
+        const parsed = new URL(url);
+        if(!['http:','https:'].includes(parsed.protocol)) return '';
+        const gh = githubRaw(url); if(gh) return gh;
+        const db = dropboxRaw(url); if(db) return db;
+        const gid = gdriveId(url); if(gid) return `https://drive.google.com/uc?export=download&id=${encodeURIComponent(gid)}`;
+        return url;
+      }catch(e){ return ''; }
+    }
+    const PMM_originalResolveMedia = resolveMedia;
+    resolveMedia = function(rawUrl){
+      const media = PMM_originalResolveMedia(rawUrl);
+      const raw = PMM_rawCandidate(rawUrl);
+      if(media && media.kind !== 'unknown'){
+        if(raw && !media.raw) media.raw = raw;
+        return media;
+      }
+      return {kind:'unsupported',provider:'unknown',embed:'',raw:raw,poster:'',isDirect:false};
+    };
+    const PMM_originalKindLabel = kindLabel;
+    kindLabel = function(k){ return k==='unsupported' ? 'Unsupported link' : PMM_originalKindLabel(k); };
+    const PMM_originalProviderLabel = providerLabel;
+    providerLabel = function(p){ return p==='unknown' ? 'Auto raw / unknown host' : PMM_originalProviderLabel(p); };
+    validateDownloadUrl = function(url){
+      const raw=String(url||'').trim();
+      if(!raw || raw.length>1200) return {ok:false,message:'Please enter a link with 1200 characters or less.'};
+      let parsed; try{ parsed=new URL(raw); }catch(e){ return {ok:false,message:'Please enter a valid URL.'}; }
+      if(!['http:','https:'].includes(parsed.protocol)) return {ok:false,message:'Only HTTP and HTTPS links are accepted.'};
+      return {ok:true};
+    };
+    buildPlayerHtml = function(media, src){
+      const originalUrl = PMM_escapeAttr(src?.downloadUrl || '#');
+      const rawUrl = PMM_escapeAttr(media?.raw || PMM_rawCandidate(src?.downloadUrl || '') || src?.downloadUrl || '#');
+      if(!media || media.kind==='unknown' || media.kind==='unsupported'){
+        return `<div class="unsupported-link-card">
+          <div>
+            <div class="unsupported-icon">${icon('external')}</div>
+            <h3>ลิงก์นี้ไม่รองรับ / This link is not supported</h3>
+            <p>ระบบรับลิงก์นี้ไว้ได้ และพยายามแปลงเป็น raw/direct file แล้ว แต่ลิงก์นี้ไม่ใช่ไฟล์วิดีโอหรือเสียงที่เล่นในหน้าเว็บได้ จึงไม่แสดงหน้าต่างสีดำหรือแถบเล่นเสียงให้รกหน้าจอ</p>
+            <div class="raw-link-box">${rawUrl}</div>
+            <div class="detail-actions" style="justify-content:center;margin-top:16px"><a class="btn primary-btn" target="_blank" rel="noopener noreferrer" href="${rawUrl}">${iconLabel('external','Open raw/original')}</a></div>
+          </div>
+        </div>`;
+      }
+      if(media.isDirect && media.kind==='video'){
+        const poster = validImageSrc(src.iconUrl) || media.poster || '';
+        return `<div class="player-frame video-mode">
+          <video id="pmmPlayer" controls preload="metadata" playsinline ${poster?`poster="${PMM_escapeAttr(poster)}"`:''} onerror="PMM_handleVideoError(this)">
+            <source src="${PMM_escapeAttr(media.raw||media.embed)}">
+            Your browser cannot play this video.
+          </video>
+        </div>`;
+      }
+      if(media.isDirect && media.kind==='audio'){
+        return `<div class="player-frame audio-mode">
+          <div class="audio-art">
+            <div class="audio-corner-chip">${icon('link')}</div>
+            <div id="pmmDisc" class="disc"></div>
+            <h3>${PMM_escapeAttr(src.name||'Audio')}</h3>
+            <small>Direct audio file</small>
+            <div class="audio-player-wrap"><audio id="pmmPlayer" controls preload="metadata" onerror="PMM_handleAudioError(this)"><source src="${PMM_escapeAttr(media.raw||media.embed)}"></audio></div>
+          </div>
+        </div>`;
+      }
+      if(media.embed && (media.kind==='video' || media.kind==='audio')){
+        return `<div class="player-frame embed-mode"><iframe id="pmmPlayer" src="${PMM_escapeAttr(media.embed)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
+      }
+      return `<div class="unsupported-link-card"><div><div class="unsupported-icon">${icon('warning')}</div><h3>ลิงก์นี้ไม่รองรับ</h3><p>ไม่พบ video/audio player ที่ปลอดภัยสำหรับลิงก์นี้</p><div class="raw-link-box">${rawUrl}</div></div></div>`;
+    };
+    window.PMM_handleAudioError = function(audio){
+      const disc = document.querySelector('#pmmDisc');
+      if(disc) disc.classList.add('broken');
+      const wrap = audio?.closest('.audio-player-wrap');
+      if(wrap){ wrap.outerHTML = `<div class="media-error-card"><div><h3>เสียงนี้มีปัญหา</h3><p>ตัวเล่นเสียงถูกซ่อนแล้ว เพราะไฟล์เล่นไม่ได้หรือโฮสต์บล็อกการเล่นโดยตรง</p></div></div>`; }
+    };
+    window.PMM_handleVideoError = function(video){
+      const frame = video?.closest('.player-frame');
+      if(frame){ frame.outerHTML = `<div class="media-error-card"><div><h3>วิดีโอนี้มีปัญหา</h3><p>ไฟล์วิดีโอเล่นไม่ได้ หรือโฮสต์บล็อกการเล่นโดยตรง กรุณากด Open original เพื่อตรวจสอบต้นทาง</p></div></div>`; }
+    };
+    const PMM_oldCloseSourcePage = closeSourcePage;
+    closeSourcePage = function(){ PMM_cleanupActiveMedia(); PMM_oldCloseSourcePage(); };
+    window.closeSourcePage = closeSourcePage;
+    const PMM_oldSetHomeVisible = setHomeVisible;
+    setHomeVisible = function(show){ if(show) PMM_cleanupActiveMedia(); PMM_oldSetHomeVisible(show); };
+    const PMM_oldRenderSourceDetail = renderSourceDetail;
+    renderSourceDetail = function(sourceId){
+      PMM_cleanupActiveMedia();
+      PMM_oldRenderSourceDetail(sourceId);
+      const detail=document.getElementById('sourceDetail');
+      const hasUnsupported=detail && detail.querySelector('.unsupported-link-card');
+      const card=detail && detail.querySelector('.detail-player-card');
+      if(card && hasUnsupported) card.classList.add('no-player');
+      const audioEl = detail && detail.querySelector('audio#pmmPlayer');
+      const disc = detail && detail.querySelector('#pmmDisc');
+      if(audioEl && disc){
+        audioEl.addEventListener('play',()=>disc.classList.add('playing'));
+        audioEl.addEventListener('pause',()=>disc.classList.remove('playing'));
+        audioEl.addEventListener('ended',()=>disc.classList.remove('playing'));
+        audioEl.addEventListener('error',()=>window.PMM_handleAudioError(audioEl));
+      }
+      const videoEl = detail && detail.querySelector('video#pmmPlayer');
+      if(videoEl){ videoEl.addEventListener('error',()=>window.PMM_handleVideoError(videoEl)); }
+    };
+    window.renderSourceDetail = renderSourceDetail;
+    window.addEventListener('pagehide', PMM_cleanupActiveMedia);
+
   </script>
 
   <!-- ========== FIREBASE MODULE (same Firestore schema) ========== -->
